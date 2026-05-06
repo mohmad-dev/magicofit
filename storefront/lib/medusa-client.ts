@@ -43,9 +43,9 @@ class MedusaClient {
 
       return await response.json()
     } catch (error) {
-      if (error instanceof TypeError && error.message.includes('fetch')) {
-        console.warn(`Backend unavailable at ${this.baseUrl}, using fallback data`)
-        throw new Error(`Backend unavailable at ${this.baseUrl}`)
+      if (process.env.NEXT_PHASE === "phase-production-build" || (error instanceof TypeError && error.message.includes('fetch'))) {
+        console.warn(`Backend unavailable or fetch failed at ${this.baseUrl} during ${process.env.NEXT_PHASE || 'request'}`)
+        return { products: [], count: 0, product_categories: [], regions: [], collections: [] } as any
       }
       throw error
     }
