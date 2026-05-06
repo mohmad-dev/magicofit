@@ -50,7 +50,7 @@ export async function addToCart({ variantId, quantity }: { variantId: string, qu
 
   try {
     const updatedCart = await addToCartApi(cart.id, variantId, quantity);
-    revalidateTag("cart", {});
+    revalidateTag("cart");
     return updatedCart;
   } catch (error) {
     console.error("Error adding to cart:", error);
@@ -64,7 +64,7 @@ export async function removeFromCart(lineItemId: string) {
 
   try {
     const updatedCart = await removeFromCartApi(cart.id, lineItemId);
-    revalidateTag("cart", {});
+    revalidateTag("cart");
     return updatedCart;
   } catch (error) {
     console.error("Error removing from cart:", error);
@@ -78,7 +78,7 @@ export async function updateCartQuantity(lineItemId: string, quantity: number) {
 
   try {
     const updatedCart = await updateCartItem(cart.id, lineItemId, quantity);
-    revalidateTag("cart", {});
+    revalidateTag("cart");
     return updatedCart;
   } catch (error) {
     console.error("Error updating cart quantity:", error);
