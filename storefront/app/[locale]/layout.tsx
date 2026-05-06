@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { inter, outfit, cairo } from "../fonts";
 import "../globals.css";
-import { NextIntlClientProvider, hasLocale } from "next-intl";
+import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -84,7 +84,7 @@ export default async function LocaleLayout({
 }) {
   const { locale } = await params;
 
-  if (!hasLocale(routing.locales, locale)) {
+  if (!routing.locales.includes(locale as any)) {
     notFound();
   }
 
