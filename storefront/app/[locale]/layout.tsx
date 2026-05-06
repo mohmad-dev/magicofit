@@ -36,6 +36,9 @@ export function generateStaticParams() {
 }
 
 async function getActiveCampaigns(): Promise<CampaignAnnouncement[]> {
+  if (process.env.NEXT_PHASE === "phase-production-build") {
+    return [];
+  }
   try {
     const backendUrl = process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL || "http://localhost:9000";
     const authRes = await fetch(`${backendUrl}/auth/user/emailpass`, {
