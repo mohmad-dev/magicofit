@@ -1,13 +1,13 @@
 @import "tailwindcss";
 
-@theme {
-  /* Primary — Brand Orange (#FF4F01) */
+/* Primary — Brand Orange (#FF4F01) */
+:root {
   --color-primary-50: #fff7ed;
   --color-primary-100: #ffedd5;
   --color-primary-200: #fed7aa;
   --color-primary-300: #fdba74;
   --color-primary-400: #fb923c;
-  --color-primary-500: #FF4F01;   /* Main brand orange */
+  --color-primary-500: #FF4F01;
   --color-primary-600: #ea580c;
   --color-primary-700: #c2410c;
   --color-primary-800: #9a3412;
@@ -16,7 +16,7 @@
 
   /* Accent — Power Orange (CTA) */
   --color-accent-400: #fb923c;
-  --color-accent-500: #f97316;    /* CTA accent */
+  --color-accent-500: #f97316;
   --color-accent-600: #ea580c;
   --color-accent-700: #c2410c;
   --color-accent-800: #9a3412;
@@ -46,7 +46,7 @@
   --font-sans: var(--font-inter);
   --font-display: var(--font-outfit);
 
-  /* Set defaults for v4 */
+  /* Set defaults */
   --color-background: var(--color-neutral-50);
   --color-foreground: var(--color-neutral-900);
 }
