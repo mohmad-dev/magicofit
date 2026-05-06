@@ -1,6 +1,6 @@
 {
-  "outputDirectory": "storefront/.next",
-  "buildCommand": "cd storefront && npm run build",
+  "outputDirectory": ".next",
+  "buildCommand": "npm run build",
   "installCommand": "npm install --legacy-peer-deps",
   "framework": "nextjs"
 }
