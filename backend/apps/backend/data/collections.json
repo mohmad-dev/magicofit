@@ -1,0 +1,98 @@
+[
+  {
+    "title": "Sale",
+    "handle": "sale",
+    "metadata": {
+      "badge": "sale",
+      "priority": 1
+    }
+  },
+  {
+    "title": "New Arrivals",
+    "handle": "new-arrivals",
+    "metadata": {
+      "badge": "new",
+      "priority": 2
+    }
+  },
+  {
+    "title": "Best Sellers",
+    "handle": "best-sellers",
+    "metadata": {
+      "badge": "bestseller",
+      "priority": 3
+    }
+  },
+  {
+    "title": "Running Essentials",
+    "handle": "running-essentials",
+    "metadata": {
+      "badge": "running",
+      "priority": 4
+    }
+  },
+  {
+    "title": "Gym Essentials",
+    "handle": "gym-essentials",
+    "metadata": {
+      "badge": "gym",
+      "priority": 5
+    }
+  },
+  {
+    "title": "Football Gear",
+    "handle": "football-gear",
+    "metadata": {
+      "badge": "football",
+      "priority": 6
+    }
+  },
+  {
+    "title": "Basketball Collection",
+    "handle": "basketball-collection",
+    "metadata": {
+      "badge": "basketball",
+      "priority": 7
+    }
+  },
+  {
+    "title": "Women's Collection",
+    "handle": "womens-collection",
+    "metadata": {
+      "badge": "women",
+      "priority": 8
+    }
+  },
+  {
+    "title": "Men's Collection",
+    "handle": "mens-collection",
+    "metadata": {
+      "badge": "men",
+      "priority": 9
+    }
+  },
+  {
+    "title": "Kids Sports",
+    "handle": "kids-sports",
+    "metadata": {
+      "badge": "kids",
+      "priority": 10
+    }
+  },
+  {
+    "title": "Premium Brands",
+    "handle": "premium-brands",
+    "metadata": {
+      "badge": "premium",
+      "priority": 11
+    }
+  },
+  {
+    "title": "Training Accessories",
+    "handle": "training-accessories",
+    "metadata": {
+      "badge": "accessories",
+      "priority": 12
+    }
+  }
+]

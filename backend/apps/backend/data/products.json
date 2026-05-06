@@ -1,0 +1,4340 @@
+[
+  {
+    "title": "MagicOFit Pro Running Shoes",
+    "handle": "magicofit-pro-running-shoes",
+    "subtitle": "Premium Road Running Shoes",
+    "description": "Engineered for elite runners, the MagicOFit Pro features responsive cushioning, breathable mesh upper, and durable outsole for long-distance performance.",
+    "category": "Running",
+    "collection": "New Arrivals",
+    "material": "Engineered Mesh, React Foam Midsole, Rubber Outsole",
+    "weight": 280,
+    "status": "published",
+    "thumbnail": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=400&fit=crop",
+    "images": [
+      "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=800&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=800&h=800&fit=crop"
+    ],
+    "options": [
+      {
+        "title": "Size",
+        "values": ["38", "39", "40", "41", "42", "43", "44", "45", "46"]
+      },
+      {
+        "title": "Color",
+        "values": ["Black/White", "Navy Blue", "Forest Green", "Red/Black"]
+      }
+    ],
+    "variants": [
+      {
+        "title": "38 / Black/White",
+        "sku": "MFP-38-BW",
+        "barcode": "MFP38BW001",
+        "options": { "Size": "38", "Color": "Black/White" },
+        "prices": [
+          { "currency_code": "usd", "amount": 149.99 },
+          { "currency_code": "eur", "amount": 139.99 },
+          { "currency_code": "sar", "amount": 562.50 }
+        ],
+        "inventory_quantity": 50,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "39 / Black/White",
+        "sku": "MFP-39-BW",
+        "barcode": "MFP39BW001",
+        "options": { "Size": "39", "Color": "Black/White" },
+        "prices": [
+          { "currency_code": "usd", "amount": 149.99 },
+          { "currency_code": "eur", "amount": 139.99 },
+          { "currency_code": "sar", "amount": 562.50 }
+        ],
+        "inventory_quantity": 75,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "40 / Black/White",
+        "sku": "MFP-40-BW",
+        "barcode": "MFP40BW001",
+        "options": { "Size": "40", "Color": "Black/White" },
+        "prices": [
+          { "currency_code": "usd", "amount": 149.99 },
+          { "currency_code": "eur", "amount": 139.99 },
+          { "currency_code": "sar", "amount": 562.50 }
+        ],
+        "inventory_quantity": 100,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "41 / Black/White",
+        "sku": "MFP-41-BW",
+        "barcode": "MFP41BW001",
+        "options": { "Size": "41", "Color": "Black/White" },
+        "prices": [
+          { "currency_code": "usd", "amount": 149.99 },
+          { "currency_code": "eur", "amount": 139.99 },
+          { "currency_code": "sar", "amount": 562.50 }
+        ],
+        "inventory_quantity": 100,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "42 / Black/White",
+        "sku": "MFP-42-BW",
+        "barcode": "MFP42BW001",
+        "options": { "Size": "42", "Color": "Black/White" },
+        "prices": [
+          { "currency_code": "usd", "amount": 149.99 },
+          { "currency_code": "eur", "amount": 139.99 },
+          { "currency_code": "sar", "amount": 562.50 }
+        ],
+        "inventory_quantity": 100,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "43 / Black/White",
+        "sku": "MFP-43-BW",
+        "barcode": "MFP43BW001",
+        "options": { "Size": "43", "Color": "Black/White" },
+        "prices": [
+          { "currency_code": "usd", "amount": 149.99 },
+          { "currency_code": "eur", "amount": 139.99 },
+          { "currency_code": "sar", "amount": 562.50 }
+        ],
+        "inventory_quantity": 75,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "44 / Black/White",
+        "sku": "MFP-44-BW",
+        "barcode": "MFP44BW001",
+        "options": { "Size": "44", "Color": "Black/White" },
+        "prices": [
+          { "currency_code": "usd", "amount": 149.99 },
+          { "currency_code": "eur", "amount": 139.99 },
+          { "currency_code": "sar", "amount": 562.50 }
+        ],
+        "inventory_quantity": 50,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "45 / Black/White",
+        "sku": "MFP-45-BW",
+        "barcode": "MFP45BW001",
+        "options": { "Size": "45", "Color": "Black/White" },
+        "prices": [
+          { "currency_code": "usd", "amount": 149.99 },
+          { "currency_code": "eur", "amount": 139.99 },
+          { "currency_code": "sar", "amount": 562.50 }
+        ],
+        "inventory_quantity": 25,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "46 / Black/White",
+        "sku": "MFP-46-BW",
+        "barcode": "MFP46BW001",
+        "options": { "Size": "46", "Color": "Black/White" },
+        "prices": [
+          { "currency_code": "usd", "amount": 149.99 },
+          { "currency_code": "eur", "amount": 139.99 },
+          { "currency_code": "sar", "amount": 562.50 }
+        ],
+        "inventory_quantity": 25,
+        "manage_inventory": true,
+        "allow_backorder": false
+      }
+    ],
+    "metadata": {
+      "brand": "MagicOFit",
+      "sport": "running",
+      "gender": "unisex",
+      "terrain": "road",
+      "cushion_type": "responsive",
+      "drop_mm": 10
+    }
+  },
+  {
+    "title": "MagicOFit Elite Training Shorts",
+    "handle": "magicofit-elite-training-shorts",
+    "subtitle": "Performance Training Shorts",
+    "description": "Lightweight, moisture-wicking training shorts with 4-way stretch fabric and ergonomic design for maximum mobility during intense workouts.",
+    "category": "Training",
+    "collection": "New Arrivals",
+    "material": "100% Polyester, Moisture-Wicking Fabric",
+    "weight": 180,
+    "status": "published",
+    "thumbnail": "https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=400&h=400&fit=crop",
+    "images": [
+      "https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=800&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=800&h=800&fit=crop"
+    ],
+    "options": [
+      {
+        "title": "Size",
+        "values": ["XS", "S", "M", "L", "XL", "XXL"]
+      },
+      {
+        "title": "Color",
+        "values": ["Black", "Navy", "Red", "White"]
+      }
+    ],
+    "variants": [
+      {
+        "title": "XS / Black",
+        "sku": "MES-XS-BK",
+        "barcode": "MESXSBK001",
+        "options": { "Size": "XS", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 49.99 },
+          { "currency_code": "eur", "amount": 44.99 },
+          { "currency_code": "sar", "amount": 187.50 }
+        ],
+        "inventory_quantity": 30,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "S / Black",
+        "sku": "MES-S-BK",
+        "barcode": "MESSBK001",
+        "options": { "Size": "S", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 49.99 },
+          { "currency_code": "eur", "amount": 44.99 },
+          { "currency_code": "sar", "amount": 187.50 }
+        ],
+        "inventory_quantity": 50,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "M / Black",
+        "sku": "MES-M-BK",
+        "barcode": "MESMBK001",
+        "options": { "Size": "M", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 49.99 },
+          { "currency_code": "eur", "amount": 44.99 },
+          { "currency_code": "sar", "amount": 187.50 }
+        ],
+        "inventory_quantity": 75,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "L / Black",
+        "sku": "MES-L-BK",
+        "barcode": "MESLBK001",
+        "options": { "Size": "L", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 49.99 },
+          { "currency_code": "eur", "amount": 44.99 },
+          { "currency_code": "sar", "amount": 187.50 }
+        ],
+        "inventory_quantity": 75,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "XL / Black",
+        "sku": "MES-XL-BK",
+        "barcode": "MESXLBK001",
+        "options": { "Size": "XL", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 49.99 },
+          { "currency_code": "eur", "amount": 44.99 },
+          { "currency_code": "sar", "amount": 187.50 }
+        ],
+        "inventory_quantity": 50,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "XXL / Black",
+        "sku": "MES-XXL-BK",
+        "barcode": "MESXXLBK001",
+        "options": { "Size": "XXL", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 49.99 },
+          { "currency_code": "eur", "amount": 44.99 },
+          { "currency_code": "sar", "amount": 187.50 }
+        ],
+        "inventory_quantity": 30,
+        "manage_inventory": true,
+        "allow_backorder": false
+      }
+    ],
+    "metadata": {
+      "brand": "MagicOFit",
+      "sport": "training",
+      "gender": "unisex",
+      "fit": "athletic"
+    }
+  },
+  {
+    "title": "MagicOFit Pro Football Boots",
+    "handle": "magicofit-pro-football-boots",
+    "subtitle": "Professional Football Boots",
+    "description": "Engineered for elite football players, featuring synthetic upper with textured surface for enhanced ball control, stud configuration for optimal traction on firm ground.",
+    "category": "Football",
+    "collection": "New Arrivals",
+    "material": "Synthetic Upper, TPU Outsole",
+    "weight": 240,
+    "status": "published",
+    "thumbnail": "https://placehold.co/400x400/1a1a1a/FFF?text=Pro+Boots",
+    "images": [
+      "https://placehold.co/800x800/1a1a1a/FFF?text=Pro+Boots+Top",
+      "https://placehold.co/800x800/2a2a2a/FFF?text=Pro+Boots+Side",
+      "https://placehold.co/800x800/3a3a3a/FFF?text=Pro+Boots+Sole"
+    ],
+    "options": [
+      {
+        "title": "Size",
+        "values": ["38", "39", "40", "41", "42", "43", "44", "45"]
+      },
+      {
+        "title": "Color",
+        "values": ["Black/Gold", "White/Blue", "Red/Black"]
+      }
+    ],
+    "variants": [
+      {
+        "title": "38 / Black/Gold",
+        "sku": "MFB-38-BG",
+        "barcode": "MFB38BG001",
+        "options": { "Size": "38", "Color": "Black/Gold" },
+        "prices": [
+          { "currency_code": "usd", "amount": 179.99 },
+          { "currency_code": "eur", "amount": 164.99 },
+          { "currency_code": "sar", "amount": 675.00 }
+        ],
+        "inventory_quantity": 40,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "39 / Black/Gold",
+        "sku": "MFB-39-BG",
+        "barcode": "MFB39BG001",
+        "options": { "Size": "39", "Color": "Black/Gold" },
+        "prices": [
+          { "currency_code": "usd", "amount": 179.99 },
+          { "currency_code": "eur", "amount": 164.99 },
+          { "currency_code": "sar", "amount": 675.00 }
+        ],
+        "inventory_quantity": 60,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "40 / Black/Gold",
+        "sku": "MFB-40-BG",
+        "barcode": "MFB40BG001",
+        "options": { "Size": "40", "Color": "Black/Gold" },
+        "prices": [
+          { "currency_code": "usd", "amount": 179.99 },
+          { "currency_code": "eur", "amount": 164.99 },
+          { "currency_code": "sar", "amount": 675.00 }
+        ],
+        "inventory_quantity": 80,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "41 / Black/Gold",
+        "sku": "MFB-41-BG",
+        "barcode": "MFB41BG001",
+        "options": { "Size": "41", "Color": "Black/Gold" },
+        "prices": [
+          { "currency_code": "usd", "amount": 179.99 },
+          { "currency_code": "eur", "amount": 164.99 },
+          { "currency_code": "sar", "amount": 675.00 }
+        ],
+        "inventory_quantity": 80,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "42 / Black/Gold",
+        "sku": "MFB-42-BG",
+        "barcode": "MFB42BG001",
+        "options": { "Size": "42", "Color": "Black/Gold" },
+        "prices": [
+          { "currency_code": "usd", "amount": 179.99 },
+          { "currency_code": "eur", "amount": 164.99 },
+          { "currency_code": "sar", "amount": 675.00 }
+        ],
+        "inventory_quantity": 60,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "43 / Black/Gold",
+        "sku": "MFB-43-BG",
+        "barcode": "MFB43BG001",
+        "options": { "Size": "43", "Color": "Black/Gold" },
+        "prices": [
+          { "currency_code": "usd", "amount": 179.99 },
+          { "currency_code": "eur", "amount": 164.99 },
+          { "currency_code": "sar", "amount": 675.00 }
+        ],
+        "inventory_quantity": 40,
+        "manage_inventory": true,
+        "allow_backorder": false
+      }
+    ],
+    "metadata": {
+      "brand": "MagicOFit",
+      "sport": "football",
+      "gender": "unisex",
+      "surface": "firm_ground"
+    }
+  },
+  {
+    "title": "MagicOFit Elite Basketball Shoes",
+    "handle": "magicofit-elite-basketball-shoes",
+    "subtitle": "High-Performance Basketball Shoes",
+    "description": "Designed for explosive moves on the court, featuring responsive cushioning, ankle support, and durable rubber outsole with herringbone traction pattern.",
+    "category": "Basketball",
+    "collection": "New Arrivals",
+    "material": "Synthetic Upper, Cushioned Midsole, Rubber Outsole",
+    "weight": 320,
+    "status": "published",
+    "thumbnail": "https://placehold.co/400x400/1a1a1a/FFF?text=Elite+BB",
+    "images": [
+      "https://placehold.co/800x800/1a1a1a/FFF?text=Elite+BB+Side",
+      "https://placehold.co/800x800/2a2a2a/FFF?text=Elite+BB+Top"
+    ],
+    "options": [
+      {
+        "title": "Size",
+        "values": ["39", "40", "41", "42", "43", "44", "45", "46"]
+      },
+      {
+        "title": "Color",
+        "values": ["Black/Red", "White/Blue", "Purple/Gold"]
+      }
+    ],
+    "variants": [
+      {
+        "title": "39 / Black/Red",
+        "sku": "MBB-39-BR",
+        "barcode": "MBB39BR001",
+        "options": { "Size": "39", "Color": "Black/Red" },
+        "prices": [
+          { "currency_code": "usd", "amount": 159.99 },
+          { "currency_code": "eur", "amount": 149.99 },
+          { "currency_code": "sar", "amount": 600.00 }
+        ],
+        "inventory_quantity": 35,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "40 / Black/Red",
+        "sku": "MBB-40-BR",
+        "barcode": "MBB40BR001",
+        "options": { "Size": "40", "Color": "Black/Red" },
+        "prices": [
+          { "currency_code": "usd", "amount": 159.99 },
+          { "currency_code": "eur", "amount": 149.99 },
+          { "currency_code": "sar", "amount": 600.00 }
+        ],
+        "inventory_quantity": 55,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "41 / Black/Red",
+        "sku": "MBB-41-BR",
+        "barcode": "MBB41BR001",
+        "options": { "Size": "41", "Color": "Black/Red" },
+        "prices": [
+          { "currency_code": "usd", "amount": 159.99 },
+          { "currency_code": "eur", "amount": 149.99 },
+          { "currency_code": "sar", "amount": 600.00 }
+        ],
+        "inventory_quantity": 70,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "42 / Black/Red",
+        "sku": "MBB-42-BR",
+        "barcode": "MBB42BR001",
+        "options": { "Size": "42", "Color": "Black/Red" },
+        "prices": [
+          { "currency_code": "usd", "amount": 159.99 },
+          { "currency_code": "eur", "amount": 149.99 },
+          { "currency_code": "sar", "amount": 600.00 }
+        ],
+        "inventory_quantity": 70,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "43 / Black/Red",
+        "sku": "MBB-43-BR",
+        "barcode": "MBB43BR001",
+        "options": { "Size": "43", "Color": "Black/Red" },
+        "prices": [
+          { "currency_code": "usd", "amount": 159.99 },
+          { "currency_code": "eur", "amount": 149.99 },
+          { "currency_code": "sar", "amount": 600.00 }
+        ],
+        "inventory_quantity": 55,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "44 / Black/Red",
+        "sku": "MBB-44-BR",
+        "barcode": "MBB44BR001",
+        "options": { "Size": "44", "Color": "Black/Red" },
+        "prices": [
+          { "currency_code": "usd", "amount": 159.99 },
+          { "currency_code": "eur", "amount": 149.99 },
+          { "currency_code": "sar", "amount": 600.00 }
+        ],
+        "inventory_quantity": 35,
+        "manage_inventory": true,
+        "allow_backorder": false
+      }
+    ],
+    "metadata": {
+      "brand": "MagicOFit",
+      "sport": "basketball",
+      "gender": "unisex",
+      "court_type": "indoor"
+    }
+  },
+  {
+    "title": "MagicOFit Pro Dumbbell Set",
+    "handle": "magicofit-pro-dumbbell-set",
+    "subtitle": "Adjustable Dumbbell Set",
+    "description": "Premium adjustable dumbbell set with quick-change weight system, ergonomic grip handles, and compact storage rack for home gym versatility.",
+    "category": "Gym",
+    "collection": "New Arrivals",
+    "material": "Cast Iron, Rubber Coating, Steel Handles",
+    "weight": 15000,
+    "status": "published",
+    "thumbnail": "https://placehold.co/400x400/1a1a1a/FFF?text=Dumbbell+Set",
+    "images": [
+      "https://placehold.co/800x800/1a1a1a/FFF?text=Dumbbell+Set+Front",
+      "https://placehold.co/800x800/2a2a2a/FFF?text=Dumbbell+Set+Side"
+    ],
+    "options": [
+      {
+        "title": "Weight Range",
+        "values": ["5-25kg", "10-40kg", "15-50kg"]
+      },
+      {
+        "title": "Color",
+        "values": ["Black", "Red", "Blue"]
+      }
+    ],
+    "variants": [
+      {
+        "title": "5-25kg / Black",
+        "sku": "MDB-525-BK",
+        "barcode": "MDB525BK001",
+        "options": { "Weight Range": "5-25kg", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 299.99 },
+          { "currency_code": "eur", "amount": 274.99 },
+          { "currency_code": "sar", "amount": 1125.00 }
+        ],
+        "inventory_quantity": 25,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "10-40kg / Black",
+        "sku": "MDB-1040-BK",
+        "barcode": "MDB1040BK001",
+        "options": { "Weight Range": "10-40kg", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 449.99 },
+          { "currency_code": "eur", "amount": 414.99 },
+          { "currency_code": "sar", "amount": 1687.50 }
+        ],
+        "inventory_quantity": 20,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "15-50kg / Black",
+        "sku": "MDB-1550-BK",
+        "barcode": "MDB1550BK001",
+        "options": { "Weight Range": "15-50kg", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 599.99 },
+          { "currency_code": "eur", "amount": 549.99 },
+          { "currency_code": "sar", "amount": 2250.00 }
+        ],
+        "inventory_quantity": 15,
+        "manage_inventory": true,
+        "allow_backorder": false
+      }
+    ],
+    "metadata": {
+      "brand": "MagicOFit",
+      "sport": "gym",
+      "equipment_type": "weights"
+    }
+  },
+  {
+    "title": "MagicOFit Performance Water Bottle",
+    "handle": "magicofit-performance-water-bottle",
+    "subtitle": "Insulated Sports Water Bottle",
+    "description": "Double-wall insulated water bottle keeps drinks cold for 24 hours or hot for 12 hours. Leak-proof lid with carrying loop for active lifestyles.",
+    "category": "Accessories",
+    "collection": "New Arrivals",
+    "material": "Stainless Steel, BPA-Free Plastic Lid",
+    "weight": 350,
+    "status": "published",
+    "thumbnail": "https://placehold.co/400x400/1a1a1a/FFF?text=Water+Bottle",
+    "images": [
+      "https://placehold.co/800x800/1a1a1a/FFF?text=Water+Bottle+Front",
+      "https://placehold.co/800x800/2a2a2a/FFF?text=Water+Bottle+Cap"
+    ],
+    "options": [
+      {
+        "title": "Capacity",
+        "values": ["500ml", "750ml", "1L"]
+      },
+      {
+        "title": "Color",
+        "values": ["Black", "Silver", "Blue", "Red"]
+      }
+    ],
+    "variants": [
+      {
+        "title": "500ml / Black",
+        "sku": "MWB-500-BK",
+        "barcode": "MWB500BK001",
+        "options": { "Capacity": "500ml", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 24.99 },
+          { "currency_code": "eur", "amount": 22.99 },
+          { "currency_code": "sar", "amount": 93.75 }
+        ],
+        "inventory_quantity": 100,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "750ml / Black",
+        "sku": "MWB-750-BK",
+        "barcode": "MWB750BK001",
+        "options": { "Capacity": "750ml", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 29.99 },
+          { "currency_code": "eur", "amount": 27.99 },
+          { "currency_code": "sar", "amount": 112.50 }
+        ],
+        "inventory_quantity": 100,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "1L / Black",
+        "sku": "MWB-1L-BK",
+        "barcode": "MWB1LBK001",
+        "options": { "Capacity": "1L", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 34.99 },
+          { "currency_code": "eur", "amount": 32.99 },
+          { "currency_code": "sar", "amount": 131.25 }
+        ],
+        "inventory_quantity": 100,
+        "manage_inventory": true,
+        "allow_backorder": false
+      }
+    ],
+    "metadata": {
+      "brand": "MagicOFit",
+      "accessory_type": "hydration"
+    }
+  },
+  {
+    "title": "MagicOFit Protein Shaker",
+    "handle": "magicofit-protein-shaker",
+    "subtitle": "Premium Protein Shaker",
+    "description": "Leak-proof protein shaker with mixing ball, measurement markings, and ergonomic design. BPA-free, dishwasher safe, perfect for post-workout nutrition.",
+    "category": "Nutrition Gear",
+    "collection": "New Arrivals",
+    "material": "BPA-Free Plastic, Stainless Steel Mixing Ball",
+    "weight": 200,
+    "status": "published",
+    "thumbnail": "https://placehold.co/400x400/1a1a1a/FFF?text=Protein+Shaker",
+    "images": [
+      "https://placehold.co/800x800/1a1a1a/FFF?text=Protein+Shaker+Front",
+      "https://placehold.co/800x800/2a2a2a/FFF?text=Protein+Shaker+Cap"
+    ],
+    "options": [
+      {
+        "title": "Capacity",
+        "values": ["500ml", "700ml"]
+      },
+      {
+        "title": "Color",
+        "values": ["Black", "White", "Red", "Blue"]
+      }
+    ],
+    "variants": [
+      {
+        "title": "500ml / Black",
+        "sku": "MPS-500-BK",
+        "barcode": "MPS500BK001",
+        "options": { "Capacity": "500ml", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 14.99 },
+          { "currency_code": "eur", "amount": 13.99 },
+          { "currency_code": "sar", "amount": 56.25 }
+        ],
+        "inventory_quantity": 150,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "700ml / Black",
+        "sku": "MPS-700-BK",
+        "barcode": "MPS700BK001",
+        "options": { "Capacity": "700ml", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 17.99 },
+          { "currency_code": "eur", "amount": 16.99 },
+          { "currency_code": "sar", "amount": 67.50 }
+        ],
+        "inventory_quantity": 150,
+        "manage_inventory": true,
+        "allow_backorder": false
+      }
+    ],
+    "metadata": {
+      "brand": "MagicOFit",
+      "accessory_type": "nutrition"
+    }
+  },
+  {
+    "title": "MagicOFit Women's Pro Leggings",
+    "handle": "magicofit-womens-pro-leggings",
+    "subtitle": "High-Compression Leggings",
+    "description": "Premium high-compression leggings with 4-way stretch, moisture-wicking fabric, and flatlock seams for chafe-free comfort during intense workouts.",
+    "category": "Women",
+    "collection": "New Arrivals",
+    "material": "88% Polyester, 12% Elastane",
+    "weight": 220,
+    "status": "published",
+    "thumbnail": "https://placehold.co/400x400/1a1a1a/FFF?text=Women+Leggings",
+    "images": [
+      "https://placehold.co/800x800/1a1a1a/FFF?text=Women+Leggings+Front",
+      "https://placehold.co/800x800/2a2a2a/FFF?text=Women+Leggings+Back"
+    ],
+    "options": [
+      {
+        "title": "Size",
+        "values": ["XS", "S", "M", "L", "XL"]
+      },
+      {
+        "title": "Color",
+        "values": ["Black", "Navy", "Grey", "Burgundy"]
+      }
+    ],
+    "variants": [
+      {
+        "title": "XS / Black",
+        "sku": "MWL-XS-BK",
+        "barcode": "MWLXSBK001",
+        "options": { "Size": "XS", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 69.99 },
+          { "currency_code": "eur", "amount": 64.99 },
+          { "currency_code": "sar", "amount": 262.50 }
+        ],
+        "inventory_quantity": 40,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "S / Black",
+        "sku": "MWL-S-BK",
+        "barcode": "MWLSBK001",
+        "options": { "Size": "S", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 69.99 },
+          { "currency_code": "eur", "amount": 64.99 },
+          { "currency_code": "sar", "amount": 262.50 }
+        ],
+        "inventory_quantity": 60,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "M / Black",
+        "sku": "MWL-M-BK",
+        "barcode": "MWLMBK001",
+        "options": { "Size": "M", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 69.99 },
+          { "currency_code": "eur", "amount": 64.99 },
+          { "currency_code": "sar", "amount": 262.50 }
+        ],
+        "inventory_quantity": 80,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "L / Black",
+        "sku": "MWL-L-BK",
+        "barcode": "MWLLBK001",
+        "options": { "Size": "L", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 69.99 },
+          { "currency_code": "eur", "amount": 64.99 },
+          { "currency_code": "sar", "amount": 262.50 }
+        ],
+        "inventory_quantity": 60,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "XL / Black",
+        "sku": "MWL-XL-BK",
+        "barcode": "MWLXLBK001",
+        "options": { "Size": "XL", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 69.99 },
+          { "currency_code": "eur", "amount": 64.99 },
+          { "currency_code": "sar", "amount": 262.50 }
+        ],
+        "inventory_quantity": 40,
+        "manage_inventory": true,
+        "allow_backorder": false
+      }
+    ],
+    "metadata": {
+      "brand": "MagicOFit",
+      "gender": "women",
+      "fit": "compression"
+    }
+  },
+  {
+    "title": "MagicOFit Men's Pro Training Tee",
+    "handle": "magicofit-mens-pro-training-tee",
+    "subtitle": "Performance Training T-Shirt",
+    "description": "Lightweight moisture-wicking t-shirt with anti-odor technology, 4-way stretch fabric, and athletic fit for optimal performance during training sessions.",
+    "category": "Men",
+    "collection": "New Arrivals",
+    "material": "100% Polyester, Moisture-Wicking Technology",
+    "weight": 150,
+    "status": "published",
+    "thumbnail": "https://placehold.co/400x400/1a1a1a/FFF?text=Men+Tee",
+    "images": [
+      "https://placehold.co/800x800/1a1a1a/FFF?text=Men+Tee+Front",
+      "https://placehold.co/800x800/2a2a2a/FFF?text=Men+Tee+Back"
+    ],
+    "options": [
+      {
+        "title": "Size",
+        "values": ["S", "M", "L", "XL", "XXL"]
+      },
+      {
+        "title": "Color",
+        "values": ["Black", "White", "Navy", "Grey"]
+      }
+    ],
+    "variants": [
+      {
+        "title": "S / Black",
+        "sku": "MMT-S-BK",
+        "barcode": "MMTSBK001",
+        "options": { "Size": "S", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 39.99 },
+          { "currency_code": "eur", "amount": 36.99 },
+          { "currency_code": "sar", "amount": 150.00 }
+        ],
+        "inventory_quantity": 50,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "M / Black",
+        "sku": "MMT-M-BK",
+        "barcode": "MMTMBK001",
+        "options": { "Size": "M", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 39.99 },
+          { "currency_code": "eur", "amount": 36.99 },
+          { "currency_code": "sar", "amount": 150.00 }
+        ],
+        "inventory_quantity": 75,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "L / Black",
+        "sku": "MMT-L-BK",
+        "barcode": "MMTLBK001",
+        "options": { "Size": "L", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 39.99 },
+          { "currency_code": "eur", "amount": 36.99 },
+          { "currency_code": "sar", "amount": 150.00 }
+        ],
+        "inventory_quantity": 75,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "XL / Black",
+        "sku": "MMT-XL-BK",
+        "barcode": "MMTXLBK001",
+        "options": { "Size": "XL", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 39.99 },
+          { "currency_code": "eur", "amount": 36.99 },
+          { "currency_code": "sar", "amount": 150.00 }
+        ],
+        "inventory_quantity": 50,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "XXL / Black",
+        "sku": "MMT-XXL-BK",
+        "barcode": "MMTXXLBK001",
+        "options": { "Size": "XXL", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 39.99 },
+          { "currency_code": "eur", "amount": 36.99 },
+          { "currency_code": "sar", "amount": 150.00 }
+        ],
+        "inventory_quantity": 30,
+        "manage_inventory": true,
+        "allow_backorder": false
+      }
+    ],
+    "metadata": {
+      "brand": "MagicOFit",
+      "gender": "men",
+      "fit": "athletic"
+    }
+  },
+  {
+    "title": "MagicOFit Kids Pro Running Shoes",
+    "handle": "magicofit-kids-pro-running-shoes",
+    "subtitle": "Youth Running Shoes",
+    "description": "Lightweight running shoes designed for active kids, featuring breathable mesh upper, cushioned midsole, and durable outsole for playground and track activities.",
+    "category": "Kids",
+    "collection": "New Arrivals",
+    "material": "Mesh Upper, EVA Midsole, Rubber Outsole",
+    "weight": 200,
+    "status": "published",
+    "thumbnail": "https://placehold.co/400x400/1a1a1a/FFF?text=Kids+Running",
+    "images": [
+      "https://placehold.co/800x800/1a1a1a/FFF?text=Kids+Running+Side",
+      "https://placehold.co/800x800/2a2a2a/FFF?text=Kids+Running+Top"
+    ],
+    "options": [
+      {
+        "title": "Size",
+        "values": ["28", "29", "30", "31", "32", "33", "34", "35"]
+      },
+      {
+        "title": "Color",
+        "values": ["Black/Blue", "White/Pink", "Red/Black"]
+      }
+    ],
+    "variants": [
+      {
+        "title": "28 / Black/Blue",
+        "sku": "MKR-28-BB",
+        "barcode": "MKR28BB001",
+        "options": { "Size": "28", "Color": "Black/Blue" },
+        "prices": [
+          { "currency_code": "usd", "amount": 59.99 },
+          { "currency_code": "eur", "amount": 54.99 },
+          { "currency_code": "sar", "amount": 225.00 }
+        ],
+        "inventory_quantity": 30,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "29 / Black/Blue",
+        "sku": "MKR-29-BB",
+        "barcode": "MKR29BB001",
+        "options": { "Size": "29", "Color": "Black/Blue" },
+        "prices": [
+          { "currency_code": "usd", "amount": 59.99 },
+          { "currency_code": "eur", "amount": 54.99 },
+          { "currency_code": "sar", "amount": 225.00 }
+        ],
+        "inventory_quantity": 40,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "30 / Black/Blue",
+        "sku": "MKR-30-BB",
+        "barcode": "MKR30BB001",
+        "options": { "Size": "30", "Color": "Black/Blue" },
+        "prices": [
+          { "currency_code": "usd", "amount": 59.99 },
+          { "currency_code": "eur", "amount": 54.99 },
+          { "currency_code": "sar", "amount": 225.00 }
+        ],
+        "inventory_quantity": 50,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "31 / Black/Blue",
+        "sku": "MKR-31-BB",
+        "barcode": "MKR31BB001",
+        "options": { "Size": "31", "Color": "Black/Blue" },
+        "prices": [
+          { "currency_code": "usd", "amount": 59.99 },
+          { "currency_code": "eur", "amount": 54.99 },
+          { "currency_code": "sar", "amount": 225.00 }
+        ],
+        "inventory_quantity": 50,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "32 / Black/Blue",
+        "sku": "MKR-32-BB",
+        "barcode": "MKR32BB001",
+        "options": { "Size": "32", "Color": "Black/Blue" },
+        "prices": [
+          { "currency_code": "usd", "amount": 59.99 },
+          { "currency_code": "eur", "amount": 54.99 },
+          { "currency_code": "sar", "amount": 225.00 }
+        ],
+        "inventory_quantity": 40,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "33 / Black/Blue",
+        "sku": "MKR-33-BB",
+        "barcode": "MKR33BB001",
+        "options": { "Size": "33", "Color": "Black/Blue" },
+        "prices": [
+          { "currency_code": "usd", "amount": 59.99 },
+          { "currency_code": "eur", "amount": 54.99 },
+          { "currency_code": "sar", "amount": 225.00 }
+        ],
+        "inventory_quantity": 30,
+        "manage_inventory": true,
+        "allow_backorder": false
+      }
+    ],
+    "metadata": {
+      "brand": "MagicOFit",
+      "gender": "kids",
+      "sport": "running"
+    }
+  },
+  {
+    "title": "MagicOFit Elite Running Jacket",
+    "handle": "magicofit-elite-running-jacket",
+    "subtitle": "Weather-Resistant Running Jacket",
+    "description": "Lightweight, water-resistant running jacket with breathable mesh panels, reflective details for visibility, and packable design for easy storage.",
+    "category": "Running",
+    "collection": "New Arrivals",
+    "material": "100% Polyester, DWR Coating",
+    "weight": 350,
+    "status": "published",
+    "thumbnail": "https://placehold.co/400x400/1a1a1a/FFF?text=Running+Jacket",
+    "images": [
+      "https://placehold.co/800x800/1a1a1a/FFF?text=Running+Jacket+Front",
+      "https://placehold.co/800x800/2a2a2a/FFF?text=Running+Jacket+Back"
+    ],
+    "options": [
+      {
+        "title": "Size",
+        "values": ["XS", "S", "M", "L", "XL", "XXL"]
+      },
+      {
+        "title": "Color",
+        "values": ["Black", "Navy", "Yellow", "Red"]
+      }
+    ],
+    "variants": [
+      {
+        "title": "XS / Black",
+        "sku": "MRJ-XS-BK",
+        "barcode": "MRJXSBK001",
+        "options": { "Size": "XS", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 89.99 },
+          { "currency_code": "eur", "amount": 82.99 },
+          { "currency_code": "sar", "amount": 337.50 }
+        ],
+        "inventory_quantity": 30,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "S / Black",
+        "sku": "MRJ-S-BK",
+        "barcode": "MRJSBK001",
+        "options": { "Size": "S", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 89.99 },
+          { "currency_code": "eur", "amount": 82.99 },
+          { "currency_code": "sar", "amount": 337.50 }
+        ],
+        "inventory_quantity": 50,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "M / Black",
+        "sku": "MRJ-M-BK",
+        "barcode": "MRJMBK001",
+        "options": { "Size": "M", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 89.99 },
+          { "currency_code": "eur", "amount": 82.99 },
+          { "currency_code": "sar", "amount": 337.50 }
+        ],
+        "inventory_quantity": 75,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "L / Black",
+        "sku": "MRJ-L-BK",
+        "barcode": "MRJLBK001",
+        "options": { "Size": "L", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 89.99 },
+          { "currency_code": "eur", "amount": 82.99 },
+          { "currency_code": "sar", "amount": 337.50 }
+        ],
+        "inventory_quantity": 75,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "XL / Black",
+        "sku": "MRJ-XL-BK",
+        "barcode": "MRJXLBK001",
+        "options": { "Size": "XL", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 89.99 },
+          { "currency_code": "eur", "amount": 82.99 },
+          { "currency_code": "sar", "amount": 337.50 }
+        ],
+        "inventory_quantity": 50,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "XXL / Black",
+        "sku": "MRJ-XXL-BK",
+        "barcode": "MRJXXLBK001",
+        "options": { "Size": "XXL", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 89.99 },
+          { "currency_code": "eur", "amount": 82.99 },
+          { "currency_code": "sar", "amount": 337.50 }
+        ],
+        "inventory_quantity": 30,
+        "manage_inventory": true,
+        "allow_backorder": false
+      }
+    ],
+    "metadata": {
+      "brand": "MagicOFit",
+      "sport": "running",
+      "gender": "unisex",
+      "weather_resistance": "water_resistant"
+    }
+  },
+  {
+    "title": "MagicOFit Pro Training Gloves",
+    "handle": "magicofit-pro-training-gloves",
+    "subtitle": "Weightlifting Gloves",
+    "description": "Premium weightlifting gloves with padded palms, wrist support straps, and breathable mesh back for comfort during intense training sessions.",
+    "category": "Training",
+    "collection": "New Arrivals",
+    "material": "Leather, Synthetic Leather, Mesh",
+    "weight": 120,
+    "status": "published",
+    "thumbnail": "https://placehold.co/400x400/1a1a1a/FFF?text=Training+Gloves",
+    "images": [
+      "https://placehold.co/800x800/1a1a1a/FFF?text=Training+Gloves+Front",
+      "https://placehold.co/800x800/2a2a2a/FFF?text=Training+Gloves+Back"
+    ],
+    "options": [
+      {
+        "title": "Size",
+        "values": ["S", "M", "L", "XL"]
+      },
+      {
+        "title": "Color",
+        "values": ["Black", "Red", "Blue"]
+      }
+    ],
+    "variants": [
+      {
+        "title": "S / Black",
+        "sku": "MTG-S-BK",
+        "barcode": "MTGSBK001",
+        "options": { "Size": "S", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 29.99 },
+          { "currency_code": "eur", "amount": 27.99 },
+          { "currency_code": "sar", "amount": 112.50 }
+        ],
+        "inventory_quantity": 60,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "M / Black",
+        "sku": "MTG-M-BK",
+        "barcode": "MTGMBK001",
+        "options": { "Size": "M", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 29.99 },
+          { "currency_code": "eur", "amount": 27.99 },
+          { "currency_code": "sar", "amount": 112.50 }
+        ],
+        "inventory_quantity": 80,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "L / Black",
+        "sku": "MTG-L-BK",
+        "barcode": "MTGLBK001",
+        "options": { "Size": "L", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 29.99 },
+          { "currency_code": "eur", "amount": 27.99 },
+          { "currency_code": "sar", "amount": 112.50 }
+        ],
+        "inventory_quantity": 80,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "XL / Black",
+        "sku": "MTG-XL-BK",
+        "barcode": "MTGXLBK001",
+        "options": { "Size": "XL", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 29.99 },
+          { "currency_code": "eur", "amount": 27.99 },
+          { "currency_code": "sar", "amount": 112.50 }
+        ],
+        "inventory_quantity": 60,
+        "manage_inventory": true,
+        "allow_backorder": false
+      }
+    ],
+    "metadata": {
+      "brand": "MagicOFit",
+      "sport": "training",
+      "equipment_type": "gloves"
+    }
+  },
+  {
+    "title": "MagicOFit Elite Football Ball",
+    "handle": "magicofit-elite-football-ball",
+    "subtitle": "Professional Match Ball",
+    "description": "FIFA-approved professional match ball with premium leather cover, butyl bladder for superior air retention, and optimal flight characteristics.",
+    "category": "Football",
+    "collection": "New Arrivals",
+    "material": "Synthetic Leather, Butyl Bladder",
+    "weight": 430,
+    "status": "published",
+    "thumbnail": "https://placehold.co/400x400/1a1a1a/FFF?text=Football+Ball",
+    "images": [
+      "https://placehold.co/800x800/1a1a1a/FFF?text=Football+Ball+Front",
+      "https://placehold.co/800x800/2a2a2a/FFF?text=Football+Ball+Detail"
+    ],
+    "options": [
+      {
+        "title": "Size",
+        "values": ["Size 5", "Size 4"]
+      },
+      {
+        "title": "Color",
+        "values": ["White/Black", "Yellow/Blue", "Orange/Black"]
+      }
+    ],
+    "variants": [
+      {
+        "title": "Size 5 / White/Black",
+        "sku": "MFB-5-WB",
+        "barcode": "MFB5WB001",
+        "options": { "Size": "Size 5", "Color": "White/Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 79.99 },
+          { "currency_code": "eur", "amount": 74.99 },
+          { "currency_code": "sar", "amount": 300.00 }
+        ],
+        "inventory_quantity": 50,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "Size 4 / White/Black",
+        "sku": "MFB-4-WB",
+        "barcode": "MFB4WB001",
+        "options": { "Size": "Size 4", "Color": "White/Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 69.99 },
+          { "currency_code": "eur", "amount": 64.99 },
+          { "currency_code": "sar", "amount": 262.50 }
+        ],
+        "inventory_quantity": 50,
+        "manage_inventory": true,
+        "allow_backorder": false
+      }
+    ],
+    "metadata": {
+      "brand": "MagicOFit",
+      "sport": "football",
+      "equipment_type": "ball"
+    }
+  },
+  {
+    "title": "MagicOFit Pro Basketball",
+    "handle": "magicofit-pro-basketball",
+    "subtitle": "Indoor/Outdoor Basketball",
+    "description": "Premium composite leather basketball with deep channel design for superior grip, suitable for both indoor and outdoor play.",
+    "category": "Basketball",
+    "collection": "New Arrivals",
+    "material": "Composite Leather, Rubber Bladder",
+    "weight": 620,
+    "status": "published",
+    "thumbnail": "https://placehold.co/400x400/1a1a1a/FFF?text=Basketball",
+    "images": [
+      "https://placehold.co/800x800/1a1a1a/FFF?text=Basketball+Front",
+      "https://placehold.co/800x800/2a2a2a/FFF?text=Basketball+Detail"
+    ],
+    "options": [
+      {
+        "title": "Size",
+        "values": ["Size 7", "Size 6", "Size 5"]
+      },
+      {
+        "title": "Color",
+        "values": ["Orange/Black", "Brown/Black"]
+      }
+    ],
+    "variants": [
+      {
+        "title": "Size 7 / Orange/Black",
+        "sku": "MBB-7-OB",
+        "barcode": "MBB7OB001",
+        "options": { "Size": "Size 7", "Color": "Orange/Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 59.99 },
+          { "currency_code": "eur", "amount": 54.99 },
+          { "currency_code": "sar", "amount": 225.00 }
+        ],
+        "inventory_quantity": 60,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "Size 6 / Orange/Black",
+        "sku": "MBB-6-OB",
+        "barcode": "MBB6OB001",
+        "options": { "Size": "Size 6", "Color": "Orange/Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 54.99 },
+          { "currency_code": "eur", "amount": 49.99 },
+          { "currency_code": "sar", "amount": 206.25 }
+        ],
+        "inventory_quantity": 60,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "Size 5 / Orange/Black",
+        "sku": "MBB-5-OB",
+        "barcode": "MBB5OB001",
+        "options": { "Size": "Size 5", "Color": "Orange/Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 49.99 },
+          { "currency_code": "eur", "amount": 44.99 },
+          { "currency_code": "sar", "amount": 187.50 }
+        ],
+        "inventory_quantity": 60,
+        "manage_inventory": true,
+        "allow_backorder": false
+      }
+    ],
+    "metadata": {
+      "brand": "MagicOFit",
+      "sport": "basketball",
+      "equipment_type": "ball"
+    }
+  },
+  {
+    "title": "MagicOFit Pro Yoga Mat",
+    "handle": "magicofit-pro-yoga-mat",
+    "subtitle": "Premium Yoga Mat",
+    "description": "Extra-thick 6mm yoga mat with non-slip surface, eco-friendly natural rubber material, and carrying strap for easy transport.",
+    "category": "Gym",
+    "collection": "New Arrivals",
+    "material": "Natural Rubber, TPE",
+    "weight": 1200,
+    "status": "published",
+    "thumbnail": "https://placehold.co/400x400/1a1a1a/FFF?text=Yoga+Mat",
+    "images": [
+      "https://placehold.co/800x800/1a1a1a/FFF?text=Yoga+Mat+Rolled",
+      "https://placehold.co/800x800/2a2a2a/FFF?text=Yoga+Mat+Unrolled"
+    ],
+    "options": [
+      {
+        "title": "Size",
+        "values": ["Standard", "Long"]
+      },
+      {
+        "title": "Color",
+        "values": ["Purple", "Blue", "Green", "Black"]
+      }
+    ],
+    "variants": [
+      {
+        "title": "Standard / Purple",
+        "sku": "MYM-S-PR",
+        "barcode": "MYMSPR001",
+        "options": { "Size": "Standard", "Color": "Purple" },
+        "prices": [
+          { "currency_code": "usd", "amount": 59.99 },
+          { "currency_code": "eur", "amount": 54.99 },
+          { "currency_code": "sar", "amount": 225.00 }
+        ],
+        "inventory_quantity": 50,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "Long / Purple",
+        "sku": "MYM-L-PR",
+        "barcode": "MYMLPR001",
+        "options": { "Size": "Long", "Color": "Purple" },
+        "prices": [
+          { "currency_code": "usd", "amount": 69.99 },
+          { "currency_code": "eur", "amount": 64.99 },
+          { "currency_code": "sar", "amount": 262.50 }
+        ],
+        "inventory_quantity": 50,
+        "manage_inventory": true,
+        "allow_backorder": false
+      }
+    ],
+    "metadata": {
+      "brand": "MagicOFit",
+      "sport": "gym",
+      "equipment_type": "yoga"
+    }
+  },
+  {
+    "title": "MagicOFit Elite Resistance Bands",
+    "handle": "magicofit-elite-resistance-bands",
+    "subtitle": "Resistance Band Set",
+    "description": "Set of 5 resistance bands with different tension levels, includes door anchor and exercise guide for full-body workouts.",
+    "category": "Gym",
+    "collection": "New Arrivals",
+    "material": "Natural Latex",
+    "weight": 300,
+    "status": "published",
+    "thumbnail": "https://placehold.co/400x400/1a1a1a/FFF?text=Resistance+Bands",
+    "images": [
+      "https://placehold.co/800x800/1a1a1a/FFF?text=Resistance+Bands+Set"
+    ],
+    "options": [
+      {
+        "title": "Set Type",
+        "values": ["Light", "Medium", "Heavy", "Complete Set"]
+      }
+    ],
+    "variants": [
+      {
+        "title": "Light Set",
+        "sku": "MRB-L",
+        "barcode": "MRBL001",
+        "options": { "Set Type": "Light" },
+        "prices": [
+          { "currency_code": "usd", "amount": 19.99 },
+          { "currency_code": "eur", "amount": 18.99 },
+          { "currency_code": "sar", "amount": 75.00 }
+        ],
+        "inventory_quantity": 80,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "Medium Set",
+        "sku": "MRB-M",
+        "barcode": "MRBM001",
+        "options": { "Set Type": "Medium" },
+        "prices": [
+          { "currency_code": "usd", "amount": 24.99 },
+          { "currency_code": "eur", "amount": 22.99 },
+          { "currency_code": "sar", "amount": 93.75 }
+        ],
+        "inventory_quantity": 80,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "Heavy Set",
+        "sku": "MRB-H",
+        "barcode": "MRBH001",
+        "options": { "Set Type": "Heavy" },
+        "prices": [
+          { "currency_code": "usd", "amount": 29.99 },
+          { "currency_code": "eur", "amount": 27.99 },
+          { "currency_code": "sar", "amount": 112.50 }
+        ],
+        "inventory_quantity": 80,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "Complete Set",
+        "sku": "MRB-C",
+        "barcode": "MRBC001",
+        "options": { "Set Type": "Complete Set" },
+        "prices": [
+          { "currency_code": "usd", "amount": 49.99 },
+          { "currency_code": "eur", "amount": 44.99 },
+          { "currency_code": "sar", "amount": 187.50 }
+        ],
+        "inventory_quantity": 60,
+        "manage_inventory": true,
+        "allow_backorder": false
+      }
+    ],
+    "metadata": {
+      "brand": "MagicOFit",
+      "sport": "gym",
+      "equipment_type": "resistance"
+    }
+  },
+  {
+    "title": "MagicOFit Pro Sports Watch",
+    "handle": "magicofit-pro-sports-watch",
+    "subtitle": "Fitness Tracking Watch",
+    "description": "Advanced fitness tracking watch with heart rate monitor, GPS, water resistance, and 7-day battery life for serious athletes.",
+    "category": "Accessories",
+    "collection": "New Arrivals",
+    "material": "Stainless Steel, Silicone Strap",
+    "weight": 50,
+    "status": "published",
+    "thumbnail": "https://placehold.co/400x400/1a1a1a/FFF?text=Sports+Watch",
+    "images": [
+      "https://placehold.co/800x800/1a1a1a/FFF?text=Sports+Watch+Front",
+      "https://placehold.co/800x800/2a2a2a/FFF?text=Sports+Watch+Side"
+    ],
+    "options": [
+      {
+        "title": "Size",
+        "values": ["42mm", "46mm"]
+      },
+      {
+        "title": "Color",
+        "values": ["Black", "Silver", "Rose Gold"]
+      }
+    ],
+    "variants": [
+      {
+        "title": "42mm / Black",
+        "sku": "MSW-42-BK",
+        "barcode": "MSW42BK001",
+        "options": { "Size": "42mm", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 199.99 },
+          { "currency_code": "eur", "amount": 184.99 },
+          { "currency_code": "sar", "amount": 750.00 }
+        ],
+        "inventory_quantity": 40,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "46mm / Black",
+        "sku": "MSW-46-BK",
+        "barcode": "MSW46BK001",
+        "options": { "Size": "46mm", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 219.99 },
+          { "currency_code": "eur", "amount": 204.99 },
+          { "currency_code": "sar", "amount": 825.00 }
+        ],
+        "inventory_quantity": 40,
+        "manage_inventory": true,
+        "allow_backorder": false
+      }
+    ],
+    "metadata": {
+      "brand": "MagicOFit",
+      "accessory_type": "wearable"
+    }
+  },
+  {
+    "title": "MagicOFit Elite Gym Bag",
+    "handle": "magicofit-elite-gym-bag",
+    "subtitle": "Sports Duffel Bag",
+    "description": "Spacious gym bag with separate shoe compartment, wet/dry pocket, ventilated mesh panels, and adjustable shoulder strap.",
+    "category": "Accessories",
+    "collection": "New Arrivals",
+    "material": "600D Polyester, Nylon",
+    "weight": 800,
+    "status": "published",
+    "thumbnail": "https://placehold.co/400x400/1a1a1a/FFF?text=Gym+Bag",
+    "images": [
+      "https://placehold.co/800x800/1a1a1a/FFF?text=Gym+Bag+Front",
+      "https://placehold.co/800x800/2a2a2a/FFF?text=Gym+Bag+Side"
+    ],
+    "options": [
+      {
+        "title": "Size",
+        "values": ["Small", "Medium", "Large"]
+      },
+      {
+        "title": "Color",
+        "values": ["Black", "Navy", "Grey", "Red"]
+      }
+    ],
+    "variants": [
+      {
+        "title": "Small / Black",
+        "sku": "MGB-S-BK",
+        "barcode": "MGBSBK001",
+        "options": { "Size": "Small", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 44.99 },
+          { "currency_code": "eur", "amount": 41.99 },
+          { "currency_code": "sar", "amount": 168.75 }
+        ],
+        "inventory_quantity": 50,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "Medium / Black",
+        "sku": "MGB-M-BK",
+        "barcode": "MGBMBK001",
+        "options": { "Size": "Medium", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 59.99 },
+          { "currency_code": "eur", "amount": 54.99 },
+          { "currency_code": "sar", "amount": 225.00 }
+        ],
+        "inventory_quantity": 50,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "Large / Black",
+        "sku": "MGB-L-BK",
+        "barcode": "MGBLBK001",
+        "options": { "Size": "Large", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 74.99 },
+          { "currency_code": "eur", "amount": 69.99 },
+          { "currency_code": "sar", "amount": 281.25 }
+        ],
+        "inventory_quantity": 50,
+        "manage_inventory": true,
+        "allow_backorder": false
+      }
+    ],
+    "metadata": {
+      "brand": "MagicOFit",
+      "accessory_type": "bag"
+    }
+  },
+  {
+    "title": "MagicOFit Protein Powder",
+    "handle": "magicofit-protein-powder",
+    "subtitle": "Whey Protein Isolate",
+    "description": "Premium whey protein isolate with 25g protein per serving, zero sugar, and digestive enzymes for optimal absorption.",
+    "category": "Nutrition Gear",
+    "collection": "New Arrivals",
+    "material": "Whey Protein Isolate, Natural Flavors",
+    "weight": 2000,
+    "status": "published",
+    "thumbnail": "https://placehold.co/400x400/1a1a1a/FFF?text=Protein+Powder",
+    "images": [
+      "https://placehold.co/800x800/1a1a1a/FFF?text=Protein+Powder+Tub"
+    ],
+    "options": [
+      {
+        "title": "Size",
+        "values": ["1kg", "2kg", "5kg"]
+      },
+      {
+        "title": "Flavor",
+        "values": ["Chocolate", "Vanilla", "Strawberry", "Unflavored"]
+      }
+    ],
+    "variants": [
+      {
+        "title": "1kg / Chocolate",
+        "sku": "MPP-1-CH",
+        "barcode": "MPP1CH001",
+        "options": { "Size": "1kg", "Flavor": "Chocolate" },
+        "prices": [
+          { "currency_code": "usd", "amount": 49.99 },
+          { "currency_code": "eur", "amount": 44.99 },
+          { "currency_code": "sar", "amount": 187.50 }
+        ],
+        "inventory_quantity": 80,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "2kg / Chocolate",
+        "sku": "MPP-2-CH",
+        "barcode": "MPP2CH001",
+        "options": { "Size": "2kg", "Flavor": "Chocolate" },
+        "prices": [
+          { "currency_code": "usd", "amount": 79.99 },
+          { "currency_code": "eur", "amount": 74.99 },
+          { "currency_code": "sar", "amount": 300.00 }
+        ],
+        "inventory_quantity": 60,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "5kg / Chocolate",
+        "sku": "MPP-5-CH",
+        "barcode": "MPP5CH001",
+        "options": { "Size": "5kg", "Flavor": "Chocolate" },
+        "prices": [
+          { "currency_code": "usd", "amount": 149.99 },
+          { "currency_code": "eur", "amount": 139.99 },
+          { "currency_code": "sar", "amount": 562.50 }
+        ],
+        "inventory_quantity": 40,
+        "manage_inventory": true,
+        "allow_backorder": false
+      }
+    ],
+    "metadata": {
+      "brand": "MagicOFit",
+      "nutrition_type": "protein"
+    }
+  },
+  {
+    "title": "MagicOFit Pre-Workout",
+    "handle": "magicofit-pre-workout",
+    "subtitle": "Energy Pre-Workout Formula",
+    "description": "High-performance pre-workout formula with caffeine, beta-alanine, and nitric oxide boosters for enhanced energy and focus.",
+    "category": "Nutrition Gear",
+    "collection": "New Arrivals",
+    "material": "Powder Formula",
+    "weight": 500,
+    "status": "published",
+    "thumbnail": "https://placehold.co/400x400/1a1a1a/FFF?text=Pre-Workout",
+    "images": [
+      "https://placehold.co/800x800/1a1a1a/FFF?text=Pre-Workout+Tub"
+    ],
+    "options": [
+      {
+        "title": "Size",
+        "values": ["250g", "500g"]
+      },
+      {
+        "title": "Flavor",
+        "values": ["Fruit Punch", "Blue Raspberry", "Watermelon"]
+      }
+    ],
+    "variants": [
+      {
+        "title": "250g / Fruit Punch",
+        "sku": "MPW-250-FP",
+        "barcode": "MPW250FP001",
+        "options": { "Size": "250g", "Flavor": "Fruit Punch" },
+        "prices": [
+          { "currency_code": "usd", "amount": 34.99 },
+          { "currency_code": "eur", "amount": 32.99 },
+          { "currency_code": "sar", "amount": 131.25 }
+        ],
+        "inventory_quantity": 70,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "500g / Fruit Punch",
+        "sku": "MPW-500-FP",
+        "barcode": "MPW500FP001",
+        "options": { "Size": "500g", "Flavor": "Fruit Punch" },
+        "prices": [
+          { "currency_code": "usd", "amount": 59.99 },
+          { "currency_code": "eur", "amount": 54.99 },
+          { "currency_code": "sar", "amount": 225.00 }
+        ],
+        "inventory_quantity": 50,
+        "manage_inventory": true,
+        "allow_backorder": false
+      }
+    ],
+    "metadata": {
+      "brand": "MagicOFit",
+      "nutrition_type": "pre_workout"
+    }
+  },
+  {
+    "title": "MagicOFit Women's Pro Sports Bra",
+    "handle": "magicofit-womens-pro-sports-bra",
+    "subtitle": "High-Impact Sports Bra",
+    "description": "High-impact sports bra with moisture-wicking fabric, wide straps for support, and racerback design for maximum range of motion.",
+    "category": "Women",
+    "collection": "New Arrivals",
+    "material": "88% Polyester, 12% Elastane",
+    "weight": 150,
+    "status": "published",
+    "thumbnail": "https://placehold.co/400x400/1a1a1a/FFF?text=Sports+Bra",
+    "images": [
+      "https://placehold.co/800x800/1a1a1a/FFF?text=Sports+Bra+Front",
+      "https://placehold.co/800x800/2a2a2a/FFF?text=Sports+Bra+Back"
+    ],
+    "options": [
+      {
+        "title": "Size",
+        "values": ["XS", "S", "M", "L", "XL"]
+      },
+      {
+        "title": "Color",
+        "values": ["Black", "White", "Navy", "Pink"]
+      }
+    ],
+    "variants": [
+      {
+        "title": "XS / Black",
+        "sku": "MSB-XS-BK",
+        "barcode": "MSBXSBK001",
+        "options": { "Size": "XS", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 44.99 },
+          { "currency_code": "eur", "amount": 41.99 },
+          { "currency_code": "sar", "amount": 168.75 }
+        ],
+        "inventory_quantity": 50,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "S / Black",
+        "sku": "MSB-S-BK",
+        "barcode": "MSBSBK001",
+        "options": { "Size": "S", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 44.99 },
+          { "currency_code": "eur", "amount": 41.99 },
+          { "currency_code": "sar", "amount": 168.75 }
+        ],
+        "inventory_quantity": 70,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "M / Black",
+        "sku": "MSB-M-BK",
+        "barcode": "MSBMBK001",
+        "options": { "Size": "M", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 44.99 },
+          { "currency_code": "eur", "amount": 41.99 },
+          { "currency_code": "sar", "amount": 168.75 }
+        ],
+        "inventory_quantity": 90,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "L / Black",
+        "sku": "MSB-L-BK",
+        "barcode": "MSBLBK001",
+        "options": { "Size": "L", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 44.99 },
+          { "currency_code": "eur", "amount": 41.99 },
+          { "currency_code": "sar", "amount": 168.75 }
+        ],
+        "inventory_quantity": 70,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "XL / Black",
+        "sku": "MSB-XL-BK",
+        "barcode": "MSBXLBK001",
+        "options": { "Size": "XL", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 44.99 },
+          { "currency_code": "eur", "amount": 41.99 },
+          { "currency_code": "sar", "amount": 168.75 }
+        ],
+        "inventory_quantity": 50,
+        "manage_inventory": true,
+        "allow_backorder": false
+      }
+    ],
+    "metadata": {
+      "brand": "MagicOFit",
+      "gender": "women",
+      "fit": "high_impact"
+    }
+  },
+  {
+    "title": "MagicOFit Men's Pro Hoodie",
+    "handle": "magicofit-mens-pro-hoodie",
+    "subtitle": "Performance Training Hoodie",
+    "description": "Lightweight performance hoodie with moisture-wicking fabric, adjustable hood, and kangaroo pocket for comfort during warm-ups and cool-downs.",
+    "category": "Men",
+    "collection": "New Arrivals",
+    "material": "100% Polyester, Moisture-Wicking Technology",
+    "weight": 350,
+    "status": "published",
+    "thumbnail": "https://placehold.co/400x400/1a1a1a/FFF?text=Men+Hoodie",
+    "images": [
+      "https://placehold.co/800x800/1a1a1a/FFF?text=Men+Hoodie+Front",
+      "https://placehold.co/800x800/2a2a2a/FFF?text=Men+Hoodie+Back"
+    ],
+    "options": [
+      {
+        "title": "Size",
+        "values": ["S", "M", "L", "XL", "XXL"]
+      },
+      {
+        "title": "Color",
+        "values": ["Black", "Navy", "Grey", "Red"]
+      }
+    ],
+    "variants": [
+      {
+        "title": "S / Black",
+        "sku": "MHD-S-BK",
+        "barcode": "MHDSBK001",
+        "options": { "Size": "S", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 69.99 },
+          { "currency_code": "eur", "amount": 64.99 },
+          { "currency_code": "sar", "amount": 262.50 }
+        ],
+        "inventory_quantity": 50,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "M / Black",
+        "sku": "MHD-M-BK",
+        "barcode": "MHDMBK001",
+        "options": { "Size": "M", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 69.99 },
+          { "currency_code": "eur", "amount": 64.99 },
+          { "currency_code": "sar", "amount": 262.50 }
+        ],
+        "inventory_quantity": 75,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "L / Black",
+        "sku": "MHD-L-BK",
+        "barcode": "MHDLBK001",
+        "options": { "Size": "L", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 69.99 },
+          { "currency_code": "eur", "amount": 64.99 },
+          { "currency_code": "sar", "amount": 262.50 }
+        ],
+        "inventory_quantity": 75,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "XL / Black",
+        "sku": "MHD-XL-BK",
+        "barcode": "MHDXLBK001",
+        "options": { "Size": "XL", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 69.99 },
+          { "currency_code": "eur", "amount": 64.99 },
+          { "currency_code": "sar", "amount": 262.50 }
+        ],
+        "inventory_quantity": 50,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "XXL / Black",
+        "sku": "MHD-XXL-BK",
+        "barcode": "MHDXXLBK001",
+        "options": { "Size": "XXL", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 69.99 },
+          { "currency_code": "eur", "amount": 64.99 },
+          { "currency_code": "sar", "amount": 262.50 }
+        ],
+        "inventory_quantity": 30,
+        "manage_inventory": true,
+        "allow_backorder": false
+      }
+    ],
+    "metadata": {
+      "brand": "MagicOFit",
+      "gender": "men",
+      "fit": "athletic"
+    }
+  },
+  {
+    "title": "MagicOFit Kids Pro Football Boots",
+    "handle": "magicofit-kids-pro-football-boots",
+    "subtitle": "Youth Football Boots",
+    "description": "Lightweight football boots designed for young players, featuring synthetic upper, stud configuration for optimal traction on firm ground.",
+    "category": "Kids",
+    "collection": "New Arrivals",
+    "material": "Synthetic Upper, TPU Outsole",
+    "weight": 200,
+    "status": "published",
+    "thumbnail": "https://placehold.co/400x400/1a1a1a/FFF?text=Kids+Boots",
+    "images": [
+      "https://placehold.co/800x800/1a1a1a/FFF?text=Kids+Boots+Top",
+      "https://placehold.co/800x800/2a2a2a/FFF?text=Kids+Boots+Side"
+    ],
+    "options": [
+      {
+        "title": "Size",
+        "values": ["28", "29", "30", "31", "32", "33", "34", "35"]
+      },
+      {
+        "title": "Color",
+        "values": ["Black/Blue", "White/Red", "Yellow/Black"]
+      }
+    ],
+    "variants": [
+      {
+        "title": "28 / Black/Blue",
+        "sku": "MKB-28-BB",
+        "barcode": "MKB28BB001",
+        "options": { "Size": "28", "Color": "Black/Blue" },
+        "prices": [
+          { "currency_code": "usd", "amount": 79.99 },
+          { "currency_code": "eur", "amount": 74.99 },
+          { "currency_code": "sar", "amount": 300.00 }
+        ],
+        "inventory_quantity": 30,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "29 / Black/Blue",
+        "sku": "MKB-29-BB",
+        "barcode": "MKB29BB001",
+        "options": { "Size": "29", "Color": "Black/Blue" },
+        "prices": [
+          { "currency_code": "usd", "amount": 79.99 },
+          { "currency_code": "eur", "amount": 74.99 },
+          { "currency_code": "sar", "amount": 300.00 }
+        ],
+        "inventory_quantity": 40,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "30 / Black/Blue",
+        "sku": "MKB-30-BB",
+        "barcode": "MKB30BB001",
+        "options": { "Size": "30", "Color": "Black/Blue" },
+        "prices": [
+          { "currency_code": "usd", "amount": 79.99 },
+          { "currency_code": "eur", "amount": 74.99 },
+          { "currency_code": "sar", "amount": 300.00 }
+        ],
+        "inventory_quantity": 50,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "31 / Black/Blue",
+        "sku": "MKB-31-BB",
+        "barcode": "MKB31BB001",
+        "options": { "Size": "31", "Color": "Black/Blue" },
+        "prices": [
+          { "currency_code": "usd", "amount": 79.99 },
+          { "currency_code": "eur", "amount": 74.99 },
+          { "currency_code": "sar", "amount": 300.00 }
+        ],
+        "inventory_quantity": 50,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "32 / Black/Blue",
+        "sku": "MKB-32-BB",
+        "barcode": "MKB32BB001",
+        "options": { "Size": "32", "Color": "Black/Blue" },
+        "prices": [
+          { "currency_code": "usd", "amount": 79.99 },
+          { "currency_code": "eur", "amount": 74.99 },
+          { "currency_code": "sar", "amount": 300.00 }
+        ],
+        "inventory_quantity": 40,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "33 / Black/Blue",
+        "sku": "MKB-33-BB",
+        "barcode": "MKB33BB001",
+        "options": { "Size": "33", "Color": "Black/Blue" },
+        "prices": [
+          { "currency_code": "usd", "amount": 79.99 },
+          { "currency_code": "eur", "amount": 74.99 },
+          { "currency_code": "sar", "amount": 300.00 }
+        ],
+        "inventory_quantity": 30,
+        "manage_inventory": true,
+        "allow_backorder": false
+      }
+    ],
+    "metadata": {
+      "brand": "MagicOFit",
+      "gender": "kids",
+      "sport": "football"
+    }
+  },
+  {
+    "title": "MagicOFit Elite Running Socks",
+    "handle": "magicofit-elite-running-socks",
+    "subtitle": "Performance Running Socks",
+    "description": "Moisture-wicking running socks with arch support, seamless toe, and cushioned sole for blister-free comfort during long runs.",
+    "category": "Running",
+    "collection": "New Arrivals",
+    "material": "75% Cotton, 23% Polyester, 2% Elastane",
+    "weight": 50,
+    "status": "published",
+    "thumbnail": "https://placehold.co/400x400/1a1a1a/FFF?text=Running+Socks",
+    "images": [
+      "https://placehold.co/800x800/1a1a1a/FFF?text=Running+Socks+Pair"
+    ],
+    "options": [
+      {
+        "title": "Size",
+        "values": ["S", "M", "L", "XL"]
+      },
+      {
+        "title": "Color",
+        "values": ["Black", "White", "Navy", "Grey"]
+      }
+    ],
+    "variants": [
+      {
+        "title": "S / Black",
+        "sku": "MRS-S-BK",
+        "barcode": "MRSSBK001",
+        "options": { "Size": "S", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 14.99 },
+          { "currency_code": "eur", "amount": 13.99 },
+          { "currency_code": "sar", "amount": 56.25 }
+        ],
+        "inventory_quantity": 100,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "M / Black",
+        "sku": "MRS-M-BK",
+        "barcode": "MRSMBK001",
+        "options": { "Size": "M", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 14.99 },
+          { "currency_code": "eur", "amount": 13.99 },
+          { "currency_code": "sar", "amount": 56.25 }
+        ],
+        "inventory_quantity": 100,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "L / Black",
+        "sku": "MRS-L-BK",
+        "barcode": "MRSLBK001",
+        "options": { "Size": "L", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 14.99 },
+          { "currency_code": "eur", "amount": 13.99 },
+          { "currency_code": "sar", "amount": 56.25 }
+        ],
+        "inventory_quantity": 100,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "XL / Black",
+        "sku": "MRS-XL-BK",
+        "barcode": "MRSXLBK001",
+        "options": { "Size": "XL", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 14.99 },
+          { "currency_code": "eur", "amount": 13.99 },
+          { "currency_code": "sar", "amount": 56.25 }
+        ],
+        "inventory_quantity": 100,
+        "manage_inventory": true,
+        "allow_backorder": false
+      }
+    ],
+    "metadata": {
+      "brand": "MagicOFit",
+      "sport": "running",
+      "accessory_type": "socks"
+    }
+  },
+  {
+    "title": "MagicOFit Pro Training Hoodie",
+    "handle": "magicofit-pro-training-hoodie",
+    "subtitle": "Performance Training Hoodie",
+    "description": "Lightweight training hoodie with moisture-wicking fabric, adjustable hood, and kangaroo pocket for comfort during warm-ups and cool-downs.",
+    "category": "Training",
+    "collection": "New Arrivals",
+    "material": "100% Polyester, Moisture-Wicking Technology",
+    "weight": 380,
+    "status": "published",
+    "thumbnail": "https://placehold.co/400x400/1a1a1a/FFF?text=Training+Hoodie",
+    "images": [
+      "https://placehold.co/800x800/1a1a1a/FFF?text=Training+Hoodie+Front",
+      "https://placehold.co/800x800/2a2a2a/FFF?text=Training+Hoodie+Back"
+    ],
+    "options": [
+      {
+        "title": "Size",
+        "values": ["S", "M", "L", "XL", "XXL"]
+      },
+      {
+        "title": "Color",
+        "values": ["Black", "Navy", "Grey", "Red"]
+      }
+    ],
+    "variants": [
+      {
+        "title": "S / Black",
+        "sku": "MTH-S-BK",
+        "barcode": "MTHSBK001",
+        "options": { "Size": "S", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 74.99 },
+          { "currency_code": "eur", "amount": 69.99 },
+          { "currency_code": "sar", "amount": 281.25 }
+        ],
+        "inventory_quantity": 50,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "M / Black",
+        "sku": "MTH-M-BK",
+        "barcode": "MTHMBK001",
+        "options": { "Size": "M", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 74.99 },
+          { "currency_code": "eur", "amount": 69.99 },
+          { "currency_code": "sar", "amount": 281.25 }
+        ],
+        "inventory_quantity": 75,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "L / Black",
+        "sku": "MTH-L-BK",
+        "barcode": "MTHLBK001",
+        "options": { "Size": "L", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 74.99 },
+          { "currency_code": "eur", "amount": 69.99 },
+          { "currency_code": "sar", "amount": 281.25 }
+        ],
+        "inventory_quantity": 75,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "XL / Black",
+        "sku": "MTH-XL-BK",
+        "barcode": "MTHXLBK001",
+        "options": { "Size": "XL", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 74.99 },
+          { "currency_code": "eur", "amount": 69.99 },
+          { "currency_code": "sar", "amount": 281.25 }
+        ],
+        "inventory_quantity": 50,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "XXL / Black",
+        "sku": "MTH-XXL-BK",
+        "barcode": "MTHXXLBK001",
+        "options": { "Size": "XXL", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 74.99 },
+          { "currency_code": "eur", "amount": 69.99 },
+          { "currency_code": "sar", "amount": 281.25 }
+        ],
+        "inventory_quantity": 30,
+        "manage_inventory": true,
+        "allow_backorder": false
+      }
+    ],
+    "metadata": {
+      "brand": "MagicOFit",
+      "sport": "training",
+      "gender": "unisex"
+    }
+  },
+  {
+    "title": "MagicOFit Elite Football Jersey",
+    "handle": "magicofit-elite-football-jersey",
+    "subtitle": "Professional Football Jersey",
+    "description": "Lightweight breathable football jersey with moisture-wicking fabric, reinforced stitching, and team badge placement for professional performance.",
+    "category": "Football",
+    "collection": "New Arrivals",
+    "material": "100% Polyester, Moisture-Wicking Technology",
+    "weight": 180,
+    "status": "published",
+    "thumbnail": "https://placehold.co/400x400/1a1a1a/FFF?text=Football+Jersey",
+    "images": [
+      "https://placehold.co/800x800/1a1a1a/FFF?text=Football+Jersey+Front",
+      "https://placehold.co/800x800/2a2a2a/FFF?text=Football+Jersey+Back"
+    ],
+    "options": [
+      {
+        "title": "Size",
+        "values": ["S", "M", "L", "XL", "XXL"]
+      },
+      {
+        "title": "Color",
+        "values": ["Black", "White", "Red", "Blue"]
+      }
+    ],
+    "variants": [
+      {
+        "title": "S / Black",
+        "sku": "MFJ-S-BK",
+        "barcode": "MFJSBK001",
+        "options": { "Size": "S", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 59.99 },
+          { "currency_code": "eur", "amount": 54.99 },
+          { "currency_code": "sar", "amount": 225.00 }
+        ],
+        "inventory_quantity": 50,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "M / Black",
+        "sku": "MFJ-M-BK",
+        "barcode": "MFJMBK001",
+        "options": { "Size": "M", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 59.99 },
+          { "currency_code": "eur", "amount": 54.99 },
+          { "currency_code": "sar", "amount": 225.00 }
+        ],
+        "inventory_quantity": 75,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "L / Black",
+        "sku": "MFJ-L-BK",
+        "barcode": "MFJLBK001",
+        "options": { "Size": "L", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 59.99 },
+          { "currency_code": "eur", "amount": 54.99 },
+          { "currency_code": "sar", "amount": 225.00 }
+        ],
+        "inventory_quantity": 75,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "XL / Black",
+        "sku": "MFJ-XL-BK",
+        "barcode": "MFJXLBK001",
+        "options": { "Size": "XL", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 59.99 },
+          { "currency_code": "eur", "amount": 54.99 },
+          { "currency_code": "sar", "amount": 225.00 }
+        ],
+        "inventory_quantity": 50,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "XXL / Black",
+        "sku": "MFJ-XXL-BK",
+        "barcode": "MFJXXLBK001",
+        "options": { "Size": "XXL", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 59.99 },
+          { "currency_code": "eur", "amount": 54.99 },
+          { "currency_code": "sar", "amount": 225.00 }
+        ],
+        "inventory_quantity": 30,
+        "manage_inventory": true,
+        "allow_backorder": false
+      }
+    ],
+    "metadata": {
+      "brand": "MagicOFit",
+      "sport": "football",
+      "gender": "unisex"
+    }
+  },
+  {
+    "title": "MagicOFit Pro Basketball Jersey",
+    "handle": "magicofit-pro-basketball-jersey",
+    "subtitle": "Performance Basketball Jersey",
+    "description": "Lightweight breathable basketball jersey with moisture-wicking fabric, mesh panels for ventilation, and reinforced stitching for durability.",
+    "category": "Basketball",
+    "collection": "New Arrivals",
+    "material": "100% Polyester, Moisture-Wicking Technology",
+    "weight": 170,
+    "status": "published",
+    "thumbnail": "https://placehold.co/400x400/1a1a1a/FFF?text=BB+Jersey",
+    "images": [
+      "https://placehold.co/800x800/1a1a1a/FFF?text=BB+Jersey+Front",
+      "https://placehold.co/800x800/2a2a2a/FFF?text=BB+Jersey+Back"
+    ],
+    "options": [
+      {
+        "title": "Size",
+        "values": ["S", "M", "L", "XL", "XXL"]
+      },
+      {
+        "title": "Color",
+        "values": ["Black", "White", "Red", "Blue"]
+      }
+    ],
+    "variants": [
+      {
+        "title": "S / Black",
+        "sku": "MBJ-S-BK",
+        "barcode": "MBJSBK001",
+        "options": { "Size": "S", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 54.99 },
+          { "currency_code": "eur", "amount": 49.99 },
+          { "currency_code": "sar", "amount": 206.25 }
+        ],
+        "inventory_quantity": 50,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "M / Black",
+        "sku": "MBJ-M-BK",
+        "barcode": "MBJMBK001",
+        "options": { "Size": "M", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 54.99 },
+          { "currency_code": "eur", "amount": 49.99 },
+          { "currency_code": "sar", "amount": 206.25 }
+        ],
+        "inventory_quantity": 75,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "L / Black",
+        "sku": "MBJ-L-BK",
+        "barcode": "MBJLBK001",
+        "options": { "Size": "L", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 54.99 },
+          { "currency_code": "eur", "amount": 49.99 },
+          { "currency_code": "sar", "amount": 206.25 }
+        ],
+        "inventory_quantity": 75,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "XL / Black",
+        "sku": "MBJ-XL-BK",
+        "barcode": "MBJXLBK001",
+        "options": { "Size": "XL", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 54.99 },
+          { "currency_code": "eur", "amount": 49.99 },
+          { "currency_code": "sar", "amount": 206.25 }
+        ],
+        "inventory_quantity": 50,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "XXL / Black",
+        "sku": "MBJ-XXL-BK",
+        "barcode": "MBJXXLBK001",
+        "options": { "Size": "XXL", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 54.99 },
+          { "currency_code": "eur", "amount": 49.99 },
+          { "currency_code": "sar", "amount": 206.25 }
+        ],
+        "inventory_quantity": 30,
+        "manage_inventory": true,
+        "allow_backorder": false
+      }
+    ],
+    "metadata": {
+      "brand": "MagicOFit",
+      "sport": "basketball",
+      "gender": "unisex"
+    }
+  },
+  {
+    "title": "MagicOFit Pro Kettlebell Set",
+    "handle": "magicofit-pro-kettlebell-set",
+    "subtitle": "Cast Iron Kettlebell Set",
+    "description": "Premium cast iron kettlebell set with smooth handle, wide base for stability, and color-coded weights for easy identification.",
+    "category": "Gym",
+    "collection": "New Arrivals",
+    "material": "Cast Iron, Powder Coating",
+    "weight": 16000,
+    "status": "published",
+    "thumbnail": "https://placehold.co/400x400/1a1a1a/FFF?text=Kettlebell+Set",
+    "images": [
+      "https://placehold.co/800x800/1a1a1a/FFF?text=Kettlebell+Set+Front"
+    ],
+    "options": [
+      {
+        "title": "Weight",
+        "values": ["8kg", "12kg", "16kg", "20kg", "24kg"]
+      },
+      {
+        "title": "Color",
+        "values": ["Black", "Red", "Blue", "Green"]
+      }
+    ],
+    "variants": [
+      {
+        "title": "8kg / Black",
+        "sku": "MKB-8-BK",
+        "barcode": "MKB8BK001",
+        "options": { "Weight": "8kg", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 39.99 },
+          { "currency_code": "eur", "amount": 36.99 },
+          { "currency_code": "sar", "amount": 150.00 }
+        ],
+        "inventory_quantity": 40,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "12kg / Black",
+        "sku": "MKB-12-BK",
+        "barcode": "MKB12BK001",
+        "options": { "Weight": "12kg", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 49.99 },
+          { "currency_code": "eur", "amount": 44.99 },
+          { "currency_code": "sar", "amount": 187.50 }
+        ],
+        "inventory_quantity": 40,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "16kg / Black",
+        "sku": "MKB-16-BK",
+        "barcode": "MKB16BK001",
+        "options": { "Weight": "16kg", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 59.99 },
+          { "currency_code": "eur", "amount": 54.99 },
+          { "currency_code": "sar", "amount": 225.00 }
+        ],
+        "inventory_quantity": 35,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "20kg / Black",
+        "sku": "MKB-20-BK",
+        "barcode": "MKB20BK001",
+        "options": { "Weight": "20kg", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 69.99 },
+          { "currency_code": "eur", "amount": 64.99 },
+          { "currency_code": "sar", "amount": 262.50 }
+        ],
+        "inventory_quantity": 30,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "24kg / Black",
+        "sku": "MKB-24-BK",
+        "barcode": "MKB24BK001",
+        "options": { "Weight": "24kg", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 79.99 },
+          { "currency_code": "eur", "amount": 74.99 },
+          { "currency_code": "sar", "amount": 300.00 }
+        ],
+        "inventory_quantity": 25,
+        "manage_inventory": true,
+        "allow_backorder": false
+      }
+    ],
+    "metadata": {
+      "brand": "MagicOFit",
+      "sport": "gym",
+      "equipment_type": "kettlebell"
+    }
+  },
+  {
+    "title": "MagicOFit Elite Jump Rope",
+    "handle": "magicofit-elite-jump-rope",
+    "subtitle": "Speed Jump Rope",
+    "description": "High-speed jump rope with adjustable length, ball-bearing handles for smooth rotation, and lightweight cable for maximum speed.",
+    "category": "Gym",
+    "collection": "New Arrivals",
+    "material": "Steel Cable, Aluminum Handles",
+    "weight": 150,
+    "status": "published",
+    "thumbnail": "https://placehold.co/400x400/1a1a1a/FFF?text=Jump+Rope",
+    "images": [
+      "https://placehold.co/800x800/1a1a1a/FFF?text=Jump+Rope+Coiled"
+    ],
+    "options": [
+      {
+        "title": "Length",
+        "values": ["2.4m", "2.7m", "3.0m"]
+      },
+      {
+        "title": "Color",
+        "values": ["Black", "Red", "Blue"]
+      }
+    ],
+    "variants": [
+      {
+        "title": "2.4m / Black",
+        "sku": "MJR-24-BK",
+        "barcode": "MJR24BK001",
+        "options": { "Length": "2.4m", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 19.99 },
+          { "currency_code": "eur", "amount": 18.99 },
+          { "currency_code": "sar", "amount": 75.00 }
+        ],
+        "inventory_quantity": 80,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "2.7m / Black",
+        "sku": "MJR-27-BK",
+        "barcode": "MJR27BK001",
+        "options": { "Length": "2.7m", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 19.99 },
+          { "currency_code": "eur", "amount": 18.99 },
+          { "currency_code": "sar", "amount": 75.00 }
+        ],
+        "inventory_quantity": 80,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "3.0m / Black",
+        "sku": "MJR-30-BK",
+        "barcode": "MJR30BK001",
+        "options": { "Length": "3.0m", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 19.99 },
+          { "currency_code": "eur", "amount": 18.99 },
+          { "currency_code": "sar", "amount": 75.00 }
+        ],
+        "inventory_quantity": 80,
+        "manage_inventory": true,
+        "allow_backorder": false
+      }
+    ],
+    "metadata": {
+      "brand": "MagicOFit",
+      "sport": "gym",
+      "equipment_type": "cardio"
+    }
+  },
+  {
+    "title": "MagicOFit Pro Foam Roller",
+    "handle": "magicofit-pro-foam-roller",
+    "subtitle": "High-Density Foam Roller",
+    "description": "High-density foam roller for muscle recovery, deep tissue massage, and flexibility training. Durable construction for long-lasting use.",
+    "category": "Gym",
+    "collection": "New Arrivals",
+    "material": "EVA Foam",
+    "weight": 600,
+    "status": "published",
+    "thumbnail": "https://placehold.co/400x400/1a1a1a/FFF?text=Foam+Roller",
+    "images": [
+      "https://placehold.co/800x800/1a1a1a/FFF?text=Foam+Roller+Side"
+    ],
+    "options": [
+      {
+        "title": "Size",
+        "values": ["30cm", "45cm", "90cm"]
+      },
+      {
+        "title": "Density",
+        "values": ["Medium", "Firm"]
+      }
+    ],
+    "variants": [
+      {
+        "title": "30cm / Medium",
+        "sku": "MFR-30-M",
+        "barcode": "MFR30M001",
+        "options": { "Size": "30cm", "Density": "Medium" },
+        "prices": [
+          { "currency_code": "usd", "amount": 24.99 },
+          { "currency_code": "eur", "amount": 22.99 },
+          { "currency_code": "sar", "amount": 93.75 }
+        ],
+        "inventory_quantity": 60,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "45cm / Medium",
+        "sku": "MFR-45-M",
+        "barcode": "MFR45M001",
+        "options": { "Size": "45cm", "Density": "Medium" },
+        "prices": [
+          { "currency_code": "usd", "amount": 29.99 },
+          { "currency_code": "eur", "amount": 27.99 },
+          { "currency_code": "sar", "amount": 112.50 }
+        ],
+        "inventory_quantity": 60,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "90cm / Medium",
+        "sku": "MFR-90-M",
+        "barcode": "MFR90M001",
+        "options": { "Size": "90cm", "Density": "Medium" },
+        "prices": [
+          { "currency_code": "usd", "amount": 39.99 },
+          { "currency_code": "eur", "amount": 36.99 },
+          { "currency_code": "sar", "amount": 150.00 }
+        ],
+        "inventory_quantity": 50,
+        "manage_inventory": true,
+        "allow_backorder": false
+      }
+    ],
+    "metadata": {
+      "brand": "MagicOFit",
+      "sport": "gym",
+      "equipment_type": "recovery"
+    }
+  },
+  {
+    "title": "MagicOFit Elite Headband",
+    "handle": "magicofit-elite-headband",
+    "subtitle": "Moisture-Wicking Headband",
+    "description": "Lightweight moisture-wicking headband with stretch fit, absorbent material, and non-slip design for active sports.",
+    "category": "Accessories",
+    "collection": "New Arrivals",
+    "material": "90% Polyester, 10% Elastane",
+    "weight": 30,
+    "status": "published",
+    "thumbnail": "https://placehold.co/400x400/1a1a1a/FFF?text=Headband",
+    "images": [
+      "https://placehold.co/800x800/1a1a1a/FFF?text=Headband+Front"
+    ],
+    "options": [
+      {
+        "title": "Size",
+        "values": ["One Size"]
+      },
+      {
+        "title": "Color",
+        "values": ["Black", "White", "Navy", "Red", "Blue"]
+      }
+    ],
+    "variants": [
+      {
+        "title": "One Size / Black",
+        "sku": "MHD-OS-BK",
+        "barcode": "MHDOSBK001",
+        "options": { "Size": "One Size", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 9.99 },
+          { "currency_code": "eur", "amount": 8.99 },
+          { "currency_code": "sar", "amount": 37.50 }
+        ],
+        "inventory_quantity": 150,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "One Size / White",
+        "sku": "MHD-OS-WH",
+        "barcode": "MHDOSWH001",
+        "options": { "Size": "One Size", "Color": "White" },
+        "prices": [
+          { "currency_code": "usd", "amount": 9.99 },
+          { "currency_code": "eur", "amount": 8.99 },
+          { "currency_code": "sar", "amount": 37.50 }
+        ],
+        "inventory_quantity": 150,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "One Size / Navy",
+        "sku": "MHD-OS-NV",
+        "barcode": "MHDOSNV001",
+        "options": { "Size": "One Size", "Color": "Navy" },
+        "prices": [
+          { "currency_code": "usd", "amount": 9.99 },
+          { "currency_code": "eur", "amount": 8.99 },
+          { "currency_code": "sar", "amount": 37.50 }
+        ],
+        "inventory_quantity": 150,
+        "manage_inventory": true,
+        "allow_backorder": false
+      }
+    ],
+    "metadata": {
+      "brand": "MagicOFit",
+      "accessory_type": "headwear"
+    }
+  },
+  {
+    "title": "MagicOFit Pro Wrist Wraps",
+    "handle": "magicofit-pro-wrist-wraps",
+    "subtitle": "Supportive Wrist Wraps",
+    "description": "Supportive wrist wraps with adjustable Velcro closure, reinforced stitching, and breathable material for weightlifting and training.",
+    "category": "Accessories",
+    "collection": "New Arrivals",
+    "material": "Cotton, Elastic, Velcro",
+    "weight": 80,
+    "status": "published",
+    "thumbnail": "https://placehold.co/400x400/1a1a1a/FFF?text=Wrist+Wraps",
+    "images": [
+      "https://placehold.co/800x800/1a1a1a/FFF?text=Wrist+Wraps+Pair"
+    ],
+    "options": [
+      {
+        "title": "Size",
+        "values": ["S", "M", "L"]
+      },
+      {
+        "title": "Color",
+        "values": ["Black", "Red", "Blue"]
+      }
+    ],
+    "variants": [
+      {
+        "title": "S / Black",
+        "sku": "MWW-S-BK",
+        "barcode": "MWWSBK001",
+        "options": { "Size": "S", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 14.99 },
+          { "currency_code": "eur", "amount": 13.99 },
+          { "currency_code": "sar", "amount": 56.25 }
+        ],
+        "inventory_quantity": 100,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "M / Black",
+        "sku": "MWW-M-BK",
+        "barcode": "MWWMBK001",
+        "options": { "Size": "M", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 14.99 },
+          { "currency_code": "eur", "amount": 13.99 },
+          { "currency_code": "sar", "amount": 56.25 }
+        ],
+        "inventory_quantity": 100,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "L / Black",
+        "sku": "MWW-L-BK",
+        "barcode": "MWWLBK001",
+        "options": { "Size": "L", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 14.99 },
+          { "currency_code": "eur", "amount": 13.99 },
+          { "currency_code": "sar", "amount": 56.25 }
+        ],
+        "inventory_quantity": 100,
+        "manage_inventory": true,
+        "allow_backorder": false
+      }
+    ],
+    "metadata": {
+      "brand": "MagicOFit",
+      "accessory_type": "support"
+    }
+  },
+  {
+    "title": "MagicOFit Creatine Monohydrate",
+    "handle": "magicofit-creatine-monohydrate",
+    "subtitle": "Pure Creatine Powder",
+    "description": "100% pure creatine monohydrate powder for improved strength, power, and muscle recovery. Unflavored for easy mixing with any beverage.",
+    "category": "Nutrition Gear",
+    "collection": "New Arrivals",
+    "material": "Creatine Monohydrate",
+    "weight": 500,
+    "status": "published",
+    "thumbnail": "https://placehold.co/400x400/1a1a1a/FFF?text=Creatine",
+    "images": [
+      "https://placehold.co/800x800/1a1a1a/FFF?text=Creatine+Tub"
+    ],
+    "options": [
+      {
+        "title": "Size",
+        "values": ["300g", "500g", "1kg"]
+      }
+    ],
+    "variants": [
+      {
+        "title": "300g",
+        "sku": "MCM-300",
+        "barcode": "MCM300001",
+        "options": { "Size": "300g" },
+        "prices": [
+          { "currency_code": "usd", "amount": 24.99 },
+          { "currency_code": "eur", "amount": 22.99 },
+          { "currency_code": "sar", "amount": 93.75 }
+        ],
+        "inventory_quantity": 80,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "500g",
+        "sku": "MCM-500",
+        "barcode": "MCM500001",
+        "options": { "Size": "500g" },
+        "prices": [
+          { "currency_code": "usd", "amount": 34.99 },
+          { "currency_code": "eur", "amount": 32.99 },
+          { "currency_code": "sar", "amount": 131.25 }
+        ],
+        "inventory_quantity": 70,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "1kg",
+        "sku": "MCM-1K",
+        "barcode": "MCM1K001",
+        "options": { "Size": "1kg" },
+        "prices": [
+          { "currency_code": "usd", "amount": 59.99 },
+          { "currency_code": "eur", "amount": 54.99 },
+          { "currency_code": "sar", "amount": 225.00 }
+        ],
+        "inventory_quantity": 60,
+        "manage_inventory": true,
+        "allow_backorder": false
+      }
+    ],
+    "metadata": {
+      "brand": "MagicOFit",
+      "nutrition_type": "creatine"
+    }
+  },
+  {
+    "title": "MagicOFit BCAA Powder",
+    "handle": "magicofit-bcaa-powder",
+    "subtitle": "Branched-Chain Amino Acids",
+    "description": "Premium BCAA powder with 2:1:1 ratio of leucine, isoleucine, and valine for muscle recovery and reduced fatigue during workouts.",
+    "category": "Nutrition Gear",
+    "collection": "New Arrivals",
+    "material": "BCAA Powder, Natural Flavors",
+    "weight": 400,
+    "status": "published",
+    "thumbnail": "https://placehold.co/400x400/1a1a1a/FFF?text=BCAA",
+    "images": [
+      "https://placehold.co/800x800/1a1a1a/FFF?text=BCAA+Tub"
+    ],
+    "options": [
+      {
+        "title": "Size",
+        "values": ["200g", "400g"]
+      },
+      {
+        "title": "Flavor",
+        "values": ["Fruit Punch", "Blue Raspberry", "Watermelon"]
+      }
+    ],
+    "variants": [
+      {
+        "title": "200g / Fruit Punch",
+        "sku": "MBB-200-FP",
+        "barcode": "MBB200FP001",
+        "options": { "Size": "200g", "Flavor": "Fruit Punch" },
+        "prices": [
+          { "currency_code": "usd", "amount": 29.99 },
+          { "currency_code": "eur", "amount": 27.99 },
+          { "currency_code": "sar", "amount": 112.50 }
+        ],
+        "inventory_quantity": 70,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "400g / Fruit Punch",
+        "sku": "MBB-400-FP",
+        "barcode": "MBB400FP001",
+        "options": { "Size": "400g", "Flavor": "Fruit Punch" },
+        "prices": [
+          { "currency_code": "usd", "amount": 49.99 },
+          { "currency_code": "eur", "amount": 44.99 },
+          { "currency_code": "sar", "amount": 187.50 }
+        ],
+        "inventory_quantity": 50,
+        "manage_inventory": true,
+        "allow_backorder": false
+      }
+    ],
+    "metadata": {
+      "brand": "MagicOFit",
+      "nutrition_type": "bcaa"
+    }
+  },
+  {
+    "title": "MagicOFit Women's Pro Training Shorts",
+    "handle": "magicofit-womens-pro-training-shorts",
+    "subtitle": "High-Performance Training Shorts",
+    "description": "Lightweight training shorts with 4-way stretch fabric, moisture-wicking technology, and ergonomic design for maximum mobility.",
+    "category": "Women",
+    "collection": "New Arrivals",
+    "material": "88% Polyester, 12% Elastane",
+    "weight": 160,
+    "status": "published",
+    "thumbnail": "https://placehold.co/400x400/1a1a1a/FFF?text=Women+Shorts",
+    "images": [
+      "https://placehold.co/800x800/1a1a1a/FFF?text=Women+Shorts+Front",
+      "https://placehold.co/800x800/2a2a2a/FFF?text=Women+Shorts+Back"
+    ],
+    "options": [
+      {
+        "title": "Size",
+        "values": ["XS", "S", "M", "L", "XL"]
+      },
+      {
+        "title": "Color",
+        "values": ["Black", "Navy", "Grey", "Pink"]
+      }
+    ],
+    "variants": [
+      {
+        "title": "XS / Black",
+        "sku": "MWS-XS-BK",
+        "barcode": "MWSXSBK001",
+        "options": { "Size": "XS", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 44.99 },
+          { "currency_code": "eur", "amount": 41.99 },
+          { "currency_code": "sar", "amount": 168.75 }
+        ],
+        "inventory_quantity": 40,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "S / Black",
+        "sku": "MWS-S-BK",
+        "barcode": "MWSSBK001",
+        "options": { "Size": "S", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 44.99 },
+          { "currency_code": "eur", "amount": 41.99 },
+          { "currency_code": "sar", "amount": 168.75 }
+        ],
+        "inventory_quantity": 60,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "M / Black",
+        "sku": "MWS-M-BK",
+        "barcode": "MWSMBK001",
+        "options": { "Size": "M", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 44.99 },
+          { "currency_code": "eur", "amount": 41.99 },
+          { "currency_code": "sar", "amount": 168.75 }
+        ],
+        "inventory_quantity": 80,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "L / Black",
+        "sku": "MWS-L-BK",
+        "barcode": "MWSLBK001",
+        "options": { "Size": "L", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 44.99 },
+          { "currency_code": "eur", "amount": 41.99 },
+          { "currency_code": "sar", "amount": 168.75 }
+        ],
+        "inventory_quantity": 60,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "XL / Black",
+        "sku": "MWS-XL-BK",
+        "barcode": "MWSXLBK001",
+        "options": { "Size": "XL", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 44.99 },
+          { "currency_code": "eur", "amount": 41.99 },
+          { "currency_code": "sar", "amount": 168.75 }
+        ],
+        "inventory_quantity": 40,
+        "manage_inventory": true,
+        "allow_backorder": false
+      }
+    ],
+    "metadata": {
+      "brand": "MagicOFit",
+      "gender": "women",
+      "fit": "athletic"
+    }
+  },
+  {
+    "title": "MagicOFit Men's Pro Training Pants",
+    "handle": "magicofit-mens-pro-training-pants",
+    "subtitle": "Performance Training Pants",
+    "description": "Lightweight training pants with moisture-wicking fabric, tapered fit, and zippered pockets for functionality during workouts.",
+    "category": "Men",
+    "collection": "New Arrivals",
+    "material": "100% Polyester, Moisture-Wicking Technology",
+    "weight": 280,
+    "status": "published",
+    "thumbnail": "https://placehold.co/400x400/1a1a1a/FFF?text=Men+Pants",
+    "images": [
+      "https://placehold.co/800x800/1a1a1a/FFF?text=Men+Pants+Front",
+      "https://placehold.co/800x800/2a2a2a/FFF?text=Men+Pants+Back"
+    ],
+    "options": [
+      {
+        "title": "Size",
+        "values": ["S", "M", "L", "XL", "XXL"]
+      },
+      {
+        "title": "Color",
+        "values": ["Black", "Navy", "Grey"]
+      }
+    ],
+    "variants": [
+      {
+        "title": "S / Black",
+        "sku": "MMP-S-BK",
+        "barcode": "MMPSBK001",
+        "options": { "Size": "S", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 59.99 },
+          { "currency_code": "eur", "amount": 54.99 },
+          { "currency_code": "sar", "amount": 225.00 }
+        ],
+        "inventory_quantity": 50,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "M / Black",
+        "sku": "MMP-M-BK",
+        "barcode": "MMPMBK001",
+        "options": { "Size": "M", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 59.99 },
+          { "currency_code": "eur", "amount": 54.99 },
+          { "currency_code": "sar", "amount": 225.00 }
+        ],
+        "inventory_quantity": 75,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "L / Black",
+        "sku": "MMP-L-BK",
+        "barcode": "MMPLBK001",
+        "options": { "Size": "L", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 59.99 },
+          { "currency_code": "eur", "amount": 54.99 },
+          { "currency_code": "sar", "amount": 225.00 }
+        ],
+        "inventory_quantity": 75,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "XL / Black",
+        "sku": "MMP-XL-BK",
+        "barcode": "MMPXLBK001",
+        "options": { "Size": "XL", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 59.99 },
+          { "currency_code": "eur", "amount": 54.99 },
+          { "currency_code": "sar", "amount": 225.00 }
+        ],
+        "inventory_quantity": 50,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "XXL / Black",
+        "sku": "MMP-XXL-BK",
+        "barcode": "MMPXXLBK001",
+        "options": { "Size": "XXL", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 59.99 },
+          { "currency_code": "eur", "amount": 54.99 },
+          { "currency_code": "sar", "amount": 225.00 }
+        ],
+        "inventory_quantity": 30,
+        "manage_inventory": true,
+        "allow_backorder": false
+      }
+    ],
+    "metadata": {
+      "brand": "MagicOFit",
+      "gender": "men",
+      "fit": "athletic"
+    }
+  },
+  {
+    "title": "MagicOFit Kids Pro Training Shorts",
+    "handle": "magicofit-kids-pro-training-shorts",
+    "subtitle": "Youth Training Shorts",
+    "description": "Lightweight training shorts for active kids, featuring moisture-wicking fabric, elastic waistband, and comfortable fit for all activities.",
+    "category": "Kids",
+    "collection": "New Arrivals",
+    "material": "100% Polyester, Moisture-Wicking Technology",
+    "weight": 140,
+    "status": "published",
+    "thumbnail": "https://placehold.co/400x400/1a1a1a/FFF?text=Kids+Shorts",
+    "images": [
+      "https://placehold.co/800x800/1a1a1a/FFF?text=Kids+Shorts+Front",
+      "https://placehold.co/800x800/2a2a2a/FFF?text=Kids+Shorts+Back"
+    ],
+    "options": [
+      {
+        "title": "Size",
+        "values": ["4-5Y", "6-7Y", "8-9Y", "10-11Y", "12-13Y"]
+      },
+      {
+        "title": "Color",
+        "values": ["Black", "Navy", "Red", "Blue"]
+      }
+    ],
+    "variants": [
+      {
+        "title": "4-5Y / Black",
+        "sku": "MKS-45-BK",
+        "barcode": "MKS45BK001",
+        "options": { "Size": "4-5Y", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 29.99 },
+          { "currency_code": "eur", "amount": 27.99 },
+          { "currency_code": "sar", "amount": 112.50 }
+        ],
+        "inventory_quantity": 50,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "6-7Y / Black",
+        "sku": "MKS-67-BK",
+        "barcode": "MKS67BK001",
+        "options": { "Size": "6-7Y", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 29.99 },
+          { "currency_code": "eur", "amount": 27.99 },
+          { "currency_code": "sar", "amount": 112.50 }
+        ],
+        "inventory_quantity": 60,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "8-9Y / Black",
+        "sku": "MKS-89-BK",
+        "barcode": "MKS89BK001",
+        "options": { "Size": "8-9Y", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 29.99 },
+          { "currency_code": "eur", "amount": 27.99 },
+          { "currency_code": "sar", "amount": 112.50 }
+        ],
+        "inventory_quantity": 60,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "10-11Y / Black",
+        "sku": "MKS-1011-BK",
+        "barcode": "MKS1011BK001",
+        "options": { "Size": "10-11Y", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 34.99 },
+          { "currency_code": "eur", "amount": 32.99 },
+          { "currency_code": "sar", "amount": 131.25 }
+        ],
+        "inventory_quantity": 50,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "12-13Y / Black",
+        "sku": "MKS-1213-BK",
+        "barcode": "MKS1213BK001",
+        "options": { "Size": "12-13Y", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 34.99 },
+          { "currency_code": "eur", "amount": 32.99 },
+          { "currency_code": "sar", "amount": 131.25 }
+        ],
+        "inventory_quantity": 50,
+        "manage_inventory": true,
+        "allow_backorder": false
+      }
+    ],
+    "metadata": {
+      "brand": "MagicOFit",
+      "gender": "kids",
+      "fit": "athletic"
+    }
+  },
+  {
+    "title": "MagicOFit Elite Running Tights",
+    "handle": "magicofit-elite-running-tights",
+    "subtitle": "Compression Running Tights",
+    "description": "High-compression running tights with moisture-wicking fabric, reflective details, and zippered pockets for long-distance running.",
+    "category": "Running",
+    "collection": "New Arrivals",
+    "material": "88% Polyester, 12% Elastane",
+    "weight": 220,
+    "status": "published",
+    "thumbnail": "https://placehold.co/400x400/1a1a1a/FFF?text=Running+Tights",
+    "images": [
+      "https://placehold.co/800x800/1a1a1a/FFF?text=Running+Tights+Front",
+      "https://placehold.co/800x800/2a2a2a/FFF?text=Running+Tights+Back"
+    ],
+    "options": [
+      {
+        "title": "Size",
+        "values": ["XS", "S", "M", "L", "XL", "XXL"]
+      },
+      {
+        "title": "Color",
+        "values": ["Black", "Navy", "Grey"]
+      }
+    ],
+    "variants": [
+      {
+        "title": "XS / Black",
+        "sku": "MRT-XS-BK",
+        "barcode": "MRTXSBK001",
+        "options": { "Size": "XS", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 79.99 },
+          { "currency_code": "eur", "amount": 74.99 },
+          { "currency_code": "sar", "amount": 300.00 }
+        ],
+        "inventory_quantity": 30,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "S / Black",
+        "sku": "MRT-S-BK",
+        "barcode": "MRTSBK001",
+        "options": { "Size": "S", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 79.99 },
+          { "currency_code": "eur", "amount": 74.99 },
+          { "currency_code": "sar", "amount": 300.00 }
+        ],
+        "inventory_quantity": 50,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "M / Black",
+        "sku": "MRT-M-BK",
+        "barcode": "MRTMBK001",
+        "options": { "Size": "M", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 79.99 },
+          { "currency_code": "eur", "amount": 74.99 },
+          { "currency_code": "sar", "amount": 300.00 }
+        ],
+        "inventory_quantity": 75,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "L / Black",
+        "sku": "MRT-L-BK",
+        "barcode": "MRTLBK001",
+        "options": { "Size": "L", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 79.99 },
+          { "currency_code": "eur", "amount": 74.99 },
+          { "currency_code": "sar", "amount": 300.00 }
+        ],
+        "inventory_quantity": 75,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "XL / Black",
+        "sku": "MRT-XL-BK",
+        "barcode": "MRTXLBK001",
+        "options": { "Size": "XL", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 79.99 },
+          { "currency_code": "eur", "amount": 74.99 },
+          { "currency_code": "sar", "amount": 300.00 }
+        ],
+        "inventory_quantity": 50,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "XXL / Black",
+        "sku": "MRT-XXL-BK",
+        "barcode": "MRTXXLBK001",
+        "options": { "Size": "XXL", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 79.99 },
+          { "currency_code": "eur", "amount": 74.99 },
+          { "currency_code": "sar", "amount": 300.00 }
+        ],
+        "inventory_quantity": 30,
+        "manage_inventory": true,
+        "allow_backorder": false
+      }
+    ],
+    "metadata": {
+      "brand": "MagicOFit",
+      "sport": "running",
+      "gender": "unisex",
+      "fit": "compression"
+    }
+  },
+  {
+    "title": "MagicOFit Pro Training Vest",
+    "handle": "magicofit-pro-training-vest",
+    "subtitle": "Weighted Training Vest",
+    "description": "Adjustable weighted training vest for resistance training, featuring breathable mesh panels and secure strap system for comfort during workouts.",
+    "category": "Training",
+    "collection": "New Arrivals",
+    "material": "Nylon, Iron Weights, Mesh",
+    "weight": 3000,
+    "status": "published",
+    "thumbnail": "https://placehold.co/400x400/1a1a1a/FFF?text=Training+Vest",
+    "images": [
+      "https://placehold.co/800x800/1a1a1a/FFF?text=Training+Vest+Front",
+      "https://placehold.co/800x800/2a2a2a/FFF?text=Training+Vest+Back"
+    ],
+    "options": [
+      {
+        "title": "Weight",
+        "values": ["5kg", "10kg", "15kg", "20kg"]
+      },
+      {
+        "title": "Color",
+        "values": ["Black", "Blue", "Red"]
+      }
+    ],
+    "variants": [
+      {
+        "title": "5kg / Black",
+        "sku": "MTV-5-BK",
+        "barcode": "MTV5BK001",
+        "options": { "Weight": "5kg", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 49.99 },
+          { "currency_code": "eur", "amount": 44.99 },
+          { "currency_code": "sar", "amount": 187.50 }
+        ],
+        "inventory_quantity": 40,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "10kg / Black",
+        "sku": "MTV-10-BK",
+        "barcode": "MTV10BK001",
+        "options": { "Weight": "10kg", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 69.99 },
+          { "currency_code": "eur", "amount": 64.99 },
+          { "currency_code": "sar", "amount": 262.50 }
+        ],
+        "inventory_quantity": 35,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "15kg / Black",
+        "sku": "MTV-15-BK",
+        "barcode": "MTV15BK001",
+        "options": { "Weight": "15kg", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 89.99 },
+          { "currency_code": "eur", "amount": 82.99 },
+          { "currency_code": "sar", "amount": 337.50 }
+        ],
+        "inventory_quantity": 30,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "20kg / Black",
+        "sku": "MTV-20-BK",
+        "barcode": "MTV20BK001",
+        "options": { "Weight": "20kg", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 109.99 },
+          { "currency_code": "eur", "amount": 99.99 },
+          { "currency_code": "sar", "amount": 412.50 }
+        ],
+        "inventory_quantity": 25,
+        "manage_inventory": true,
+        "allow_backorder": false
+      }
+    ],
+    "metadata": {
+      "brand": "MagicOFit",
+      "sport": "training",
+      "equipment_type": "weighted_vest"
+    }
+  },
+  {
+    "title": "MagicOFit Elite Football Shin Guards",
+    "handle": "magicofit-elite-football-shin-guards",
+    "subtitle": "Professional Shin Guards",
+    "description": "Lightweight shin guards with hard shell protection, cushioned backing, and adjustable straps for secure fit during football matches.",
+    "category": "Football",
+    "collection": "New Arrivals",
+    "material": "Hard Plastic, Foam, Velcro",
+    "weight": 150,
+    "status": "published",
+    "thumbnail": "https://placehold.co/400x400/1a1a1a/FFF?text=Shin+Guards",
+    "images": [
+      "https://placehold.co/800x800/1a1a1a/FFF?text=Shin+Guards+Pair"
+    ],
+    "options": [
+      {
+        "title": "Size",
+        "values": ["S", "M", "L"]
+      },
+      {
+        "title": "Color",
+        "values": ["Black", "White", "Blue", "Red"]
+      }
+    ],
+    "variants": [
+      {
+        "title": "S / Black",
+        "sku": "MSG-S-BK",
+        "barcode": "MSGSBK001",
+        "options": { "Size": "S", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 24.99 },
+          { "currency_code": "eur", "amount": 22.99 },
+          { "currency_code": "sar", "amount": 93.75 }
+        ],
+        "inventory_quantity": 80,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "M / Black",
+        "sku": "MSG-M-BK",
+        "barcode": "MSGMBK001",
+        "options": { "Size": "M", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 24.99 },
+          { "currency_code": "eur", "amount": 22.99 },
+          { "currency_code": "sar", "amount": 93.75 }
+        ],
+        "inventory_quantity": 80,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "L / Black",
+        "sku": "MSG-L-BK",
+        "barcode": "MSGLBK001",
+        "options": { "Size": "L", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 24.99 },
+          { "currency_code": "eur", "amount": 22.99 },
+          { "currency_code": "sar", "amount": 93.75 }
+        ],
+        "inventory_quantity": 80,
+        "manage_inventory": true,
+        "allow_backorder": false
+      }
+    ],
+    "metadata": {
+      "brand": "MagicOFit",
+      "sport": "football",
+      "equipment_type": "protection"
+    }
+  },
+  {
+    "title": "MagicOFit Pro Basketball Shorts",
+    "handle": "magicofit-pro-basketball-shorts",
+    "subtitle": "Performance Basketball Shorts",
+    "description": "Lightweight basketball shorts with moisture-wicking fabric, 9-inch inseam, and side pockets for on-court performance.",
+    "category": "Basketball",
+    "collection": "New Arrivals",
+    "material": "100% Polyester, Moisture-Wicking Technology",
+    "weight": 190,
+    "status": "published",
+    "thumbnail": "https://placehold.co/400x400/1a1a1a/FFF?text=BB+Shorts",
+    "images": [
+      "https://placehold.co/800x800/1a1a1a/FFF?text=BB+Shorts+Front",
+      "https://placehold.co/800x800/2a2a2a/FFF?text=BB+Shorts+Back"
+    ],
+    "options": [
+      {
+        "title": "Size",
+        "values": ["S", "M", "L", "XL", "XXL"]
+      },
+      {
+        "title": "Color",
+        "values": ["Black", "White", "Navy", "Red"]
+      }
+    ],
+    "variants": [
+      {
+        "title": "S / Black",
+        "sku": "MBS-S-BK",
+        "barcode": "MBSSBK001",
+        "options": { "Size": "S", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 39.99 },
+          { "currency_code": "eur", "amount": 36.99 },
+          { "currency_code": "sar", "amount": 150.00 }
+        ],
+        "inventory_quantity": 50,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "M / Black",
+        "sku": "MBS-M-BK",
+        "barcode": "MBSMBK001",
+        "options": { "Size": "M", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 39.99 },
+          { "currency_code": "eur", "amount": 36.99 },
+          { "currency_code": "sar", "amount": 150.00 }
+        ],
+        "inventory_quantity": 75,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "L / Black",
+        "sku": "MBS-L-BK",
+        "barcode": "MBSLBK001",
+        "options": { "Size": "L", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 39.99 },
+          { "currency_code": "eur", "amount": 36.99 },
+          { "currency_code": "sar", "amount": 150.00 }
+        ],
+        "inventory_quantity": 75,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "XL / Black",
+        "sku": "MBS-XL-BK",
+        "barcode": "MBSXLBK001",
+        "options": { "Size": "XL", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 39.99 },
+          { "currency_code": "eur", "amount": 36.99 },
+          { "currency_code": "sar", "amount": 150.00 }
+        ],
+        "inventory_quantity": 50,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "XXL / Black",
+        "sku": "MBS-XXL-BK",
+        "barcode": "MBSXXLBK001",
+        "options": { "Size": "XXL", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 39.99 },
+          { "currency_code": "eur", "amount": 36.99 },
+          { "currency_code": "sar", "amount": 150.00 }
+        ],
+        "inventory_quantity": 30,
+        "manage_inventory": true,
+        "allow_backorder": false
+      }
+    ],
+    "metadata": {
+      "brand": "MagicOFit",
+      "sport": "basketball",
+      "gender": "unisex"
+    }
+  },
+  {
+    "title": "MagicOFit Pro Weight Bench",
+    "handle": "magicofit-pro-weight-bench",
+    "subtitle": "Adjustable Weight Bench",
+    "description": "Heavy-duty adjustable weight bench with multiple incline positions, padded seat and backrest, and weight capacity of 300kg.",
+    "category": "Gym",
+    "collection": "New Arrivals",
+    "material": "Steel, High-Density Foam, Vinyl",
+    "weight": 25000,
+    "status": "published",
+    "thumbnail": "https://placehold.co/400x400/1a1a1a/FFF?text=Weight+Bench",
+    "images": [
+      "https://placehold.co/800x800/1a1a1a/FFF?text=Weight+Bench+Side"
+    ],
+    "options": [
+      {
+        "title": "Type",
+        "values": ["Flat", "Adjustable"]
+      },
+      {
+        "title": "Color",
+        "values": ["Black", "Red", "Blue"]
+      }
+    ],
+    "variants": [
+      {
+        "title": "Flat / Black",
+        "sku": "MWB-F-BK",
+        "barcode": "MWBFBK001",
+        "options": { "Type": "Flat", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 149.99 },
+          { "currency_code": "eur", "amount": 139.99 },
+          { "currency_code": "sar", "amount": 562.50 }
+        ],
+        "inventory_quantity": 20,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "Adjustable / Black",
+        "sku": "MWB-A-BK",
+        "barcode": "MWBABK001",
+        "options": { "Type": "Adjustable", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 249.99 },
+          { "currency_code": "eur", "amount": 229.99 },
+          { "currency_code": "sar", "amount": 937.50 }
+        ],
+        "inventory_quantity": 15,
+        "manage_inventory": true,
+        "allow_backorder": false
+      }
+    ],
+    "metadata": {
+      "brand": "MagicOFit",
+      "sport": "gym",
+      "equipment_type": "bench"
+    }
+  },
+  {
+    "title": "MagicOFit Elite Pull-Up Bar",
+    "handle": "magicofit-elite-pull-up-bar",
+    "subtitle": "Doorway Pull-Up Bar",
+    "description": "Multi-grip doorway pull-up bar with foam grips, sturdy steel construction, and easy installation for home upper body workouts.",
+    "category": "Gym",
+    "collection": "New Arrivals",
+    "material": "Steel, Foam Grips",
+    "weight": 2500,
+    "status": "published",
+    "thumbnail": "https://placehold.co/400x400/1a1a1a/FFF?text=Pull+Up+Bar",
+    "images": [
+      "https://placehold.co/800x800/1a1a1a/FFF?text=Pull+Up+Bar+Installed"
+    ],
+    "options": [
+      {
+        "title": "Type",
+        "values": ["Standard", "Wide"]
+      }
+    ],
+    "variants": [
+      {
+        "title": "Standard",
+        "sku": "MPB-S",
+        "barcode": "MPBS001",
+        "options": { "Type": "Standard" },
+        "prices": [
+          { "currency_code": "usd", "amount": 39.99 },
+          { "currency_code": "eur", "amount": 36.99 },
+          { "currency_code": "sar", "amount": 150.00 }
+        ],
+        "inventory_quantity": 50,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "Wide",
+        "sku": "MPB-W",
+        "barcode": "MPBW001",
+        "options": { "Type": "Wide" },
+        "prices": [
+          { "currency_code": "usd", "amount": 49.99 },
+          { "currency_code": "eur", "amount": 44.99 },
+          { "currency_code": "sar", "amount": 187.50 }
+        ],
+        "inventory_quantity": 40,
+        "manage_inventory": true,
+        "allow_backorder": false
+      }
+    ],
+    "metadata": {
+      "brand": "MagicOFit",
+      "sport": "gym",
+      "equipment_type": "pull_up_bar"
+    }
+  },
+  {
+    "title": "MagicOFit Pro Push-Up Bars",
+    "handle": "magicofit-pro-push-up-bars",
+    "subtitle": "Rotating Push-Up Handles",
+    "description": "Rotating push-up bars with ergonomic grips, steel construction, and non-slip base for enhanced chest and arm workouts.",
+    "category": "Gym",
+    "collection": "New Arrivals",
+    "material": "Steel, Rubber Grips",
+    "weight": 800,
+    "status": "published",
+    "thumbnail": "https://placehold.co/400x400/1a1a1a/FFF?text=Push+Up+Bars",
+    "images": [
+      "https://placehold.co/800x800/1a1a1a/FFF?text=Push+Up+Bars+Pair"
+    ],
+    "options": [
+      {
+        "title": "Type",
+        "values": ["Fixed", "Rotating"]
+      }
+    ],
+    "variants": [
+      {
+        "title": "Fixed",
+        "sku": "MPP-F",
+        "barcode": "MPPF001",
+        "options": { "Type": "Fixed" },
+        "prices": [
+          { "currency_code": "usd", "amount": 19.99 },
+          { "currency_code": "eur", "amount": 18.99 },
+          { "currency_code": "sar", "amount": 75.00 }
+        ],
+        "inventory_quantity": 80,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "Rotating",
+        "sku": "MPP-R",
+        "barcode": "MPPR001",
+        "options": { "Type": "Rotating" },
+        "prices": [
+          { "currency_code": "usd", "amount": 29.99 },
+          { "currency_code": "eur", "amount": 27.99 },
+          { "currency_code": "sar", "amount": 112.50 }
+        ],
+        "inventory_quantity": 60,
+        "manage_inventory": true,
+        "allow_backorder": false
+      }
+    ],
+    "metadata": {
+      "brand": "MagicOFit",
+      "sport": "gym",
+      "equipment_type": "push_up_bars"
+    }
+  },
+  {
+    "title": "MagicOFit Elite Compression Sleeves",
+    "handle": "magicofit-elite-compression-sleeves",
+    "subtitle": "Arm Compression Sleeves",
+    "description": "Graduated compression sleeves for improved blood flow, reduced muscle fatigue, and faster recovery during and after workouts.",
+    "category": "Accessories",
+    "collection": "New Arrivals",
+    "material": "85% Nylon, 15% Elastane",
+    "weight": 40,
+    "status": "published",
+    "thumbnail": "https://placehold.co/400x400/1a1a1a/FFF?text=Compression+Sleeves",
+    "images": [
+      "https://placehold.co/800x800/1a1a1a/FFF?text=Compression+Sleeves+Pair"
+    ],
+    "options": [
+      {
+        "title": "Size",
+        "values": ["S", "M", "L"]
+      },
+      {
+        "title": "Color",
+        "values": ["Black", "White", "Navy", "Red"]
+      }
+    ],
+    "variants": [
+      {
+        "title": "S / Black",
+        "sku": "MCS-S-BK",
+        "barcode": "MCSSBK001",
+        "options": { "Size": "S", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 19.99 },
+          { "currency_code": "eur", "amount": 18.99 },
+          { "currency_code": "sar", "amount": 75.00 }
+        ],
+        "inventory_quantity": 100,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "M / Black",
+        "sku": "MCS-M-BK",
+        "barcode": "MCSMBK001",
+        "options": { "Size": "M", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 19.99 },
+          { "currency_code": "eur", "amount": 18.99 },
+          { "currency_code": "sar", "amount": 75.00 }
+        ],
+        "inventory_quantity": 100,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "L / Black",
+        "sku": "MCS-L-BK",
+        "barcode": "MCSLBK001",
+        "options": { "Size": "L", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 19.99 },
+          { "currency_code": "eur", "amount": 18.99 },
+          { "currency_code": "sar", "amount": 75.00 }
+        ],
+        "inventory_quantity": 100,
+        "manage_inventory": true,
+        "allow_backorder": false
+      }
+    ],
+    "metadata": {
+      "brand": "MagicOFit",
+      "accessory_type": "compression"
+    }
+  },
+  {
+    "title": "MagicOFit Pro Knee Sleeves",
+    "handle": "magicofit-pro-knee-sleeves",
+    "subtitle": "Knee Support Sleeves",
+    "description": "Supportive knee sleeves with 5mm neoprene, reinforced stitching, and compression fit for joint stability during heavy lifting.",
+    "category": "Accessories",
+    "collection": "New Arrivals",
+    "material": "Neoprene, Nylon",
+    "weight": 120,
+    "status": "published",
+    "thumbnail": "https://placehold.co/400x400/1a1a1a/FFF?text=Knee+Sleeves",
+    "images": [
+      "https://placehold.co/800x800/1a1a1a/FFF?text=Knee+Sleeves+Pair"
+    ],
+    "options": [
+      {
+        "title": "Size",
+        "values": ["S", "M", "L", "XL"]
+      },
+      {
+        "title": "Color",
+        "values": ["Black", "Red", "Blue"]
+      }
+    ],
+    "variants": [
+      {
+        "title": "S / Black",
+        "sku": "MKS-S-BK",
+        "barcode": "MKSSBK001",
+        "options": { "Size": "S", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 24.99 },
+          { "currency_code": "eur", "amount": 22.99 },
+          { "currency_code": "sar", "amount": 93.75 }
+        ],
+        "inventory_quantity": 100,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "M / Black",
+        "sku": "MKS-M-BK",
+        "barcode": "MKSMBK001",
+        "options": { "Size": "M", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 24.99 },
+          { "currency_code": "eur", "amount": 22.99 },
+          { "currency_code": "sar", "amount": 93.75 }
+        ],
+        "inventory_quantity": 100,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "L / Black",
+        "sku": "MKS-L-BK",
+        "barcode": "MKSLBK001",
+        "options": { "Size": "L", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 24.99 },
+          { "currency_code": "eur", "amount": 22.99 },
+          { "currency_code": "sar", "amount": 93.75 }
+        ],
+        "inventory_quantity": 100,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "XL / Black",
+        "sku": "MKS-XL-BK",
+        "barcode": "MKSXLBK001",
+        "options": { "Size": "XL", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 24.99 },
+          { "currency_code": "eur", "amount": 22.99 },
+          { "currency_code": "sar", "amount": 93.75 }
+        ],
+        "inventory_quantity": 100,
+        "manage_inventory": true,
+        "allow_backorder": false
+      }
+    ],
+    "metadata": {
+      "brand": "MagicOFit",
+      "accessory_type": "support"
+    }
+  },
+  {
+    "title": "MagicOFit Multivitamin",
+    "handle": "magicofit-multivitamin",
+    "subtitle": "Sports Multivitamin",
+    "description": "Complete multivitamin formula with essential vitamins and minerals for athletes, supporting energy, immunity, and recovery.",
+    "category": "Nutrition Gear",
+    "collection": "New Arrivals",
+    "material": "Vitamins, Minerals",
+    "weight": 300,
+    "status": "published",
+    "thumbnail": "https://placehold.co/400x400/1a1a1a/FFF?text=Multivitamin",
+    "images": [
+      "https://placehold.co/800x800/1a1a1a/FFF?text=Multivitamin+Bottle"
+    ],
+    "options": [
+      {
+        "title": "Size",
+        "values": ["60 Tablets", "120 Tablets"]
+      }
+    ],
+    "variants": [
+      {
+        "title": "60 Tablets",
+        "sku": "MMV-60",
+        "barcode": "MMV60001",
+        "options": { "Size": "60 Tablets" },
+        "prices": [
+          { "currency_code": "usd", "amount": 19.99 },
+          { "currency_code": "eur", "amount": 18.99 },
+          { "currency_code": "sar", "amount": 75.00 }
+        ],
+        "inventory_quantity": 80,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "120 Tablets",
+        "sku": "MMV-120",
+        "barcode": "MMV120001",
+        "options": { "Size": "120 Tablets" },
+        "prices": [
+          { "currency_code": "usd", "amount": 34.99 },
+          { "currency_code": "eur", "amount": 32.99 },
+          { "currency_code": "sar", "amount": 131.25 }
+        ],
+        "inventory_quantity": 70,
+        "manage_inventory": true,
+        "allow_backorder": false
+      }
+    ],
+    "metadata": {
+      "brand": "MagicOFit",
+      "nutrition_type": "multivitamin"
+    }
+  },
+  {
+    "title": "MagicOFit Women's Pro Training Jacket",
+    "handle": "magicofit-womens-pro-training-jacket",
+    "subtitle": "Lightweight Training Jacket",
+    "description": "Lightweight training jacket with moisture-wicking fabric, full zip front, and packable design for versatile layering during workouts.",
+    "category": "Women",
+    "collection": "New Arrivals",
+    "material": "100% Polyester, Moisture-Wicking Technology",
+    "weight": 320,
+    "status": "published",
+    "thumbnail": "https://placehold.co/400x400/1a1a1a/FFF?text=Women+Jacket",
+    "images": [
+      "https://placehold.co/800x800/1a1a1a/FFF?text=Women+Jacket+Front",
+      "https://placehold.co/800x800/2a2a2a/FFF?text=Women+Jacket+Back"
+    ],
+    "options": [
+      {
+        "title": "Size",
+        "values": ["XS", "S", "M", "L", "XL"]
+      },
+      {
+        "title": "Color",
+        "values": ["Black", "Navy", "Pink", "Grey"]
+      }
+    ],
+    "variants": [
+      {
+        "title": "XS / Black",
+        "sku": "MWJ-XS-BK",
+        "barcode": "MWJXSBK001",
+        "options": { "Size": "XS", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 79.99 },
+          { "currency_code": "eur", "amount": 74.99 },
+          { "currency_code": "sar", "amount": 300.00 }
+        ],
+        "inventory_quantity": 30,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "S / Black",
+        "sku": "MWJ-S-BK",
+        "barcode": "MWJSBK001",
+        "options": { "Size": "S", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 79.99 },
+          { "currency_code": "eur", "amount": 74.99 },
+          { "currency_code": "sar", "amount": 300.00 }
+        ],
+        "inventory_quantity": 50,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "M / Black",
+        "sku": "MWJ-M-BK",
+        "barcode": "MWJMBK001",
+        "options": { "Size": "M", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 79.99 },
+          { "currency_code": "eur", "amount": 74.99 },
+          { "currency_code": "sar", "amount": 300.00 }
+        ],
+        "inventory_quantity": 75,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "L / Black",
+        "sku": "MWJ-L-BK",
+        "barcode": "MWJLBK001",
+        "options": { "Size": "L", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 79.99 },
+          { "currency_code": "eur", "amount": 74.99 },
+          { "currency_code": "sar", "amount": 300.00 }
+        ],
+        "inventory_quantity": 75,
+        "manage_inventory": true,
+        "allow_backorder": false
+      },
+      {
+        "title": "XL / Black",
+        "sku": "MWJ-XL-BK",
+        "barcode": "MWJXLBK001",
+        "options": { "Size": "XL", "Color": "Black" },
+        "prices": [
+          { "currency_code": "usd", "amount": 79.99 },
+          { "currency_code": "eur", "amount": 74.99 },
+          { "currency_code": "sar", "amount": 300.00 }
+        ],
+        "inventory_quantity": 50,
+        "manage_inventory": true,
+        "allow_backorder": false
+      }
+    ],
+    "metadata": {
+      "brand": "MagicOFit",
+      "gender": "women",
+      "fit": "athletic"
+    }
+  },
+  {
+    "title": "Smart Fitness Watch Pro",
+    "handle": "smart-fitness-watch-pro",
+    "description": "Advanced fitness tracking with heart rate monitoring, GPS, and 7-day battery life for serious athletes.",
+    "category": "Fitness Trackers",
+    "collection": "Premium Brands",
+    "variants": [
+      {
+        "options": {
+          "color": "Black",
+          "size": "42mm"
+        },
+        "sku": "WATCH-BLK-42",
+        "prices": {
+          "USD": 299.99,
+          "EUR": 279.99,
+          "SAR": 1125.00
+        },
+        "inventory_quantity": 50
+      },
+      {
+        "options": {
+          "color": "Black",
+          "size": "46mm"
+        },
+        "sku": "WATCH-BLK-46",
+        "prices": {
+          "USD": 329.99,
+          "EUR": 309.99,
+          "SAR": 1237.50
+        },
+        "inventory_quantity": 45
+      },
+      {
+        "options": {
+          "color": "Silver",
+          "size": "42mm"
+        },
+        "sku": "WATCH-SLV-42",
+        "prices": {
+          "USD": 319.99,
+          "EUR": 299.99,
+          "SAR": 1200.00
+        },
+        "inventory_quantity": 40
+      }
+    ],
+    "images": [
+      "https://placehold.co/600x600/1a1a1a/FFF?text=Smart+Watch+Pro+Black",
+      "https://placehold.co/600x600/1a1a1a/FFF?text=Smart+Watch+Pro+Silver"
+    ],
+    "metadata": {
+      "brand": "MagicOFit",
+      "sport": "multi-sport",
+      "gender": "unisex",
+      "material": "aluminum",
+      "water_resistant": true,
+      "battery_life": "7 days",
+      "features": ["heart_rate", "gps", "sleep_tracking", "water_resistant_50m"]
+    }
+  },
+  {
+    "title": "Premium Massage Gun",
+    "handle": "premium-massage-gun",
+    "description": "Professional-grade percussion massage gun with 6 speed settings and 5 attachment heads for deep muscle recovery.",
+    "category": "Recovery",
+    "collection": "Training Accessories",
+    "variants": [
+      {
+        "options": {
+          "color": "Black"
+        },
+        "sku": "MASSAGE-BLK",
+        "prices": {
+          "USD": 199.99,
+          "EUR": 189.99,
+          "SAR": 750.00
+        },
+        "inventory_quantity": 60
+      },
+      {
+        "options": {
+          "color": "White"
+        },
+        "sku": "MASSAGE-WHT",
+        "prices": {
+          "USD": 199.99,
+          "EUR": 189.99,
+          "SAR": 750.00
+        },
+        "inventory_quantity": 55
+      }
+    ],
+    "images": [
+      "https://placehold.co/600x600/1a1a1a/FFF?text=Massage+Gun+Black",
+      "https://placehold.co/600x600/ffffff/000?text=Massage+Gun+White"
+    ],
+    "metadata": {
+      "brand": "MagicOFit",
+      "sport": "recovery",
+      "gender": "unisex",
+      "speed_settings": 6,
+      "attachments": 5,
+      "battery_life": "6 hours",
+      "noise_level": "quiet"
+    }
+  }
+]

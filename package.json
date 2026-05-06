@@ -1,0 +1,33 @@
+{
+  "name": "magicofit",
+  "version": "1.0.0",
+  "private": true,
+  "description": "MagicOFit Sports E-Commerce Monorepo",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:storefront\" \"npm run dev:backend\"",
+    "dev:storefront": "cd storefront && npm run dev",
+    "dev:backend": "cd backend && npm run backend:dev",
+    "build": "concurrently \"npm run build:storefront\" \"npm run build:backend\"",
+    "build:storefront": "cd storefront && npm run build",
+    "build:backend": "cd backend && npm run build",
+    "lint": "concurrently \"npm run lint:storefront\" \"npm run lint:backend\"",
+    "lint:storefront": "cd storefront && npm run lint",
+    "lint:backend": "cd backend/apps/backend && npm run lint",
+    "format": "concurrently \"npm run format:storefront\" \"npm run format:backend\"",
+    "format:storefront": "cd storefront && npm run format",
+    "format:backend": "cd backend/apps/backend && npm run format",
+    "format:check": "concurrently \"npm run format:check:storefront\" \"npm run format:check:backend\"",
+    "format:check:storefront": "cd storefront && npm run format:check",
+    "format:check:backend": "cd backend/apps/backend && npm run format:check",
+    "typecheck": "concurrently \"npm run typecheck:storefront\" \"npm run typecheck:backend\"",
+    "typecheck:storefront": "cd storefront && npm run typecheck",
+    "typecheck:backend": "cd backend/apps/backend && npm run typecheck"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "workspaces": [
+    "storefront",
+    "backend"
+  ]
+}

@@ -1,0 +1,210 @@
+"use server";
+
+import { medusaClient } from "@/lib/medusa-client";
+
+interface CartItem {
+  productId: string;
+  name: string;
+  image: string;
+  price: number;
+  quantity: number;
+  variant?: {
+    size?: string;
+    color?: string;
+  };
+  variantId?: string;
+}
+
+interface ShippingAddress {
+  fullName: string;
+  phone: string;
+  email?: string;
+  address: string;
+  city: string;
+}
+
+// Arabic governorate name to English name mapping for shipping option matching
+// Ordered by proximity to Beni Suef (store HQ) ascending
+const GOVERNORATE_MAP: Record<string, string> = {
+  "بني سويف": "Beni Suef",
+  "الفيوم": "Fayoum",
+  "المنيا": "Minya",
+  "الجيزة": "Giza",
+  "القاهرة": "Cairo",
+  "القليوبية": "Qalyubia",
+  "المنوفية": "Monufia",
+  "الشرقية": "Sharqia",
+  "الدقهلية": "Dakahlia",
+  "كفر الشيخ": "Kafr El Sheikh",
+  "الغربية": "Gharbia",
+  "البحيرة": "Beheira",
+  "الإسكندرية": "Alexandria",
+  "دمياط": "Damietta",
+  "بورسعيد": "Port Said",
+  "الإسماعيلية": "Ismailia",
+  "السويس": "Suez",
+  "أسيوط": "Assiut",
+  "سوهاج": "Sohag",
+  "قنا": "Qena",
+  "الأقصر": "Luxor",
+  "أسوان": "Aswan",
+  "البحر الأحمر": "Red Sea",
+  "الوادي الجديد": "New Valley",
+  "مطروح": "Matrouh",
+  "شمال سيناء": "North Sinai",
+  "جنوب سيناء": "South Sinai",
+};
+
+interface CheckoutData {
+  items: CartItem[];
+  shippingAddress: ShippingAddress;
+  medusaCartId?: string | null;
+}
+
+export async function processDirectOrder(data: CheckoutData) {
+  try {
+    // 1. Use existing Medusa cart or create a new one
+    let cartId: string;
+    if (data.medusaCartId) {
+      try {
+        const existingCart: any = await medusaClient.get(`/store/carts/${data.medusaCartId}`);
+        if (existingCart?.cart?.id || existingCart?.id) {
+          cartId = existingCart.cart?.id || existingCart.id;
+        } else {
+          throw new Error("Cart not found");
+        }
+      } catch {
+        // Cart no longer valid, create new one
+        const cartRes: any = await medusaClient.post('/store/carts', {
+          region_id: process.env.NEXT_PUBLIC_MEDUSA_REGION_ID || undefined,
+        });
+        const cart = cartRes.cart || cartRes;
+        cartId = cart.id;
+      }
+    } else {
+      const cartRes: any = await medusaClient.post('/store/carts', {
+        region_id: process.env.NEXT_PUBLIC_MEDUSA_REGION_ID || undefined,
+      });
+      const cart = cartRes.cart || cartRes;
+      if (!cart?.id) return { success: false, error: "Failed to create cart" };
+      cartId = cart.id;
+    }
+
+    // 2. Add Line Items (only for new carts - existing carts already have items from cart-store sync)
+    if (!data.medusaCartId) {
+      for (const item of data.items) {
+        if (item.variantId) {
+          await medusaClient.post(`/store/carts/${cartId}/line-items`, {
+            variant_id: item.variantId,
+            quantity: item.quantity,
+          }).catch(e => console.error("Medusa line item error:", e));
+        }
+      }
+    }
+
+    // 3. Update Cart with shipping details
+    const finalEmail = data.shippingAddress.email || `whatsapp_${data.shippingAddress.phone}@magicofit.local`;
+
+    await medusaClient.post(`/store/carts/${cartId}`, {
+      email: finalEmail,
+      shipping_address: {
+        first_name: data.shippingAddress.fullName,
+        last_name: ".",
+        phone: data.shippingAddress.phone,
+        address_1: data.shippingAddress.address,
+        city: data.shippingAddress.city,
+        country_code: "eg",
+      },
+    }).catch(e => console.error("Update cart error:", e));
+
+    // 4. Add shipping method - match governorate to shipping option
+    try {
+      const shippingOptions: any = await medusaClient.get(
+        `/store/shipping-options?cart_id=${cartId}`
+      );
+      const options = shippingOptions.shipping_options || shippingOptions;
+      if (options && options.length > 0) {
+        // Try to find the shipping option matching the selected governorate
+        const govEnglish = GOVERNORATE_MAP[data.shippingAddress.city];
+        let selectedOption = options.find((opt: any) =>
+          govEnglish && opt.name?.includes(govEnglish)
+        );
+        // Fallback to first option if no match found
+        if (!selectedOption) {
+          selectedOption = options[0];
+        }
+        await medusaClient.post(`/store/carts/${cartId}/shipping-methods`, {
+          option_id: selectedOption.id,
+        });
+      }
+    } catch (e) {
+      console.error("Shipping method error:", e);
+    }
+
+    // 5. Create payment collection and initialize payment session (Medusa v2 flow)
+    try {
+      const pcRes: any = await medusaClient.post(`/store/payment-collections`, {
+        cart_id: cartId,
+      });
+      const pcId = pcRes.payment_collection?.id;
+      if (pcId) {
+        await medusaClient.post(`/store/payment-collections/${pcId}/payment-sessions`, {
+          provider_id: "pp_system_default",
+        });
+      }
+    } catch (e) {
+      console.error("Payment collection/session error:", e);
+    }
+
+    // 6. Complete the cart to create a real order in Medusa
+    let orderId: string | number = Math.floor(100000 + Math.random() * 900000);
+    let cartSummary: { subtotal: number; tax: number; shipping: number; total: number; currency_code: string } | null = null;
+    try {
+      // Fetch final cart state for tax/total info
+      try {
+        const finalCart: any = await medusaClient.get(`/store/carts/${cartId}`);
+        const fc = finalCart.cart || finalCart;
+        if (fc) {
+          cartSummary = {
+            subtotal: fc.subtotal || 0,
+            tax: fc.tax_total || fc.tax || 0,
+            shipping: fc.shipping_total || fc.shipping || 0,
+            total: fc.total || 0,
+            currency_code: fc.currency_code || "egp",
+          };
+        }
+      } catch {
+        // Continue without summary
+      }
+
+      const completeRes: any = await medusaClient.post(`/store/carts/${cartId}/complete`);
+      if (completeRes?.order?.id) {
+        orderId = completeRes.order.id;
+        console.log("Order created in Medusa:", orderId);
+      } else if (completeRes?.type === "order" && completeRes?.order) {
+        orderId = completeRes.order.id;
+        console.log("Order created in Medusa:", orderId);
+      } else {
+        console.warn("Cart completion response:", JSON.stringify(completeRes).slice(0, 200));
+      }
+    } catch (completeError) {
+      console.error("Cart completion error:", completeError);
+      return {
+        success: true,
+        cartId: cartId,
+        orderId: orderId,
+        cartSummary,
+        warning: "Order may not have completed in Medusa. Check cart: " + cartId,
+      };
+    }
+
+    return { success: true, cartId: cartId, orderId, cartSummary };
+  } catch (error) {
+    console.error("Direct Order Error:", error);
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : "Order failed",
+      orderId: Math.floor(100000 + Math.random() * 900000),
+    };
+  }
+}

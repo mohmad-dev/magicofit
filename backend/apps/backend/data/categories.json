@@ -1,0 +1,260 @@
+[
+  {
+    "name": "Running",
+    "handle": "running",
+    "description": "Professional running gear for all distances",
+    "is_active": true,
+    "metadata": {
+      "icon": "running",
+      "priority": 1
+    }
+  },
+  {
+    "name": "Training",
+    "handle": "training",
+    "description": "High-performance training equipment and apparel",
+    "is_active": true,
+    "metadata": {
+      "icon": "dumbbell",
+      "priority": 2
+    }
+  },
+  {
+    "name": "Football",
+    "handle": "football",
+    "description": "Football boots, balls, and training gear",
+    "is_active": true,
+    "metadata": {
+      "icon": "football",
+      "priority": 3
+    }
+  },
+  {
+    "name": "Basketball",
+    "handle": "basketball",
+    "description": "Basketball shoes, apparel, and equipment",
+    "is_active": true,
+    "metadata": {
+      "icon": "basketball",
+      "priority": 4
+    }
+  },
+  {
+    "name": "Gym",
+    "handle": "gym",
+    "description": "Gym equipment, weights, and accessories",
+    "is_active": true,
+    "metadata": {
+      "icon": "gym",
+      "priority": 5
+    }
+  },
+  {
+    "name": "Accessories",
+    "handle": "accessories",
+    "description": "Sports accessories and performance gear",
+    "is_active": true,
+    "metadata": {
+      "icon": "accessories",
+      "priority": 6
+    }
+  },
+  {
+    "name": "Nutrition Gear",
+    "handle": "nutrition-gear",
+    "description": "Supplements, shakers, and nutrition accessories",
+    "is_active": true,
+    "metadata": {
+      "icon": "nutrition",
+      "priority": 7
+    }
+  },
+  {
+    "name": "Women",
+    "handle": "women",
+    "description": "Women's sports apparel and equipment",
+    "is_active": true,
+    "metadata": {
+      "icon": "women",
+      "priority": 8
+    }
+  },
+  {
+    "name": "Men",
+    "handle": "men",
+    "description": "Men's sports apparel and equipment",
+    "is_active": true,
+    "metadata": {
+      "icon": "men",
+      "priority": 9
+    }
+  },
+  {
+    "name": "Kids",
+    "handle": "kids",
+    "description": "Youth sports gear and equipment",
+    "is_active": true,
+    "metadata": {
+      "icon": "kids",
+      "priority": 10
+    }
+  },
+  {
+    "name": "Running Shoes",
+    "handle": "running-shoes",
+    "description": "Professional running shoes for all terrains",
+    "is_active": true,
+    "metadata": {
+      "icon": "shoes",
+      "priority": 11,
+      "parent": "running"
+    }
+  },
+  {
+    "name": "Running Apparel",
+    "handle": "running-apparel",
+    "description": "Running shirts, shorts, tights, and jackets",
+    "is_active": true,
+    "metadata": {
+      "icon": "shirt",
+      "priority": 12,
+      "parent": "running"
+    }
+  },
+  {
+    "name": "Football Boots",
+    "handle": "football-boots",
+    "description": "Professional football boots for all surfaces",
+    "is_active": true,
+    "metadata": {
+      "icon": "boots",
+      "priority": 13,
+      "parent": "football"
+    }
+  },
+  {
+    "name": "Football Apparel",
+    "handle": "football-apparel",
+    "description": "Football jerseys, shorts, and training gear",
+    "is_active": true,
+    "metadata": {
+      "icon": "jersey",
+      "priority": 14,
+      "parent": "football"
+    }
+  },
+  {
+    "name": "Basketball Shoes",
+    "handle": "basketball-shoes",
+    "description": "High-performance basketball shoes",
+    "is_active": true,
+    "metadata": {
+      "icon": "basketball-shoes",
+      "priority": 15,
+      "parent": "basketball"
+    }
+  },
+  {
+    "name": "Basketball Apparel",
+    "handle": "basketball-apparel",
+    "description": "Basketball jerseys, shorts, and compression gear",
+    "is_active": true,
+    "metadata": {
+      "icon": "basketball-jersey",
+      "priority": 16,
+      "parent": "basketball"
+    }
+  },
+  {
+    "name": "Weights",
+    "handle": "weights",
+    "description": "Dumbbells, barbells, and weight plates",
+    "is_active": true,
+    "metadata": {
+      "icon": "weights",
+      "priority": 17,
+      "parent": "gym"
+    }
+  },
+  {
+    "name": "Gym Machines",
+    "handle": "gym-machines",
+    "description": "Home gym equipment and machines",
+    "is_active": true,
+    "metadata": {
+      "icon": "machine",
+      "priority": 18,
+      "parent": "gym"
+    }
+  },
+  {
+    "name": "Yoga",
+    "handle": "yoga",
+    "description": "Yoga mats, blocks, and accessories",
+    "is_active": true,
+    "metadata": {
+      "icon": "yoga",
+      "priority": 19
+    }
+  },
+  {
+    "name": "Swimming",
+    "handle": "swimming",
+    "description": "Swimwear, goggles, and swimming equipment",
+    "is_active": true,
+    "metadata": {
+      "icon": "swimming",
+      "priority": 20
+    }
+  },
+  {
+    "name": "Cycling",
+    "handle": "cycling",
+    "description": "Cycling apparel, helmets, and accessories",
+    "is_active": true,
+    "metadata": {
+      "icon": "cycling",
+      "priority": 21
+    }
+  },
+  {
+    "name": "Tennis",
+    "handle": "tennis",
+    "description": "Tennis rackets, balls, and apparel",
+    "is_active": true,
+    "metadata": {
+      "icon": "tennis",
+      "priority": 22
+    }
+  },
+  {
+    "name": "Fitness Trackers",
+    "handle": "fitness-trackers",
+    "description": "Smartwatches and fitness tracking devices",
+    "is_active": true,
+    "metadata": {
+      "icon": "watch",
+      "priority": 23
+    }
+  },
+  {
+    "name": "Recovery",
+    "handle": "recovery",
+    "description": "Foam rollers, massage guns, and recovery equipment",
+    "is_active": true,
+    "metadata": {
+      "icon": "recovery",
+      "priority": 24
+    }
+  },
+  {
+    "name": "Outdoor",
+    "handle": "outdoor",
+    "description": "Outdoor sports and adventure gear",
+    "is_active": true,
+    "metadata": {
+      "icon": "outdoor",
+      "priority": 25
+    }
+  }
+]
