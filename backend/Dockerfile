@@ -31,7 +31,10 @@ COPY --from=builder /app/apps/backend/.medusa/server/medusa-config.js ./medusa-c
 COPY --from=builder /app/apps/backend/.medusa/server/instrumentation.js ./instrumentation.js
 COPY --from=builder /app/apps/backend/static ./static/
 
+# Entrypoint runs migrations (medusa db:migrate) then starts server
+COPY entrypoint.sh ./entrypoint.sh
+RUN chmod +x ./entrypoint.sh
+
 EXPOSE 9000
 
-# medusa start loads medusa-config.js (no ts-node), runs migrations, then starts server
-CMD ["npx", "medusa", "start"]
+CMD ["./entrypoint.sh"]
