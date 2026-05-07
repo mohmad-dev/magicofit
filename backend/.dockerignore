@@ -1,0 +1,8 @@
+node_modules
+.turbo
+.git
+.gitignore
+.env
+.husky
+*.md
+apps/backend/.medusa
