@@ -4,7 +4,6 @@ import { useState, useEffect, useCallback } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Link from "next/link";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useLocale } from "next-intl";
 
 export type Banner = {
@@ -117,43 +116,17 @@ export default function HeroBanner({ banners = [], sideBanners = [], isLoading =
                 </div>
               </div>
 
-              {/* Prev/Next Arrows */}
-              {banners.length > 1 && (
-                <>
-                  <button
-                    onClick={() => emblaApi?.scrollPrev()}
-                    className="absolute left-3 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm shadow-lg flex items-center justify-center hover:bg-white transition-colors"
-                    aria-label="Previous slide"
-                  >
-                    {isRTL ? <ChevronRight className="h-5 w-5" /> : <ChevronLeft className="h-5 w-5" />}
-                  </button>
-                  <button
-                    onClick={() => emblaApi?.scrollNext()}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm shadow-lg flex items-center justify-center hover:bg-white transition-colors"
-                    aria-label="Next slide"
-                  >
-                    {isRTL ? <ChevronLeft className="h-5 w-5" /> : <ChevronRight className="h-5 w-5" />}
-                  </button>
-                </>
-              )}
             </div>
 
-            {/* Progress Bar Navigation */}
-            <div className="flex justify-center mt-6 md:mt-8 gap-1">
+            {/* Progress indicators */}
+            <div className="flex justify-center mt-4 md:mt-6 gap-1.5">
               {banners.map((_, index) => (
-                <button
+                <div
                   key={index}
-                  className="h-0.5 bg-neutral-200 hover:bg-neutral-300 transition-colors duration-300 focus:outline-none rounded-full overflow-hidden"
-                  style={{ width: index === selectedIndex ? '32px' : '8px' }}
-                  onClick={() => emblaApi?.scrollTo(index)}
-                  aria-label={`Go to slide ${index + 1}`}
-                >
-                  <div
-                    className={`h-full bg-neutral-700 transition-all duration-500 rounded-full ${
-                      index === selectedIndex ? 'w-full' : 'w-0'
-                    }`}
-                  />
-                </button>
+                  className={`h-1 rounded-full transition-all duration-500 ${
+                    index === selectedIndex ? 'w-8 bg-neutral-800' : 'w-2 bg-neutral-300'
+                  }`}
+                />
               ))}
             </div>
           </div>

@@ -191,7 +191,7 @@ async function getHomeData() {
         return {
           id: cat.id,
           name: cat.name,
-          image: (cat.metadata?.image as string) || `https://ui-avatars.com/api/?name=${encodeURIComponent(cat.name)}&background=F97316&color=fff&size=400&bold=true`,
+          image: (cat.metadata?.image as string) || `/images/category-placeholder.svg`,
           productCount: catProducts.length,
           slug: cat.handle,
         };

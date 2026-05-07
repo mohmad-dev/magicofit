@@ -1,6 +1,6 @@
 "use client";
 
-import { Shield, Truck, RotateCcw, HeadphonesIcon } from "lucide-react";
+import { Shield, Zap, RotateCcw, HeadphonesIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 export default function TrustBadges() {
@@ -13,9 +13,9 @@ export default function TrustBadges() {
       description: t('securePaymentDesc'),
     },
     {
-      icon: <Truck className="h-6 w-6" />,
-      title: t('freeShipping'),
-      description: t('freeShippingDesc'),
+      icon: <Zap className="h-6 w-6" />,
+      title: t('fastDelivery'),
+      description: t('fastDeliveryDesc'),
     },
     {
       icon: <RotateCcw className="h-6 w-6" />,

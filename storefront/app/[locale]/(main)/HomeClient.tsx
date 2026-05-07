@@ -7,11 +7,10 @@ import CategoryShowcase from "@/components/homepage/CategoryShowcase";
 import TabbedProductShowcase from "@/components/homepage/TabbedProductShowcase";
 import CategoryProductSection from "@/components/homepage/CategoryProductSection";
 import TrustBadges from "@/components/layout/TrustBadges";
-import { useTranslations } from "next-intl";
 
 // Lazy load non-critical components
 const WhatsAppSubscribe = dynamic(() => import("@/components/homepage/WhatsAppSubscribe"), {
-  loading: () => <div className="h-96 bg-green-100 animate-pulse rounded-xl" />,
+  loading: () => <div className="h-96 bg-neutral-900 animate-pulse" />,
 });
 
 const BrandLogos = dynamic(() => import("@/components/homepage/BrandLogos"), {
@@ -67,12 +66,18 @@ export default function HomeClient({
   categorySections,
   categories,
 }: HomeClientProps) {
-  const t = useTranslations("home");
   return (
     <div className="flex flex-col">
       <HeroBanner banners={banners} sideBanners={sideBanners} />
-      
-      <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-4 md:py-8">
+
+      {/* Trust badges - right after hero for first impression */}
+      <div className="w-full bg-neutral-50 border-b border-neutral-100">
+        <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8">
+          <TrustBadges />
+        </div>
+      </div>
+
+      <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-10">
         <TabbedProductShowcase
           featuredProducts={featuredProducts}
           bestSellers={bestSellers}
@@ -80,20 +85,9 @@ export default function HomeClient({
         />
       </div>
 
-      {/* Best Sellers - dedicated row */}
-      {bestSellers.length > 0 && (
-        <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-4 md:py-8">
-          <CategoryProductSection
-            categoryName={t('bestSellers')}
-            categorySlug="bestsellers"
-            products={bestSellers}
-          />
-        </div>
-      )}
-
       {/* Category-based product sections */}
       {categorySections.length > 0 && (
-        <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-10">
           {categorySections.map((section) => (
             <CategoryProductSection
               key={section.id}
@@ -115,12 +109,6 @@ export default function HomeClient({
 
       <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
         <BrandLogos />
-      </div>
-      
-      <div className="py-8 md:py-12 bg-neutral-50 w-full">
-        <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
-           <TrustBadges />
-        </div>
       </div>
 
       <WhatsAppSubscribe />

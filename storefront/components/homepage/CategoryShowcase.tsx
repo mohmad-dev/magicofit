@@ -83,19 +83,19 @@ export default function CategoryShowcase({
           </div>
         </div>
         {/* Desktop grid */}
-        <div className="hidden md:grid md:grid-cols-4 lg:grid-cols-5 gap-6">
+        <div className="hidden md:grid md:grid-cols-3 lg:grid-cols-4 gap-5">
           {categories.map((category) => (
             <Link
               key={category.id}
               href={`/category/${category.slug}`}
-              className="group relative overflow-hidden rounded-xl aspect-square hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-primary-500/50"
+              className="group relative overflow-hidden rounded-2xl aspect-[4/3] hover:shadow-xl transition-all duration-300"
             >
               {/* Image */}
               <Image
                 src={category.image}
                 alt={category.name}
                 fill
-                className="object-cover transition-transform duration-500 group-hover:scale-110"
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
                 sizes="(max-width: 1024px) 33vw, 25vw"
               />
 

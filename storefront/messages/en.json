@@ -156,8 +156,8 @@
   "trustBadges": {
     "securePayment": "Secure Payment",
     "securePaymentDesc": "100% secure payment with SSL encryption",
-    "freeShipping": "Free Shipping",
-    "freeShippingDesc": "Free shipping on orders over 200 EGP",
+    "fastDelivery": "Fast Delivery",
+    "fastDeliveryDesc": "Fast delivery for all orders within Egypt",
     "easyReturns": "Easy Returns",
     "easyReturnsDesc": "30-day return policy for your peace of mind",
     "support247": "24/7 Support",

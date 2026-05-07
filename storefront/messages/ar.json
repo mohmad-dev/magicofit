@@ -158,8 +158,8 @@
   "trustBadges": {
     "securePayment": "دفع آمن",
     "securePaymentDesc": "دفع آمن 100% بتشفير SSL",
-    "freeShipping": "شحن مجاني",
-    "freeShippingDesc": "شحن مجاني للطلبات فوق 200 جنيه",
+    "fastDelivery": "توصيل سريع",
+    "fastDeliveryDesc": "توصيل سريع لجميع الطلبات داخل مصر",
     "easyReturns": "إرجاع سهل",
     "easyReturnsDesc": "سياسة إرجاع 30 يوم لراحة بالك",
     "support247": "دعم 24/7",

@@ -60,13 +60,13 @@ export default function PromotionalBanners({ banners }: PromotionalBannersProps)
             ))}
           </div>
         </div>
-        {/* Desktop: 4-col grid */}
-        <div className="hidden md:grid md:grid-cols-4 lg:grid-cols-5 gap-4">
+        {/* Desktop: 2-col grid for wider banners */}
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-4">
           {banners.map((banner) => (
             <Link
               key={banner.id}
               href={banner.cta_link}
-              className="group relative overflow-hidden aspect-[4/3] block rounded-xl"
+              className="group relative overflow-hidden aspect-[2/1] block rounded-2xl"
             >
               <Image
                 src={banner.image_url}
