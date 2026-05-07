@@ -27,10 +27,11 @@ COPY --from=builder /app/apps/backend/.medusa/server ./.medusa/server
 COPY --from=builder /app/node_modules ./node_modules/
 COPY --from=builder /app/apps/backend/package.json ./
 COPY --from=builder /app/apps/backend/medusa-config.ts ./
+COPY --from=builder /app/apps/backend/tsconfig.json ./
 COPY --from=builder /app/apps/backend/instrumentation.ts ./
 COPY --from=builder /app/apps/backend/static ./static/
 
 EXPOSE 9000
 
-# medusa start handles migrations + server startup
-CMD ["npx", "medusa", "start"]
+# Run compiled production server (medusa start compiles TS at runtime and fails without tsconfig)
+CMD ["node", ".medusa/server/index.js"]
