@@ -26,12 +26,12 @@ COPY --from=builder /app/apps/backend/.medusa/server ./.medusa/server
 # npm workspaces hoist deps to root /app/node_modules
 COPY --from=builder /app/node_modules ./node_modules/
 COPY --from=builder /app/apps/backend/package.json ./
-COPY --from=builder /app/apps/backend/medusa-config.ts ./
-COPY --from=builder /app/apps/backend/tsconfig.json ./
-COPY --from=builder /app/apps/backend/instrumentation.ts ./
+# Use compiled JS config (not .ts) so medusa start doesn't need ts-node
+COPY --from=builder /app/apps/backend/.medusa/server/medusa-config.js ./medusa-config.js
+COPY --from=builder /app/apps/backend/.medusa/server/instrumentation.js ./instrumentation.js
 COPY --from=builder /app/apps/backend/static ./static/
 
 EXPOSE 9000
 
-# Run compiled production server (medusa start compiles TS at runtime and fails without tsconfig)
-CMD ["node", ".medusa/server/index.js"]
+# medusa start loads medusa-config.js (no ts-node), runs migrations, then starts server
+CMD ["npx", "medusa", "start"]
