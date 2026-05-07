@@ -23,7 +23,6 @@ ENV NODE_ENV=production
 
 # Copy built server and admin
 COPY --from=builder /app/apps/backend/.medusa/server ./.medusa/server
-COPY --from=builder /app/apps/backend/.medusa/admin ./.medusa/admin
 # npm workspaces hoist deps to root /app/node_modules
 COPY --from=builder /app/node_modules ./node_modules/
 COPY --from=builder /app/apps/backend/package.json ./
