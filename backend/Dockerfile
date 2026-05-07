@@ -22,7 +22,9 @@ WORKDIR /app/apps/backend
 
 ENV NODE_ENV=production
 
-COPY --from=builder /app/apps/backend/.medusa/server ./
+# Copy built server and admin
+COPY --from=builder /app/apps/backend/.medusa/server ./.medusa/server
+COPY --from=builder /app/apps/backend/.medusa/admin ./.medusa/admin
 COPY --from=builder /app/apps/backend/node_modules ./node_modules/
 COPY --from=builder /app/apps/backend/package.json ./
 COPY --from=builder /app/apps/backend/medusa-config.ts ./
@@ -31,4 +33,5 @@ COPY --from=builder /app/apps/backend/static ./static/
 
 EXPOSE 9000
 
-CMD ["node", "index.js"]
+# medusa start handles migrations + server startup
+CMD ["npx", "medusa", "start"]
