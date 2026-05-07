@@ -2,7 +2,7 @@
 
 import { cookies } from "next/headers";
 import { createCart as createMedusaCart, getCart as getMedusaCart, addToCart as addToCartApi, removeFromCart as removeFromCartApi, updateCartItem } from "@/lib/store-api";
-import { revalidateTag } from "next/cache";
+import { updateTag } from "next/cache";
 
 const CART_COOKIE = "_medusa_cart_id";
 
@@ -50,10 +50,10 @@ export async function addToCart({ variantId, quantity }: { variantId: string, qu
 
   try {
     const updatedCart = await addToCartApi(cart.id, variantId, quantity);
-    revalidateTag("cart");
+    updateTag("cart");
     return updatedCart;
   } catch (error) {
-    console.error("Error adding to cart:", error);
+    console.error("Error adding to cart", error);
     throw error;
   }
 }
@@ -64,10 +64,10 @@ export async function removeFromCart(lineItemId: string) {
 
   try {
     const updatedCart = await removeFromCartApi(cart.id, lineItemId);
-    revalidateTag("cart");
+    updateTag("cart");
     return updatedCart;
   } catch (error) {
-    console.error("Error removing from cart:", error);
+    console.error("Error removing from cart", error);
     throw error;
   }
 }
@@ -78,10 +78,10 @@ export async function updateCartQuantity(lineItemId: string, quantity: number) {
 
   try {
     const updatedCart = await updateCartItem(cart.id, lineItemId, quantity);
-    revalidateTag("cart");
+    updateTag("cart");
     return updatedCart;
   } catch (error) {
-    console.error("Error updating cart quantity:", error);
+    console.error("Error updating cart quantity", error);
     throw error;
   }
 }

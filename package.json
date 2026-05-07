@@ -31,9 +31,10 @@
     "backend"
   ],
   "overrides": {
-    "eslint-config-next": "15.1.11",
+    "eslint-config-next": "^16.0.0",
     "eslint": "^9",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "next": "^16.0.0"
   }
 }
