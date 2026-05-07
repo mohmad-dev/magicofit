@@ -2,7 +2,7 @@ import {
   type SubscriberArgs,
   type SubscriberConfig,
 } from "@medusajs/framework";
-import { ContainerRegistrationKeys, Modules } from "@medusajs/framework/utils";
+import { ContainerRegistrationKeys } from "@medusajs/framework/utils";
 import MeiliSearch from "meilisearch";
 
 /**
@@ -12,7 +12,7 @@ import MeiliSearch from "meilisearch";
  * Triggered when a product is created, updated, or deleted
  */
 export default async function productUpdatedHandler({
-  event: { data },
+  event: { data, name },
   container,
 }: SubscriberArgs<{ id: string }>) {
   const logger = container.resolve(ContainerRegistrationKeys.LOGGER);
@@ -23,11 +23,8 @@ export default async function productUpdatedHandler({
     const meiliKey = process.env.MEILI_MASTER_KEY || "masterKey123";
     const client = new MeiliSearch({ host: meiliHost, apiKey: meiliKey });
 
-    const eventParts = container.resolve(ContainerRegistrationKeys.CONFIG_MODULE)
-      ?.projectConfig || {};
-    
     // For delete events, remove the document from the index
-    if (container["event"]?.eventName?.includes("deleted")) {
+    if (name?.includes("deleted")) {
       await client.index("products").deleteDocument(productId);
       logger.info(`Product ${productId} deleted from Meilisearch index`);
       return;
