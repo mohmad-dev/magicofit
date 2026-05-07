@@ -8,16 +8,16 @@ export const revalidate = 3600; // ISR revalidation every hour
 const heroSlides = [
   {
     id: "promo-1",
-    image_url: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1600&h=900&fit=crop",
-    mobile_image_url: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800&h=1000&fit=crop",
+    image_url: "/images/heropic.webp",
+    mobile_image_url: "/images/heropic.webp",
     title: "أقوى كوليكشن عروض الصيف",
     cta_link: "/shop",
     cta_text: "تسوق الآن",
   },
   {
     id: "promo-2",
-    image_url: "https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=1600&h=900&fit=crop",
-    mobile_image_url: "https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=800&h=1000&fit=crop",
+    image_url: "/images/heropic2.webp",
+    mobile_image_url: "/images/heropic2.webp",
     title: "معدات الركض الاحترافية",
     cta_link: "/shop",
     cta_text: "اكتشف الجديد",
