@@ -31,7 +31,10 @@ COPY --from=builder /app/apps/backend/.medusa/server/medusa-config.js ./medusa-c
 COPY --from=builder /app/apps/backend/.medusa/server/instrumentation.js ./instrumentation.js
 COPY --from=builder /app/apps/backend/static ./static/
 
+# Ensure admin build is present (Medusa expects .medusa/server/public/admin/index.html)
+RUN test -f ./.medusa/server/public/admin/index.html
+
 EXPOSE 9000
 
-# Run migrations then start server (inline to avoid Windows CRLF issues with entrypoint.sh)
-CMD ["sh", "-c", "npx medusa db:migrate && npx medusa start"]
+# Run migrations then start the built server
+CMD ["sh", "-c", "npx medusa db:migrate && node .medusa/server/index.js"]
