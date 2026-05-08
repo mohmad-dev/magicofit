@@ -26,7 +26,7 @@ export default async function deleteAndRecreateAdmin({ container }: { container:
     email,
     first_name: "Mohamed",
     last_name: "Admin",
-    password_hash: password
+    password
   })
   
   console.log("✅ New admin user created!")
