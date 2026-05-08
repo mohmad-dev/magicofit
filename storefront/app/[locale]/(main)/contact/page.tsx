@@ -101,12 +101,16 @@ export default function ContactPage() {
                 
                 <div>
                   <h3 className="font-semibold text-neutral-900">{t('phone')}</h3>
-                  <p className="text-neutral-600">+20 82 123 4567</p>
+                  <p className="text-neutral-600">
+                    <a href="tel:+2001009784410" className="hover:text-primary-600 transition-colors">01009784410</a>
+                  </p>
                 </div>
                 
                 <div>
                   <h3 className="font-semibold text-neutral-900">{t('whatsapp')}</h3>
-                  <p className="text-neutral-600">+20 100 123 4567</p>
+                  <p className="text-neutral-600">
+                    <a href="https://wa.me/2001148161968" target="_blank" rel="noopener noreferrer" className="hover:text-primary-600 transition-colors">01148161968</a>
+                  </p>
                 </div>
                 
                 <div>
@@ -123,17 +127,11 @@ export default function ContactPage() {
             <div className="bg-white rounded-xl shadow-lg border border-neutral-200 p-6">
               <h2 className="font-outfit text-2xl font-extrabold text-neutral-900 mb-4 uppercase tracking-wide">{t('followUs')}</h2>
               <div className="flex space-x-4">
-                <a href="#" className="text-neutral-600 hover:text-primary-600 font-medium transition-colors">
-                  {t('instagram')}
-                </a>
-                <a href="#" className="text-neutral-600 hover:text-primary-600 font-medium transition-colors">
-                  {t('twitter')}
-                </a>
-                <a href="#" className="text-neutral-600 hover:text-primary-600 font-medium transition-colors">
+                <a href="https://www.facebook.com/share/18hLJiTUda/" target="_blank" rel="noopener noreferrer" className="text-neutral-600 hover:text-primary-600 font-medium transition-colors">
                   {t('facebook')}
                 </a>
-                <a href="#" className="text-neutral-600 hover:text-primary-600 font-medium transition-colors">
-                  {t('youtube')}
+                <a href="https://www.tiktok.com/@almageko58" target="_blank" rel="noopener noreferrer" className="text-neutral-600 hover:text-primary-600 font-medium transition-colors">
+                  TikTok
                 </a>
               </div>
             </div>
