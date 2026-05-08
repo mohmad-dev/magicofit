@@ -19,7 +19,7 @@ export default async function deleteAndRecreateAdmin({ container }: { container:
     email: "mohamed@magicofit.com",
     first_name: "Mohamed",
     last_name: "Admin",
-    password_hash: "YourStrongPassword123"
+    password_hash: "Medusa@Admin2024!Secure"
   })
   
   console.log("✅ New admin user created!")
@@ -28,5 +28,5 @@ export default async function deleteAndRecreateAdmin({ container }: { container:
   console.log("")
   console.log("Login at: http://localhost:9000/admin")
   console.log("Email: mohamed@magicofit.com")
-  console.log("Password: YourStrongPassword123")
+  console.log("Password: Medusa@Admin2024!Secure")
 }
