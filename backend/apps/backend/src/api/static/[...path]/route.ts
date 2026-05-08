@@ -40,6 +40,10 @@ function safeJoin(baseDir: string, requestPath: string): string | null {
 const STATIC_DIR_CANDIDATES = [
   path.join(process.cwd(), "static"),
   path.join(process.cwd(), ".medusa", "server", "static"),
+  path.join(process.cwd(), ".medusa", "server", "public", "static"),
+  path.join(process.cwd(), ".medusa", "server", "public", "uploads"),
+  path.join(process.cwd(), "..", "static"),
+  path.join(process.cwd(), "..", "..", "static"),
 ];
 
 export async function GET(req: MedusaRequest, res: MedusaResponse) {
