@@ -8,6 +8,9 @@ COPY package.json package-lock.json ./
 COPY apps/backend/package.json ./apps/backend/package.json
 RUN npm install --legacy-peer-deps
 
+# Ensure Medusa CLI is available on PATH in CI/build environments
+RUN npm install -g @medusajs/cli@2.14.1
+
 # --- Build ---
 FROM base AS builder
 COPY --from=deps /app/node_modules ./node_modules
