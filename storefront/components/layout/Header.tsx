@@ -65,9 +65,9 @@ export default function Header() {
                 <Image
                   src="/images/logo.png"
                   alt="MagicOFit"
-                  width={160}
-                  height={40}
-                  className="h-10 w-auto object-contain transition-transform group-hover:scale-105"
+                  width={224}
+                  height={56}
+                  className="h-14 w-auto object-contain transition-transform group-hover:scale-105"
                 />
               </Link>
 
@@ -102,9 +102,9 @@ export default function Header() {
               <Image
                 src="/images/logo.png"
                 alt="MagicOFit"
-                width={160}
-                height={40}
-                className="h-10 w-auto object-contain transition-transform group-hover:scale-105"
+                width={224}
+                height={56}
+                className="h-14 w-auto object-contain transition-transform group-hover:scale-105"
               />
             </Link>
 
