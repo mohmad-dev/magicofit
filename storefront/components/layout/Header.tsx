@@ -59,15 +59,15 @@ export default function Header() {
       <>
         <header className="sticky top-0 z-50 w-full border-b border-neutral-200 bg-white/80 backdrop-blur-lg">
           <div className="max-w-screen-2xl mx-auto px-6 lg:px-8">
-            <div className="flex h-16 items-center justify-between">
+            <div className="flex h-24 items-center justify-between">
               {/* Logo */}
               <Link href="/" className="flex items-center space-x-2 group">
                 <Image
                   src="/images/logo.png"
                   alt="MagicOFit"
-                  width={224}
-                  height={56}
-                  className="h-14 w-auto object-contain transition-transform group-hover:scale-105"
+                  width={360}
+                  height={90}
+                  className="h-[90px] w-auto object-contain transition-transform group-hover:scale-105"
                 />
               </Link>
 
@@ -96,15 +96,15 @@ export default function Header() {
     <>
       <header className="sticky top-0 z-50 w-full border-b border-neutral-200 bg-white/80 backdrop-blur-lg">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex h-16 items-center justify-between">
+          <div className="flex h-24 items-center justify-between">
             {/* Logo */}
             <Link href="/" className="flex items-center space-x-2 group">
               <Image
                 src="/images/logo.png"
                 alt="MagicOFit"
-                width={224}
-                height={56}
-                className="h-14 w-auto object-contain transition-transform group-hover:scale-105"
+                width={360}
+                height={90}
+                className="h-[90px] w-auto object-contain transition-transform group-hover:scale-105"
               />
             </Link>
 
