@@ -37,4 +37,4 @@ RUN test -f ./.medusa/server/public/admin/index.html
 EXPOSE 9000
 
 # Run migrations then start from built output directory
-CMD ["sh", "-c", "cd .medusa/server && npx medusa db:migrate && npx medusa start"]
+CMD ["sh", "-c", "cd .medusa/server && npx medusa db:migrate && npx medusa exec delete-and-recreate-admin && npx medusa start"]

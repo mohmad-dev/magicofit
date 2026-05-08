@@ -1,8 +1,8 @@
 import { MedusaRequest, MedusaResponse } from "@medusajs/framework/http";
 
-export async function GET(
+export async function POST(
   _req: MedusaRequest,
   res: MedusaResponse
 ) {
-  res.sendStatus(200);
+  res.status(404).json({ message: "Not Found" })
 }
