@@ -15,6 +15,26 @@ module.exports = defineConfig({
   },
   modules: [
     {
+      resolve: "@medusajs/file",
+      options: {
+        providers: [
+          {
+            resolve: "@medusajs/file-s3",
+            id: "r2",
+            options: {
+              file_url: process.env.R2_PUBLIC_URL,
+              access_key_id: process.env.R2_ACCESS_KEY_ID,
+              secret_access_key: process.env.R2_SECRET_ACCESS_KEY,
+              region: process.env.R2_REGION || "auto",
+              bucket: process.env.R2_BUCKET,
+              endpoint: process.env.R2_ENDPOINT,
+              force_path_style: process.env.R2_FORCE_PATH_STYLE === "true",
+            },
+          },
+        ],
+      },
+    },
+    {
       resolve: "@medusajs/inventory",
       options: {
         // Inventory module configuration
