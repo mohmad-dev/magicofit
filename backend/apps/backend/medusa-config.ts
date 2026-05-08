@@ -20,15 +20,17 @@ module.exports = defineConfig({
         providers: [
           {
             resolve: "@medusajs/file-s3",
-            id: "r2",
+            id: "s3",
             options: {
-              file_url: process.env.R2_PUBLIC_URL,
-              access_key_id: process.env.R2_ACCESS_KEY_ID,
-              secret_access_key: process.env.R2_SECRET_ACCESS_KEY,
-              region: process.env.R2_REGION || "auto",
-              bucket: process.env.R2_BUCKET,
-              endpoint: process.env.R2_ENDPOINT,
-              force_path_style: process.env.R2_FORCE_PATH_STYLE === "true",
+              file_url: process.env.S3_FILE_URL,
+              access_key_id: process.env.S3_ACCESS_KEY_ID,
+              secret_access_key: process.env.S3_SECRET_ACCESS_KEY,
+              region: process.env.S3_REGION,
+              bucket: process.env.S3_BUCKET,
+              endpoint: process.env.S3_ENDPOINT,
+              additional_client_config: {
+                forcePathStyle: true,
+              },
             },
           },
         ],
