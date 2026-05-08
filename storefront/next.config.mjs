@@ -2,6 +2,21 @@ import createNextIntlPlugin from 'next-intl/plugin';
 
 const medusaBackendUrl = process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL
 
+let medusaImageRemotePattern
+try {
+  if (medusaBackendUrl) {
+    const u = new URL(medusaBackendUrl)
+    medusaImageRemotePattern = {
+      protocol: u.protocol.replace(":", ""),
+      hostname: u.hostname,
+      port: u.port || "",
+      pathname: "/**",
+    }
+  }
+} catch {
+  medusaImageRemotePattern = undefined
+}
+
 const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
 
 /** @type {import('next').NextConfig} */
@@ -11,6 +26,7 @@ const nextConfig = {
   },
   images: {
     remotePatterns: [
+      ...(medusaImageRemotePattern ? [medusaImageRemotePattern] : []),
       {
         protocol: "https",
         hostname: "images.unsplash.com",
@@ -75,7 +91,7 @@ const nextConfig = {
                 "frame-src 'self'",
                 "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
                 "font-src 'self' https://fonts.gstatic.com",
-                "img-src 'self' data: blob: https://*.r2.cloudflarestorage.com https://*.s3.amazonaws.com https://medusa-public-images.s3.eu-west-1.amazonaws.com https://images.unsplash.com https://*.unsplash.com https://placehold.co",
+                `img-src 'self' data: blob: https://*.r2.cloudflarestorage.com https://*.s3.amazonaws.com https://medusa-public-images.s3.eu-west-1.amazonaws.com https://images.unsplash.com https://*.unsplash.com https://placehold.co${medusaBackendUrl ? ` ${medusaBackendUrl}` : ""}`,
                 `connect-src 'self' https://*.meilisearch.com${medusaBackendUrl ? ` ${medusaBackendUrl}` : ""}`,
               ].join("; "),
             },
