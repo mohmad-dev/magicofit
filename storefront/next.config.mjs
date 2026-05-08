@@ -1,5 +1,7 @@
 import createNextIntlPlugin from 'next-intl/plugin';
 
+const medusaBackendUrl = process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL
+
 const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
 
 /** @type {import('next').NextConfig} */
@@ -74,7 +76,7 @@ const nextConfig = {
                 "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
                 "font-src 'self' https://fonts.gstatic.com",
                 "img-src 'self' data: blob: https://*.r2.cloudflarestorage.com https://*.s3.amazonaws.com https://medusa-public-images.s3.eu-west-1.amazonaws.com https://images.unsplash.com https://*.unsplash.com https://placehold.co",
-                "connect-src 'self' https://*.meilisearch.com",
+                `connect-src 'self' https://*.meilisearch.com${medusaBackendUrl ? ` ${medusaBackendUrl}` : ""}`,
               ].join("; "),
             },
             {
