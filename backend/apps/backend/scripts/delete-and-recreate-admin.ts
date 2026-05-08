@@ -10,14 +10,11 @@ export default async function deleteAndRecreateAdmin({ container }: { container:
 
   const userModuleService = container.resolve("user")
   
-  // Delete the existing user
-  const users = await userModuleService.listUsers({
-    email
-  })
+  // Delete existing user if present
+  const users = await userModuleService.listUsers({ email })
   
   if (users.length > 0) {
-    const user = users[0]
-    await userModuleService.deleteUsers(user.id)
+    await userModuleService.deleteUsers(users[0].id)
     console.log("✅ Old user deleted")
   }
   
@@ -26,13 +23,26 @@ export default async function deleteAndRecreateAdmin({ container }: { container:
     email,
     first_name: "Mohamed",
     last_name: "Admin",
-    password
   })
   
-  console.log("✅ New admin user created!")
-  console.log("Email:", newUser.email)
-  console.log("ID:", newUser.id)
-  console.log("")
-  console.log("Login at: http://localhost:9000/admin")
+  console.log("✅ User created:", newUser.email, "ID:", newUser.id)
+
+  // Create auth identity so the user can actually log in via emailpass
+  const authModuleService = container.resolve("auth")
+  
+  await authModuleService.createAuthIdentities({
+    provider_idp: "emailpass",
+    entity_id: newUser.id,
+    provider_metadata: {
+      email,
+      password,
+    },
+    app_metadata: {
+      user_id: newUser.id,
+    },
+  })
+  
+  console.log("✅ Auth identity created for:", email)
+  console.log("Login at: /app/login")
   console.log("Email:", email)
 }
