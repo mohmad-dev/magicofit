@@ -34,9 +34,9 @@ COPY --from=builder /app/apps/backend/static ./static/
 # Ensure admin build is present (Medusa expects .medusa/server/public/admin/index.html)
 RUN test -f ./.medusa/server/public/admin/index.html
 
-# Copy startup script
+# Copy startup script (fix CRLF from Windows)
 COPY start.sh ./start.sh
-RUN chmod +x ./start.sh
+RUN sed -i 's/\r$//' ./start.sh && chmod +x ./start.sh
 
 EXPOSE 9000
 

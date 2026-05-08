@@ -3,6 +3,8 @@ set -e
 
 cd .medusa/server
 
+echo "BOOTSTRAP_ADMIN=$BOOTSTRAP_ADMIN"
+echo "ADMIN_EMAIL=$ADMIN_EMAIL"
 echo "Running database migrations..."
 npx medusa db:migrate
 
