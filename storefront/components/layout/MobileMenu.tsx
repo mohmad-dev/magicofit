@@ -1,9 +1,10 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { X, Search, Heart, User, ShoppingBag, ChevronDown, ChevronUp } from "lucide-react";
+import { X, Search, Heart, User, ShoppingBag, ChevronDown, ChevronUp, Globe } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
+import { usePathname, useRouter } from "next/navigation";
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -16,6 +17,16 @@ export default function MobileMenu({ isOpen, onClose, cartCount = 0 }: MobileMen
   const menuRef = useRef<HTMLDivElement>(null);
   const t = useTranslations("mobileMenu");
   const tc = useTranslations("common");
+  const router = useRouter();
+  const pathname = usePathname();
+  const locale = pathname.startsWith("/ar") ? "ar" : "en";
+
+  const switchLocale = () => {
+    const newLocale = locale === "en" ? "ar" : "en";
+    const currentPath = pathname.replace(/^\/(en|ar)/, "") || "/";
+    onClose();
+    router.push(`/${newLocale}${currentPath === "/" ? "" : currentPath}`);
+  };
 
   // Focus trap implementation
   useEffect(() => {
@@ -299,7 +310,14 @@ export default function MobileMenu({ isOpen, onClose, cartCount = 0 }: MobileMen
         </div>
 
         {/* Footer Actions */}
-        <div className="absolute bottom-0 left-0 right-0 border-t border-neutral-200 bg-neutral-50 p-4">
+        <div className="absolute bottom-0 left-0 right-0 border-t border-neutral-200 bg-neutral-50 p-4 space-y-3">
+          <button
+            onClick={switchLocale}
+            className="flex items-center justify-center gap-2 w-full rounded-lg border border-neutral-300 px-4 py-3 text-neutral-700 font-semibold hover:bg-neutral-100 transition-colors"
+          >
+            <Globe className="h-5 w-5" />
+            {locale === "en" ? tc('arabic') : tc('english')}
+          </button>
           <Link
             href="/account"
             className="flex items-center justify-center gap-2 rounded-lg bg-neutral-900 px-4 py-3 text-white font-semibold hover:bg-neutral-800 transition-colors"

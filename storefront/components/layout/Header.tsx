@@ -59,15 +59,15 @@ export default function Header() {
       <>
         <header className="sticky top-0 z-50 w-full border-b border-neutral-200 bg-white/80 backdrop-blur-lg">
           <div className="max-w-screen-2xl mx-auto px-6 lg:px-8">
-            <div className="flex h-16 md:h-20 items-center justify-between">
+            <div className="flex h-16 items-center justify-between">
               {/* Logo */}
               <Link href="/" className="flex items-center space-x-2 group">
                 <Image
                   src="/images/logo.png"
                   alt="MagicOFit"
-                  width={180}
-                  height={46}
-                  className="h-10 md:h-14 w-auto object-contain transition-transform group-hover:scale-105"
+                  width={140}
+                  height={36}
+                  className="h-8 w-auto object-contain transition-transform group-hover:scale-105"
                 />
               </Link>
 
@@ -80,9 +80,25 @@ export default function Header() {
               </nav>
 
               {/* Right Actions */}
-              <div className="flex items-center space-x-2">
-                <Button variant="ghost" size="icon" className="relative hover:bg-neutral-100">
+              <div className="flex items-center space-x-1">
+                <Button variant="ghost" size="icon" className="h-10 w-10 hover:bg-neutral-100" onClick={() => setIsSearchOpen(true)} aria-label="Search products">
+                  <Search className="h-5 w-5 text-neutral-700" />
+                </Button>
+                <Button variant="ghost" size="icon" className="h-10 w-10 hover:bg-neutral-100 relative" onClick={() => router.push("/account/wishlist")} aria-label="View wishlist">
+                  <Heart className="h-5 w-5 text-neutral-700" />
+                </Button>
+                <Button variant="ghost" size="icon" className="relative h-10 w-10 hover:bg-neutral-100" onClick={openCart} aria-label={`Shopping cart with ${cartCount} items`}>
                   <ShoppingBag className="h-5 w-5 text-neutral-700" />
+                </Button>
+                <Button variant="ghost" size="icon" className="hidden lg:flex h-10 w-10 hover:bg-neutral-100" onClick={() => router.push("/account")} aria-label="View account">
+                  <User className="h-5 w-5 text-neutral-700" />
+                </Button>
+                <Button variant="ghost" size="sm" className="hidden lg:flex h-10 gap-2 hover:bg-neutral-100 font-medium" onClick={switchLocale}>
+                  <Globe className="h-4 w-4" />
+                  {locale === "en" ? t('arabic') : t('english')}
+                </Button>
+                <Button variant="ghost" size="icon" className="lg:hidden h-10 w-10 hover:bg-neutral-100" onClick={() => setIsMobileMenuOpen(true)} aria-label="Open menu">
+                  <Menu className="h-6 w-6 text-neutral-700" />
                 </Button>
               </div>
             </div>
@@ -102,9 +118,9 @@ export default function Header() {
               <Image
                 src="/images/logo.png"
                 alt="MagicOFit"
-                width={180}
-                height={46}
-                className="h-10 md:h-14 w-auto object-contain transition-transform group-hover:scale-105"
+                width={140}
+                height={36}
+                className="h-8 md:h-12 w-auto object-contain transition-transform group-hover:scale-105"
               />
             </Link>
 
@@ -137,11 +153,11 @@ export default function Header() {
             </nav>
 
             {/* Right Actions */}
-            <div className="flex items-center space-x-2">
-              <Button variant="ghost" size="icon" className="hidden lg:flex h-11 w-11 hover:bg-neutral-100" onClick={() => setIsSearchOpen(true)} aria-label="Search products">
+            <div className="flex items-center space-x-1">
+              <Button variant="ghost" size="icon" className="h-10 w-10 hover:bg-neutral-100" onClick={() => setIsSearchOpen(true)} aria-label="Search products">
                 <Search className="h-5 w-5 text-neutral-700" />
               </Button>
-              <Button variant="ghost" size="icon" className="hidden lg:flex h-11 w-11 hover:bg-neutral-100 relative" onClick={() => router.push("/account/wishlist")} aria-label="View wishlist">
+              <Button variant="ghost" size="icon" className="h-10 w-10 hover:bg-neutral-100 relative" onClick={() => router.push("/account/wishlist")} aria-label="View wishlist">
                 <Heart className="h-5 w-5 text-neutral-700" />
                 {wishlistCount > 0 && (
                   <span className="absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-[10px] font-bold text-white">
@@ -149,45 +165,22 @@ export default function Header() {
                   </span>
                 )}
               </Button>
-              <Button variant="ghost" size="icon" className="hidden lg:flex h-11 w-11 hover:bg-neutral-100" onClick={() => router.push("/account")} aria-label="View account">
-                <User className="h-5 w-5 text-neutral-700" />
-              </Button>
-              <Button variant="ghost" size="icon" className="flex lg:hidden h-11 w-11 hover:bg-neutral-100" onClick={() => setIsSearchOpen(true)} aria-label="Search products">
-                <Search className="h-5 w-5 text-neutral-700" />
-              </Button>
-              <Button variant="ghost" size="icon" className="flex lg:hidden h-11 w-11 hover:bg-neutral-100 relative" onClick={() => router.push("/account/wishlist")} aria-label="View wishlist">
-                <Heart className="h-5 w-5 text-neutral-700" />
-                {wishlistCount > 0 && (
-                  <span className="absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-[10px] font-bold text-white">
-                    {wishlistCount}
-                  </span>
-                )}
-              </Button>
-              <Button variant="ghost" size="icon" className="relative h-11 w-11 hover:bg-neutral-100" onClick={openCart} aria-label={`Shopping cart with ${cartCount} items`}>
+              <Button variant="ghost" size="icon" className="relative h-10 w-10 hover:bg-neutral-100" onClick={openCart} aria-label={`Shopping cart with ${cartCount} items`}>
                 <ShoppingBag className="h-5 w-5 text-neutral-700" />
                 {cartCount > 0 && (
-                  <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-primary-600 text-xs font-bold text-white shadow-lg" aria-hidden="true">
+                  <span className="absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-primary-600 text-[10px] font-bold text-white">
                     {cartCount}
                   </span>
                 )}
               </Button>
-              {/* Language Switcher */}
-              <Button 
-                variant="ghost" 
-                size="sm" 
-                className="hidden lg:flex h-11 gap-2 hover:bg-neutral-100 font-medium"
-                onClick={switchLocale}
-              >
+              <Button variant="ghost" size="icon" className="hidden lg:flex h-10 w-10 hover:bg-neutral-100" onClick={() => router.push("/account")} aria-label="View account">
+                <User className="h-5 w-5 text-neutral-700" />
+              </Button>
+              <Button variant="ghost" size="sm" className="hidden lg:flex h-10 gap-2 hover:bg-neutral-100 font-medium" onClick={switchLocale}>
                 <Globe className="h-4 w-4" />
                 {locale === "en" ? t('arabic') : t('english')}
               </Button>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="lg:hidden h-11 w-11 hover:bg-neutral-100"
-                onClick={() => setIsMobileMenuOpen(true)}
-                aria-label="Open menu"
-              >
+              <Button variant="ghost" size="icon" className="lg:hidden h-10 w-10 hover:bg-neutral-100" onClick={() => setIsMobileMenuOpen(true)} aria-label="Open menu">
                 <Menu className="h-6 w-6 text-neutral-700" />
               </Button>
             </div>
