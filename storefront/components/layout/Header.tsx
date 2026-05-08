@@ -5,6 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import { Menu, Search, ShoppingBag, Heart, User, Globe } from "lucide-react";
+import Image from "next/image";
 import { Button } from "../ui/Button";
 import MobileMenu from "./MobileMenu";
 import { useUIStore } from "@/stores/ui-store";
@@ -61,9 +62,11 @@ export default function Header() {
             <div className="flex h-16 items-center justify-between">
               {/* Logo */}
               <Link href="/" className="flex items-center space-x-2 group">
-                <img
+                <Image
                   src="/images/logo.png"
                   alt="MagicOFit"
+                  width={160}
+                  height={40}
                   className="h-10 w-auto object-contain transition-transform group-hover:scale-105"
                 />
               </Link>
@@ -96,9 +99,11 @@ export default function Header() {
           <div className="flex h-16 items-center justify-between">
             {/* Logo */}
             <Link href="/" className="flex items-center space-x-2 group">
-              <img
+              <Image
                 src="/images/logo.png"
                 alt="MagicOFit"
+                width={160}
+                height={40}
                 className="h-10 w-auto object-contain transition-transform group-hover:scale-105"
               />
             </Link>
