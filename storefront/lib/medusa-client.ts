@@ -1,6 +1,31 @@
 const MEDUSA_BACKEND_URL = process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL || 'http://localhost:9000'
 const PUBLISHABLE_API_KEY = process.env.NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY || ''
 
+function rewriteLocalhostUrls<T>(value: T, backendUrl: string): T {
+  const replace = (input: string) => input.replace(/^http:\/\/localhost:9000\b/i, backendUrl)
+
+  if (typeof value === "string") {
+    return replace(value) as unknown as T
+  }
+
+  if (Array.isArray(value)) {
+    return value.map((v) => rewriteLocalhostUrls(v, backendUrl)) as unknown as T
+  }
+
+  if (value && typeof value === "object") {
+    const obj = value as Record<string, unknown>
+    const out: Record<string, unknown> = {}
+
+    for (const [k, v] of Object.entries(obj)) {
+      out[k] = rewriteLocalhostUrls(v, backendUrl)
+    }
+
+    return out as T
+  }
+
+  return value
+}
+
 class MedusaClient {
   private baseUrl: string
   private publishableKey: string
@@ -52,26 +77,30 @@ class MedusaClient {
   }
 
   async get<T>(endpoint: string): Promise<T> {
-    return this.request<T>(endpoint, { method: 'GET' })
+    const data = await this.request<T>(endpoint, { method: 'GET' })
+    return rewriteLocalhostUrls(data, this.baseUrl)
   }
 
   async post<T>(endpoint: string, data?: any, options?: RequestInit): Promise<T> {
-    return this.request<T>(endpoint, {
+    const res = await this.request<T>(endpoint, {
       method: 'POST',
       body: JSON.stringify(data),
       ...options,
     })
+    return rewriteLocalhostUrls(res, this.baseUrl)
   }
 
   async put<T>(endpoint: string, data?: any): Promise<T> {
-    return this.request<T>(endpoint, {
+    const res = await this.request<T>(endpoint, {
       method: 'PUT',
       body: JSON.stringify(data),
     })
+    return rewriteLocalhostUrls(res, this.baseUrl)
   }
 
   async delete<T>(endpoint: string): Promise<T> {
-    return this.request<T>(endpoint, { method: 'DELETE' })
+    const res = await this.request<T>(endpoint, { method: 'DELETE' })
+    return rewriteLocalhostUrls(res, this.baseUrl)
   }
 }
 
