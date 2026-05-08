@@ -36,5 +36,5 @@ RUN test -f ./.medusa/server/public/admin/index.html
 
 EXPOSE 9000
 
-# Run migrations then start the built server
-CMD ["sh", "-c", "npx medusa db:migrate && node .medusa/server/index.js"]
+# Run migrations then start from built output directory
+CMD ["sh", "-c", "cd .medusa/server && npx medusa db:migrate && npx medusa start"]
