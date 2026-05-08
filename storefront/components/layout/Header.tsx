@@ -61,10 +61,11 @@ export default function Header() {
             <div className="flex h-16 items-center justify-between">
               {/* Logo */}
               <Link href="/" className="flex items-center space-x-2 group">
-                <span className="font-outfit text-xl font-extrabold text-black tracking-tight">
-                  <span className="font-bold">Magic</span>
-                  <span className="font-normal">OFit</span>
-                </span>
+                <img
+                  src="/images/logo.png"
+                  alt="MagicOFit"
+                  className="h-10 w-auto object-contain transition-transform group-hover:scale-105"
+                />
               </Link>
 
               {/* Desktop Navigation */}
@@ -95,10 +96,11 @@ export default function Header() {
           <div className="flex h-16 items-center justify-between">
             {/* Logo */}
             <Link href="/" className="flex items-center space-x-2 group">
-              <span className="font-outfit text-xl font-extrabold text-black tracking-tight">
-                <span className="font-bold">Magic</span>
-                <span className="font-normal">OFit</span>
-              </span>
+              <img
+                src="/images/logo.png"
+                alt="MagicOFit"
+                className="h-10 w-auto object-contain transition-transform group-hover:scale-105"
+              />
             </Link>
 
             {/* Desktop Navigation */}
