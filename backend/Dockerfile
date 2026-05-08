@@ -34,7 +34,10 @@ COPY --from=builder /app/apps/backend/static ./static/
 # Ensure admin build is present (Medusa expects .medusa/server/public/admin/index.html)
 RUN test -f ./.medusa/server/public/admin/index.html
 
+# Copy startup script
+COPY start.sh ./start.sh
+RUN chmod +x ./start.sh
+
 EXPOSE 9000
 
-# Run migrations then start from built output directory
-CMD ["sh", "-c", "cd .medusa/server && npx medusa db:migrate && npx medusa exec delete-and-recreate-admin && npx medusa start"]
+CMD ["./start.sh"]
