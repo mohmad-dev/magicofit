@@ -178,7 +178,9 @@ export default function ProductPage() {
     }
   );
 
-  // Use calculated_price for accurate pricing
+  // Use first variant price for all options (fixed price for product)
+  const firstVariant = product.variants?.[0];
+
   const getPrice = (variant: any) => {
     if (variant?.calculated_price) {
       return variant.calculated_price.calculated_amount / 100;
@@ -199,9 +201,10 @@ export default function ProductPage() {
     return 0;
   };
 
-  const price = getPrice(selectedVariant || product.variants?.[0]);
-  const originalPrice = getOriginalPrice(selectedVariant || product.variants?.[0]);
-  const inventoryQuantity = selectedVariant?.inventory_quantity ?? product.variants?.[0]?.inventory_quantity ?? 0;
+  // Always use first variant price (fixed price for all options)
+  const price = getPrice(firstVariant);
+  const originalPrice = getOriginalPrice(firstVariant);
+  const inventoryQuantity = firstVariant?.inventory_quantity ?? 0;
   // Calculate discount from compare_at_price (originalPrice)
   const discount = originalPrice > price ? Math.round(((originalPrice - price) / originalPrice) * 100) : 0;
 
@@ -224,7 +227,8 @@ export default function ProductPage() {
   };
 
   const handleBuyNow = () => {
-    const variantToUse = selectedVariant || product.variants?.[0];
+    // Use selected variant or first variant
+    const variantToUse = selectedVariant || firstVariant;
     if (!variantToUse) return;
 
     addItem({
