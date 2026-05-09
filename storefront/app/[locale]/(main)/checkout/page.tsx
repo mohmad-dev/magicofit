@@ -31,37 +31,37 @@ export default function CheckoutPage() {
     address: "",
   });
 
-  // Arabic governorate name to shipping option name mapping
-  // Matches exactly with Dashboard Shipping Option Type labels
-  const GOVERNORATE_TO_SHIPPING_OPTION: Record<string, string> = {
-    "القاهرة": "القاهرة",
-    "الجيزة": "الجيزة",
-    "الإسكندرية": "الإسكندرية",
-    "القليوبية": "القليوبية",
-    "الفيوم": "الفيوم",
-    "الفايوم": "الفيوم", // Alternative spelling
-    "بني سويف": "بني سويف",
-    "المنيا": "المنيا",
-    "أسيوط": "أسيوط",
-    "سوهاج": "سوهاج",
-    "قنا": "قنا",
-    "الأقصر": "الأقصر",
-    "أسوان": "أسوان",
-    "الدقهلية": "الدقهلية",
-    "الشرقية": "الشرقية",
-    "كفر الشيخ": "كفر الشيخ",
-    "الغربية": "الغربية",
-    "المنوفية": "المنوفية",
-    "البحيرة": "البحيرة",
-    "دمياط": "دمياط",
-    "بورسعيد": "بورسعيد",
-    "الإسماعيلية": "الإسماعيلية",
-    "السويس": "السويس",
-    "شمال سيناء": "شمال سيناء",
-    "جنوب سيناء": "جنوب سيناء",
-    "البحر الأحمر": "البحر الأحمر",
-    "الوادي الجديد": "الوادي الجديد",
-    "مطروح": "مطروح",
+  // Arabic governorate name to shipping option code mapping
+  // Maps Arabic governorate name to the shipping option type code in Dashboard
+  const GOVERNORATE_TO_SHIPPING_CODE: Record<string, string> = {
+    "القاهرة": "cairo",
+    "الجيزة": "giza",
+    "الإسكندرية": "alexandria",
+    "القليوبية": "qalyubia",
+    "الفيوم": "fayoum",
+    "الفايوم": "fayoum", // Alternative spelling
+    "بني سويف": "beni-suef",
+    "المنيا": "minya",
+    "أسيوط": "assiut",
+    "سوهاج": "sohag",
+    "قنا": "qena",
+    "الأقصر": "luxor",
+    "أسوان": "aswan",
+    "الدقهلية": "dakahlia",
+    "الشرقية": "sharqia",
+    "كفر الشيخ": "kafr-el-sheikh",
+    "الغربية": "gharbia",
+    "المنوفية": "monufia",
+    "البحيرة": "beheira",
+    "دمياط": "damietta",
+    "بورسعيد": "port-said",
+    "الإسماعيلية": "ismailia",
+    "السويس": "suez",
+    "شمال سيناء": "north-sinai",
+    "جنوب سيناء": "south-sinai",
+    "البحر الأحمر": "red-sea",
+    "الوادي الجديد": "new-valley",
+    "مطروح": "matrouh",
   };
 
   // Governorates ordered by proximity to Beni Suef (store HQ)
@@ -112,15 +112,15 @@ export default function CheckoutPage() {
         const data = await response.json();
         const options = data.shipping_options || [];
         
-        console.log('Shipping options:', options, 'Looking for:', formData.city);
+        console.log('Shipping options:', options, 'Looking for code:', formData.city);
         
-        // Find matching shipping option
-        const shippingOptionName = GOVERNORATE_TO_SHIPPING_OPTION[formData.city];
+        // Find matching shipping option by type code
+        const shippingOptionCode = GOVERNORATE_TO_SHIPPING_CODE[formData.city];
         const selectedOption = options.find((opt: any) =>
-          shippingOptionName && opt.name?.includes(shippingOptionName)
+          shippingOptionCode && opt.type?.code === shippingOptionCode
         );
         
-        console.log('Selected option:', selectedOption, 'Name:', shippingOptionName);
+        console.log('Selected option:', selectedOption, 'Code:', shippingOptionCode);
         
         if (selectedOption?.amount) {
           // Convert from minor unit (cents) to major unit (EGP)

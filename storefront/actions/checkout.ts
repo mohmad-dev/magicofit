@@ -23,37 +23,37 @@ interface ShippingAddress {
   city: string;
 }
 
-// Arabic governorate name to shipping option name mapping
-// Matches exactly with Dashboard Shipping Option Type labels
-const GOVERNORATE_TO_SHIPPING_OPTION: Record<string, string> = {
-  "القاهرة": "القاهرة",
-  "الجيزة": "الجيزة",
-  "الإسكندرية": "الإسكندرية",
-  "القليوبية": "القليوبية",
-  "الفيوم": "الفيوم",
-  "الفايوم": "الفيوم", // Alternative spelling
-  "بني سويف": "بني سويف",
-  "المنيا": "المنيا",
-  "أسيوط": "أسيوط",
-  "سوهاج": "سوهاج",
-  "قنا": "قنا",
-  "الأقصر": "الأقصر",
-  "أسوان": "أسوان",
-  "الدقهلية": "الدقهلية",
-  "الشرقية": "الشرقية",
-  "كفر الشيخ": "كفر الشيخ",
-  "الغربية": "الغربية",
-  "المنوفية": "المنوفية",
-  "البحيرة": "البحيرة",
-  "دمياط": "دمياط",
-  "بورسعيد": "بورسعيد",
-  "الإسماعيلية": "الإسماعيلية",
-  "السويس": "السويس",
-  "شمال سيناء": "شمال سيناء",
-  "جنوب سيناء": "جنوب سيناء",
-  "البحر الأحمر": "البحر الأحمر",
-  "الوادي الجديد": "الوادي الجديد",
-  "مطروح": "مطروح",
+// Arabic governorate name to shipping option code mapping
+// Maps Arabic governorate name to the shipping option type code in Dashboard
+const GOVERNORATE_TO_SHIPPING_CODE: Record<string, string> = {
+  "القاهرة": "cairo",
+  "الجيزة": "giza",
+  "الإسكندرية": "alexandria",
+  "القليوبية": "qalyubia",
+  "الفيوم": "fayoum",
+  "الفايوم": "fayoum", // Alternative spelling
+  "بني سويف": "beni-suef",
+  "المنيا": "minya",
+  "أسيوط": "assiut",
+  "سوهاج": "sohag",
+  "قنا": "qena",
+  "الأقصر": "luxor",
+  "أسوان": "aswan",
+  "الدقهلية": "dakahlia",
+  "الشرقية": "sharqia",
+  "كفر الشيخ": "kafr-el-sheikh",
+  "الغربية": "gharbia",
+  "المنوفية": "monufia",
+  "البحيرة": "beheira",
+  "دمياط": "damietta",
+  "بورسعيد": "port-said",
+  "الإسماعيلية": "ismailia",
+  "السويس": "suez",
+  "شمال سيناء": "north-sinai",
+  "جنوب سيناء": "south-sinai",
+  "البحر الأحمر": "red-sea",
+  "الوادي الجديد": "new-valley",
+  "مطروح": "matrouh",
 };
 
 interface CheckoutData {
@@ -125,10 +125,10 @@ export async function processDirectOrder(data: CheckoutData) {
       );
       const options = shippingOptions.shipping_options || shippingOptions;
       if (options && options.length > 0) {
-        // Try to find the shipping option matching the selected governorate
-        const shippingOptionName = GOVERNORATE_TO_SHIPPING_OPTION[data.shippingAddress.city];
+        // Try to find the shipping option matching the selected governorate by code
+        const shippingOptionCode = GOVERNORATE_TO_SHIPPING_CODE[data.shippingAddress.city];
         let selectedOption = options.find((opt: any) =>
-          shippingOptionName && opt.name?.includes(shippingOptionName)
+          shippingOptionCode && opt.type?.code === shippingOptionCode
         );
         // Fallback to first option if no match found
         if (!selectedOption) {
