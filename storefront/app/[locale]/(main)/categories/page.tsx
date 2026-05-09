@@ -15,25 +15,32 @@ async function getCategoryData() {
       getProducts({ limit: 100 }),
     ]);
 
+    console.log('=== CATEGORIES DEBUG ===');
+    console.log('Categories found:', categories.length);
+    console.log('Products found:', productsData.products.length);
+
     if (categories.length === 0) return [];
 
     const allProducts = productsData.products;
 
-    return categories
-      .map((cat) => {
-        const catProducts = allProducts.filter((p: any) =>
-          p.categories?.some((c: any) => (c.id || c.category_id) === cat.id)
-        );
-        return {
-          id: cat.id,
-          name: cat.name,
-          image: cat.metadata?.image as string || `https://ui-avatars.com/api/?name=${encodeURIComponent(cat.name)}&background=F97316&color=fff&size=400&bold=true`,
-          productCount: catProducts.length,
-          slug: cat.handle,
-        };
-      })
-      .filter((cat) => cat.productCount > 0);
-  } catch {
+    const categoryData = categories.map((cat) => {
+      const catProducts = allProducts.filter((p: any) =>
+        p.categories?.some((c: any) => (c.id || c.category_id) === cat.id)
+      );
+      console.log(`Category: ${cat.name} (${cat.handle}) - Products: ${catProducts.length}`);
+      return {
+        id: cat.id,
+        name: cat.name,
+        image: cat.metadata?.image as string || `https://ui-avatars.com/api/?name=${encodeURIComponent(cat.name)}&background=F97316&color=fff&size=400&bold=true`,
+        productCount: catProducts.length,
+        slug: cat.handle,
+      };
+    });
+
+    // Show all categories, even if they have 0 products
+    return categoryData;
+  } catch (error) {
+    console.error('Error fetching categories:', error);
     return [];
   }
 }
