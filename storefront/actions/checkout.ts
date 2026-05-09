@@ -23,36 +23,36 @@ interface ShippingAddress {
   city: string;
 }
 
-// Arabic governorate name to English name mapping for shipping option matching
-// Ordered by proximity to Beni Suef (store HQ) ascending
-const GOVERNORATE_MAP: Record<string, string> = {
-  "بني سويف": "Beni Suef",
-  "الفيوم": "Fayoum",
-  "المنيا": "Minya",
-  "الجيزة": "Giza",
-  "القاهرة": "Cairo",
-  "القليوبية": "Qalyubia",
-  "المنوفية": "Monufia",
-  "الشرقية": "Sharqia",
-  "الدقهلية": "Dakahlia",
-  "كفر الشيخ": "Kafr El Sheikh",
-  "الغربية": "Gharbia",
-  "البحيرة": "Beheira",
-  "الإسكندرية": "Alexandria",
-  "دمياط": "Damietta",
-  "بورسعيد": "Port Said",
-  "الإسماعيلية": "Ismailia",
-  "السويس": "Suez",
-  "أسيوط": "Assiut",
-  "سوهاج": "Sohag",
-  "قنا": "Qena",
-  "الأقصر": "Luxor",
-  "أسوان": "Aswan",
-  "البحر الأحمر": "Red Sea",
-  "الوادي الجديد": "New Valley",
-  "مطروح": "Matrouh",
-  "شمال سيناء": "North Sinai",
-  "جنوب سيناء": "South Sinai",
+// Arabic governorate name to shipping option name mapping
+// Maps the Arabic governorate name to the shipping option name in Dashboard
+const GOVERNORATE_TO_SHIPPING_OPTION: Record<string, string> = {
+  "القاهرة": "القاهره",
+  "الجيزة": "الجيزة",
+  "الإسكندرية": "الإسكندرية",
+  "القليوبية": "القليوبية",
+  "الفايوم": "الفيوم",
+  "بني سويف": "بني سويف",
+  "المنيا": "المنيا",
+  "أسيوط": "أسيوط",
+  "سوهاج": "سوهاج",
+  "قنا": "قنا",
+  "الأقصر": "الأقصر",
+  "أسوان": "أسوان",
+  "الدقهلية": "الدقهلية",
+  "الشرقية": "الشرقية",
+  "كفر الشيخ": "كفر الشيخ",
+  "الغربية": "الغربية",
+  "المنوفية": "المنوفية",
+  "البحيرة": "البحيرة",
+  "دمياط": "دمياط",
+  "بورسعيد": "بورسعيد",
+  "الإسماعيلية": "الإسماعيلية",
+  "السويس": "السويس",
+  "شمال سيناء": "شمال سيناء",
+  "جنوب سيناء": "جنوب سيناء",
+  "البحر الأحمر": "البحر الأحمر",
+  "الوادي الجديد": "الوادي الجديد",
+  "مطروح": "مطروح",
 };
 
 interface CheckoutData {
@@ -125,9 +125,9 @@ export async function processDirectOrder(data: CheckoutData) {
       const options = shippingOptions.shipping_options || shippingOptions;
       if (options && options.length > 0) {
         // Try to find the shipping option matching the selected governorate
-        const govEnglish = GOVERNORATE_MAP[data.shippingAddress.city];
+        const shippingOptionName = GOVERNORATE_TO_SHIPPING_OPTION[data.shippingAddress.city];
         let selectedOption = options.find((opt: any) =>
-          govEnglish && opt.name?.includes(govEnglish)
+          shippingOptionName && opt.name?.includes(shippingOptionName)
         );
         // Fallback to first option if no match found
         if (!selectedOption) {
