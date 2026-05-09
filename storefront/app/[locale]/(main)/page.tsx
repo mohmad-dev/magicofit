@@ -47,7 +47,7 @@ const promoBanners = [
     image_url: "https://images.unsplash.com/photo-1461896836934-bd45ba8fcf9b?w=800&h=400&fit=crop",
     title: "Footwear",
     subtitle: "Run faster, jump higher",
-    cta_link: "/categories/footwear",
+    cta_link: "/shop/footwear",
     cta_text: "Shop Footwear",
   },
   {
@@ -55,7 +55,7 @@ const promoBanners = [
     image_url: "https://images.unsplash.com/photo-1534438327706-2c5389b0f1b0?w=800&h=400&fit=crop",
     title: "Fitness Equipment",
     subtitle: "Elevate your training",
-    cta_link: "/categories/fitness",
+    cta_link: "/shop/fitness",
     cta_text: "Shop Fitness",
   },
   {
@@ -63,7 +63,7 @@ const promoBanners = [
     image_url: "https://images.unsplash.com/photo-1553062407-30eeb17e3b30?w=800&h=400&fit=crop",
     title: "Bags & Accessories",
     subtitle: "Carry your gear in style",
-    cta_link: "/categories/accessories",
+    cta_link: "/shop/accessories",
     cta_text: "Shop Accessories",
   },
   {
@@ -71,7 +71,7 @@ const promoBanners = [
     image_url: "https://images.unsplash.com/photo-1579952363877-3d6b3710293f?w=800&h=400&fit=crop",
     title: "Team Sports",
     subtitle: "Gear up for the match",
-    cta_link: "/categories/team-sports",
+    cta_link: "/shop/team-sports",
     cta_text: "Shop Team Sports",
   },
 ];
