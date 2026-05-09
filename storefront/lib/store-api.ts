@@ -19,12 +19,23 @@ export async function getProducts(params?: {
   if (params?.region_id) queryParams.append('region_id', params.region_id)
   
   // Medusa v2 often needs specific fields for pricing
-  queryParams.append('fields', '*variants.calculated_price')
+  queryParams.append('fields', '*variants.calculated_price,*categories,*collection')
 
   const queryString = queryParams.toString()
   const endpoint = `/store/products${queryString ? `?${queryString}` : ''}`
 
-  return medusaClient.get<{ products: MedusaProduct[]; count: number }>(endpoint)
+  console.log('=== GET PRODUCTS API ===');
+  console.log('Endpoint:', endpoint);
+  console.log('Params:', params);
+
+  const result = await medusaClient.get<{ products: MedusaProduct[]; count: number }>(endpoint);
+  
+  console.log('Products returned:', result.products.length);
+  if (params?.collection_id || params?.category_id) {
+    console.log('Products with collection:', result.products.map(p => ({ id: p.id, title: p.title, collection: (p as any).collection })));
+  }
+
+  return result;
 }
 
 export async function getProductByHandle(handle: string, regionId?: string): Promise<MedusaProduct> {
