@@ -178,24 +178,34 @@ export async function processDirectOrder(data: CheckoutData) {
         // Continue without summary
       }
 
+      console.log("=== COMPLETING CART ===");
+      console.log("Cart ID:", cartId);
+
       const completeRes: any = await medusaClient.post(`/store/carts/${cartId}/complete`);
+      console.log("=== COMPLETE RESPONSE ===");
+      console.log(JSON.stringify(completeRes, null, 2));
+
       if (completeRes?.order?.id) {
         orderId = completeRes.order.id;
-        console.log("Order created in Medusa:", orderId);
+        console.log("✅ Order created in Medusa:", orderId);
       } else if (completeRes?.type === "order" && completeRes?.order) {
         orderId = completeRes.order.id;
-        console.log("Order created in Medusa:", orderId);
+        console.log("✅ Order created in Medusa:", orderId);
+      } else if (completeRes?.type === "cart") {
+        console.error("❌ Cart not completed - still a cart:", completeRes.cart?.id);
+        console.error("Cart state:", completeRes.cart);
       } else {
-        console.warn("Cart completion response:", JSON.stringify(completeRes).slice(0, 200));
+        console.warn("⚠️ Unknown response:", JSON.stringify(completeRes).slice(0, 500));
       }
-    } catch (completeError) {
-      console.error("Cart completion error:", completeError);
+    } catch (completeError: any) {
+      console.error("❌ Cart completion error:", completeError);
+      console.error("Error details:", completeError?.response?.data || completeError?.message);
       return {
-        success: true,
+        success: false,
         cartId: cartId,
         orderId: orderId,
         cartSummary,
-        warning: "Order may not have completed in Medusa. Check cart: " + cartId,
+        error: "Cart completion failed: " + (completeError?.message || "Unknown error"),
       };
     }
 
