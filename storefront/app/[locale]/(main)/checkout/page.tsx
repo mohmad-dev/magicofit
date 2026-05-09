@@ -21,6 +21,8 @@ export default function CheckoutPage() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isGovDropdownOpen, setIsGovDropdownOpen] = useState(false);
   const [govSearch, setGovSearch] = useState("");
+  const [shippingPrice, setShippingPrice] = useState<number | null>(null);
+  const [isLoadingShipping, setIsLoadingShipping] = useState(false);
   const govDropdownRef = useRef<HTMLDivElement>(null);
   const [formData, setFormData] = useState({
     fullName: "",
@@ -28,6 +30,37 @@ export default function CheckoutPage() {
     city: "بني سويف",
     address: "",
   });
+
+  // Arabic governorate name to shipping option name mapping
+  const GOVERNORATE_TO_SHIPPING_OPTION: Record<string, string> = {
+    "القاهرة": "القاهره",
+    "الجيزة": "الجيزة",
+    "الإسكندرية": "الإسكندرية",
+    "القليوبية": "القليوبية",
+    "الفايوم": "الفيوم",
+    "بني سويف": "بني سويف",
+    "المنيا": "المنيا",
+    "أسيوط": "أسيوط",
+    "سوهاج": "سوهاج",
+    "قنا": "قنا",
+    "الأقصر": "الأقصر",
+    "أسوان": "أسوان",
+    "الدقهلية": "الدقهلية",
+    "الشرقية": "الشرقية",
+    "كفر الشيخ": "كفر الشيخ",
+    "الغربية": "الغربية",
+    "المنوفية": "المنوفية",
+    "البحيرة": "البحيرة",
+    "دمياط": "دمياط",
+    "بورسعيد": "بورسعيد",
+    "الإسماعيلية": "الإسماعيلية",
+    "السويس": "السويس",
+    "شمال سيناء": "شمال سيناء",
+    "جنوب سيناء": "جنوب سيناء",
+    "البحر الأحمر": "البحر الأحمر",
+    "الوادي الجديد": "الوادي الجديد",
+    "مطروح": "مطروح",
+  };
 
   // Governorates ordered by proximity to Beni Suef (store HQ)
   const governorates: [string, string][] = [
@@ -59,6 +92,46 @@ export default function CheckoutPage() {
     ["شمال سيناء", "northSinai"],
     ["جنوب سيناء", "southSinai"],
   ];
+
+  // Fetch shipping price when governorate changes
+  useEffect(() => {
+    const fetchShippingPrice = async () => {
+      if (!medusaCartId || !formData.city) return;
+      
+      setIsLoadingShipping(true);
+      try {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL}/store/shipping-options?cart_id=${medusaCartId}`);
+        const data = await response.json();
+        const options = data.shipping_options || [];
+        
+        // Find matching shipping option
+        const shippingOptionName = GOVERNORATE_TO_SHIPPING_OPTION[formData.city];
+        const selectedOption = options.find((opt: any) =>
+          shippingOptionName && opt.name?.includes(shippingOptionName)
+        );
+        
+        if (selectedOption?.amount) {
+          // Convert from minor unit (cents) to major unit (EGP)
+          setShippingPrice(selectedOption.amount / 100);
+        } else {
+          // Fallback to first option or default
+          const fallbackOption = options[0];
+          if (fallbackOption?.amount) {
+            setShippingPrice(fallbackOption.amount / 100);
+          } else {
+            setShippingPrice(30); // Default fallback
+          }
+        }
+      } catch (error) {
+        console.error("Failed to fetch shipping price:", error);
+        setShippingPrice(30); // Default fallback
+      } finally {
+        setIsLoadingShipping(false);
+      }
+    };
+    
+    fetchShippingPrice();
+  }, [formData.city, medusaCartId]);
 
   // Close dropdown on outside click
   useEffect(() => {
@@ -337,9 +410,12 @@ export default function CheckoutPage() {
           <div className="sticky top-24">
             <OrderSummary
               items={items}
-              shippingMethod="standard"
+              shippingPrice={shippingPrice ?? undefined}
               tax={tax}
             />
+            {isLoadingShipping && (
+              <p className="text-xs text-neutral-500 mt-2 text-center">{t("loadingShipping")}</p>
+            )}
             
             {/* Trust Policies */}
             <div className="mt-6 space-y-3 px-4">

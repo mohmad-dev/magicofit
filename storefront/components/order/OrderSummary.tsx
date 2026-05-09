@@ -10,24 +10,28 @@ interface OrderItem {
 
 interface OrderSummaryProps {
   items: OrderItem[];
-  shippingMethod: string;
+  shippingMethod?: string;
+  shippingPrice?: number; // Dynamic shipping price from API
   tax?: number;
   discount?: number;
 }
 
+// Fallback shipping prices (used only if shippingPrice not provided)
 const shippingPrices: Record<string, number> = {
-  standard: 25,
-  express: 50,
+  standard: 30,
+  express: 60,
   "same-day": 100,
 };
 
 export default function OrderSummary({
   items,
-  shippingMethod,
+  shippingMethod = "standard",
+  shippingPrice,
   tax = 0,
   discount = 0,
 }: OrderSummaryProps) {
-  const shipping = shippingPrices[shippingMethod] || 25;
+  // Use provided shippingPrice, otherwise fallback to hardcoded prices
+  const shipping = shippingPrice ?? shippingPrices[shippingMethod] ?? 30;
 
   return (
     <div className="rounded-lg border border-gray-200 bg-gray-50 p-4 space-y-4">
