@@ -50,7 +50,7 @@ export default function CategoryShowcase({
             {categories.map((category) => (
               <Link
                 key={category.id}
-                href={`/category/${category.slug}`}
+                href={`/shop/${category.slug}`}
                 className="group relative overflow-hidden rounded-xl aspect-square hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-primary-500/50 flex-none w-[200px] snap-start"
               >
                 {/* Image */}
@@ -87,7 +87,7 @@ export default function CategoryShowcase({
           {categories.map((category) => (
             <Link
               key={category.id}
-              href={`/category/${category.slug}`}
+              href={`/shop/${category.slug}`}
               className="group relative overflow-hidden rounded-2xl aspect-[4/3] hover:shadow-xl transition-all duration-300"
             >
               {/* Image */}
