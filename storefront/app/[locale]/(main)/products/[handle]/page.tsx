@@ -199,9 +199,9 @@ export default function ProductPage() {
     return 0;
   };
 
-  const price = getPrice(selectedVariant);
-  const originalPrice = getOriginalPrice(selectedVariant);
-  const inventoryQuantity = selectedVariant?.inventory_quantity || 0;
+  const price = getPrice(selectedVariant || product.variants?.[0]);
+  const originalPrice = getOriginalPrice(selectedVariant || product.variants?.[0]);
+  const inventoryQuantity = selectedVariant?.inventory_quantity ?? product.variants?.[0]?.inventory_quantity ?? 0;
   // Calculate discount from compare_at_price (originalPrice)
   const discount = originalPrice > price ? Math.round(((originalPrice - price) / originalPrice) * 100) : 0;
 
@@ -224,8 +224,9 @@ export default function ProductPage() {
   };
 
   const handleBuyNow = () => {
-    if (!selectedVariant) return;
-    
+    const variantToUse = selectedVariant || product.variants?.[0];
+    if (!variantToUse) return;
+
     addItem({
       productId: product.id,
       name: product.title || "",
@@ -236,7 +237,7 @@ export default function ProductPage() {
         size: selectedSize,
         color: selectedColor,
       },
-      variantId: selectedVariant?.id,
+      variantId: variantToUse.id,
     });
 
     router.push("/checkout");
