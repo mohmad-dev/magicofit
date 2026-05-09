@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ProductCard from "@/components/product/ProductCard";
 import { Container } from "@/components/layout/Container";
 import { useTranslations } from "next-intl";
@@ -24,9 +24,18 @@ interface CollectionClientProps {
 export default function CollectionClient({
   initialProducts,
   collectionName,
+  collectionHandle,
 }: CollectionClientProps) {
   const [products] = useState(initialProducts);
   const t = useTranslations("collection");
+
+  useEffect(() => {
+    console.log('=== COLLECTION CLIENT DEBUG ===');
+    console.log('Collection Handle:', collectionHandle);
+    console.log('Collection Name:', collectionName);
+    console.log('Products Count:', products.length);
+    console.log('Products:', products);
+  }, [collectionHandle, collectionName, products]);
 
   return (
     <Container className="py-8 md:py-16 min-h-screen">
