@@ -10,16 +10,34 @@ interface CollectionPageProps {
 
 async function getCollectionData(collectionHandle: string) {
   try {
+    // Decode the URL handle
+    const decodedHandle = decodeURIComponent(collectionHandle);
+
     // Get all collections to find the collection ID
     const collections = await getCollections();
-    const collection = collections.find(c => c.handle === collectionHandle);
 
     console.log('=== COLLECTION DEBUG ===');
-    console.log('Looking for handle:', collectionHandle);
+    console.log('Raw handle from URL:', collectionHandle);
+    console.log('Decoded handle:', decodedHandle);
+    console.log('All collections:', collections.map(c => ({ id: c.id, handle: c.handle, title: c.title })));
+
+    // Try to find collection by handle (both encoded and decoded)
+    let collection = collections.find(c => c.handle === decodedHandle);
+    if (!collection) {
+      collection = collections.find(c => c.handle === collectionHandle);
+    }
+
     console.log('Found collection:', collection?.id, collection?.title);
 
     if (!collection) {
-      return { products: [], collectionName: decodeURIComponent(collectionHandle) };
+      return {
+        products: [],
+        collectionName: decodedHandle,
+        debugInfo: {
+          searchedHandle: decodedHandle,
+          availableCollections: collections.map(c => c.handle),
+        }
+      };
     }
 
     // Try to fetch region for pricing
@@ -33,7 +51,7 @@ async function getCollectionData(collectionHandle: string) {
     }
 
     // Fetch products for this collection
-    const productsData = await getProducts({ 
+    const productsData = await getProducts({
       limit: 50,
       collection_id: [collection.id],
       region_id: regionId,
@@ -45,7 +63,7 @@ async function getCollectionData(collectionHandle: string) {
     // Transform products
     const transformedProducts = productsData.products.map((product: MedusaProduct) => {
       const firstVariant = product.variants?.[0];
-      
+
       const getPrice = (variant: any) => {
         if (variant?.calculated_price) {
           return variant.calculated_price.calculated_amount / 100;
@@ -80,22 +98,27 @@ async function getCollectionData(collectionHandle: string) {
     return {
       products: transformedProducts,
       collectionName: collection.title,
+      debugInfo: {
+        searchedHandle: decodedHandle,
+        foundCollection: collection.handle,
+      }
     };
   } catch (error) {
     console.error('Error fetching collection data:', error);
-    return { products: [], collectionName: decodeURIComponent(collectionHandle) };
+    return { products: [], collectionName: decodeURIComponent(collectionHandle), debugInfo: { error: String(error) } };
   }
 }
 
 export default async function CollectionPage({ params }: CollectionPageProps) {
   const { handle } = await params;
-  const { products, collectionName } = await getCollectionData(handle);
+  const { products, collectionName, debugInfo } = await getCollectionData(handle);
 
   return (
     <CollectionClient
       initialProducts={products}
       collectionName={collectionName}
       collectionHandle={handle}
+      debugInfo={debugInfo}
     />
   );
 }

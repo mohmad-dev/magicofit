@@ -19,12 +19,19 @@ interface CollectionClientProps {
   initialProducts: Product[];
   collectionName: string;
   collectionHandle: string;
+  debugInfo?: {
+    searchedHandle?: string;
+    availableCollections?: string[];
+    foundCollection?: string;
+    error?: string;
+  };
 }
 
 export default function CollectionClient({
   initialProducts,
   collectionName,
   collectionHandle,
+  debugInfo,
 }: CollectionClientProps) {
   const [products] = useState(initialProducts);
   const t = useTranslations("collection");
@@ -35,7 +42,8 @@ export default function CollectionClient({
     console.log('Collection Name:', collectionName);
     console.log('Products Count:', products.length);
     console.log('Products:', products);
-  }, [collectionHandle, collectionName, products]);
+    console.log('Debug Info:', debugInfo);
+  }, [collectionHandle, collectionName, products, debugInfo]);
 
   return (
     <Container className="py-8 md:py-16 min-h-screen">
@@ -60,6 +68,21 @@ export default function CollectionClient({
       ) : (
         <div className="text-center py-16">
           <p className="text-neutral-400 text-lg">{t('noProducts')}</p>
+          {debugInfo && (
+            <div className="mt-4 p-4 bg-neutral-100 rounded-lg text-left text-sm">
+              <p className="font-bold">Debug Info:</p>
+              <p>Searched Handle: {debugInfo.searchedHandle}</p>
+              {debugInfo.availableCollections && (
+                <p>Available Collections: {debugInfo.availableCollections.join(', ')}</p>
+              )}
+              {debugInfo.foundCollection && (
+                <p>Found Collection: {debugInfo.foundCollection}</p>
+              )}
+              {debugInfo.error && (
+                <p className="text-red-500">Error: {debugInfo.error}</p>
+              )}
+            </div>
+          )}
         </div>
       )}
     </Container>
