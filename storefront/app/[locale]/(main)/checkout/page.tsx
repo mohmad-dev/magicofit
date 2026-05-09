@@ -98,16 +98,13 @@ export default function CheckoutPage() {
   // Fetch shipping price when governorate changes or cart is created
   useEffect(() => {
     const fetchShippingPrice = async () => {
-      if (!formData.city) return;
-      
+      if (!formData.city || !medusaCartId) return;
+
       setIsLoadingShipping(true);
       try {
-        // Use medusaCartId if available, otherwise fetch shipping options without cart
-        const cartId = medusaCartId;
-        const url = cartId 
-          ? `${process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL}/store/shipping-options?cart_id=${cartId}`
-          : `${process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL}/store/shipping-options?region_id=${process.env.NEXT_PUBLIC_MEDUSA_REGION_ID}`;
-        
+        // API requires cart_id, not region_id
+        const url = `${process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL}/store/shipping-options?cart_id=${medusaCartId}`;
+
         const response = await fetch(url, {
           headers: {
             'x-publishable-api-key': process.env.NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY || '',
