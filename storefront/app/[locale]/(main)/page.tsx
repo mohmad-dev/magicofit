@@ -4,7 +4,7 @@ import type { MedusaCategory } from "@/lib/types/medusa";
 
 export const revalidate = 3600; // ISR revalidation every hour
 
-// Banners - static for now, can be moved to CMS later
+// Hero slides - static for now
 const heroSlides = [
   {
     id: "promo-1",
@@ -24,55 +24,19 @@ const heroSlides = [
   },
 ];
 
-// Side banners for desktop hero grid (2 stacked banners)
+// Side banners - static for now
 const sideBanners = [
   {
     id: "side-1",
-    image_url: "https://images.unsplash.com/photo-1571019613454-0cb6d4b3f8d7?w=600&h=400&fit=crop",
+    image_url: "/images/heropic.webp",
     title: "New Arrivals",
-    cta_link: "/shop?sort=newest",
+    cta_link: "/collection/new-arrivals",
   },
   {
     id: "side-2",
-    image_url: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&h=400&fit=crop",
+    image_url: "/images/heropic2.webp",
     title: "Sale Up to 50%",
-    cta_link: "/shop?sale=true",
-  },
-];
-
-// Promotional category banners (Go Sport style)
-const promoBanners = [
-  {
-    id: "promo-cat-1",
-    image_url: "https://images.unsplash.com/photo-1461896836934-bd45ba8fcf9b?w=800&h=400&fit=crop",
-    title: "Footwear",
-    subtitle: "Run faster, jump higher",
-    cta_link: "/shop/footwear",
-    cta_text: "Shop Footwear",
-  },
-  {
-    id: "promo-cat-2",
-    image_url: "https://images.unsplash.com/photo-1534438327706-2c5389b0f1b0?w=800&h=400&fit=crop",
-    title: "Fitness Equipment",
-    subtitle: "Elevate your training",
-    cta_link: "/shop/fitness",
-    cta_text: "Shop Fitness",
-  },
-  {
-    id: "promo-cat-3",
-    image_url: "https://images.unsplash.com/photo-1553062407-30eeb17e3b30?w=800&h=400&fit=crop",
-    title: "Bags & Accessories",
-    subtitle: "Carry your gear in style",
-    cta_link: "/shop/accessories",
-    cta_text: "Shop Accessories",
-  },
-  {
-    id: "promo-cat-4",
-    image_url: "https://images.unsplash.com/photo-1579952363877-3d6b3710293f?w=800&h=400&fit=crop",
-    title: "Team Sports",
-    subtitle: "Gear up for the match",
-    cta_link: "/shop/team-sports",
-    cta_text: "Shop Team Sports",
+    cta_link: "/collection/تخفيضات",
   },
 ];
 
@@ -201,12 +165,23 @@ async function getHomeData() {
     // Strip categoryIds from tab products
     const stripCatIds = (prods: any[]) => prods.map(({ categoryIds, ...rest }: any) => rest);
 
+    // Create promo banners from categories with products
+    const promoBanners = categories.slice(0, 4).map((cat: any) => ({
+      id: `promo-${cat.id}`,
+      image_url: cat.image || `/images/category-placeholder.svg`,
+      title: cat.name,
+      subtitle: `${cat.productCount} منتجات`,
+      cta_link: `/shop/${cat.slug}`,
+      cta_text: "تسوق الآن",
+    }));
+
     return {
       featuredProducts: stripCatIds(featuredProducts),
       bestSellers: stripCatIds(bestSellers),
       latestArrivals: stripCatIds(latestArrivals),
       categorySections,
       categories,
+      promoBanners,
     };
   } catch (error) {
     console.error('Error fetching home data:', error);
@@ -216,6 +191,7 @@ async function getHomeData() {
       latestArrivals: [],
       categorySections: [],
       categories: [],
+      promoBanners: [],
     };
   }
 }
@@ -227,7 +203,7 @@ export default async function Home() {
     <HomeClient
       banners={heroSlides}
       sideBanners={sideBanners}
-      promoBanners={promoBanners}
+      promoBanners={data.promoBanners}
       featuredProducts={data.featuredProducts}
       bestSellers={data.bestSellers}
       latestArrivals={data.latestArrivals}
