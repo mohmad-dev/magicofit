@@ -110,6 +110,10 @@
     "filters": "المرشحات",
     "allProducts": "جميع المنتجات",
     "browseCollection": "تصفح مجموعتنا الكاملة",
+  "collection": {
+    "products": "منتجات",
+    "noProducts": "لا توجد منتجات في هذه المجموعة"
+  },
     "noResultsFor": "لم يتم العثور على منتجات لـ \"{query}\"",
     "tryDifferent": "جرب كلمات مفتاحية مختلفة أو تصفح فئاتنا",
     "enterSearch": "أدخل مصطلح بحث للعثور على المنتجات"
