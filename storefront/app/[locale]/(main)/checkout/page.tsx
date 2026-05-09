@@ -32,12 +32,14 @@ export default function CheckoutPage() {
   });
 
   // Arabic governorate name to shipping option name mapping
+  // Note: Keys include both common spellings (e.g., الفيوم and الفايوم)
   const GOVERNORATE_TO_SHIPPING_OPTION: Record<string, string> = {
     "القاهرة": "القاهره",
     "الجيزة": "الجيزة",
     "الإسكندرية": "الإسكندرية",
     "القليوبية": "القليوبية",
-    "الفايوم": "الفيوم",
+    "الفيوم": "الفيوم",
+    "الفايوم": "الفيوم", // Alternative spelling
     "بني سويف": "بني سويف",
     "المنيا": "المنيا",
     "أسيوط": "أسيوط",
