@@ -143,13 +143,13 @@ export default function CheckoutPage() {
         console.log('Selected option:', selectedOption, 'Code:', shippingOptionCode);
         
         if (selectedOption?.amount) {
-          // Convert from minor unit (cents) to major unit (EGP)
-          setShippingPrice(selectedOption.amount / 100);
+          // API returns amount in EGP directly (not minor units)
+          setShippingPrice(selectedOption.amount);
         } else {
           // Fallback to first option or default
           const fallbackOption = options[0];
           if (fallbackOption?.amount) {
-            setShippingPrice(fallbackOption.amount / 100);
+            setShippingPrice(fallbackOption.amount);
           } else {
             setShippingPrice(30); // Default fallback
           }
