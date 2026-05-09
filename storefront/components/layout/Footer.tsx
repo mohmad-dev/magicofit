@@ -73,7 +73,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/categories/running"
+                  href="/shop/running"
                   className="text-neutral-600 transition-colors hover:text-primary-600 font-medium"
                 >
                   {t('running')}
@@ -81,7 +81,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/categories/football"
+                  href="/shop/football"
                   className="text-neutral-600 transition-colors hover:text-primary-600 font-medium"
                 >
                   {t('football')}
@@ -89,7 +89,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/categories/basketball"
+                  href="/shop/basketball"
                   className="text-neutral-600 transition-colors hover:text-primary-600 font-medium"
                 >
                   {t('basketball')}
@@ -97,7 +97,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/categories/gym"
+                  href="/shop/gym"
                   className="text-neutral-600 transition-colors hover:text-primary-600 font-medium"
                 >
                   {t('gymFitness')}

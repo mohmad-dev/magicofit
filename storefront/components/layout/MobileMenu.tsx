@@ -182,28 +182,28 @@ export default function MobileMenu({ isOpen, onClose, cartCount = 0 }: MobileMen
                   {t('allProducts')}
                 </Link>
                 <Link
-                  href="/categories/running"
+                  href="/shop/running"
                   className="block py-2 text-sm text-neutral-600 hover:text-primary-600 font-medium"
                   onClick={onClose}
                 >
                   {t('running')}
                 </Link>
                 <Link
-                  href="/categories/training"
+                  href="/shop/training"
                   className="block py-2 text-sm text-neutral-600 hover:text-primary-600 font-medium"
                   onClick={onClose}
                 >
                   {t('training')}
                 </Link>
                 <Link
-                  href="/categories/football"
+                  href="/shop/football"
                   className="block py-2 text-sm text-neutral-600 hover:text-primary-600 font-medium"
                   onClick={onClose}
                 >
                   {t('football')}
                 </Link>
                 <Link
-                  href="/categories/basketball"
+                  href="/shop/basketball"
                   className="block py-2 text-sm text-neutral-600 hover:text-primary-600 font-medium"
                   onClick={onClose}
                 >
@@ -228,17 +228,6 @@ export default function MobileMenu({ isOpen, onClose, cartCount = 0 }: MobileMen
                 <ChevronDown className="h-4 w-4" />
               )}
             </button>
-            {expandedSection === "categories" && (
-              <div id="categories-menu" className="bg-neutral-50 px-4 py-2 space-y-2">
-                <Link
-                  href="/categories"
-                  className="block py-2 text-sm text-neutral-600 hover:text-primary-600 font-medium"
-                  onClick={onClose}
-                >
-                  {t('viewAllCategories')}
-                </Link>
-              </div>
-            )}
           </div>
 
           {/* Support Section */}
