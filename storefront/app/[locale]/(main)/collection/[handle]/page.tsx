@@ -14,6 +14,10 @@ async function getCollectionData(collectionHandle: string) {
     const collections = await getCollections();
     const collection = collections.find(c => c.handle === collectionHandle);
 
+    console.log('=== COLLECTION DEBUG ===');
+    console.log('Looking for handle:', collectionHandle);
+    console.log('Found collection:', collection?.id, collection?.title);
+
     if (!collection) {
       return { products: [], collectionName: decodeURIComponent(collectionHandle) };
     }
@@ -34,6 +38,9 @@ async function getCollectionData(collectionHandle: string) {
       collection_id: [collection.id],
       region_id: regionId,
     });
+
+    console.log('Products found for collection:', productsData.products.length);
+    console.log('Product IDs:', productsData.products.map(p => p.id));
 
     // Transform products
     const transformedProducts = productsData.products.map((product: MedusaProduct) => {
