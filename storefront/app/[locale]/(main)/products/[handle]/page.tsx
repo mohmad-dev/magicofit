@@ -295,7 +295,17 @@ export default function ProductPage() {
 
           {/* Variant Selectors - Dynamic for ALL product options */}
           <div className="space-y-4">
-            {product.options?.filter((o) => o.values && o.values.length > 0).map((option) => {
+            {product.options?.filter((o) => {
+              // Filter out default/empty options (e.g., "Default option", "Default Title")
+              if (!o.values || o.values.length === 0) return false;
+              // Hide options with only "Default" values
+              const hasOnlyDefaults = o.values.every(v =>
+                v.value?.toLowerCase().includes('default') ||
+                v.value === 'Default Title' ||
+                v.value === 'Default option'
+              );
+              return !hasOnlyDefaults;
+            }).map((option) => {
               const isSize = option.title === "Size";
               const isColor = option.title === "Color";
               const selectedValue = isSize ? selectedSize : isColor ? selectedColor : selectedOptions[option.title];
