@@ -9,9 +9,9 @@ interface StockIndicatorProps {
 export default function StockIndicator({
   quantity,
   lowStockThreshold = 10,
-  manageInventory = true,
+  manageInventory,
 }: StockIndicatorProps) {
-  // If inventory is not managed, always show as in stock
+  // If inventory is not managed (undefined, null, or false), always show as in stock
   if (!manageInventory) {
     return (
       <div className="flex items-center gap-2 text-primary-600">
