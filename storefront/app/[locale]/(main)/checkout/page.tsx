@@ -112,7 +112,23 @@ export default function CheckoutPage() {
         const data = await response.json();
         const options = data.shipping_options || [];
         
-        console.log('Shipping options:', options, 'Looking for code:', formData.city);
+        // Detailed logging to show all fields
+        console.log('=== SHIPPING OPTIONS DEBUG ===');
+        console.log('Total options:', options.length);
+        console.log('Full API response:', JSON.stringify(data, null, 2));
+        options.forEach((opt: any, index: number) => {
+          console.log(`--- Option ${index + 1} ---`);
+          console.log('id:', opt.id);
+          console.log('name:', opt.name);
+          console.log('amount:', opt.amount);
+          console.log('type:', opt.type);
+          console.log('type?.id:', opt.type?.id);
+          console.log('type?.code:', opt.type?.code);
+          console.log('type?.label:', opt.type?.label);
+          console.log('Full option:', JSON.stringify(opt, null, 2));
+        });
+        console.log('Looking for governorate:', formData.city);
+        console.log('=============================');
         
         // Find matching shipping option by type code
         const shippingOptionCode = GOVERNORATE_TO_SHIPPING_CODE[formData.city];
