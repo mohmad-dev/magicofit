@@ -4,7 +4,7 @@ import { useState } from "react";
 import ProductCard from "../product/ProductCard";
 import { useTranslations } from "next-intl";
 import { ArrowRight } from "lucide-react";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 
 interface Product {
   id: string;
