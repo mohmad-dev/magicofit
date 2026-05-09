@@ -315,6 +315,8 @@ export default function ProductPage() {
                 else setSelectedOptions((prev) => ({ ...prev, [option.title]: val }));
               };
               const availableValues = product.variants?.map((v) => getVariantOptionValue(v.options, option.title)).filter(Boolean) as string[];
+              // If no available values found, allow all options (no inventory restriction)
+              const finalAvailableValues = availableValues.length > 0 ? availableValues : undefined;
 
               if (isColor) {
                 return (
@@ -323,7 +325,7 @@ export default function ProductPage() {
                     colors={option.values.map((v) => ({ name: v.value, value: v.value }))}
                     selectedColor={selectedValue}
                     onSelect={onSelect}
-                    availableColors={availableValues}
+                    availableColors={finalAvailableValues}
                   />
                 );
               }
@@ -342,7 +344,7 @@ export default function ProductPage() {
                       sizes={option.values.map((v) => v.value)}
                       selectedSize={selectedValue}
                       onSelect={onSelect}
-                      availableSizes={availableValues}
+                      availableSizes={finalAvailableValues}
                     />
                   </div>
                 );
@@ -354,7 +356,7 @@ export default function ProductPage() {
                   <label className="text-sm font-bold text-neutral-900 uppercase tracking-wide mb-2 block">{option.title}</label>
                   <div className="flex flex-wrap gap-2">
                     {option.values.map((v) => {
-                      const isAvailable = !availableValues || availableValues.includes(v.value);
+                      const isAvailable = !finalAvailableValues || finalAvailableValues.includes(v.value);
                       const isSelected = selectedValue === v.value;
                       return (
                         <button
