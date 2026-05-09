@@ -10,12 +10,34 @@ interface CategoryPageProps {
 
 async function getCategoryData(categorySlug: string) {
   try {
+    // Decode the URL slug
+    const decodedSlug = decodeURIComponent(categorySlug);
+
     // Get all categories to find the category ID
     const categories = await getCategories();
-    const category = categories.find(cat => cat.handle === categorySlug);
-    
+
+    console.log('=== CATEGORY DEBUG ===');
+    console.log('Raw slug from URL:', categorySlug);
+    console.log('Decoded slug:', decodedSlug);
+    console.log('All categories:', categories.map(c => ({ id: c.id, handle: c.handle, name: c.name })));
+
+    // Try to find category by handle (both encoded and decoded)
+    let category = categories.find(cat => cat.handle === decodedSlug);
     if (!category) {
-      return { products: [], categoryName: categorySlug };
+      category = categories.find(cat => cat.handle === categorySlug);
+    }
+
+    console.log('Found category:', category?.id, category?.name);
+
+    if (!category) {
+      return {
+        products: [],
+        categoryName: decodedSlug,
+        debugInfo: {
+          searchedSlug: decodedSlug,
+          availableCategories: categories.map(c => c.handle),
+        }
+      };
     }
 
     // Try to fetch region for pricing, but don't block products fetch if it fails
@@ -29,16 +51,19 @@ async function getCategoryData(categorySlug: string) {
     }
 
     // Fetch products for this category
-    const productsData = await getProducts({ 
+    const productsData = await getProducts({
       limit: 50,
       category_id: [category.id],
       region_id: regionId,
     });
 
+    console.log('Products found for category:', productsData.products.length);
+    console.log('Product IDs:', productsData.products.map(p => p.id));
+
     // Transform products
     const transformedProducts = productsData.products.map((product: MedusaProduct) => {
       const firstVariant = product.variants?.[0];
-      
+
       // Use calculated_price for accurate pricing
       const getPrice = (variant: any) => {
         if (variant?.calculated_price) {
@@ -74,22 +99,27 @@ async function getCategoryData(categorySlug: string) {
     return {
       products: transformedProducts,
       categoryName: category.name,
+      debugInfo: {
+        searchedSlug: decodedSlug,
+        foundCategory: category.handle,
+      }
     };
   } catch (error) {
     console.error('Error fetching category data:', error);
-    return { products: [], categoryName: categorySlug };
+    return { products: [], categoryName: decodeURIComponent(categorySlug), debugInfo: { error: String(error) } };
   }
 }
 
 export default async function CategoryPage({ params }: CategoryPageProps) {
   const { category } = await params;
-  const { products, categoryName } = await getCategoryData(category);
+  const { products, categoryName, debugInfo } = await getCategoryData(category);
 
   return (
     <CategoryClient
       initialProducts={products}
       categoryName={categoryName}
       categorySlug={category}
+      debugInfo={debugInfo}
     />
   );
 }

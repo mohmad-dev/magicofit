@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ProductGrid from "@/components/product/ProductGrid";
 import Breadcrumb from "@/components/layout/Breadcrumb";
 import { useTranslations } from "next-intl";
@@ -9,13 +9,28 @@ interface CategoryClientProps {
   initialProducts: any[];
   categoryName: string;
   categorySlug: string;
+  debugInfo?: {
+    searchedSlug?: string;
+    availableCategories?: string[];
+    foundCategory?: string;
+    error?: string;
+  };
 }
 
-export default function CategoryClient({ initialProducts, categoryName, categorySlug }: CategoryClientProps) {
+export default function CategoryClient({ initialProducts, categoryName, categorySlug, debugInfo }: CategoryClientProps) {
   const [sortBy, setSortBy] = useState("featured");
   const [filteredProducts, setFilteredProducts] = useState(initialProducts);
   const t = useTranslations("categoryPage");
   const tCommon = useTranslations("common");
+
+  useEffect(() => {
+    console.log('=== CATEGORY CLIENT DEBUG ===');
+    console.log('Category Slug:', categorySlug);
+    console.log('Category Name:', categoryName);
+    console.log('Products Count:', filteredProducts.length);
+    console.log('Products:', filteredProducts);
+    console.log('Debug Info:', debugInfo);
+  }, [categorySlug, categoryName, filteredProducts, debugInfo]);
 
   const sortOptions = [
     { value: "featured", label: t("sortFeatured") },
@@ -26,9 +41,9 @@ export default function CategoryClient({ initialProducts, categoryName, category
 
   const handleSortChange = (value: string) => {
     setSortBy(value);
-    
+
     let sorted = [...initialProducts];
-    
+
     switch (value) {
       case "price-low":
         sorted.sort((a, b) => a.price - b.price);
@@ -42,7 +57,7 @@ export default function CategoryClient({ initialProducts, categoryName, category
       default:
         break;
     }
-    
+
     setFilteredProducts(sorted);
   };
 
@@ -95,6 +110,21 @@ export default function CategoryClient({ initialProducts, categoryName, category
       ) : (
         <div className="text-center py-16">
           <p className="text-neutral-500 text-lg">{t("noProducts")}</p>
+          {debugInfo && (
+            <div className="mt-4 p-4 bg-neutral-100 rounded-lg text-left text-sm max-w-md mx-auto">
+              <p className="font-bold">Debug Info:</p>
+              <p>Searched Slug: {debugInfo.searchedSlug}</p>
+              {debugInfo.availableCategories && (
+                <p>Available Categories: {debugInfo.availableCategories.join(', ')}</p>
+              )}
+              {debugInfo.foundCategory && (
+                <p>Found Category: {debugInfo.foundCategory}</p>
+              )}
+              {debugInfo.error && (
+                <p className="text-red-500">Error: {debugInfo.error}</p>
+              )}
+            </div>
+          )}
         </div>
       )}
     </div>
