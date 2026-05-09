@@ -35,9 +35,9 @@ export default function TabbedProductShowcase({
   const t = useTranslations("productShowcase");
 
   const tabs = [
-    { id: "featured" as TabType, label: t('featured'), href: "/shop" },
-    { id: "bestsellers" as TabType, label: t('bestsellers'), href: "/shop?sort=bestsellers" },
-    { id: "latest" as TabType, label: t('latest'), href: "/shop?sort=newest" },
+    { id: "featured" as TabType, label: t('featured'), href: "/collection/منتجات-مميزة" },
+    { id: "bestsellers" as TabType, label: t('bestsellers'), href: "/collection/الأكثر-مبيعاً" },
+    { id: "latest" as TabType, label: t('latest'), href: "/collection/new-arrivals" },
   ];
 
   const getProducts = () => {
