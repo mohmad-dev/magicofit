@@ -93,22 +93,32 @@ export default function CheckoutPage() {
     ["جنوب سيناء", "southSinai"],
   ];
 
-  // Fetch shipping price when governorate changes
+  // Fetch shipping price when governorate changes or cart is created
   useEffect(() => {
     const fetchShippingPrice = async () => {
-      if (!medusaCartId || !formData.city) return;
+      if (!formData.city) return;
       
       setIsLoadingShipping(true);
       try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL}/store/shipping-options?cart_id=${medusaCartId}`);
+        // Use medusaCartId if available, otherwise fetch shipping options without cart
+        const cartId = medusaCartId;
+        const url = cartId 
+          ? `${process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL}/store/shipping-options?cart_id=${cartId}`
+          : `${process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL}/store/shipping-options?region_id=${process.env.NEXT_PUBLIC_MEDUSA_REGION_ID}`;
+        
+        const response = await fetch(url);
         const data = await response.json();
         const options = data.shipping_options || [];
+        
+        console.log('Shipping options:', options, 'Looking for:', formData.city);
         
         // Find matching shipping option
         const shippingOptionName = GOVERNORATE_TO_SHIPPING_OPTION[formData.city];
         const selectedOption = options.find((opt: any) =>
           shippingOptionName && opt.name?.includes(shippingOptionName)
         );
+        
+        console.log('Selected option:', selectedOption, 'Name:', shippingOptionName);
         
         if (selectedOption?.amount) {
           // Convert from minor unit (cents) to major unit (EGP)
