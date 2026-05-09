@@ -1,5 +1,5 @@
 import HomeClient from "./HomeClient";
-import { getProducts, getCategories, getRegions } from "@/lib/store-api";
+import { getProducts, getCategories, getRegions, getCollections } from "@/lib/store-api";
 import type { MedusaCategory } from "@/lib/types/medusa";
 
 export const revalidate = 3600; // ISR revalidation every hour
@@ -52,21 +52,45 @@ async function getHomeData() {
       console.warn('Failed to fetch regions, proceeding without region:', regionError);
     }
 
-    // Fetch products with region/pricing context
-    const productsData = await getProducts({ 
-      limit: 50,
-      region_id: regionId,
-    });
-    const products = productsData.products;
+    // Fetch collections
+    const collections = await getCollections();
+    console.log('Collections:', collections.map(c => ({ id: c.id, handle: c.handle, title: c.title })));
+
+    // Define the 3 main collections we want to display
+    const collectionHandles = ['منتجات-مميزة', 'الأكثر-مبيعاً', 'new-arrivals'];
+    const collectionData: { id: string; handle: string; title: string; products: any[] }[] = [];
+
+    // Fetch products for each collection
+    for (const handle of collectionHandles) {
+      const collection = collections.find(c => c.handle === handle || c.handle === decodeURIComponent(handle));
+      if (collection) {
+        const productsData = await getProducts({
+          limit: 10,
+          collection_id: [collection.id],
+          region_id: regionId,
+        });
+        collectionData.push({
+          id: collection.id,
+          handle: collection.handle,
+          title: collection.title,
+          products: productsData.products,
+        });
+      }
+    }
 
     // Fetch categories
     const categoriesData = await getCategories();
+
+    // Fetch all products for category sections
+    const allProductsData = await getProducts({
+      limit: 100,
+      region_id: regionId,
+    });
 
     // Transform Medusa products to our format
     const transformProduct = (product: any) => {
       const firstVariant = product.variants?.[0];
 
-      // 1. Image Logic: thumbnail -> first image -> placeholder
       const image =
         product.thumbnail ||
         (product.images && product.images.length > 0
@@ -76,7 +100,6 @@ async function getHomeData() {
           : null) ||
         "/placeholder-product.png";
 
-      // 2. Pricing Logic: calculated_price -> cheapest_price -> variant price -> 0
       const getPrice = (variant: any) => {
         if (variant?.calculated_price) {
           return variant.calculated_price.calculated_amount / 100;
@@ -100,13 +123,6 @@ async function getHomeData() {
       const price = getPrice(firstVariant);
       const originalPrice = getOriginalPrice(firstVariant);
 
-      // 3. Stock Logic: default true unless explicitly unavailable
-      const hasInventory = (variant: any) => {
-        if (!variant) return true;
-        return true;
-      };
-
-      // Extract category IDs from product
       const categoryIds = product.categories?.map((c: any) => c.id || c.category_id) || [];
 
       return {
@@ -115,38 +131,38 @@ async function getHomeData() {
         price: price,
         originalPrice: originalPrice,
         image: image,
-        inStock: hasInventory(firstVariant),
+        inStock: true,
         stock: firstVariant?.inventory_quantity ?? 0,
         handle: product.handle || "",
         categoryIds,
       };
     };
 
-    const allTransformedProducts = products.map(transformProduct);
+    // Transform products for each collection
+    const collectionSections = collectionData.map(col => ({
+      id: col.id,
+      handle: col.handle,
+      title: col.title,
+      products: col.products.map(transformProduct),
+    }));
 
-    // Main product section: ~10 products
-    const featuredProducts = allTransformedProducts.slice(0, 10);
-    // Best sellers row: next 5 products
-    const bestSellers = allTransformedProducts.slice(10, 15);
-    const latestArrivals = allTransformedProducts.slice(15, 20);
+    // Group products by category - 10 products per category
+    const allTransformedProducts = allProductsData.products.map(transformProduct);
 
-    // Group products by category for category-based sections
-    // Only include categories that have products linked
     const categorySections = categoriesData.map((cat: MedusaCategory) => {
-      const catId = cat.id;
       const catProducts = allTransformedProducts.filter(
-        (p: any) => p.categoryIds?.includes(catId)
+        (p: any) => p.categoryIds?.includes(cat.id)
       ).map(({ categoryIds, ...rest }: any) => rest);
 
       return {
-        id: catId,
+        id: cat.id,
         name: cat.name,
         slug: cat.handle,
-        products: catProducts.slice(0, 5),
+        products: catProducts.slice(0, 10),
       };
     }).filter((section: any) => section.products.length > 0);
 
-    // Transform categories for showcase - only those with products
+    // Transform categories for showcase
     const categories = categoriesData
       .map((cat: MedusaCategory) => {
         const catProducts = allTransformedProducts.filter(
@@ -162,36 +178,17 @@ async function getHomeData() {
       })
       .filter((cat: any) => cat.productCount > 0);
 
-    // Strip categoryIds from tab products
-    const stripCatIds = (prods: any[]) => prods.map(({ categoryIds, ...rest }: any) => rest);
-
-    // Create promo banners from categories with products
-    const promoBanners = categories.slice(0, 4).map((cat: any) => ({
-      id: `promo-${cat.id}`,
-      image_url: cat.image || `/images/category-placeholder.svg`,
-      title: cat.name,
-      subtitle: `${cat.productCount} منتجات`,
-      cta_link: `/shop/${cat.slug}`,
-      cta_text: "تسوق الآن",
-    }));
-
     return {
-      featuredProducts: stripCatIds(featuredProducts),
-      bestSellers: stripCatIds(bestSellers),
-      latestArrivals: stripCatIds(latestArrivals),
+      collectionSections,
       categorySections,
       categories,
-      promoBanners,
     };
   } catch (error) {
     console.error('Error fetching home data:', error);
     return {
-      featuredProducts: [],
-      bestSellers: [],
-      latestArrivals: [],
+      collectionSections: [],
       categorySections: [],
       categories: [],
-      promoBanners: [],
     };
   }
 }
@@ -203,10 +200,7 @@ export default async function Home() {
     <HomeClient
       banners={heroSlides}
       sideBanners={sideBanners}
-      promoBanners={data.promoBanners}
-      featuredProducts={data.featuredProducts}
-      bestSellers={data.bestSellers}
-      latestArrivals={data.latestArrivals}
+      collectionSections={data.collectionSections}
       categorySections={data.categorySections}
       categories={data.categories}
     />
