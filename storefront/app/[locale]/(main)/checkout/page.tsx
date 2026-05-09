@@ -32,9 +32,9 @@ export default function CheckoutPage() {
   });
 
   // Arabic governorate name to shipping option name mapping
-  // Note: Keys include both common spellings (e.g., الفيوم and الفايوم)
+  // Matches exactly with Dashboard Shipping Option Type labels
   const GOVERNORATE_TO_SHIPPING_OPTION: Record<string, string> = {
-    "القاهرة": "القاهره",
+    "القاهرة": "القاهرة",
     "الجيزة": "الجيزة",
     "الإسكندرية": "الإسكندرية",
     "القليوبية": "القليوبية",

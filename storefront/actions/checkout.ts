@@ -24,13 +24,14 @@ interface ShippingAddress {
 }
 
 // Arabic governorate name to shipping option name mapping
-// Maps the Arabic governorate name to the shipping option name in Dashboard
+// Matches exactly with Dashboard Shipping Option Type labels
 const GOVERNORATE_TO_SHIPPING_OPTION: Record<string, string> = {
-  "القاهرة": "القاهره",
+  "القاهرة": "القاهرة",
   "الجيزة": "الجيزة",
   "الإسكندرية": "الإسكندرية",
   "القليوبية": "القليوبية",
-  "الفايوم": "الفيوم",
+  "الفيوم": "الفيوم",
+  "الفايوم": "الفيوم", // Alternative spelling
   "بني سويف": "بني سويف",
   "المنيا": "المنيا",
   "أسيوط": "أسيوط",
