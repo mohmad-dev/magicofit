@@ -108,7 +108,11 @@ export default function CheckoutPage() {
           ? `${process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL}/store/shipping-options?cart_id=${cartId}`
           : `${process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL}/store/shipping-options?region_id=${process.env.NEXT_PUBLIC_MEDUSA_REGION_ID}`;
         
-        const response = await fetch(url);
+        const response = await fetch(url, {
+          headers: {
+            'x-publishable-api-key': process.env.NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY || '',
+          },
+        });
         const data = await response.json();
         const options = data.shipping_options || [];
         
