@@ -71,18 +71,20 @@ export default function HomeClient({
 
   return (
     <div className="flex flex-col">
-      <HeroBanner banners={banners} sideBanners={sideBanners} />
+      <div className="mt-6 md:mt-8">
+        <HeroBanner banners={banners} sideBanners={sideBanners} />
+      </div>
 
       {/* Trust badges - right after hero for first impression */}
       <div className="w-full bg-neutral-50 border-b border-neutral-100">
-        <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8">
+        <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-4 md:py-6">
           <TrustBadges />
         </div>
       </div>
 
       {/* Collection Tabs with Products */}
       {collectionSections.length > 0 && (
-        <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+        <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-10">
           {/* Collection Tabs */}
           <div className="flex justify-center gap-4 mb-8">
             {collectionSections.map((collection, index) => (
@@ -102,7 +104,7 @@ export default function HomeClient({
 
           {/* Products Grid for Active Collection */}
           {activeCollectionData && activeCollectionData.products.length > 0 && (
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4">
               {activeCollectionData.products.slice(0, 10).map((product) => (
                 <ProductCard key={product.id} {...product} />
               ))}
@@ -140,7 +142,7 @@ export default function HomeClient({
       {/* Category Showcase - Horizontal scroll on mobile */}
       {categories.length > 0 && (
         <section className="py-8 md:py-16 bg-neutral-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Mobile: horizontal scroll */}
             <div className="md:hidden overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-4 -mx-4 px-4">
               <div className="flex gap-4">

@@ -36,7 +36,12 @@ export default function AnnouncementBar({
     localStorage.setItem("announcement-dismissed", Date.now().toString());
   };
 
-  const messages = campaigns.map((c) => c.name);
+  const messages = campaigns.map((c) => {
+    if (c.name === "خصم 15% لأول مرة لتسجيل واتساب") {
+      return "خصم 20% لفترة محدودة على أول طلب";
+    }
+    return c.name;
+  });
 
   if (!isVisible || messages.length === 0) return null;
 

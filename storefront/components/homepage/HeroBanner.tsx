@@ -75,11 +75,11 @@ export default function HeroBanner({ banners = [], sideBanners = [], isLoading =
   if (!banners || banners.length === 0) return null;
 
   return (
-    <div className="relative z-10 w-full overflow-hidden bg-neutral-50 pb-12 md:pb-16"
+    <div className="relative z-10 w-full overflow-hidden bg-neutral-50 pb-6 md:pb-10"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-10 gap-4">
           {/* Main Carousel - full width on mobile, ~70% on desktop */}
           <div className="lg:col-span-7">
@@ -97,7 +97,7 @@ export default function HeroBanner({ banners = [], sideBanners = [], isLoading =
                               src={banner.mobile_image_url}
                               alt={banner.title || "Promotion image"}
                               fill
-                              className="object-cover object-center md:hidden"
+                              className="object-cover object-center md:hidden rounded-2xl"
                               priority={index === 0}
                               sizes="100vw"
                             />
@@ -105,7 +105,7 @@ export default function HeroBanner({ banners = [], sideBanners = [], isLoading =
                               src={banner.image_url}
                               alt={banner.title || "Promotion image"}
                               fill
-                              className="hidden md:block object-cover object-center"
+                              className="hidden md:block object-cover object-center rounded-2xl"
                               priority={index === 0}
                               sizes="70vw"
                             />
