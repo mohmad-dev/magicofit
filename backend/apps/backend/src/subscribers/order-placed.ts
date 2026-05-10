@@ -3,12 +3,10 @@ import {
   type SubscriberConfig,
 } from "@medusajs/framework";
 
-import { ContainerRegistrationKeys } from "@medusajs/framework/utils";
-
 import {
   isWhatsAppNotificationsEnabled,
   sendOrderCreatedWhatsApp,
-} from "../whatsapp/evolution";
+} from "./whatsapp";
 
 /**
  * Order Placed Subscriber
@@ -23,15 +21,14 @@ export default async function orderPlacedHandler({
   try {
     const orderId = data.id;
 
-    const logger = container.resolve(ContainerRegistrationKeys.LOGGER);
-    logger.info(`Order ${orderId} placed - processing...`);
+    console.log(`Order ${orderId} placed - processing...`);
 
     if (!isWhatsAppNotificationsEnabled()) {
-      logger.info("WhatsApp notifications disabled - skipping");
+      console.log("WhatsApp notifications disabled - skipping");
       return;
     }
 
-    const query = container.resolve(ContainerRegistrationKeys.QUERY);
+    const query = container.resolve("query");
     const orderData = await query.graph({
       entity: "order",
       fields: [
@@ -51,7 +48,7 @@ export default async function orderPlacedHandler({
 
     const order = orderData?.data?.[0];
     if (!order) {
-      logger.warn(`Order ${orderId} not found - skipping WhatsApp notification`);
+      console.warn(`Order ${orderId} not found - skipping WhatsApp notification`);
       return;
     }
 
@@ -70,7 +67,7 @@ export default async function orderPlacedHandler({
     // const notificationService = container.resolve("notification");
     // await notificationService.sendOrderConfirmation(orderId);
 
-    logger.info(`Order ${orderId} processed successfully`);
+    console.log(`Order ${orderId} processed successfully`);
   } catch (error) {
     console.error("Error processing order placement:", error);
   }
