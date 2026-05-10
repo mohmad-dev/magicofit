@@ -248,11 +248,11 @@ export default function ProductPage() {
   };
 
   return (
-    <div className="max-w-screen-2xl mx-auto px-6 lg:px-8 py-8">
+    <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-10">
       {/* Breadcrumb */}
       <Breadcrumb items={breadcrumbItems} />
 
-      <div className="grid grid-cols-1 gap-8 lg:gap-12 lg:grid-cols-2">
+      <div className="grid grid-cols-1 gap-8 lg:gap-16 lg:grid-cols-2 mt-6">
         {/* Product Gallery */}
         <div className="space-y-4">
           <ProductGallery
@@ -263,35 +263,37 @@ export default function ProductPage() {
         </div>
 
         {/* Product Info */}
-        <div className="space-y-6">
+        <div className="space-y-8">
           {/* Title & Brand */}
-          <div>
-            <p className="text-sm text-primary-600 mb-1 font-bold uppercase tracking-wider">{product.metadata?.brand}</p>
-            <h1 className="font-outfit text-3xl md:text-4xl font-extrabold text-neutral-900 mb-2 uppercase tracking-tight">{product.title}</h1>
+          <div className="space-y-3">
+            {product.metadata?.brand && (
+              <p className="text-xs text-primary-600 font-bold uppercase tracking-widest">{product.metadata?.brand}</p>
+            )}
+            <h1 className="font-outfit text-2xl md:text-3xl lg:text-4xl font-extrabold text-neutral-900 uppercase tracking-tight leading-tight">{product.title}</h1>
             {product.subtitle && (
-              <p className="text-lg text-neutral-600">{product.subtitle}</p>
+              <p className="text-base md:text-lg text-neutral-500 leading-relaxed">{product.subtitle}</p>
             )}
           </div>
 
           {/* Price */}
-          <div className="flex items-baseline gap-3">
-            <span className="text-4xl font-extrabold text-neutral-900">
+          <div className="flex items-baseline flex-wrap gap-3">
+            <span className="text-3xl md:text-4xl font-extrabold text-neutral-900 tracking-tight">
               {formatPrice(price)}
             </span>
             {originalPrice && originalPrice > price && (
               <>
-                <span className="text-xl text-neutral-400 line-through">
+                <span className="text-lg md:text-xl text-neutral-400 line-through">
                   {formatPrice(originalPrice)}
                 </span>
-                <span className="px-3 py-1 bg-red-100 text-red-600 text-sm font-bold rounded-full">
-                  Save {Math.round(((originalPrice - price) / originalPrice) * 100)}%
+                <span className="px-3 py-1.5 bg-red-50 text-red-600 text-xs font-bold rounded-full border border-red-100">
+                  خصم {Math.round(((originalPrice - price) / originalPrice) * 100)}%
                 </span>
               </>
             )}
           </div>
 
           {/* Stock Status & Urgency */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 py-3 px-4 bg-neutral-50 rounded-xl">
             <StockIndicator quantity={inventoryQuantity} manageInventory={selectedVariant?.manage_inventory} />
             {inventoryQuantity > 0 && inventoryQuantity <= 5 && (
               <UrgencyBadge stock={inventoryQuantity} />
@@ -388,23 +390,23 @@ export default function ProductPage() {
           </div>
 
           {/* Quantity */}
-          <div className="space-y-2">
+          <div className="space-y-3">
             <label className="text-sm font-bold text-neutral-900 uppercase tracking-wide">{t("quantity")}</label>
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-4">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                className="w-12 h-12 rounded-lg border-2 border-neutral-300 hover:border-primary-600 flex items-center justify-center transition-colors"
+                className="w-12 h-12 rounded-xl border-2 border-neutral-200 hover:border-primary-600 hover:bg-primary-50 flex items-center justify-center transition-all"
               >
                 <Minus className="w-5 h-5 text-neutral-600" />
               </motion.button>
-              <span className="w-16 text-center text-xl font-bold text-neutral-900">{quantity}</span>
+              <span className="w-16 text-center text-2xl font-bold text-neutral-900">{quantity}</span>
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setQuantity(quantity + 1)}
-                className="w-12 h-12 rounded-lg border-2 border-neutral-300 hover:border-primary-600 flex items-center justify-center transition-colors"
+                className="w-12 h-12 rounded-xl border-2 border-neutral-200 hover:border-primary-600 hover:bg-primary-50 flex items-center justify-center transition-all"
               >
                 <Plus className="w-5 h-5 text-neutral-600" />
               </motion.button>
@@ -412,7 +414,7 @@ export default function ProductPage() {
           </div>
 
           {/* Action Buttons */}
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-4">
             <AddToCartButton
               productId={product.id}
               name={product.title || ""}
@@ -431,7 +433,7 @@ export default function ProductPage() {
             
             <button
               onClick={handleBuyNow}
-              className="w-full h-14 bg-black text-white font-bold rounded-lg hover:bg-neutral-800 transition-colors shadow-md uppercase tracking-wide flex items-center justify-center gap-2"
+              className="w-full h-14 bg-neutral-900 text-white font-bold rounded-xl hover:bg-neutral-800 transition-all shadow-lg hover:shadow-xl uppercase tracking-wide flex items-center justify-center gap-2"
             >
               {t("buyNow")}
             </button>
@@ -470,17 +472,23 @@ export default function ProductPage() {
           </motion.button>
 
           {/* Trust Badges */}
-          <div className="space-y-2 pt-4 border-t border-neutral-200">
-            <div className="flex items-center gap-2 text-xs text-neutral-600">
-              <Truck className="w-4 h-4 text-primary-600" />
+          <div className="space-y-3 pt-6 border-t border-neutral-100">
+            <div className="flex items-center gap-3 text-sm text-neutral-600 py-2">
+              <div className="w-8 h-8 rounded-full bg-primary-50 flex items-center justify-center flex-shrink-0">
+                <Truck className="w-4 h-4 text-primary-600" />
+              </div>
               <span>{t("freeShippingOver")}</span>
             </div>
-            <div className="flex items-center gap-2 text-xs text-neutral-600">
-              <RotateCcw className="w-4 h-4 text-primary-600" />
+            <div className="flex items-center gap-3 text-sm text-neutral-600 py-2">
+              <div className="w-8 h-8 rounded-full bg-primary-50 flex items-center justify-center flex-shrink-0">
+                <RotateCcw className="w-4 h-4 text-primary-600" />
+              </div>
               <span>{t("freeReturns")}</span>
             </div>
-            <div className="flex items-center gap-2 text-xs text-neutral-600">
-              <Package className="w-4 h-4 text-primary-600" />
+            <div className="flex items-center gap-3 text-sm text-neutral-600 py-2">
+              <div className="w-8 h-8 rounded-full bg-primary-50 flex items-center justify-center flex-shrink-0">
+                <Package className="w-4 h-4 text-primary-600" />
+              </div>
               <span>{t("estimatedDelivery")}</span>
             </div>
           </div>
@@ -496,53 +504,70 @@ export default function ProductPage() {
                     <div className="space-y-6">
                       <p className="text-neutral-600 leading-relaxed">{product.description}</p>
                       
-                      <div>
-                        <h4 className="font-bold text-neutral-900 mb-4 uppercase tracking-wide">{t("keyFeatures")}</h4>
-                        <ul className="space-y-3">
-                          <li className="flex items-start gap-3">
-                            <Check className="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" />
-                            <span className="text-neutral-600">ReactX foam for responsive cushioning</span>
-                          </li>
-                          <li className="flex items-start gap-3">
-                            <Check className="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" />
-                            <span className="text-neutral-600">Engineered mesh upper for breathability</span>
-                          </li>
-                          <li className="flex items-start gap-3">
-                            <Check className="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" />
-                            <span className="text-neutral-600">Waffle outsole for multi-surface traction</span>
-                          </li>
-                          <li className="flex items-start gap-3">
-                            <Check className="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" />
-                            <span className="text-neutral-600">10mm heel-to-toe drop</span>
-                          </li>
-                        </ul>
-                      </div>
+                      {/* Dynamic Features from metadata */}
+                      {product.metadata?.features && Array.isArray(product.metadata.features) && product.metadata.features.length > 0 && (
+                        <div>
+                          <h4 className="font-bold text-neutral-900 mb-4 uppercase tracking-wide">{t("keyFeatures")}</h4>
+                          <ul className="space-y-3">
+                            {(product.metadata.features as string[]).map((feature, idx) => (
+                              <li key={idx} className="flex items-start gap-3">
+                                <Check className="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" />
+                                <span className="text-neutral-600">{feature}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
 
+                      {/* Dynamic Specifications */}
                       <div>
                         <h4 className="font-bold text-neutral-900 mb-4 uppercase tracking-wide">{t("specifications")}</h4>
-                        <div className="border border-neutral-200 rounded-lg overflow-hidden">
+                        <div className="border border-neutral-200 rounded-xl overflow-hidden">
                           <table className="w-full">
-                            <tbody className="divide-y divide-neutral-200">
-                              <tr>
-                                <td className="py-3 px-4 font-medium text-neutral-900 bg-neutral-50">{t("material")}</td>
-                                <td className="py-3 px-4 text-neutral-600">{product.material || "—"}</td>
-                              </tr>
-                              <tr>
-                                <td className="py-3 px-4 font-medium text-neutral-900 bg-neutral-50">{t("weight")}</td>
-                                <td className="py-3 px-4 text-neutral-600">{product.weight ? `${product.weight}g` : "—"}</td>
-                              </tr>
-                              <tr>
-                                <td className="py-3 px-4 font-medium text-neutral-900 bg-neutral-50">{t("terrain")}</td>
-                                <td className="py-3 px-4 text-neutral-600">Road</td>
-                              </tr>
-                              <tr>
-                                <td className="py-3 px-4 font-medium text-neutral-900 bg-neutral-50">{t("cushioning")}</td>
-                                <td className="py-3 px-4 text-neutral-600">Neutral</td>
-                              </tr>
-                              <tr>
-                                <td className="py-3 px-4 font-medium text-neutral-900 bg-neutral-50">{t("drop")}</td>
-                                <td className="py-3 px-4 text-neutral-600">10mm</td>
-                              </tr>
+                            <tbody className="divide-y divide-neutral-100">
+                              {product.material && (
+                                <tr className="hover:bg-neutral-50">
+                                  <td className="py-3 px-4 font-medium text-neutral-900 bg-neutral-50/50">{t("material")}</td>
+                                  <td className="py-3 px-4 text-neutral-600">{product.material}</td>
+                                </tr>
+                              )}
+                              {product.weight && (
+                                <tr className="hover:bg-neutral-50">
+                                  <td className="py-3 px-4 font-medium text-neutral-900 bg-neutral-50/50">{t("weight")}</td>
+                                  <td className="py-3 px-4 text-neutral-600">{product.weight}g</td>
+                                </tr>
+                              )}
+                              {product.metadata?.terrain && (
+                                <tr className="hover:bg-neutral-50">
+                                  <td className="py-3 px-4 font-medium text-neutral-900 bg-neutral-50/50">{t("terrain")}</td>
+                                  <td className="py-3 px-4 text-neutral-600">{product.metadata.terrain as string}</td>
+                                </tr>
+                              )}
+                              {product.metadata?.cushioning && (
+                                <tr className="hover:bg-neutral-50">
+                                  <td className="py-3 px-4 font-medium text-neutral-900 bg-neutral-50/50">{t("cushioning")}</td>
+                                  <td className="py-3 px-4 text-neutral-600">{product.metadata.cushioning as string}</td>
+                                </tr>
+                              )}
+                              {product.metadata?.drop && (
+                                <tr className="hover:bg-neutral-50">
+                                  <td className="py-3 px-4 font-medium text-neutral-900 bg-neutral-50/50">{t("drop")}</td>
+                                  <td className="py-3 px-4 text-neutral-600">{product.metadata.drop as string}</td>
+                                </tr>
+                              )}
+                              {/* Additional dynamic specs from metadata */}
+                              {product.metadata?.fit && (
+                                <tr className="hover:bg-neutral-50">
+                                  <td className="py-3 px-4 font-medium text-neutral-900 bg-neutral-50/50">القصة</td>
+                                  <td className="py-3 px-4 text-neutral-600">{product.metadata.fit as string}</td>
+                                </tr>
+                              )}
+                              {product.metadata?.country && (
+                                <tr className="hover:bg-neutral-50">
+                                  <td className="py-3 px-4 font-medium text-neutral-900 bg-neutral-50/50">بلد المنشأ</td>
+                                  <td className="py-3 px-4 text-neutral-600">{product.metadata.country as string}</td>
+                                </tr>
+                              )}
                             </tbody>
                           </table>
                         </div>
@@ -551,35 +576,84 @@ export default function ProductPage() {
                   ),
                 },
                 {
+                  id: "care",
+                  label: "العناية",
+                  content: (
+                    <div className="space-y-4">
+                      {product.metadata?.careInstructions ? (
+                        <div className="space-y-3">
+                          {(product.metadata.careInstructions as string[]).map((instruction, idx) => (
+                            <div key={idx} className="flex items-start gap-3 p-3 bg-neutral-50 rounded-lg">
+                              <Check className="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" />
+                              <span className="text-neutral-600">{instruction}</span>
+                            </div>
+                          ))}
+                        </div>
+                      ) : (
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                          <div className="flex flex-col items-center p-4 bg-neutral-50 rounded-xl text-center">
+                            <div className="w-12 h-12 rounded-full bg-primary-100 flex items-center justify-center mb-3">
+                              <span className="text-2xl">🧺</span>
+                            </div>
+                            <span className="text-sm font-medium text-neutral-900">غسيل آلي</span>
+                            <span className="text-xs text-neutral-500 mt-1">درجة حرارة 30°</span>
+                          </div>
+                          <div className="flex flex-col items-center p-4 bg-neutral-50 rounded-xl text-center">
+                            <div className="w-12 h-12 rounded-full bg-primary-100 flex items-center justify-center mb-3">
+                              <span className="text-2xl">☀️</span>
+                            </div>
+                            <span className="text-sm font-medium text-neutral-900">تجفيف بالهواء</span>
+                            <span className="text-xs text-neutral-500 mt-1">في الظل</span>
+                          </div>
+                          <div className="flex flex-col items-center p-4 bg-neutral-50 rounded-xl text-center">
+                            <div className="w-12 h-12 rounded-full bg-primary-100 flex items-center justify-center mb-3">
+                              <span className="text-2xl">🚫</span>
+                            </div>
+                            <span className="text-sm font-medium text-neutral-900">لا تبيض</span>
+                            <span className="text-xs text-neutral-500 mt-1">تجنب الكلور</span>
+                          </div>
+                          <div className="flex flex-col items-center p-4 bg-neutral-50 rounded-xl text-center">
+                            <div className="w-12 h-12 rounded-full bg-primary-100 flex items-center justify-center mb-3">
+                              <span className="text-2xl">⚡</span>
+                            </div>
+                            <span className="text-sm font-medium text-neutral-900">كوي خفيف</span>
+                            <span className="text-xs text-neutral-500 mt-1">درجة حرارة منخفضة</span>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  ),
+                },
+                {
                   id: "shipping",
                   label: t("shippingReturns"),
                   content: (
                     <div className="space-y-4">
-                      <div className="flex items-start gap-3">
-                        <div className="bg-primary-100 rounded-full p-2">
-                          <span className="text-primary-600 font-bold">🚚</span>
+                      <div className="flex items-start gap-4 p-4 bg-neutral-50 rounded-xl">
+                        <div className="w-12 h-12 rounded-xl bg-primary-100 flex items-center justify-center flex-shrink-0">
+                          <Truck className="w-6 h-6 text-primary-600" />
                         </div>
                         <div>
-                          <h4 className="font-semibold text-neutral-900 mb-1">{t("freeShippingTitle")}</h4>
-                          <p className="text-neutral-600">{t("freeShippingDesc")}</p>
+                          <h4 className="font-bold text-neutral-900 mb-1">{t("freeShippingTitle")}</h4>
+                          <p className="text-neutral-600 text-sm">{t("freeShippingDesc")}</p>
                         </div>
                       </div>
-                      <div className="flex items-start gap-3">
-                        <div className="bg-primary-100 rounded-full p-2">
-                          <span className="text-primary-600 font-bold">↩️</span>
+                      <div className="flex items-start gap-4 p-4 bg-neutral-50 rounded-xl">
+                        <div className="w-12 h-12 rounded-xl bg-primary-100 flex items-center justify-center flex-shrink-0">
+                          <RotateCcw className="w-6 h-6 text-primary-600" />
                         </div>
                         <div>
-                          <h4 className="font-semibold text-neutral-900 mb-1">{t("returnsTitle")}</h4>
-                          <p className="text-neutral-600">{t("returnsDesc")}</p>
+                          <h4 className="font-bold text-neutral-900 mb-1">{t("returnsTitle")}</h4>
+                          <p className="text-neutral-600 text-sm">{t("returnsDesc")}</p>
                         </div>
                       </div>
-                      <div className="flex items-start gap-3">
-                        <div className="bg-primary-100 rounded-full p-2">
-                          <span className="text-primary-600 font-bold">📦</span>
+                      <div className="flex items-start gap-4 p-4 bg-neutral-50 rounded-xl">
+                        <div className="w-12 h-12 rounded-xl bg-primary-100 flex items-center justify-center flex-shrink-0">
+                          <Package className="w-6 h-6 text-primary-600" />
                         </div>
                         <div>
-                          <h4 className="font-semibold text-neutral-900 mb-1">{t("fastDeliveryTitle")}</h4>
-                          <p className="text-neutral-600">{t("fastDeliveryDesc")}</p>
+                          <h4 className="font-bold text-neutral-900 mb-1">{t("fastDeliveryTitle")}</h4>
+                          <p className="text-neutral-600 text-sm">{t("fastDeliveryDesc")}</p>
                         </div>
                       </div>
                     </div>
@@ -591,23 +665,24 @@ export default function ProductPage() {
         </div>
       </div>
 
-      {/* Complete the Look */}
-      <div className="mt-16">
+      {/* Divider */}
+      <div className="mt-16 pt-8 border-t border-neutral-100">
+        {/* Complete the Look */}
         <CompleteTheLook
           products={relatedProducts.slice(0, 4)}
         />
-      </div>
 
-      {/* Related Products */}
-      <div className="mt-16">
-        <RelatedProductsCarousel
-          products={relatedProducts.slice(4)}
-        />
-      </div>
+        {/* Related Products */}
+        <div className="mt-16">
+          <RelatedProductsCarousel
+            products={relatedProducts.slice(4)}
+          />
+        </div>
 
-      {/* Recently Viewed */}
-      <div className="mt-16">
-        <RecentlyViewed currentProductId={product.id} />
+        {/* Recently Viewed */}
+        <div className="mt-16">
+          <RecentlyViewed currentProductId={product.id} />
+        </div>
       </div>
 
       {/* Sticky Add-to-Cart Bar - Mobile only */}
