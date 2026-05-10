@@ -80,70 +80,70 @@ export default function ProductCard({
   const discount = originalPrice && originalPrice > price ? Math.round(((originalPrice - price) / originalPrice) * 100) : 0;
 
   return (
-    <div className="group relative flex flex-col gap-2.5 transition-all duration-300 hover:-translate-y-1 w-full">
+    <div className="group relative flex flex-col bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 w-full border border-neutral-100/50">
       {/* Image */}
-      <Link href={productLink} className="relative aspect-square bg-[#F5F5F5] rounded-xl overflow-hidden block">
+      <Link href={productLink} className="relative aspect-square bg-gradient-to-br from-neutral-50 to-neutral-100 overflow-hidden block">
         <Image
           src={image}
           alt={name}
           fill
-          className="object-cover transition-transform duration-500 group-hover:scale-105 mix-blend-multiply"
+          className="object-cover transition-transform duration-700 group-hover:scale-110"
           sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 20vw"
         />
         {!inStock && (
-          <div className="absolute inset-0 flex items-center justify-center bg-black/50 rounded-xl">
-            <span className="rounded bg-white px-3 py-1 text-sm font-medium text-neutral-900">
+          <div className="absolute inset-0 flex items-center justify-center bg-black/60 backdrop-blur-sm">
+            <span className="rounded-full bg-white px-4 py-1.5 text-sm font-bold text-neutral-900 shadow-lg">
               {t("unavailable")}
             </span>
           </div>
         )}
         {inStock && (
-          <div className="absolute left-2 top-2">
-            <span className="rounded bg-white/80 backdrop-blur-md px-2 py-0.5 text-[10px] font-bold text-green-600 uppercase tracking-wider shadow-sm">
+          <div className="absolute left-3 top-3 z-10">
+            <span className="rounded-full bg-white/90 backdrop-blur-md px-2.5 py-1 text-[10px] font-bold text-green-600 uppercase tracking-wider shadow-sm border border-green-100">
               {t("available")}
             </span>
           </div>
         )}
         {discount > 0 && (
-          <div className="absolute right-2 top-2 rounded bg-primary-600 px-2 py-1 text-xs font-bold text-white uppercase tracking-wide">
+          <div className="absolute right-3 top-3 z-10 rounded-full bg-primary-600 px-2.5 py-1 text-xs font-bold text-white uppercase tracking-wide shadow-lg">
             -{discount}%
           </div>
         )}
         {/* Wishlist Heart Button */}
         <button
           onClick={handleToggleWishlist}
-          className="absolute right-2 bottom-2 w-8 h-8 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center shadow-sm hover:bg-white transition-colors z-10"
+          className="absolute right-3 bottom-3 w-9 h-9 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-md hover:bg-white hover:scale-110 transition-all z-10 opacity-0 group-hover:opacity-100"
           aria-label={wishlisted ? "Remove from wishlist" : "Add to wishlist"}
         >
           <Heart
-            className={`h-4 w-4 transition-colors ${
-              wishlisted ? "fill-red-500 text-red-500" : "text-neutral-500 hover:text-red-400"
+            className={`h-4.5 w-4.5 transition-colors ${
+              wishlisted ? "fill-red-500 text-red-500" : "text-neutral-600 hover:text-red-500"
             }`}
           />
         </button>
         {inStock && stock && stock > 0 && stock <= 5 && (
-          <div className="absolute left-2 bottom-2">
+          <div className="absolute left-3 bottom-3 z-10">
             <UrgencyBadge stock={stock} />
           </div>
         )}
       </Link>
 
       {/* Content */}
-      <div className="px-1.5 flex flex-col gap-1.5 pb-2">
+      <div className="px-4 py-3 flex flex-col gap-2">
         <Link href={productLink}>
-          <h3 className="font-outfit font-semibold text-sm md:text-[15px] leading-snug text-neutral-800 line-clamp-2 hover:text-primary-600 transition-colors uppercase tracking-tight">
+          <h3 className="font-outfit font-bold text-sm md:text-base leading-snug text-neutral-900 line-clamp-2 group-hover:text-primary-600 transition-colors uppercase tracking-wide">
             {name}
           </h3>
         </Link>
 
         {/* Action Row */}
-        <div className="flex items-center justify-between mt-1">
-          <div className="flex items-center gap-1.5">
-            <span className="text-base font-extrabold text-neutral-900">
+        <div className="flex items-center justify-between gap-2 mt-0.5">
+          <div className="flex flex-col gap-0.5">
+            <span className="text-lg font-extrabold text-neutral-900 tracking-tight">
               {formatPrice(price)}
             </span>
             {discount > 0 && originalPrice && (
-              <span className="text-xs text-neutral-400 line-through">
+              <span className="text-xs text-neutral-400 line-through font-medium">
                 {formatPrice(originalPrice)}
               </span>
             )}
@@ -152,7 +152,7 @@ export default function ProductCard({
             <Button
               variant="outline"
               size="sm"
-              className="h-11 px-4 text-sm rounded-full border-neutral-300 text-neutral-700 hover:border-primary-600 hover:text-primary-600 hover:bg-transparent transition-colors"
+              className="h-10 px-4 text-xs font-bold rounded-full border-neutral-200 text-neutral-700 hover:border-primary-600 hover:text-primary-600 hover:bg-primary-50 transition-all shadow-sm hover:shadow"
               disabled={!inStock}
               onClick={(e) => { e.preventDefault(); handleAddToCart(); }}
               aria-label={`Add ${name} to cart`}
