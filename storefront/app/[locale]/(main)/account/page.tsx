@@ -98,12 +98,12 @@ export default function AccountPage() {
           orderNumber: order.display_id || order.id,
           date: new Date(order.created_at).toLocaleDateString(),
           status: statusMap[order.status] || "pending",
-          total: (order.total || 0) / 100,
+          total: (order.total || 0),
           items: (order.items || []).map((item: any) => ({
             id: item.id,
             name: item.title || "",
             quantity: item.quantity || 1,
-            price: (item.unit_price || 0) / 100,
+            price: (item.unit_price || 0),
             image: item.thumbnail || item.variant?.product?.thumbnail || "",
           })),
         };

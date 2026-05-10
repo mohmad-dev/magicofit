@@ -39,10 +39,10 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
           const firstVariant = product.variants?.[0];
           const getPrice = (variant: any) => {
             if (variant?.calculated_price) {
-              return variant.calculated_price.calculated_amount / 100;
+              return variant.calculated_price.calculated_amount;
             }
             if (variant?.prices && variant.prices.length > 0) {
-              return variant.prices[0].amount / 100;
+              return variant.prices[0].amount;
             }
             return 0;
           };

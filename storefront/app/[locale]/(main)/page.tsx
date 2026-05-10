@@ -102,20 +102,20 @@ async function getHomeData() {
 
       const getPrice = (variant: any) => {
         if (variant?.calculated_price) {
-          return variant.calculated_price.calculated_amount / 100;
+          return variant.calculated_price.calculated_amount;
         } else if (product.cheapest_price) {
-          return product.cheapest_price / 100;
+          return product.cheapest_price;
         } else if (variant?.prices && variant.prices.length > 0) {
-          return variant.prices[0].amount / 100;
+          return variant.prices[0].amount;
         }
         return 0;
       };
 
       const getOriginalPrice = (variant: any) => {
         if (variant?.calculated_price?.original_amount) {
-          return variant.calculated_price.original_amount / 100;
+          return variant.calculated_price.original_amount;
         } else if (variant?.prices && variant.prices.length > 1) {
-          return variant.prices[1].amount / 100;
+          return variant.prices[1].amount;
         }
         return undefined;
       };

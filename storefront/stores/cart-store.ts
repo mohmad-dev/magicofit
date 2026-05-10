@@ -190,7 +190,7 @@ export const useCartStore = create<CartState>()(
             productId: li.product_id || li.variant?.product_id || '',
             name: li.title || li.variant?.title || '',
             image: li.thumbnail || li.variant?.product?.thumbnail || '',
-            price: (li.unit_price || 0) / 100,
+            price: (li.unit_price || 0),
             quantity: li.quantity,
             variantId: li.variant_id,
             medusaLineItemId: li.id,

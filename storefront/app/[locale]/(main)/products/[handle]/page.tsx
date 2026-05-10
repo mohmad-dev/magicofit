@@ -102,10 +102,10 @@ export default function ProductPage() {
       
       const getPrice = (variant: any) => {
         if (variant?.calculated_price) {
-          return variant.calculated_price.calculated_amount / 100;
+          return variant.calculated_price.calculated_amount;
         }
         if (variant?.prices && variant.prices.length > 0) {
-          return variant.prices[0].amount / 100;
+          return variant.prices[0].amount;
         }
         return 0;
       };
@@ -131,8 +131,8 @@ export default function ProductPage() {
             .map((p: MedusaProduct) => {
               const v = p.variants?.[0];
               const img = p.thumbnail || p.images?.[0]?.url || '/placeholder-product.png';
-              const pPrice = v?.calculated_price ? v.calculated_price.calculated_amount / 100 : (v?.prices?.[0]?.amount ? v.prices[0].amount / 100 : 0);
-              const origPrice = v?.calculated_price?.original_amount ? v.calculated_price.original_amount / 100 : undefined;
+              const pPrice = v?.calculated_price ? v.calculated_price.calculated_amount : (v?.prices?.[0]?.amount ? v.prices[0].amount : 0);
+              const origPrice = v?.calculated_price?.original_amount ? v.calculated_price.original_amount : undefined;
               return { id: p.id, handle: p.handle || '', name: p.title || '', price: pPrice, originalPrice: origPrice, image: img, inStock: true };
             });
           setRelatedProducts(transformed);
@@ -183,20 +183,20 @@ export default function ProductPage() {
 
   const getPrice = (variant: any) => {
     if (variant?.calculated_price) {
-      return variant.calculated_price.calculated_amount / 100;
+      return variant.calculated_price.calculated_amount;
     }
     if (variant?.prices && variant.prices.length > 0) {
-      return variant.prices[0].amount / 100;
+      return variant.prices[0].amount;
     }
     return 0;
   };
 
   const getOriginalPrice = (variant: any) => {
     if (variant?.calculated_price?.original_amount) {
-      return variant.calculated_price.original_amount / 100;
+      return variant.calculated_price.original_amount;
     }
     if (variant?.prices && variant.prices.length > 1) {
-      return variant.prices[1].amount / 100;
+      return variant.prices[1].amount;
     }
     return 0;
   };
@@ -454,7 +454,7 @@ export default function ProductPage() {
                   handle: product.handle || '',
                   name: product.title || '',
                   image: product.thumbnail || product.images?.[0]?.url || '/placeholder-product.png',
-                  price: selectedSize && selectedColor ? 0 : (product.variants?.[0]?.calculated_price?.calculated_amount || 0) / 100,
+                  price: selectedSize && selectedColor ? 0 : (product.variants?.[0]?.calculated_price?.calculated_amount || 0),
                   variant: {
                     size: selectedSize,
                     color: selectedColor,
