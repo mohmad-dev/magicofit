@@ -36,7 +36,7 @@ export async function POST(req: MedusaRequest, res: MedusaResponse) {
 
     // 2. Find and delete regions with wrong currency for Egypt
     for (const region of regions) {
-      const countries = await regionModuleService.listRegionCountries({
+      const countries = await regionModuleService.listCountries({
         region_id: region.id,
       });
       
@@ -92,7 +92,6 @@ export async function POST(req: MedusaRequest, res: MedusaResponse) {
             {
               currency_code: "egp",
               is_default: true,
-              is_tax_inclusive: false,
             },
           ],
         });
