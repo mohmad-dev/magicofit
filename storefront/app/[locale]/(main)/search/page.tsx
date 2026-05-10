@@ -130,7 +130,7 @@ export default function SearchPage() {
   const activeFilterCount = selectedCategories.size + (selectedPriceRange.min > 0 || selectedPriceRange.max < 9999 ? 1 : 0);
 
   return (
-    <div className="max-w-screen-2xl mx-auto px-6 lg:px-8 py-8">
+    <div className="max-w-screen-2xl mx-auto px-6 lg:px-8 py-6 md:py-8">
       {/* Search Bar */}
       <div className="mb-8">
         <SearchBar

@@ -1,4 +1,5 @@
 import CollectionClient from "./CollectionClient";
+import { Container } from "@/components/layout/Container";
 import { getProducts, getRegions, getCollections } from "@/lib/store-api";
 import type { MedusaProduct } from "@/lib/types/medusa";
 
@@ -114,12 +115,14 @@ export default async function CollectionPage({ params }: CollectionPageProps) {
   const { products, collectionName, debugInfo } = await getCollectionData(handle);
 
   return (
-    <CollectionClient
-      initialProducts={products}
-      collectionName={collectionName}
-      collectionHandle={handle}
-      debugInfo={debugInfo}
-    />
+    <Container className="py-6 md:py-8">
+      <CollectionClient 
+        initialProducts={products}
+        collectionName={collectionName}
+        collectionHandle={handle}
+        debugInfo={debugInfo}
+      />
+    </Container>
   );
 }
 

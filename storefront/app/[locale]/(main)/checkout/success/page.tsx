@@ -41,6 +41,11 @@ function SuccessContent() {
   const orderId = searchParams.get('order_id') || Math.floor(100000 + Math.random() * 900000);
 
   const [orderData, setOrderData] = useState<OrderData | null>(null);
+  const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
+
+  const handleImageError = (itemId: string) => {
+    setImageErrors(prev => ({ ...prev, [itemId]: true }));
+  };
 
   useEffect(() => {
     try {
@@ -90,9 +95,10 @@ function SuccessContent() {
                 <div key={item.id} className="flex items-center gap-4 p-4">
                   <div className="relative h-16 w-16 flex-shrink-0 bg-neutral-100 rounded-lg overflow-hidden">
                     <img
-                      src={item.image}
+                      src={imageErrors[item.id] ? '/placeholder-product.png' : item.image}
                       alt={item.name}
                       className="object-cover w-full h-full"
+                      onError={() => handleImageError(item.id)}
                     />
                   </div>
                   <div className="flex-1 min-w-0">

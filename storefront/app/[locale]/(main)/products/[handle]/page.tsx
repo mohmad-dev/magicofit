@@ -248,11 +248,11 @@ export default function ProductPage() {
   };
 
   return (
-    <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-10">
+    <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-4 md:py-8">
       {/* Breadcrumb */}
       <Breadcrumb items={breadcrumbItems} />
 
-      <div className="grid grid-cols-1 gap-8 lg:gap-16 lg:grid-cols-2 mt-6">
+      <div className="grid grid-cols-1 gap-6 lg:gap-12 lg:grid-cols-2 mt-4">
         {/* Product Gallery */}
         <div className="space-y-4">
           <ProductGallery
@@ -666,21 +666,21 @@ export default function ProductPage() {
       </div>
 
       {/* Divider */}
-      <div className="mt-16 pt-8 border-t border-neutral-100">
+      <div className="mt-10 pt-6 border-t border-neutral-100">
         {/* Complete the Look */}
         <CompleteTheLook
           products={relatedProducts.slice(0, 4)}
         />
 
         {/* Related Products */}
-        <div className="mt-16">
+        <div className="mt-10">
           <RelatedProductsCarousel
             products={relatedProducts.slice(4)}
           />
         </div>
 
         {/* Recently Viewed */}
-        <div className="mt-16">
+        <div className="mt-10">
           <RecentlyViewed currentProductId={product.id} />
         </div>
       </div>

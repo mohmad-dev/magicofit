@@ -2,6 +2,7 @@
 
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 
 // Custom icons since lucide-react doesn't have social media icons
 const FacebookIcon = () => (
@@ -27,12 +28,13 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="mb-4 flex items-center space-x-2">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary-500 to-accent-500 font-bold text-white shadow-lg shadow-primary-500/30">
-                M
-              </div>
-              <span className="font-outfit text-xl font-extrabold text-neutral-900 uppercase tracking-tight">
-                MagicOFit
-              </span>
+              <Image
+                src="/images/logo.png"
+                alt="MagicOFit"
+                width={140}
+                height={36}
+                className="h-10 w-auto object-contain"
+              />
             </div>
             <p className="mb-4 text-sm text-neutral-600 leading-relaxed">
               {t('description')}

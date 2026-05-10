@@ -32,9 +32,9 @@ export default function CategoryProductSection({
   if (products.length === 0) return null;
 
   return (
-    <section className="py-4 md:py-8">
+    <section className="py-3 md:py-4">
       {/* Header */}
-      <div className="flex items-center justify-between mb-4 md:mb-6">
+      <div className="flex items-center justify-between mb-3 md:mb-4">
         <h2 className="font-outfit text-lg md:text-2xl font-extrabold text-neutral-900 uppercase tracking-tight">
           {categoryName}
         </h2>

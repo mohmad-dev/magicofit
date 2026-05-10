@@ -50,8 +50,8 @@ export default async function CategoriesPage() {
   const t = await getTranslations("categoriesPage");
 
   return (
-    <Container className="py-8 md:py-16 min-h-screen">
-      <div className="mb-8 md:mb-12 border-b border-neutral-100 pb-6 md:pb-8">
+    <Container className="py-6 md:py-8 min-h-screen">
+      <div className="mb-6 md:mb-8 border-b border-neutral-100 pb-4 md:pb-6">
         <h1 className="font-outfit text-2xl md:text-4xl lg:text-5xl font-extrabold uppercase tracking-tighter text-neutral-900 mb-3 md:mb-4">
           {t('title')}
         </h1>

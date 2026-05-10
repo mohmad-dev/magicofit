@@ -151,7 +151,7 @@ export default function ShopPage() {
   });
 
   return (
-    <div className="max-w-screen-2xl mx-auto px-6 lg:px-8 py-8">
+    <div className="max-w-screen-2xl mx-auto px-6 lg:px-8 py-6 md:py-8">
       {/* Header */}
       <div className="mb-8">
         <h1 className="font-outfit text-3xl font-extrabold text-neutral-900 mb-2 uppercase tracking-tight">

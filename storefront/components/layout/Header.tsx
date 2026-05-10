@@ -118,9 +118,9 @@ export default function Header() {
               <Image
                 src="/images/logo.png"
                 alt="MagicOFit"
-                width={140}
+                width={120}
                 height={36}
-                className="h-8 md:h-12 w-auto object-contain transition-transform group-hover:scale-105"
+                className="h-8 md:h-10 lg:h-9 w-auto object-contain transition-transform group-hover:scale-105"
               />
             </Link>
 

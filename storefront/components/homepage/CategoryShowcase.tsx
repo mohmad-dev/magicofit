@@ -30,10 +30,10 @@ export default function CategoryShowcase({
   const displaySubtitle = subtitle || t('subtitle');
 
   return (
-    <section className="py-8 md:py-16 bg-neutral-50">
+    <section className="py-6 md:py-10 bg-neutral-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Header */}
-        <div className="text-center mb-6 md:mb-8">
+        <div className="text-center mb-4 md:mb-6">
           <h2 className="font-outfit text-2xl md:text-3xl font-extrabold text-neutral-900 mb-2 uppercase tracking-tight">
             {displayTitle}
           </h2>
