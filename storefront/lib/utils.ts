@@ -12,15 +12,15 @@ export function cn(...inputs: ClassValue[]) {
 /**
  * Format price in EGP (Egyptian Pound)
  * @param price - The price value to format
- * @returns Formatted price string (e.g., "٥٠٠ ج.م.‏")
+ * @returns Formatted price string (e.g., "500 ج.م.")
  */
 export function formatPrice(price: number): string {
-  return new Intl.NumberFormat("ar-EG", {
-    style: "currency",
-    currency: "EGP",
+  const formatted = new Intl.NumberFormat("en-US", {
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
+    useGrouping: true,
   }).format(price);
+  return `${formatted} ج.م.`;
 }
 
 /**
