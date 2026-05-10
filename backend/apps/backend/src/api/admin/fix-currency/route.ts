@@ -36,9 +36,13 @@ export async function POST(req: MedusaRequest, res: MedusaResponse) {
 
     // 2. Find and delete regions with wrong currency for Egypt
     for (const region of regions) {
-      const countries = await regionModuleService.listCountries({
-        region_id: region.id,
+      const regionWithCountries = await query.graph({
+        entity: "region",
+        fields: ["id", "countries.iso_2"],
+        filters: { id: region.id },
       });
+
+      const countries = regionWithCountries?.data?.[0]?.countries || [];
       
       const hasEgypt = countries.some((c: any) => c.iso_2 === "eg");
       
