@@ -80,7 +80,7 @@ export default function ProductCard({
   const discount = originalPrice && originalPrice > price ? Math.round(((originalPrice - price) / originalPrice) * 100) : 0;
 
   return (
-    <div className="group relative flex flex-col gap-2 transition-all duration-300 hover:-translate-y-1 w-full">
+    <div className="group relative flex flex-col gap-2.5 transition-all duration-300 hover:-translate-y-1 w-full">
       {/* Image */}
       <Link href={productLink} className="relative aspect-square bg-[#F5F5F5] rounded-xl overflow-hidden block">
         <Image
@@ -129,9 +129,9 @@ export default function ProductCard({
       </Link>
 
       {/* Content */}
-      <div className="px-1 flex flex-col gap-1 pb-2">
+      <div className="px-1.5 flex flex-col gap-1.5 pb-2">
         <Link href={productLink}>
-          <h3 className="font-outfit font-semibold text-[13px] leading-tight text-neutral-800 line-clamp-2 hover:text-primary-600 transition-colors uppercase tracking-tight">
+          <h3 className="font-outfit font-semibold text-sm md:text-[15px] leading-snug text-neutral-800 line-clamp-2 hover:text-primary-600 transition-colors uppercase tracking-tight">
             {name}
           </h3>
         </Link>
@@ -139,7 +139,7 @@ export default function ProductCard({
         {/* Action Row */}
         <div className="flex items-center justify-between mt-1">
           <div className="flex items-center gap-1.5">
-            <span className="text-sm font-bold text-neutral-900">
+            <span className="text-base font-extrabold text-neutral-900">
               {formatPrice(price)}
             </span>
             {discount > 0 && originalPrice && (
