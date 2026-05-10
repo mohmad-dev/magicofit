@@ -73,10 +73,8 @@ export async function evolutionSendText({
 }
 
 export async function sendOrderCreatedWhatsApp({
-  container,
   order,
 }: {
-  container: any;
   order: any;
 }) {
   const baseUrl = process.env.EVOLUTION_API_BASE_URL;

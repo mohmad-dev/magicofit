@@ -53,7 +53,6 @@ export default async function orderPlacedHandler({
     }
 
     await sendOrderCreatedWhatsApp({
-      container,
       order,
     });
 
