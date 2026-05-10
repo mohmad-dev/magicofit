@@ -75,13 +75,6 @@ export default function HomeClient({
         <HeroBanner banners={banners} sideBanners={sideBanners} />
       </div>
 
-      {/* Trust badges - right after hero for first impression */}
-      <div className="w-full bg-neutral-50 border-b border-neutral-100">
-        <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-3 md:py-4">
-          <TrustBadges />
-        </div>
-      </div>
-
       {/* Collection Tabs with Products */}
       {collectionSections.length > 0 && (
         <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-4 md:py-6">
@@ -199,6 +192,13 @@ export default function HomeClient({
           </div>
         </section>
       )}
+
+      {/* Trust badges - right after hero for first impression */}
+      <div className="w-full bg-neutral-50 border-b border-neutral-100">
+        <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-3 md:py-4">
+          <TrustBadges />
+        </div>
+      </div>
 
       <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
         <BrandLogos />
