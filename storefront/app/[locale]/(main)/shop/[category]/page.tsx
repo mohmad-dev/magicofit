@@ -1,5 +1,4 @@
 import CategoryClient from "./CategoryClient";
-import { Container } from "@/components/layout/Container";
 import { getProducts, getCategories, getRegions } from "@/lib/store-api";
 import type { MedusaProduct } from "@/lib/types/medusa";
 
@@ -116,14 +115,12 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   const { products, categoryName, debugInfo } = await getCategoryData(category);
 
   return (
-    <Container className="py-6 md:py-8">
-      <CategoryClient
-        initialProducts={products}
-        categoryName={categoryName}
-        categorySlug={category}
-        debugInfo={debugInfo}
-      />
-    </Container>
+    <CategoryClient
+      initialProducts={products}
+      categoryName={categoryName}
+      categorySlug={category}
+      debugInfo={debugInfo}
+    />
   );
 }
 

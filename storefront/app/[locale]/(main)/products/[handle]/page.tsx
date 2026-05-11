@@ -14,10 +14,8 @@ import StockIndicator from "@/components/product/StockIndicator";
 import UrgencyBadge from "@/components/product/UrgencyBadge";
 import CompleteTheLook from "@/components/product/CompleteTheLook";
 import RelatedProductsCarousel from "@/components/product/RelatedProductsCarousel";
-import RecentlyViewed from "@/components/product/RecentlyViewed";
 import ProductTabs from "@/components/product/ProductTabs";
 import SizeGuideModal from "@/components/product/SizeGuideModal";
-import { addToRecentlyViewed } from "@/components/product/RecentlyViewed";
 import { formatPrice, getVariantOptionValue, cn } from "@/lib/utils";
 import { useState, useEffect } from "react";
 import { Truck, RotateCcw, Package, Check, Minus, Plus, Ruler } from "lucide-react";
@@ -98,27 +96,6 @@ export default function ProductPage() {
   // Add to recently viewed + fetch related products
   useEffect(() => {
     if (product) {
-      const firstVariant = product.variants?.[0];
-      
-      const getPrice = (variant: any) => {
-        if (variant?.calculated_price) {
-          return variant.calculated_price.calculated_amount;
-        }
-        if (variant?.prices && variant.prices.length > 0) {
-          return variant.prices[0].amount;
-        }
-        return 0;
-      };
-
-      const price = getPrice(firstVariant);
-      addToRecentlyViewed({
-        id: product.id,
-        name: product.title || '',
-        price: price,
-        image: product.thumbnail || product.images?.[0]?.url || '/placeholder-product.png',
-        inStock: true,
-      });
-
       // Fetch related products from same category
       const currentProductId = product.id;
       async function fetchRelated() {
@@ -667,21 +644,18 @@ export default function ProductPage() {
 
       {/* Divider */}
       <div className="mt-10 pt-6 border-t border-neutral-100">
-        {/* Complete the Look */}
-        <CompleteTheLook
-          products={relatedProducts.slice(0, 4)}
-        />
-
         {/* Related Products */}
         <div className="mt-10">
           <RelatedProductsCarousel
-            products={relatedProducts.slice(4)}
+            products={relatedProducts}
           />
         </div>
 
-        {/* Recently Viewed */}
+        {/* Complete the Look */}
         <div className="mt-10">
-          <RecentlyViewed currentProductId={product.id} />
+          <CompleteTheLook
+            products={relatedProducts.slice(0, 8)}
+          />
         </div>
       </div>
 

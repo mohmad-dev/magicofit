@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { Search, X, Loader2 } from "lucide-react";
-import { searchProducts } from "@/lib/store-api";
+import { getRegions, searchProducts } from "@/lib/store-api";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { formatPrice } from "@/lib/utils";
@@ -16,6 +16,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [regionId, setRegionId] = useState<string | undefined>(undefined);
   const router = useRouter();
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -23,6 +24,25 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
     if (isOpen && inputRef.current) {
       inputRef.current.focus();
     }
+  }, [isOpen]);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    let cancelled = false;
+
+    (async () => {
+      try {
+        const regions = await getRegions();
+        const egyptRegion = regions.find((r) => r.currency_code === "egp") || regions[0];
+        if (!cancelled) setRegionId(egyptRegion?.id);
+      } catch {
+        if (!cancelled) setRegionId(undefined);
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
   }, [isOpen]);
 
   useEffect(() => {
@@ -34,7 +54,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
 
       try {
         setIsLoading(true);
-        const data = await searchProducts(query);
+        const data = await searchProducts(query, { region_id: regionId });
         const transformed = data.products.slice(0, 8).map((product: any) => {
           const firstVariant = product.variants?.[0];
           const getPrice = (variant: any) => {
@@ -66,7 +86,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
 
     const debounceTimer = setTimeout(performSearch, 300);
     return () => clearTimeout(debounceTimer);
-  }, [query]);
+  }, [query, regionId]);
 
   const handleProductClick = (handle: string) => {
     onClose();

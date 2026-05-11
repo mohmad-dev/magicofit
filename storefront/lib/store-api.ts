@@ -54,9 +54,20 @@ export async function getProductByHandle(handle: string, regionId?: string): Pro
     })
 }
 
-export async function searchProducts(query: string): Promise<{ products: MedusaProduct[]; count: number }> {
+export async function searchProducts(
+  query: string,
+  params?: {
+    region_id?: string
+  }
+): Promise<{ products: MedusaProduct[]; count: number }> {
+  const queryParams = new URLSearchParams()
+  queryParams.append('q', query)
+  if (params?.region_id) queryParams.append('region_id', params.region_id)
+  // Ensure pricing fields are present in search results
+  queryParams.append('fields', '*variants.calculated_price,*variants.prices')
+
   return medusaClient.get<{ products: MedusaProduct[]; count: number }>(
-    `/store/products?q=${encodeURIComponent(query)}`
+    `/store/products?${queryParams.toString()}`
   )
 }
 

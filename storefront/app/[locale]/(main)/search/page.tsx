@@ -9,7 +9,7 @@ import ProductGrid from "@/components/product/ProductGrid";
 import ActiveFilterChips from "@/components/search/ActiveFilterChips";
 import SortDropdown from "@/components/search/SortDropdown";
 import ViewToggle from "@/components/search/ViewToggle";
-import { searchProducts } from "@/lib/store-api";
+import { getRegions, searchProducts } from "@/lib/store-api";
 import { useTranslations } from "next-intl";
 import type { MedusaProduct } from "@/lib/types/medusa";
 
@@ -32,11 +32,30 @@ export default function SearchPage() {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [regionId, setRegionId] = useState<string | undefined>(undefined);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [selectedCategories, setSelectedCategories] = useState<Set<string>>(new Set());
   const [selectedPriceRange, setSelectedPriceRange] = useState({ min: 0, max: 9999 });
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [sortBy, setSortBy] = useState<"best-selling" | "price-low" | "price-high" | "newest">("best-selling");
+
+  useEffect(() => {
+    let cancelled = false;
+
+    (async () => {
+      try {
+        const regions = await getRegions();
+        const egyptRegion = regions.find((r) => r.currency_code === "egp") || regions[0];
+        if (!cancelled) setRegionId(egyptRegion?.id);
+      } catch {
+        if (!cancelled) setRegionId(undefined);
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   // Search products when query changes
   useEffect(() => {
@@ -48,7 +67,7 @@ export default function SearchPage() {
       
       try {
         setIsLoading(true);
-        const data = await searchProducts(query);
+        const data = await searchProducts(query, { region_id: regionId });
         const transformed = data.products.map((product: MedusaProduct) => {
           const firstVariant = product.variants?.[0];
           
