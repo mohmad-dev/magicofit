@@ -53,7 +53,6 @@ export default function CategoryProductSection({
           <ProductCard
             key={product.id}
             {...product}
-            hideAddToCart
           />
         ))}
       </div>
