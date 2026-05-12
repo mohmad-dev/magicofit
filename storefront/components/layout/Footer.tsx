@@ -36,7 +36,7 @@ export default function Footer() {
                 className="h-10 w-auto object-contain"
               />
             </div>
-            <p className="mb-4 text-sm text-neutral-600 leading-relaxed">
+            <p className="mb-4 text-sm text-neutral-700 leading-relaxed">
               {t('description')}
             </p>
             <div className="flex space-x-4">
@@ -44,7 +44,8 @@ export default function Footer() {
                 href="https://www.facebook.com/share/18hLJiTUda/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-neutral-500 transition-colors hover:text-primary-600 hover:scale-110 transform"
+                aria-label="تابعنا على فيسبوك"
+                className="text-neutral-600 transition-colors hover:text-primary-700 hover:scale-110 transform"
               >
                 <FacebookIcon />
               </a>
@@ -52,7 +53,8 @@ export default function Footer() {
                 href="https://www.tiktok.com/@almageko58"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-neutral-500 transition-colors hover:text-primary-600 hover:scale-110 transform"
+                aria-label="تابعنا على تيك توك"
+                className="text-neutral-600 transition-colors hover:text-primary-700 hover:scale-110 transform"
               >
                 <TikTokIcon />
               </a>
@@ -68,7 +70,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/shop"
-                  className="text-neutral-600 transition-colors hover:text-primary-600 font-medium"
+                  className="text-neutral-700 transition-colors hover:text-primary-700 font-medium"
                 >
                   {t('allProducts')}
                 </Link>
@@ -76,7 +78,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/shop/running"
-                  className="text-neutral-600 transition-colors hover:text-primary-600 font-medium"
+                  className="text-neutral-700 transition-colors hover:text-primary-700 font-medium"
                 >
                   {t('running')}
                 </Link>
@@ -84,7 +86,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/shop/football"
-                  className="text-neutral-600 transition-colors hover:text-primary-600 font-medium"
+                  className="text-neutral-700 transition-colors hover:text-primary-700 font-medium"
                 >
                   {t('football')}
                 </Link>
@@ -92,7 +94,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/shop/basketball"
-                  className="text-neutral-600 transition-colors hover:text-primary-600 font-medium"
+                  className="text-neutral-700 transition-colors hover:text-primary-700 font-medium"
                 >
                   {t('basketball')}
                 </Link>
@@ -100,7 +102,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/shop/gym"
-                  className="text-neutral-600 transition-colors hover:text-primary-600 font-medium"
+                  className="text-neutral-700 transition-colors hover:text-primary-700 font-medium"
                 >
                   {t('gymFitness')}
                 </Link>
@@ -117,7 +119,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/about"
-                  className="text-neutral-600 transition-colors hover:text-primary-600 font-medium"
+                  className="text-neutral-700 transition-colors hover:text-primary-700 font-medium"
                 >
                   {t('aboutUs')}
                 </Link>
@@ -125,7 +127,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/contact"
-                  className="text-neutral-600 transition-colors hover:text-primary-600 font-medium"
+                  className="text-neutral-700 transition-colors hover:text-primary-700 font-medium"
                 >
                   {t('contactUs')}
                 </Link>
@@ -133,7 +135,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/faq"
-                  className="text-neutral-600 transition-colors hover:text-primary-600 font-medium"
+                  className="text-neutral-700 transition-colors hover:text-primary-700 font-medium"
                 >
                   {tc('faq')}
                 </Link>
@@ -141,7 +143,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/shipping"
-                  className="text-neutral-600 transition-colors hover:text-primary-600 font-medium"
+                  className="text-neutral-700 transition-colors hover:text-primary-700 font-medium"
                 >
                   {t('shippingInfo')}
                 </Link>
@@ -149,7 +151,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/returns"
-                  className="text-neutral-600 transition-colors hover:text-primary-600 font-medium"
+                  className="text-neutral-700 transition-colors hover:text-primary-700 font-medium"
                 >
                   {tc('returns')}
                 </Link>
@@ -162,7 +164,7 @@ export default function Footer() {
             <h3 className="font-outfit mb-4 font-bold text-neutral-900 uppercase tracking-wide">
               {t('newsletter')}
             </h3>
-            <p className="mb-4 text-sm text-neutral-600 leading-relaxed">
+            <p className="mb-4 text-sm text-neutral-700 leading-relaxed">
               {t('newsletterText')}
             </p>
             <form className="flex space-x-2">
