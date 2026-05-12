@@ -118,7 +118,7 @@ export default async function LocaleLayout({
     name: 'الماجيكو للرياضة - MagicOFit',
     alternateName: 'MagicOFit',
     description: 'متجر رياضي متكامل يوفر أفضل المعدات الرياضية، أحذية الركض، الملابس التدريبية، معدات الجيم، وأكثر.',
-    url: 'https://magicofit.com',
+    url: 'https://magicofit.shop',
     telephone: '+201091998631',
     address: {
       '@type': 'PostalAddress',

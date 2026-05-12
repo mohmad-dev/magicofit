@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next'
 import { getProducts, getCategories } from '@/lib/store-api'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://magicofit.com'
+  const baseUrl = 'https://magicofit.shop'
   
   // Static pages
   const staticPages: MetadataRoute.Sitemap = [

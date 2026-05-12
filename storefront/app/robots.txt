@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://magicofit.com/sitemap.xml
+Sitemap: https://magicofit.shop/sitemap.xml
