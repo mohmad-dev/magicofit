@@ -2,6 +2,7 @@ import {
   type SubscriberArgs,
   type SubscriberConfig,
 } from "@medusajs/framework";
+import { ContainerRegistrationKeys } from "@medusajs/framework/utils";
 
 import {
   isWhatsAppNotificationsEnabled,
@@ -18,23 +19,25 @@ export default async function orderPlacedHandler({
   event: { data },
   container,
 }: SubscriberArgs<{ id: string }>) {
+  const logger = container.resolve(ContainerRegistrationKeys.LOGGER);
+
   try {
     const orderId = data.id;
 
-    console.log(`=== ORDER PLACED SUBSCRIBER START ===`);
-    console.log(`Order ${orderId} placed - processing...`);
+    logger.info(`=== ORDER PLACED SUBSCRIBER START ===`);
+    logger.info(`Order ${orderId} placed - processing...`);
 
     // Check if WhatsApp notifications are enabled
     const whatsappEnabled = isWhatsAppNotificationsEnabled();
-    console.log(`WhatsApp notifications enabled: ${whatsappEnabled}`);
-    console.log(`WHATTSAPP_NOTIFICATIONS_ENABLED env var: ${process.env.WHATSAPP_NOTIFICATIONS_ENABLED}`);
+    logger.info(`WhatsApp notifications enabled: ${whatsappEnabled}`);
+    logger.info(`WHATTSAPP_NOTIFICATIONS_ENABLED env var: ${process.env.WHATSAPP_NOTIFICATIONS_ENABLED}`);
 
     if (!whatsappEnabled) {
-      console.log("WhatsApp notifications disabled - skipping");
+      logger.info("WhatsApp notifications disabled - skipping");
       return;
     }
 
-    console.log(`Fetching order ${orderId} data...`);
+    logger.info(`Fetching order ${orderId} data...`);
     const query = container.resolve("query");
     const orderData = await query.graph({
       entity: "order",
@@ -57,27 +60,27 @@ export default async function orderPlacedHandler({
 
     const order = orderData?.data?.[0];
     if (!order) {
-      console.warn(`Order ${orderId} not found - skipping WhatsApp notification`);
+      logger.warn(`Order ${orderId} not found - skipping WhatsApp notification`);
       return;
     }
 
-    console.log(`Order data fetched:`, JSON.stringify(order, null, 2));
-    console.log(`Sending WhatsApp notification for order ${orderId}...`);
+    logger.info(`Order data fetched:`, JSON.stringify(order, null, 2));
+    logger.info(`Sending WhatsApp notification for order ${orderId}...`);
 
     await sendOrderCreatedWhatsApp({
       order,
     });
 
-    console.log(`Order ${orderId} processed successfully`);
-    console.log(`=== ORDER PLACED SUBSCRIBER END ===`);
+    logger.info(`Order ${orderId} processed successfully`);
+    logger.info(`=== ORDER PLACED SUBSCRIBER END ===`);
   } catch (error) {
-    console.error("Error processing order placement:", error);
-    console.error("Error stack:", error instanceof Error ? error.stack : "No stack trace");
+    logger.error("Error processing order placement:", error);
+    logger.error("Error stack:", error instanceof Error ? error.stack : "No stack trace");
   }
 }
 
 export const config: SubscriberConfig = {
-  event: "order.created",
+  event: ["order.created", "order.placed"],
   context: {
     subscriberId: "order-placed-subscriber",
   },
