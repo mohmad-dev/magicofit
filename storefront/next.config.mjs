@@ -43,14 +43,53 @@ const nextConfig = {
   swcMinify: true,
   experimental: {
     optimizeCss: true,
+    optimizePackageImports: ['lucide-react', '@tanstack/react-query'],
+    modularizeImports: {
+      'lucide-react': {
+        transform: 'lucide-react/dist/esm/icons/{{kebabCase member}}',
+      },
+    },
   },
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
+    emotion: true,
+  },
+  swcMinify: true,
+  swc: {
+    jsc: {
+      parser: {
+        syntax: 'ecmascript',
+        jsx: true,
+        dynamicImport: true,
+      },
+      transform: {
+        react: {
+          runtime: 'automatic',
+        },
+        optimizer: {
+          globals: {
+            vars: {
+              'process.env.NODE_ENV': 'production',
+            },
+          },
+        },
+      },
+      target: 'es2023',
+      minify: {
+        compress: {
+          drop_console: true,
+        },
+      },
+    },
   },
   images: {
     formats: ['image/avif', 'image/webp'],
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    deviceSizes: [320, 375, 414, 640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    minimumCacheTTL: 60,
+    dangerouslyAllowSVG: true,
+    contentDispositionType: 'attachment',
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     remotePatterns: [
       ...(medusaImageRemotePattern ? [medusaImageRemotePattern] : []),
       ...(storageImageRemotePattern ? [storageImageRemotePattern] : []),
