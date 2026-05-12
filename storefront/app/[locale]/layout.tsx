@@ -10,19 +10,36 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 
 export const metadata: Metadata = {
-  title: "MagicOFit - Premium Sports E-Commerce",
-  description: "Premium sports gear and equipment for athletes. Shop running shoes, training apparel, gym equipment, and more.",
-  keywords: ["sports", "fitness", "running", "training", "gym", "equipment", "apparel"],
-  authors: [{ name: "MagicOFit" }],
+  title: "الماجيكو للرياضة - MagicOFit | متجر رياضي متكامل",
+  description: "الماجيكو للرياضة - متجر رياضي متكامل يوفر أفضل المعدات الرياضية، أحذية الركض، الملابس التدريبية، معدات الجيم، وأكثر. تسوق الآن بأفضل الأسعار في مصر.",
+  keywords: ["الماجيكو للرياضة", "MagicOFit", "متجر رياضي", "معدات رياضية", "أحذية ركض", "ملابس رياضية", "معدات جيم", "تدريب", "لياقة بدنية", "رياضة", "كرة قدم", "كرة سلة", "أحذية رياضية", "مصر", "EGP"],
+  authors: [{ name: "Mohamed Ahmed Marei" }],
+  icons: {
+    icon: "/icon.png",
+    apple: "/apple-touch-icon.png",
+  },
   openGraph: {
-    title: "MagicOFit - Premium Sports E-Commerce",
-    description: "Premium sports gear and equipment for athletes.",
+    title: "الماجيكو للرياضة - MagicOFit | متجر رياضي متكامل",
+    description: "متجر رياضي متكامل يوفر أفضل المعدات الرياضية، أحذية الركض، الملابس التدريبية، معدات الجيم، وأكثر.",
     type: "website",
+    locale: "ar_EG",
+    siteName: "الماجيكو للرياضة",
   },
   twitter: {
     card: "summary_large_image",
-    title: "MagicOFit - Premium Sports E-Commerce",
-    description: "Premium sports gear and equipment for athletes.",
+    title: "الماجيكو للرياضة - MagicOFit | متجر رياضي متكامل",
+    description: "متجر رياضي متكامل يوفر أفضل المعدات الرياضية، أحذية الركض، الملابس التدريبية، معدات الجيم، وأكثر.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
 };
 
@@ -95,8 +112,32 @@ export default async function LocaleLayout({
   const dir = locale === "ar" ? "rtl" : "ltr";
   const campaigns = await getActiveCampaigns();
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'SportsGoodsStore',
+    name: 'الماجيكو للرياضة - MagicOFit',
+    alternateName: 'MagicOFit',
+    description: 'متجر رياضي متكامل يوفر أفضل المعدات الرياضية، أحذية الركض، الملابس التدريبية، معدات الجيم، وأكثر.',
+    url: 'https://magicofit.com',
+    telephone: '+201091998631',
+    address: {
+      '@type': 'PostalAddress',
+      addressCountry: 'EG',
+    },
+    sameAs: [
+      'https://www.facebook.com/share/18hLJiTUda/',
+      'https://www.tiktok.com/@almageko58',
+    ],
+  };
+
   return (
     <html lang={locale} dir={dir} className={`${inter.variable} ${outfit.variable} ${cairo.variable} h-full antialiased`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className={`min-h-full flex flex-col font-sans`}>
         <NextIntlClientProvider messages={messages}>
           <div className="flex min-h-screen flex-col">

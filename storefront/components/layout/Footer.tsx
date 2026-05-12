@@ -183,6 +183,12 @@ export default function Footer() {
 
         <div className="mt-12 border-t border-neutral-200 pt-8 text-center text-sm text-neutral-600">
           <p>{t('copyright')}</p>
+          <p className="mt-2">
+            التطوير بواسطة: <span className="font-bold text-neutral-900">محمد أحمد مرعي</span> | 
+            <a href="https://wa.me/201091998631" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:text-primary-700 font-medium">
+              واتساب: 01091998631
+            </a>
+          </p>
         </div>
       </div>
     </footer>

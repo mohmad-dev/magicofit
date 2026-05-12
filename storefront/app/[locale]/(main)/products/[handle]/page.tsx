@@ -132,8 +132,61 @@ export default function ProductPage() {
 
   if (isLoading) {
     return (
-      <div className="max-w-screen-2xl mx-auto px-6 lg:px-8 py-8">
-        <p>{t("loading")}</p>
+      <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-4 md:py-8">
+        <div className="animate-pulse">
+          {/* Breadcrumb skeleton */}
+          <div className="h-6 w-48 bg-neutral-200 rounded mb-6"></div>
+          
+          <div className="grid grid-cols-1 gap-6 lg:gap-12 lg:grid-cols-2 mt-4">
+            {/* Gallery skeleton */}
+            <div className="space-y-4">
+              <div className="aspect-square bg-neutral-200 rounded-xl"></div>
+              <div className="grid grid-cols-4 gap-2">
+                {[1, 2, 3, 4].map((i) => (
+                  <div key={i} className="aspect-square bg-neutral-200 rounded-lg"></div>
+                ))}
+              </div>
+            </div>
+            
+            {/* Product info skeleton */}
+            <div className="space-y-6">
+              <div className="space-y-3">
+                <div className="h-4 w-32 bg-neutral-200 rounded"></div>
+                <div className="h-8 w-3/4 bg-neutral-200 rounded"></div>
+                <div className="h-4 w-1/2 bg-neutral-200 rounded"></div>
+              </div>
+              
+              <div className="space-y-3">
+                <div className="h-10 w-1/3 bg-neutral-200 rounded"></div>
+                <div className="h-8 w-1/4 bg-neutral-200 rounded"></div>
+              </div>
+              
+              <div className="space-y-4">
+                <div className="h-6 w-24 bg-neutral-200 rounded"></div>
+                <div className="flex gap-2">
+                  {[1, 2, 3, 4, 5].map((i) => (
+                    <div key={i} className="h-12 w-12 bg-neutral-200 rounded-lg"></div>
+                  ))}
+                </div>
+              </div>
+              
+              <div className="space-y-3">
+                <div className="h-6 w-20 bg-neutral-200 rounded"></div>
+                <div className="flex gap-4">
+                  <div className="h-12 w-12 bg-neutral-200 rounded-lg"></div>
+                  <div className="h-12 w-16 bg-neutral-200 rounded-lg"></div>
+                  <div className="h-12 w-12 bg-neutral-200 rounded-lg"></div>
+                </div>
+              </div>
+              
+              <div className="space-y-3">
+                <div className="h-6 w-16 bg-neutral-200 rounded"></div>
+                <div className="h-14 w-full bg-neutral-200 rounded-xl"></div>
+                <div className="h-14 w-full bg-neutral-200 rounded-xl"></div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
