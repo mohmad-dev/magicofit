@@ -64,7 +64,7 @@ export default async function orderPlacedHandler({
       return;
     }
 
-    logger.info(`Order data fetched:`, JSON.stringify(order, null, 2));
+    logger.info(`Order data fetched: ${JSON.stringify(order, null, 2)}`);
     logger.info(`Sending WhatsApp notification for order ${orderId}...`);
 
     await sendOrderCreatedWhatsApp({
@@ -74,8 +74,10 @@ export default async function orderPlacedHandler({
     logger.info(`Order ${orderId} processed successfully`);
     logger.info(`=== ORDER PLACED SUBSCRIBER END ===`);
   } catch (error) {
-    logger.error("Error processing order placement:", error);
-    logger.error("Error stack:", error instanceof Error ? error.stack : "No stack trace");
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    const errorStack = error instanceof Error ? error.stack : "No stack trace";
+    logger.error(`Error processing order placement: ${errorMessage}`);
+    logger.error(`Error stack: ${errorStack}`);
   }
 }
 
