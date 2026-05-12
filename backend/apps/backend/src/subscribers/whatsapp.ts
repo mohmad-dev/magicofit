@@ -1,4 +1,6 @@
 
+import { getWhatsAppTemplate } from "./whatsapp-templates";
+
 export function isWhatsAppNotificationsEnabled() {
   return process.env.WHATSAPP_NOTIFICATIONS_ENABLED === "true";
 }
@@ -94,22 +96,13 @@ export async function sendOrderCreatedWhatsApp({
     return;
   }
 
-  const fullName = `${order?.shipping_address?.first_name || ""} ${order?.shipping_address?.last_name || ""}`.trim();
-  const name = fullName || order?.customer?.first_name || "عميلنا";
+  // Use template for order created
+  const text = getWhatsAppTemplate('order_created', { order });
 
-  const displayId = order?.display_id ?? order?.id;
-  const itemsText = Array.isArray(order?.items)
-    ? order.items
-        .slice(0, 6)
-        .map((it: any) => {
-          const title = it?.title || "منتج";
-          const qty = it?.quantity ?? 1;
-          return `- ${title} × ${qty}`;
-        })
-        .join("\n")
-    : "";
-
-  const text = `*تم تأكيد الطلب*\n\nمرحبًا ${name}،\n\nنشكرك على الشراء! رقم طلبك هو #${displayId}.\n\nسنبدأ في تجهيز طلبك وهو عبارة عن:\n${itemsText || "- (تفاصيل الطلب غير متاحة)"}\n\nتاريخ التوصيل المُقدّر: خلال 5 أيام\n\nسنخبرك عندما يتم شحن طلبك.`;
+  if (!text) {
+    console.error(`Failed to get WhatsApp template for order ${order?.id || ""}`);
+    return;
+  }
 
   try {
     await evolutionSendText({
@@ -121,6 +114,98 @@ export async function sendOrderCreatedWhatsApp({
     });
 
     console.log(`WhatsApp order confirmation sent for order ${order?.id || ""} to ${number}`);
+  } catch (e: any) {
+    console.error(`WhatsApp send failed for order ${order?.id || ""}: ${e?.message || e}`);
+  }
+}
+
+export async function sendOrderShippedWhatsApp({
+  order,
+  trackingNumber,
+  carrier,
+}: {
+  order: any;
+  trackingNumber?: string;
+  carrier?: string;
+}) {
+  const baseUrl = process.env.EVOLUTION_API_BASE_URL;
+  const apiKey = process.env.EVOLUTION_API_KEY;
+  const instance = process.env.WHATSAPP_INSTANCE;
+
+  if (!baseUrl || !apiKey || !instance) {
+    console.warn("WhatsApp notifications skipped: missing EVOLUTION_API_BASE_URL / EVOLUTION_API_KEY / WHATSAPP_INSTANCE");
+    return;
+  }
+
+  const phoneRaw = order?.shipping_address?.phone;
+  const number = phoneRaw ? normalizeEgyptWhatsAppNumber(phoneRaw) : null;
+
+  if (!number) {
+    console.warn(`WhatsApp notifications skipped: missing/invalid phone for order ${order?.id || ""}`);
+    return;
+  }
+
+  const text = getWhatsAppTemplate('order_shipped', { order, trackingNumber, carrier });
+
+  if (!text) {
+    console.error(`Failed to get WhatsApp template for order ${order?.id || ""}`);
+    return;
+  }
+
+  try {
+    await evolutionSendText({
+      baseUrl,
+      apiKey,
+      instance,
+      number,
+      text,
+    });
+
+    console.log(`WhatsApp order shipped notification sent for order ${order?.id || ""} to ${number}`);
+  } catch (e: any) {
+    console.error(`WhatsApp send failed for order ${order?.id || ""}: ${e?.message || e}`);
+  }
+}
+
+export async function sendOrderDeliveredWhatsApp({
+  order,
+}: {
+  order: any;
+}) {
+  const baseUrl = process.env.EVOLUTION_API_BASE_URL;
+  const apiKey = process.env.EVOLUTION_API_KEY;
+  const instance = process.env.WHATSAPP_INSTANCE;
+
+  if (!baseUrl || !apiKey || !instance) {
+    console.warn("WhatsApp notifications skipped: missing EVOLUTION_API_BASE_URL / EVOLUTION_API_KEY / WHATSAPP_INSTANCE");
+    return;
+  }
+
+  const phoneRaw = order?.shipping_address?.phone;
+  const number = phoneRaw ? normalizeEgyptWhatsAppNumber(phoneRaw) : null;
+
+  if (!number) {
+    console.warn(`WhatsApp notifications skipped: missing/invalid phone for order ${order?.id || ""}`);
+    return;
+  }
+
+  const text = getWhatsAppTemplate('order_delivered', { order });
+
+  if (!text) {
+    console.error(`Failed to get WhatsApp template for order ${order?.id || ""}`);
+    return;
+  }
+
+  try {
+    await evolutionSendText({
+      baseUrl,
+      apiKey,
+      instance,
+      number,
+      text,
+    });
+
+    console.log(`WhatsApp order delivered notification sent for order ${order?.id || ""} to ${number}`);
   } catch (e: any) {
     console.error(`WhatsApp send failed for order ${order?.id || ""}: ${e?.message || e}`);
   }
