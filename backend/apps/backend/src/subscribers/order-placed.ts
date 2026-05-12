@@ -21,13 +21,20 @@ export default async function orderPlacedHandler({
   try {
     const orderId = data.id;
 
+    console.log(`=== ORDER PLACED SUBSCRIBER START ===`);
     console.log(`Order ${orderId} placed - processing...`);
 
-    if (!isWhatsAppNotificationsEnabled()) {
+    // Check if WhatsApp notifications are enabled
+    const whatsappEnabled = isWhatsAppNotificationsEnabled();
+    console.log(`WhatsApp notifications enabled: ${whatsappEnabled}`);
+    console.log(`WHATTSAPP_NOTIFICATIONS_ENABLED env var: ${process.env.WHATSAPP_NOTIFICATIONS_ENABLED}`);
+
+    if (!whatsappEnabled) {
       console.log("WhatsApp notifications disabled - skipping");
       return;
     }
 
+    console.log(`Fetching order ${orderId} data...`);
     const query = container.resolve("query");
     const orderData = await query.graph({
       entity: "order",
@@ -42,6 +49,8 @@ export default async function orderPlacedHandler({
         "shipping_address.phone",
         "items.title",
         "items.quantity",
+        "total",
+        "currency_code",
       ],
       filters: { id: orderId },
     });
@@ -52,23 +61,18 @@ export default async function orderPlacedHandler({
       return;
     }
 
+    console.log(`Order data fetched:`, JSON.stringify(order, null, 2));
+    console.log(`Sending WhatsApp notification for order ${orderId}...`);
+
     await sendOrderCreatedWhatsApp({
       order,
     });
 
-    // TODO: Reserve inventory for order items
-    // This will be implemented when the inventory reservation workflow is ready
-    // const inventoryModuleService = container.resolve("inventory");
-    // await reserveInventoryForOrder(orderId);
-
-    // TODO: Send confirmation email to customer
-    // This will be implemented when email service is configured
-    // const notificationService = container.resolve("notification");
-    // await notificationService.sendOrderConfirmation(orderId);
-
     console.log(`Order ${orderId} processed successfully`);
+    console.log(`=== ORDER PLACED SUBSCRIBER END ===`);
   } catch (error) {
     console.error("Error processing order placement:", error);
+    console.error("Error stack:", error instanceof Error ? error.stack : "No stack trace");
   }
 }
 

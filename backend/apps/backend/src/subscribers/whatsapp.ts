@@ -83,16 +83,25 @@ export async function sendOrderCreatedWhatsApp({
   const apiKey = process.env.EVOLUTION_API_KEY;
   const instance = process.env.WHATSAPP_INSTANCE;
 
+  console.log(`=== WHATSAPP SEND START ===`);
+  console.log(`EVOLUTION_API_BASE_URL: ${baseUrl}`);
+  console.log(`EVOLUTION_API_KEY: ${apiKey ? "SET" : "NOT SET"}`);
+  console.log(`WHATSAPP_INSTANCE: ${instance}`);
+
   if (!baseUrl || !apiKey || !instance) {
     console.warn("WhatsApp notifications skipped: missing EVOLUTION_API_BASE_URL / EVOLUTION_API_KEY / WHATSAPP_INSTANCE");
+    console.log(`=== WHATSAPP SEND END (SKIPPED) ===`);
     return;
   }
 
   const phoneRaw = order?.shipping_address?.phone;
+  console.log(`Raw phone: ${phoneRaw}`);
   const number = phoneRaw ? normalizeEgyptWhatsAppNumber(phoneRaw) : null;
+  console.log(`Normalized phone: ${number}`);
 
   if (!number) {
     console.warn(`WhatsApp notifications skipped: missing/invalid phone for order ${order?.id || ""}`);
+    console.log(`=== WHATSAPP SEND END (SKIPPED - NO PHONE) ===`);
     return;
   }
 
@@ -101,8 +110,12 @@ export async function sendOrderCreatedWhatsApp({
 
   if (!text) {
     console.error(`Failed to get WhatsApp template for order ${order?.id || ""}`);
+    console.log(`=== WHATSAPP SEND END (ERROR - NO TEMPLATE) ===`);
     return;
   }
+
+  console.log(`Sending WhatsApp message to ${number}...`);
+  console.log(`Message text: ${text}`);
 
   try {
     await evolutionSendText({
@@ -114,8 +127,11 @@ export async function sendOrderCreatedWhatsApp({
     });
 
     console.log(`WhatsApp order confirmation sent for order ${order?.id || ""} to ${number}`);
+    console.log(`=== WHATSAPP SEND END (SUCCESS) ===`);
   } catch (e: any) {
     console.error(`WhatsApp send failed for order ${order?.id || ""}: ${e?.message || e}`);
+    console.error(`Error details:`, e);
+    console.log(`=== WHATSAPP SEND END (ERROR) ===`);
   }
 }
 
