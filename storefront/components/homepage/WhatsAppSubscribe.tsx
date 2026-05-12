@@ -59,7 +59,7 @@ export default function WhatsAppSubscribe({
               <h2 className="font-outfit text-2xl md:text-3xl font-extrabold text-white mb-3 uppercase tracking-tight">
                 {t('subscribed')}
               </h2>
-              <p className="text-neutral-400">
+              <p className="text-neutral-300">
                 {t('subscribedDesc')}
               </p>
             </div>
@@ -80,7 +80,7 @@ export default function WhatsAppSubscribe({
             <h2 className="font-outfit text-2xl md:text-3xl font-extrabold text-white mb-3 uppercase tracking-tight">
               {effectiveTitle}
             </h2>
-            <p className="text-neutral-400 mb-6">{effectiveSubtitle}</p>
+            <p className="text-neutral-300 mb-6">{effectiveSubtitle}</p>
             <div className="inline-block bg-green-500/10 border border-green-500/20 rounded-lg px-4 py-2 mb-6">
               <span className="font-bold text-green-400">{t('discount')}</span>
             </div>
@@ -91,7 +91,7 @@ export default function WhatsAppSubscribe({
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   placeholder={effectivePlaceholder}
-                  className="w-full px-4 py-3 rounded-lg bg-neutral-800 border border-neutral-700 text-white placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all"
+                  className="w-full px-4 py-3 rounded-lg bg-neutral-800 border border-neutral-700 text-white placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all"
                   dir="ltr"
                   required
                 />
@@ -109,7 +109,7 @@ export default function WhatsAppSubscribe({
                 {effectiveButtonText}
               </Button>
             </form>
-            <p className="text-neutral-500 text-xs mt-4">
+            <p className="text-neutral-300 text-xs mt-4">
               {t('privacyNote')}
             </p>
           </div>

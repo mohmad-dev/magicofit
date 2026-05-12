@@ -9,7 +9,7 @@ import ProductCard from "@/components/product/ProductCard";
 
 // Lazy load non-critical components
 const WhatsAppSubscribe = dynamic(() => import("@/components/homepage/WhatsAppSubscribe"), {
-  loading: () => <div className="h-96 bg-neutral-900 animate-pulse" />,
+  loading: () => <div className="h-96 bg-neutral-800 animate-pulse" />,
 });
 
 const BrandLogos = dynamic(() => import("@/components/homepage/BrandLogos"), {
@@ -98,8 +98,8 @@ export default function HomeClient({
           {/* Products Grid for Active Collection - Optimized for 10 products */}
           {activeCollectionData && activeCollectionData.products.length > 0 && (
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-5 lg:gap-6">
-              {activeCollectionData.products.slice(0, 10).map((product) => (
-                <ProductCard key={product.id} {...product} />
+              {activeCollectionData.products.slice(0, 10).map((product, index) => (
+                <ProductCard key={product.id} {...product} priority={index < 5} />
               ))}
             </div>
           )}
@@ -153,7 +153,7 @@ export default function HomeClient({
                     <h3 className="font-outfit font-bold text-sm text-neutral-900 mb-1 uppercase tracking-wide">
                       {category.name}
                     </h3>
-                    <p className="text-neutral-500 text-xs">
+                    <p className="text-neutral-600 text-xs">
                       {category.productCount} منتج
                     </p>
                   </a>
@@ -177,10 +177,10 @@ export default function HomeClient({
                   <h3 className="font-outfit font-extrabold text-lg text-neutral-900 mb-2 uppercase tracking-wide">
                     {category.name}
                   </h3>
-                  <p className="text-neutral-500 text-sm mb-3">
+                  <p className="text-neutral-600 text-sm mb-3">
                     {category.productCount} منتج
                   </p>
-                  <div className="flex items-center text-primary-600 text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity uppercase tracking-wide">
+                  <div className="flex items-center text-primary-700 text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity uppercase tracking-wide">
                     تسوق الآن
                     <svg className="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

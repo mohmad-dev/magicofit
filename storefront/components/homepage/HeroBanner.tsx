@@ -99,6 +99,7 @@ export default function HeroBanner({ banners = [], sideBanners = [], isLoading =
                               fill
                               className="object-cover object-center md:hidden rounded-2xl"
                               priority={index === 0}
+                              fetchPriority={index === 0 ? "high" : undefined}
                               sizes="100vw"
                             />
                             <Image
@@ -107,6 +108,7 @@ export default function HeroBanner({ banners = [], sideBanners = [], isLoading =
                               fill
                               className="hidden md:block object-cover object-center rounded-2xl"
                               priority={index === 0}
+                              fetchPriority={index === 0 ? "high" : undefined}
                               sizes="70vw"
                             />
                           </div>

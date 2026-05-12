@@ -41,12 +41,12 @@ export default function FeaturedProducts({
               {title}
             </h2>
             {subtitle && (
-              <p className="text-neutral-600">{subtitle}</p>
+              <p className="text-neutral-700">{subtitle}</p>
             )}
           </div>
           {viewAllLink && !loading && (
             <Link href={viewAllLink}>
-              <button className="text-primary-600 hover:text-primary-700 font-bold text-sm uppercase tracking-wide">
+              <button className="text-primary-700 hover:text-primary-800 font-bold text-sm uppercase tracking-wide">
                 View All →
               </button>
             </Link>

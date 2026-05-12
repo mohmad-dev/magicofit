@@ -67,7 +67,7 @@ export default function TabbedProductShowcase({
               className={`px-4 md:px-6 py-2 md:py-2.5 rounded-full font-outfit font-bold text-xs md:text-sm uppercase tracking-wide whitespace-nowrap transition-colors ${
                 activeTab === tab.id
                   ? "bg-neutral-900 text-white"
-                  : "bg-neutral-100 text-neutral-600 hover:bg-neutral-200"
+                  : "bg-neutral-100 text-neutral-700 hover:bg-neutral-200"
               }`}
             >
               {tab.label}
@@ -78,7 +78,7 @@ export default function TabbedProductShowcase({
         {activeTabData && (
           <Link
             href={activeTabData.href}
-            className="hidden md:inline-flex items-center gap-1 text-sm font-semibold text-primary-600 hover:text-primary-700 uppercase tracking-wide whitespace-nowrap"
+            className="hidden md:inline-flex items-center gap-1 text-sm font-semibold text-primary-700 hover:text-primary-800 uppercase tracking-wide whitespace-nowrap"
           >
             {t('viewAll')}
             <ArrowRight className="h-4 w-4" />
@@ -107,7 +107,7 @@ export default function TabbedProductShowcase({
       {activeTabData && (
         <Link
           href={activeTabData.href}
-          className="md:hidden flex items-center justify-center gap-1 mt-4 text-sm font-semibold text-primary-600 hover:text-primary-700 uppercase tracking-wide"
+          className="md:hidden flex items-center justify-center gap-1 mt-4 text-sm font-semibold text-primary-700 hover:text-primary-800 uppercase tracking-wide"
         >
           {t('viewAll')}
           <ArrowRight className="h-4 w-4" />

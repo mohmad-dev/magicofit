@@ -44,7 +44,7 @@ export default function Footer() {
                 href="https://www.facebook.com/share/18hLJiTUda/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-neutral-400 transition-colors hover:text-primary-600 hover:scale-110 transform"
+                className="text-neutral-500 transition-colors hover:text-primary-600 hover:scale-110 transform"
               >
                 <FacebookIcon />
               </a>
@@ -52,7 +52,7 @@ export default function Footer() {
                 href="https://www.tiktok.com/@almageko58"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-neutral-400 transition-colors hover:text-primary-600 hover:scale-110 transform"
+                className="text-neutral-500 transition-colors hover:text-primary-600 hover:scale-110 transform"
               >
                 <TikTokIcon />
               </a>
@@ -181,11 +181,11 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 border-t border-neutral-200 pt-8 text-center text-sm text-neutral-600">
+        <div className="mt-12 border-t border-neutral-200 pt-8 text-center text-sm text-neutral-700">
           <p>{t('copyright')}</p>
           <p className="mt-2">
             التطوير بواسطة: <span className="font-bold text-neutral-900">محمد أحمد مرعي</span> | 
-            <a href="https://wa.me/201091998631" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:text-primary-700 font-medium">
+            <a href="https://wa.me/201091998631" target="_blank" rel="noopener noreferrer" className="text-primary-700 hover:text-primary-800 font-bold">
               واتساب: 01091998631
             </a>
           </p>

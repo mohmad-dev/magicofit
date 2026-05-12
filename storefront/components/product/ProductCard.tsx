@@ -22,6 +22,7 @@ interface ProductCardProps {
   inStock?: boolean;
   stock?: number;
   hideAddToCart?: boolean;
+  priority?: boolean;
 }
 
 export default function ProductCard({
@@ -34,6 +35,7 @@ export default function ProductCard({
   inStock = true,
   stock,
   hideAddToCart = false,
+  priority = false,
 }: ProductCardProps) {
   const t = useTranslations("product");
   const productLink = handle ? `/products/${handle}` : `/products/${id}`;
@@ -89,6 +91,8 @@ export default function ProductCard({
           fill
           className="object-cover transition-transform duration-700 group-hover:scale-110"
           sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 20vw"
+          priority={priority}
+          loading={priority ? "eager" : "lazy"}
         />
         {!inStock && (
           <div className="absolute inset-0 flex items-center justify-center bg-black/60 backdrop-blur-sm">

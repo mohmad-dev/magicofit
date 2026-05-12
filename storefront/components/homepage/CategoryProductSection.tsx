@@ -40,7 +40,7 @@ export default function CategoryProductSection({
         </h2>
         <Link
           href={`/shop/${categorySlug}`}
-          className="inline-flex items-center gap-1 text-xs md:text-sm font-semibold text-primary-600 hover:text-primary-700 uppercase tracking-wide whitespace-nowrap"
+          className="inline-flex items-center gap-1 text-xs md:text-sm font-semibold text-primary-700 hover:text-primary-800 uppercase tracking-wide whitespace-nowrap"
         >
           {t('viewAll')}
           <ArrowRight className="h-3.5 w-3.5 md:h-4 md:w-4" />
