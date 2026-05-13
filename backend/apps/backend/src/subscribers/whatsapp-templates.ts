@@ -1,5 +1,5 @@
 export interface WhatsAppTemplate {
-  type: 'order_created' | 'order_shipped' | 'order_delivered';
+  type: 'order_created' | 'order_shipped' | 'order_delivered' | 'order_updated';
   getText: (data: any) => string;
 }
 
@@ -9,9 +9,9 @@ export const whatsappTemplates: Record<string, WhatsAppTemplate> = {
     getText: (data) => {
       const { order } = data;
       const fullName = `${order?.shipping_address?.first_name || ""} ${order?.shipping_address?.last_name || ""}`.trim();
-      const name = fullName || order?.customer?.first_name || "عميلنا";
+      const name = fullName || order?.customer?.first_name || "عميلنا العزيز";
       const displayId = order?.display_id ?? order?.id;
-      
+
       const itemsText = Array.isArray(order?.items)
         ? order.items
             .slice(0, 6)
@@ -23,25 +23,30 @@ export const whatsappTemplates: Record<string, WhatsAppTemplate> = {
             .join("\n")
         : "";
 
-      const total = order?.total || order?.amount || "0";
+      // Round the total to 2 decimal places
+      const total = order?.total ? parseFloat(order.total).toFixed(2) : "0";
       const currency = order?.currency_code || "EGP";
 
-      return `*تم تأكيد الطلب* ✅
+      return `*تم تأكيد طلبك بنجاح* ✅
 
-مرحبًا ${name}،
+أهلاً يا ${name}،
 
-نشكرك على الشراء! رقم طلبك هو #${displayId}.
+شكراً جزيلاً لطلبك من الماجيكو للرياضة! 🏆
 
-📦 تفاصيل الطلب:
-${itemsText || "- (تفاصيل الطلب غير متاحة)"}
+رقم طلبك: #${displayId}
 
-💰 الإجمالي: ${total} ${currency}
+📦 المنتجات التي طلبتها:
+${itemsText || "- تفاصيل الطلب غير متاحة"}
 
-🚚 تاريخ التوصيل المُقدّر: خلال 5 أيام
+💰 المبلغ الإجمالي: ${total} ${currency}
+
+🚚 موعد التوصيل المتوقع: خلال 5 أيام عمل
 
 سنخبرك عندما يتم شحن طلبك.
 
-شكراً لاختيارك MagicOFit! 🏆`;
+إذا كان لديك أي استفسار، تفضل بالتواصل معنا على واتساب: 01148161968
+
+شكراً لثقتك بنا! ❤️`;
     },
   },
   order_shipped: {
@@ -49,12 +54,12 @@ ${itemsText || "- (تفاصيل الطلب غير متاحة)"}
     getText: (data) => {
       const { order, trackingNumber, carrier } = data;
       const fullName = `${order?.shipping_address?.first_name || ""} ${order?.shipping_address?.last_name || ""}`.trim();
-      const name = fullName || order?.customer?.first_name || "عميلنا";
+      const name = fullName || order?.customer?.first_name || "عميلنا العزيز";
       const displayId = order?.display_id ?? order?.id;
 
       return `*تم شحن طلبك* 🚚
 
-مرحبًا ${name}،
+أهلاً يا ${name}،
 
 تم شحن طلبك #${displayId} بنجاح!
 
@@ -65,10 +70,12 @@ ${itemsText || "- (تفاصيل الطلب غير متاحة)"}
 ${order?.shipping_address?.address_1 || ""}
 ${order?.shipping_address?.city || ""} - ${order?.shipping_address?.country_code || ""}
 
-يمكنك تتبع طلبك من خلال الرابط:
+يمكنك تتبع طلبك من خلال موقعنا:
 https://magicofit.shop/orders/${displayId}
 
-شكراً لصبرك! 🙏`;
+شكراً لصبرك! 🙏
+
+إذا كان لديك أي استفسار، تواصل معنا على واتساب: 01148161968`;
     },
   },
   order_delivered: {
@@ -76,25 +83,58 @@ https://magicofit.shop/orders/${displayId}
     getText: (data) => {
       const { order } = data;
       const fullName = `${order?.shipping_address?.first_name || ""} ${order?.shipping_address?.last_name || ""}`.trim();
-      const name = fullName || order?.customer?.first_name || "عميلنا";
+      const name = fullName || order?.customer?.first_name || "عميلنا العزيز";
       const displayId = order?.display_id ?? order?.id;
 
       return `*تم وصول طلبك* 🎉
 
-مرحبًا ${name}،
+أهلاً يا ${name}،
 
 نأمل أن تكون قد استلمت طلبك #${displayId} بسلام!
 
-✅ إذا كان كل شيء على ما يرام، نود أن نسمع رأيك:
-https://magicofit.shop/orders/${displayId}/review
+إذا كان كل شيء تمام، نتمنى أن تطلب منا مرة أخرى قريباً 👋
 
-❓ إذا كان هناك أي مشكلة، لا تتردد في التواصل معنا:
-📱 واتساب: 01091998631
-📧 البريد: support@magicofit.com
+❓ إذا كان هناك أي مشكلة في الطلب، لا تتردد في التواصل معنا مباشرة على واتساب:
+📱 01148161968
 
-شكراً لاختيارك MagicOFit! 🏆
+شكراً لاختيارك الماجيكو للرياضة! 🏆
 
-نتطلع لرؤيتك مرة أخرى! 👋`;
+نتطلع لرؤيتك مرة أخرى! ❤️`;
+    },
+  },
+  order_updated: {
+    type: 'order_updated',
+    getText: (data) => {
+      const { order, newStatus } = data;
+      const fullName = `${order?.shipping_address?.first_name || ""} ${order?.shipping_address?.last_name || ""}`.trim();
+      const name = fullName || order?.customer?.first_name || "عميلنا العزيز";
+      const displayId = order?.display_id ?? order?.id;
+
+      // Translate status to Arabic
+      const statusMap: Record<string, string> = {
+        'pending': 'قيد الانتظار',
+        'confirmed': 'تم التأكيد',
+        'processing': 'قيد المعالجة',
+        'shipped': 'تم الشحن',
+        'delivered': 'تم التوصيل',
+        'cancelled': 'تم الإلغاء',
+        'returned': 'تم الإرجاع',
+      };
+
+      const statusArabic = statusMap[newStatus] || newStatus;
+
+      return `*تحديث حالة طلبك* 📋
+
+أهلاً يا ${name}،
+
+تم تحديث حالة طلبك #${displayId}
+
+الحالة الجديدة: ${statusArabic}
+
+إذا كان لديك أي استفسار، تواصل معنا مباشرة على واتساب:
+📱 01148161968
+
+شكراً لثقتك بنا! ❤️`;
     },
   },
 };
