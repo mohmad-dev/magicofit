@@ -27,26 +27,22 @@ export const whatsappTemplates: Record<string, WhatsAppTemplate> = {
       const total = order?.total ? parseFloat(order.total).toFixed(2) : "0";
       const currency = order?.currency_code || "EGP";
 
-      return `*تم تأكيد طلبك بنجاح* ✅
+      return `*تم تأكيد طلبك* ✅
 
 أهلاً يا ${name}،
 
-شكراً جزيلاً لطلبك من الماجيكو للرياضة! 🏆
+شكراً لطلبك من الماجيكو للرياضة 🩵
 
-رقم طلبك: #${displayId}
+رقم الطلب: #${displayId}
 
-📦 المنتجات التي طلبتها:
+📦 المنتجات:
 ${itemsText || "- تفاصيل الطلب غير متاحة"}
 
-💰 المبلغ الإجمالي: ${total} ${currency}
+💰 الإجمالي: ${total} ${currency}
 
-🚚 موعد التوصيل المتوقع: خلال 5 أيام عمل
+🚚 التوصيل خلال 4 أيام
 
-سنخبرك عندما يتم شحن طلبك.
-
-إذا كان لديك أي استفسار، تفضل بالتواصل معنا على واتساب: 01148161968
-
-شكراً لثقتك بنا! ❤️`;
+واتساب: 01148161968`;
     },
   },
   order_shipped: {
