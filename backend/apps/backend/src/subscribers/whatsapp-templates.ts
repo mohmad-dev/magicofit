@@ -1,5 +1,5 @@
 export interface WhatsAppTemplate {
-  type: 'order_created' | 'order_shipped' | 'order_delivered' | 'order_updated';
+  type: 'order_created';
   getText: (data: any) => string;
 }
 
@@ -40,97 +40,9 @@ ${itemsText || "- تفاصيل الطلب غير متاحة"}
 
 💰 الإجمالي: ${total} ${currency}
 
-🚚 التوصيل خلال 4 أيام
+🚚 التوصيل من يوم ل 4 أيام
 
 واتساب: 01148161968`;
-    },
-  },
-  order_shipped: {
-    type: 'order_shipped',
-    getText: (data) => {
-      const { order, trackingNumber, carrier } = data;
-      const fullName = `${order?.shipping_address?.first_name || ""} ${order?.shipping_address?.last_name || ""}`.trim();
-      const name = fullName || order?.customer?.first_name || "عميلنا العزيز";
-      const displayId = order?.display_id ?? order?.id;
-
-      return `*تم شحن طلبك* 🚚
-
-أهلاً يا ${name}،
-
-تم شحن طلبك #${displayId} بنجاح!
-
-📦 شركة الشحن: ${carrier || "قيد المعالجة"}
-🔢 رقم التتبع: ${trackingNumber || "سيتم إرساله قريباً"}
-
-📍 عنوان التوصيل:
-${order?.shipping_address?.address_1 || ""}
-${order?.shipping_address?.city || ""} - ${order?.shipping_address?.country_code || ""}
-
-يمكنك تتبع طلبك من خلال موقعنا:
-https://magicofit.shop/orders/${displayId}
-
-شكراً لصبرك! 🙏
-
-إذا كان لديك أي استفسار، تواصل معنا على واتساب: 01148161968`;
-    },
-  },
-  order_delivered: {
-    type: 'order_delivered',
-    getText: (data) => {
-      const { order } = data;
-      const fullName = `${order?.shipping_address?.first_name || ""} ${order?.shipping_address?.last_name || ""}`.trim();
-      const name = fullName || order?.customer?.first_name || "عميلنا العزيز";
-      const displayId = order?.display_id ?? order?.id;
-
-      return `*تم وصول طلبك* 🎉
-
-أهلاً يا ${name}،
-
-نأمل أن تكون قد استلمت طلبك #${displayId} بسلام!
-
-إذا كان كل شيء تمام، نتمنى أن تطلب منا مرة أخرى قريباً 👋
-
-❓ إذا كان هناك أي مشكلة في الطلب، لا تتردد في التواصل معنا مباشرة على واتساب:
-📱 01148161968
-
-شكراً لاختيارك الماجيكو للرياضة! 🏆
-
-نتطلع لرؤيتك مرة أخرى! ❤️`;
-    },
-  },
-  order_updated: {
-    type: 'order_updated',
-    getText: (data) => {
-      const { order, newStatus } = data;
-      const fullName = `${order?.shipping_address?.first_name || ""} ${order?.shipping_address?.last_name || ""}`.trim();
-      const name = fullName || order?.customer?.first_name || "عميلنا العزيز";
-      const displayId = order?.display_id ?? order?.id;
-
-      // Translate status to Arabic
-      const statusMap: Record<string, string> = {
-        'pending': 'قيد الانتظار',
-        'confirmed': 'تم التأكيد',
-        'processing': 'قيد المعالجة',
-        'shipped': 'تم الشحن',
-        'delivered': 'تم التوصيل',
-        'cancelled': 'تم الإلغاء',
-        'returned': 'تم الإرجاع',
-      };
-
-      const statusArabic = statusMap[newStatus] || newStatus;
-
-      return `*تحديث حالة طلبك* 📋
-
-أهلاً يا ${name}،
-
-تم تحديث حالة طلبك #${displayId}
-
-الحالة الجديدة: ${statusArabic}
-
-إذا كان لديك أي استفسار، تواصل معنا مباشرة على واتساب:
-📱 01148161968
-
-شكراً لثقتك بنا! ❤️`;
     },
   },
 };
