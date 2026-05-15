@@ -52,6 +52,7 @@ export default async function orderPlacedHandler({
         "shipping_address.phone",
         "items.title",
         "items.quantity",
+        "subtotal",
         "total",
         "currency_code",
       ],

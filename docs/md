@@ -1,0 +1,541 @@
+# 03 — UI/UX & Conversion Map: MagicOFit Sports E-Commerce
+
+> **Design Philosophy**: Performance meets conversion. Every pixel earns revenue.  
+> **Target Metrics**: 3.5%+ Conversion Rate, <2% Cart Abandonment Reduction per quarter, 60+ NPS.
+## 1. Design System Foundation
+
+### 1.1 Brand & Color Palette
+
+## 2. Page-by-Page Design & CRO Specifications
+
+---
+
+### 2.1 Homepage (`/`)
+
+#### Layout Structure
+
+```
+┌──────────────────────────────────────────────────────────┐
+│ ▌ ANNOUNCEMENT BAR ▌                                    │
+│ "Free Shipping on Orders over $100 | Use Code: MAGIC100"│
+│ (dismissible, sticky on scroll, semi-transparent)        │
+├──────────────────────────────────────────────────────────┤
+│ HEADER                                                   │
+│ [Logo]  [Shop▼] [Sports▼] [Brands▼] [Sale🔥]  🔍 ♡ 🛒(3)│
+├──────────────────────────────────────────────────────────┤
+│                                                          │
+│              ╔══════════════════════════╗                │
+│              ║     HERO SECTION        ║                │
+│              ║                          ║                │
+│              ║  "GEAR UP FOR            ║                │
+│              ║   GREATNESS"             ║                │
+│              ║                          ║                │
+│              ║  Full-screen video bg    ║                │
+│              ║  with parallax effect    ║                │
+│              ║                          ║                │
+│              ║  [SHOP NEW ARRIVALS →]   ║                │
+│              ║  [EXPLORE SALE →]        ║                │
+│              ╚══════════════════════════╝                │
+│                                                          │
+├──────────────────────────────────────────────────────────┤
+│  CATEGORY SHOWCASE (Horizontal scroll, card-based)       │
+│  ┌─────────┐ ┌─────────┐ ┌─────────┐ ┌─────────┐      │
+│  │ 👟      │ │ 👕      │ │ 🎒      │ │ 🧤      │      │
+│  │Footwear │ │ Apparel │ │Equipment│ │Accessory│      │
+│  │         │ │         │ │         │ │         │      │
+│  │ Shop → │ │ Shop → │ │ Shop → │ │ Shop → │      │
+│  └─────────┘ └─────────┘ └─────────┘ └─────────┘      │
+│  (Glassmorphism cards with hover lift + gradient border) │
+├──────────────────────────────────────────────────────────┤
+│  FEATURED PRODUCTS — "Trending Now"                      │
+│  ┌──────┐ ┌──────┐ ┌──────┐ ┌──────┐ ┌──────┐         │
+│  │      │ │      │ │      │ │      │ │      │         │
+│  │ Img  │ │ Img  │ │ Img  │ │ Img  │ │ Img  │         │
+│  │      │ │      │ │      │ │      │ │      │         │
+│  │Nike  │ │Adidas│ │Under │ │Gymsh.│ │Wilson│         │
+│  │$130  │ │$95   │ │$85   │ │$65   │ │$220  │         │
+│  │★★★★½ │ │★★★★★ │ │★★★★☆ │ │★★★★½ │ │★★★★★ │         │
+│  └──────┘ └──────┘ └──────┘ └──────┘ └──────┘         │
+│  (Quick-view on hover, "Add to Cart" appears on hover)  │
+├──────────────────────────────────────────────────────────┤
+│  SPORT-SPECIFIC SECTIONS — "Shop By Sport"               │
+│  ┌────────────────────┐  ┌─────────────────────┐        │
+│  │  🏃 RUNNING        │  │  🏋️ GYM & FITNESS   │        │
+│  │  Full-bleed image  │  │  Full-bleed image    │        │
+│  │  with CTA overlay  │  │  with CTA overlay    │        │
+│  └────────────────────┘  └─────────────────────┘        │
+│  ┌────────────────────┐  ┌─────────────────────┐        │
+│  │  🎾 TENNIS         │  │  🧘 YOGA & WELLNESS │        │
+│  │  Full-bleed image  │  │  Full-bleed image    │        │
+│  └────────────────────┘  └─────────────────────┘        │
+│  (2×2 grid with zoom-on-hover effect)                    │
+├──────────────────────────────────────────────────────────┤
+│  TRUST INDICATORS BAR                                    │
+│  🚚 Free Shipping  │  ↩️ 30-Day Returns  │  🔒 Secure   │
+│    over $100       │   No Questions     │   Payments   │
+├──────────────────────────────────────────────────────────┤
+│  BRAND LOGOS CAROUSEL                                    │
+│  [Nike] [Adidas] [Under Armour] [Puma] [Gymshark]...   │
+│  (Infinite horizontal scroll, grayscale → color hover)   │
+├──────────────────────────────────────────────────────────┤
+│  NEWSLETTER SECTION                                      │
+│  "Get 15% Off Your First Order"                         │
+│  [email input] [SUBSCRIBE]                              │
+│  (Glassmorphism card, animated gradient border)          │
+├──────────────────────────────────────────────────────────┤
+│  FOOTER                                                  │
+│  [About] [FAQ] [Contact] [Shipping] [Returns]           │
+│  [Instagram] [TikTok] [YouTube]                         │
+│  © 2025 MagicOFit. Powered by 💪                        │
+└──────────────────────────────────────────────────────────┘
+```
+
+#### CRO Rules for Homepage
+
+| Element | CRO Principle | Implementation |
+|---|---|---|
+| Announcement Bar | Urgency & Value | Show time-limited offers; countdown timer for flash sales |
+| Hero CTA | Above-the-fold action | Two CTAs: primary (New Arrivals) + secondary (Sale) |
+| Category Cards | Reduce choice paralysis | Max 6 categories; icon + image hybrid |
+| Featured Products | Social proof | Show star ratings + "Bestseller" badges |
+| Trust Bar | Reduce purchase anxiety | Always visible; icons + one-liner text |
+| Newsletter | Lead capture | Incentivize with discount; single field for friction reduction |
+
+---
+
+### 2.2 Shop / Category Page (`/shop`, `/shop/[category]`)
+
+#### Layout Structure
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│ HEADER + BREADCRUMB                                             │
+│ Home > Shop > Running Shoes                                     │
+├───────────────┬─────────────────────────────────────────────────┤
+│               │  TOOLBAR                                        │
+│   FILTER      │  ┌────────────────────────────────────────────┐ │
+│   SIDEBAR     │  │ 127 Products │ Sort: [Best Selling ▼]     │ │
+│               │  │ View: [Grid] [List]                         │ │
+│  ┌──────────┐ │  └────────────────────────────────────────────┘ │
+│  │ Category │ │                                                 │
+│  │ ☐ Road   │ │  PRODUCT GRID (3-4 columns on desktop)         │
+│  │ ☐ Trail  │ │  ┌──────┐ ┌──────┐ ┌──────┐ ┌──────┐         │
+│  │ ☐ Track  │ │  │      │ │      │ │🔥NEW │ │      │         │
+│  ├──────────┤ │  │ Img  │ │ Img  │ │ Img  │ │ Img  │         │
+│  │ Price    │ │  │      │ │      │ │      │ │      │         │
+│  │ $0 ─○── $500│ │  │Nike  │ │Adidas│ │Hoka  │ │ASICS │         │
+│  ├──────────┤ │  │$130  │ │$120  │ │$160  │ │$140  │         │
+│  │ Size     │ │  │★★★★½ │ │★★★★★ │ │★★★★☆ │ │★★★★½ │         │
+│  │ ☐ 38     │ │  └──────┘ └──────┘ └──────┘ └──────┘         │
+│  │ ☐ 39     │ │  ┌──────┐ ┌──────┐ ┌──────┐ ┌──────┐         │
+│  │ ☐ 40     │ │  │-20%  │ │      │ │      │ │      │         │
+│  │ ☐ 41     │ │  │ Img  │ │ Img  │ │ Img  │ │ Img  │         │
+│  │ ☐ 42+    │ │  │      │ │      │ │      │ │      │         │
+│  ├──────────┤ │  │NB    │ │Saucon│ │Brooks│ │On    │         │
+│  │ Color    │ │  │$̶1̶6̶0̶  │ │$150  │ │$155  │ │$170  │         │
+│  │ ⚫⚪🔵🟢🔴│ │  │$128  │ │★★★★½ │ │★★★★★ │ │★★★★☆ │         │
+│  ├──────────┤ │  └──────┘ └──────┘ └──────┘ └──────┘         │
+│  │ Brand    │ │                                                 │
+│  │ ☐ Nike   │ │  [LOAD MORE ↓] or Infinite Scroll              │
+│  │ ☐ Adidas │ │                                                 │
+│  │ ☐ Hoka   │ ├─────────────────────────────────────────────────┤
+│  │ ☐ ON     │ │  RECENTLY VIEWED (horizontal scroll)            │
+│  │ ☐ +12    │ │  [Product] [Product] [Product] [Product]        │
+│  ├──────────┤ │                                                 │
+│  │ Sport    │ │                                                 │
+│  │ ☐ Running│ │                                                 │
+│  │ ☐ Tennis │ │                                                 │
+│  │ ☐ Gym    │ │                                                 │
+│  ├──────────┤ │                                                 │
+│  │ Gender   │ │                                                 │
+│  │ ☐ Men    │ │                                                 │
+│  │ ☐ Women  │ │                                                 │
+│  │ ☐ Unisex │ │                                                 │
+│  ├──────────┤ │                                                 │
+│  │ Rating   │ │                                                 │
+│  │ ★★★★☆+   │ │                                                 │
+│  │ ★★★☆☆+   │ │                                                 │
+│  └──────────┘ │                                                 │
+│               │                                                 │
+│ [Clear All]   │                                                 │
+│               │                                                 │
+│ MOBILE: Filter│                                                 │
+│ opens as      │                                                 │
+│ bottom sheet  │                                                 │
+└───────────────┴─────────────────────────────────────────────────┘
+
+#### CRO Rules for Shop Page
+
+| Element | CRO Principle | Implementation |
+|---|---|---|
+| Active filter chips | Clarity of applied filters | Show removable chips above grid with count |
+| Facet counts | Guide browsing decisions | Show "(42)" next to each filter option |
+| Quick view on hover | Reduce clicks to conversion | Modal with image, price, sizes, add-to-cart |
+| Infinite scroll + Load More | Lower friction than pagination | Hybrid: auto-load 3 pages, then "Load More" button |
+| "X products match" | Validate filter selections | Update count in real-time as filters change |
+| Sale badge positioning | Urgency | Overlay on top-left corner with percentage off |
+| Low stock indicator | Urgency / FOMO | "Only 3 left" badge on product card |
+| Recently viewed | Re-engagement | Horizontal scroll row at bottom, persisted in localStorage |
+
+---
+
+### 2.3 Product Detail Page (`/products/[handle]`)
+
+#### Layout Structure
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│ BREADCRUMB: Home > Running Shoes > Nike Air Pegasus 41          │
+├───────────────────────────────┬──────────────────────────────────┤
+│                               │                                  │
+│   IMAGE GALLERY               │   PRODUCT INFO                   │
+│   ┌─────────────────────┐     │                                  │
+│   │                     │     │   NIKE (link to brand page)      │
+│   │                     │     │   Nike Air Pegasus 41            │
+│   │    MAIN IMAGE       │     │   Road Running Shoes             │
+│   │    (zoomable on     │     │                                  │
+│   │     hover/pinch)    │     │   ★★★★½ (4.7) · 234 Reviews     │
+│   │                     │     │                                  │
+│   │                     │     │   $̶1̶6̶0̶.̶0̶0̶                       │
+│   └─────────────────────┘     │   $130.00  -19% SAVE $30        │
+│   ┌──┐ ┌──┐ ┌──┐ ┌──┐ ┌──┐  │   (or 4 × $32.50 with Afterpay) │
+│   │t1│ │t2│ │t3│ │t4│ │t5│  │                                  │
+│   └──┘ └──┘ └──┘ └──┘ └──┘  │   COLOR: Black/White  ▸ Navy ▸ Green│
+│   (thumbnail strip, click    │   ⚫ ⚪ 🔵 🟢                    │
+│    to view; includes video)  │   (swatches with product image   │
+│                               │    change on click)              │
+│   ┌─────────────────────┐     │                                  │
+│   │ 360° VIEW / VIDEO   │     │   SIZE: (with size guide link)   │
+│   │ [Play Button]       │     │   [38] [39] [40] [41✓] [42]    │
+│   └─────────────────────┘     │   [43] [44] [45] [46]           │
+│                               │   ⚠️ Size 39 — Only 2 left!     │
+│                               │                                  │
+│                               │   WIDTH:                         │
+│                               │   [Standard (D)] [Wide (2E)]     │
+│                               │   [Extra Wide (4E)]              │
+│                               │                                  │
+│                               │   ┌──────────────────────────┐   │
+│                               │   │  [−] 1 [+]              │   │
+│                               │   │                          │   │
+│                               │   │  [🛒 ADD TO CART — $130] │   │
+│                               │   │    (Primary, full-width) │   │
+│                               │   │                          │   │
+│                               │   │  [♡ ADD TO WISHLIST]     │   │
+│                               │   └──────────────────────────┘   │
+│                               │                                  │
+│                               │   🚚 Free shipping over $100    │
+│                               │   ↩️  30-day free returns        │
+│                               │   📦 Estimated delivery: 3-5 days│
+│                               │   ✅ In Stock — Ships today      │
+│                               │                                  │
+├───────────────────────────────┴──────────────────────────────────┤
+│                                                                  │
+│  ── STICKY ADD-TO-CART BAR (appears on scroll past main CTA) ── │
+│  │ Nike Air Pegasus 41 │ Size: 41 │ $130 │ [ADD TO CART] │      │
+│  ── ── ── ── ── ── ── ── ── ── ── ── ── ── ── ── ── ── ── ──  │
+│                                                                  │
+├──────────────────────────────────────────────────────────────────┤
+│  TABS: [Description] [Specifications] [Reviews (234)] [Shipping]│
+│                                                                  │
+│  Description:                                                    │
+│  Responsive cushioning for everyday runs. The Pegasus 41        │
+│  features React foam technology for smooth transitions...        │
+│                                                                  │
+│  KEY FEATURES:                                                   │
+│  • React foam midsole for responsive cushioning                 │
+│  • Engineered mesh upper for breathability                      │
+│  • Waffle outsole for multi-surface traction                    │
+│  • 10mm heel-to-toe drop                                        │
+│  • Weight: 280g (Men's size 42)                                 │
+│                                                                  │
+│  Specifications Table:                                           │
+│  ┌──────────────┬───────────────────┐                            │
+│  │ Material     │ Mesh / React Foam │                            │
+│  │ Drop         │ 10mm              │                            │
+│  │ Weight       │ 280g              │                            │
+│  │ Terrain      │ Road              │                            │
+│  │ Cushioning   │ Neutral           │                            │
+│  │ Origin       │ Vietnam           │                            │
+│  │ SKU          │ NKE-PEG41-41-BLK  │                            │
+│  └──────────────┴───────────────────┘                            │
+│                                                                  │
+│  Reviews:                                                        │
+│  [Sort: Most Recent ▼] [Filter: All Stars ▼]                    │
+│  ┌──────────────────────────────────────────┐                    │
+│  │ ★★★★★  "Best running shoe I've owned"    │                    │
+│  │ John D. — Verified Purchase — 2 days ago │                    │
+│  │ Size: 42, Color: Black — True to size    │                    │
+│  │ Great cushioning for my daily 10K runs...│                    │
+│  │ 👍 Helpful (12) │ 👎 Unhelpful (1)       │                    │
+│  │ [Reply] [Report]                          │                    │
+│  └──────────────────────────────────────────┘                    │
+│                                                                  │
+├──────────────────────────────────────────────────────────────────┤
+│  "YOU MAY ALSO LIKE" — AI-powered recommendations                │
+│  ┌──────┐ ┌──────┐ ┌──────┐ ┌──────┐                            │
+│  │Shoe 2│ │Socks │ │Insole│ │Shorts│                            │
+│  └──────┘ └──────┘ └──────┘ └──────┘                            │
+│  (Cross-sell: complementary products)                            │
+│                                                                  │
+│  "RECENTLY VIEWED"                                               │
+│  ┌──────┐ ┌──────┐ ┌──────┐ ┌──────┐                            │
+│  │Prev 1│ │Prev 2│ │Prev 3│ │Prev 4│                            │
+│  └──────┘ └──────┘ └──────┘ └──────┘                            │
+└──────────────────────────────────────────────────────────────────┘
+```
+
+#### CRO Rules for Product Page
+
+| Element | CRO Principle | Implementation |
+|---|---|---|
+| **Sticky Add-to-Cart** | Persistent CTA | Fixed bar appears when main CTA scrolls out of view |
+| **Urgency Signals** | FOMO | "Only X left!", countdown for sale price |
+| **Trust Signals** | Reduce anxiety | Shipping, returns, security badges near CTA |
+| **Image Gallery** | Reduce uncertainty | 5+ images, 360° view, zoom, video demo |
+| **Size Guide** | Reduce returns | Interactive size guide modal with measurement chart |
+| **Color Swatches** | Visual clarity | Real color swatches, images change per color |
+| **Reviews with Photos** | Social proof | Verified purchase badge, filterable by rating |
+| **Cross-sells** | Increase AOV | "Complete the look" — complementary products |
+| **Buy Now, Pay Later** | Lower price friction | Show Afterpay/Klarna installment option |
+| **Delivery Estimate** | Set expectations | Geolocation-based shipping estimate |
+
+---
+
+### 2.4 Cart Page & Cart Drawer (`/cart`)
+
+#### Cart Drawer (Slide-Out)
+
+```
+┌──────────────────────────────────┐
+│  YOUR CART (3 items)         [×] │
+│  ─────────────────────────────── │
+│  ┌─────┐ Nike Air Pegasus 41    │
+│  │ Img │ Black / Size 41 / Std  │
+│  │     │ $130.00                │
+│  │     │ [−] 1 [+]     [🗑️]    │
+│  └─────┘                        │
+│  ─────────────────────────────── │
+│  ┌─────┐ Adidas Running Shorts  │
+│  │ Img │ Navy / Size M          │
+│  │     │ $55.00                 │
+│  │     │ [−] 1 [+]     [🗑️]    │
+│  └─────┘                        │
+│  ─────────────────────────────── │
+│  ┌─────┐ Nike Running Socks     │
+│  │ Img │ White / Pack of 3      │
+│  │     │ $18.00                 │
+│  │     │ [−] 1 [+]     [🗑️]    │
+│  └─────┘                        │
+│  ─────────────────────────────── │
+│                                  │
+│  🏷️ [Enter Promo Code] [Apply]  │
+│                                  │
+│  Subtotal:        $203.00        │
+│  Shipping:        FREE ✅        │
+│  ─────────────────────────────── │
+│  Estimated Total: $203.00        │
+│                                  │
+│  [🛒 PROCEED TO CHECKOUT]        │
+│  (Primary CTA, full-width,      │
+│   pulsing subtle animation)     │
+│                                  │
+│  or [Continue Shopping →]        │
+│                                  │
+│  🔒 Secure checkout              │
+│  💳 Visa • MC • Amex • PayPal   │
+│                                  │
+│  PROGRESS BAR:                   │
+│  ████████████░░░ $203/$250       │
+│  "Add $47 more for FREE gift! 🎁"│
+└──────────────────────────────────┘
+```
+
+#### CRO Rules for Cart
+
+| Element | CRO Principle | Implementation |
+|---|---|---|
+| **Free shipping progress bar** | Increase AOV | Visual bar showing distance to free shipping threshold |
+| **Promo code field** | Maintain on-site traffic | Collapsed by default (don't remind users to leave and search for codes) |
+| **Urgency in cart items** | Prevent abandonment | "Hurry! Only 2 left in this size" |
+| **Payment icons** | Trust | Show accepted payment method logos |
+| **Upsell / Gift threshold** | AOV increase | "Add $47 more for a FREE gift!" |
+| **Saved for later** | Reduce deletion regret | Allow moving items to wishlist instead of deleting |
+| **Cart persistence** | Recovery | Cart saved to server (logged in) or localStorage (guest) for 30 days |
+
+---
+
+### 2.5 Checkout Page (`/checkout`) — One-Page Checkout
+
+#### Layout Structure
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│ [MagicOFit Logo]                    🔒 Secure Checkout          │
+│ (Minimal header — no navigation to prevent exit)                │
+├────────────────────────────────┬────────────────────────────────┤
+│                                │                                │
+│  CHECKOUT FORM (Left 60%)      │  ORDER SUMMARY (Right 40%)    │
+│                                │  (Sticky on scroll)           │
+│  ┌──── STEP INDICATOR ──────┐  │                                │
+│  │ ① Info  ─── ② Shipping   │  │  ┌─────┐ Pegasus 41     $130 │
+│  │        ─── ③ Payment     │  │  │ Img │ Size 41, Black       │
+│  └──────────────────────────┘  │  └─────┘ Qty: 1               │
+│                                │  ──────────────────────        │
+│  📧 CONTACT                    │  ┌─────┐ Running Shorts  $55  │
+│  ┌──────────────────────────┐  │  │ Img │ Size M, Navy          │
+│  │ Email: john@gmail.com    │  │  └─────┘ Qty: 1               │
+│  │ ☐ Subscribe to newsletter│  │  ──────────────────────        │
+│  └──────────────────────────┘  │  ┌─────┐ Running Socks   $18  │
+│                                │  │ Img │ Pack of 3             │
+│  📦 SHIPPING ADDRESS           │  └─────┘ Qty: 1               │
+│  ┌──────────────────────────┐  │                                │
+│  │ First Name │ Last Name   │  │  ──────────────────────        │
+│  │ Address Line 1           │  │  🏷️ [Enter Code] [Apply]      │
+│  │ Address Line 2           │  │                                │
+│  │ City │ State │ ZIP       │  │  Subtotal:       $203.00      │
+│  │ Country [▼]              │  │  Shipping:       FREE ✅       │
+│  │ Phone                    │  │  Discount:       -$0.00       │
+│  │ ☐ Save for next time    │  │  Tax (est.):     $16.24       │
+│  └──────────────────────────┘  │  ─────────────────────         │
+│                                │  Total:          $219.24      │
+│  🚚 SHIPPING METHOD            │                                │
+│  ┌──────────────────────────┐  │                                │
+│  │ ◉ Standard (3-5 days)   │  │                                │
+│  │   FREE                   │  │                                │
+│  │ ○ Express (1-2 days)    │  │                                │
+│  │   $12.99                 │  │                                │
+│  │ ○ Next Day               │  │                                │
+│  │   $24.99                 │  │                                │
+│  └──────────────────────────┘  │                                │
+│                                │                                │
+│  💳 PAYMENT                    │                                │
+│  ┌──────────────────────────┐  │                                │
+│  │ ◉ Credit Card            │  │                                │
+│  │ ┌────────────────────┐   │  │                                │
+│  │ │ Card Number (Stripe│   │  │                                │
+│  │ │ Element - secure)  │   │  │                                │
+│  │ │ MM/YY │ CVC        │   │  │                                │
+│  │ └────────────────────┘   │  │                                │
+│  │                          │  │                                │
+│  │ ○ PayPal                 │  │                                │
+│  │ ○ Apple Pay / Google Pay │  │                                │
+│  └──────────────────────────┘  │                                │
+│                                │                                │
+│  ☐ Billing same as shipping    │                                │
+│                                │                                │
+│  ┌──────────────────────────┐  │                                │
+│  │  [💳 PAY $219.24 NOW]   │  │                                │
+│  │  (Big, prominent,        │  │                                │
+│  │   loading state on click)│  │                                │
+│  └──────────────────────────┘  │                                │
+│                                │                                │
+│  🔒 256-bit SSL encryption     │                                │
+│  Data handled by Stripe        │                                │
+│  [Privacy] [Terms] [Returns]   │                                │
+│                                │                                │
+├────────────────────────────────┴────────────────────────────────┤
+│ © MagicOFit — Need help? support@magicofit.com                  │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+#### CRO Rules for Checkout
+
+| Element | CRO Principle | Implementation |
+|---|---|---|
+| **One-page checkout** | Minimize steps & friction | All steps visible on one scrollable page |
+| **Minimal header** | Prevent exit | Logo only, no navigation links |
+| **Guest checkout** | Remove barriers | Email-only start; account creation offered post-purchase |
+| **Express payments** | Speed | Apple Pay / Google Pay buttons above form |
+| **Step indicator** | Progress visibility | Visual stepper (non-clickable, just shows progress) |
+| **Sticky order summary** | Constant price visibility | Summary sticks to right side on desktop |
+| **Address autocomplete** | Reduce friction | Google Places API for address suggestions |
+| **Saved addresses** | Returning customers | Pre-fill from customer profile |
+| **Real-time validation** | Error prevention | Validate fields on blur, not on submit |
+| **Loading state on CTA** | Prevent double-submit | Spinner + disabled state on payment button |
+| **Security badges** | Trust at payment moment | SSL, Stripe, PCI badges near payment button |
+| **Promo code (collapsed)** | Subtle presence | Don't prominently show to prevent coupon hunting |
+
+---
+
+## 3. Global UX Patterns
+
+### 3.1 Micro-Animations Specification
+
+| Interaction | Animation | Duration | Easing |
+|---|---|---|---|
+| Add to Cart | Cart icon bounces + count badge scales up | 400ms | cubic-bezier(0.4, 0, 0.2, 1) |
+| Cart Drawer opens | Slide in from right + backdrop fade | 300ms | ease-out |
+| Product image hover | Scale 1.05 | 250ms | ease |
+| CTA button hover | Subtle glow + slight lift (translate-y: -1px) | 200ms | ease |
+| Filter toggle | Collapse/Expand with height animation | 200ms | ease |
+| Toast notification | Slide down from top + auto-dismiss | Entry: 300ms, Hold: 4s | ease-out |
+| Page transition | Fade in + slight upward slide | 200ms | ease |
+| Skeleton loading | Pulse animation (opacity 0.5 → 1 → 0.5) | 1.5s loop | ease-in-out |
+| Wishlist heart click | Heart fills + brief scale-up | 300ms | spring |
+| Sticky header | Slide down on scroll-up, hide on scroll-down | 250ms | ease |
+
+### 3.2 Mobile-First Responsive Breakpoints
+
+```css
+/* Mobile-first breakpoints */
+/* Mobile: default (< 640px) */
+@media (min-width: 640px)  { /* sm — Tablet portrait */ }
+@media (min-width: 768px)  { /* md — Tablet landscape */ }
+@media (min-width: 1024px) { /* lg — Desktop */ }
+@media (min-width: 1280px) { /* xl — Large desktop */ }
+@media (min-width: 1536px) { /* 2xl — Ultra-wide */ }
+```
+
+### 3.3 Mobile-Specific UX Adaptations
+
+| Desktop Feature | Mobile Adaptation |
+|---|---|
+| Filter sidebar | Bottom sheet (slide up, 75% height) |
+| Product grid (4 cols) | 2 columns |
+| Cart drawer (side) | Full-screen overlay |
+| Hover quick-view | Tap to quick-view |
+| Sticky add-to-cart bar | Sticky bottom bar (always visible) |
+| Mega menu navigation | Hamburger → full-screen menu |
+| Search bar in header | Expandable search icon → full-width overlay |
+| Multi-column checkout | Single column, stacked sections |
+
+### 3.4 Accessibility (A11y) Requirements
+
+| Requirement | Implementation |
+|---|---|
+| ARIA labels | All interactive elements have descriptive `aria-label` |
+| Keyboard nav | Tab order follows visual order; focus rings visible |
+| Screen reader | Product cards announce name, price, rating, availability |
+| Color contrast | WCAG AA (4.5:1 text, 3:1 large text) |
+| Reduced motion | `prefers-reduced-motion` media query disables animations |
+| Focus trapping | Modals and drawers trap focus until closed |
+| Skip navigation | "Skip to main content" link on all pages |
+| Image alt text | All product images have descriptive alt text |
+| Form validation | Error messages announced via `aria-live="polite"` |
+
+---
+
+## 4. Performance UX Targets
+
+| Metric | Target | How |
+|---|---|---|
+| **LCP** | < 2.0s | ISR + next/image optimization + CDN |
+| **FID** | < 100ms | Minimal JS, RSC-first architecture |
+| **CLS** | < 0.05 | Fixed image dimensions, font preloading |
+| **INP** | < 200ms | Optimistic UI for cart mutations |
+| **TTFB** | < 400ms | Edge caching + Redis |
+| **Bundle < 200KB** | gzipped JS | Tree shaking + dynamic imports |
+
+---
+
+## 5. SEO Strategy Per Page
+
+| Page | Title Template | Meta Description | Schema.org |
+|---|---|---|---|
+| Home | `MagicOFit — Premium Sports Gear & Athletic Wear` | `Shop the best sports clothing...` | `Organization`, `WebSite` |
+| Category | `{Category} — MagicOFit` | `Browse our {Category} collection...` | `CollectionPage`, `BreadcrumbList` |
+| Product | `{Product Name} — {Category} — MagicOFit` | `{Product desc, 155 chars}` | `Product` (price, availability, rating) |
+| Cart | `Your Cart — MagicOFit` | _noindex_ | — |
+| Checkout | `Checkout — MagicOFit` | _noindex_ | — |
+| Blog | `{Title} — MagicOFit Blog` | `{Article excerpt, 155 chars}` | `Article`, `BlogPosting` |
+
