@@ -3,10 +3,8 @@
 import { useState, useEffect, useCallback } from "react";
 import Breadcrumb from "@/components/layout/Breadcrumb";
 import LoginForm from "@/components/account/LoginForm";
-import RegisterForm from "@/components/account/RegisterForm";
 import ProfileForm from "@/components/account/ProfileForm";
 import OrderHistory from "@/components/account/OrderHistory";
-import { login, register } from "@/lib/store-api";
 import { checkAuthStatus, logout } from "@/actions/auth";
 import { getCustomer, getOrders, updateCustomer } from "@/actions/customer";
 import { useTranslations } from "next-intl";
@@ -41,10 +39,8 @@ interface OrderData {
 export default function AccountPage() {
   const t = useTranslations("account");
   const tCommon = useTranslations("common");
-  const [view, setView] = useState<"login" | "register" | "dashboard">("login");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState("");
   const [customerData, setCustomerData] = useState<CustomerData>({
     firstName: "",
     lastName: "",
@@ -121,7 +117,6 @@ export default function AccountPage() {
         const { authenticated } = await checkAuthStatus();
         setIsLoggedIn(authenticated);
         if (authenticated) {
-          setView("dashboard");
           await Promise.all([fetchCustomerData(), fetchOrders()]);
         }
       } catch (err) {
@@ -133,40 +128,16 @@ export default function AccountPage() {
     checkAuth();
   }, [fetchCustomerData, fetchOrders]);
 
-  const handleLogin = async (email: string, password: string) => {
-    try {
-      setError("");
-      await login(email, password);
-      setIsLoggedIn(true);
-      setView("dashboard");
-    } catch (err: any) {
-      setError(err.message || "Login failed");
-    }
-  };
-
   const handleLoginSuccess = () => {
     setIsLoggedIn(true);
-    setView("dashboard");
     fetchCustomerData();
     fetchOrders();
-  };
-
-  const handleRegister = async (data: { firstName: string; lastName: string; email: string; password: string }) => {
-    try {
-      setError("");
-      await register(data.email, data.password, data.firstName, data.lastName);
-      setIsLoggedIn(true);
-      setView("dashboard");
-    } catch (err: any) {
-      setError(err.message || "Registration failed");
-    }
   };
 
   const handleLogout = async () => {
     try {
       await logout();
       setIsLoggedIn(false);
-      setView("login");
     } catch (err) {
       console.error("Logout failed", err);
     }
@@ -190,43 +161,14 @@ export default function AccountPage() {
         <div className="max-w-md mx-auto">
           <div className="mb-6 text-center">
             <h1 className="font-outfit text-3xl font-extrabold text-neutral-900 mb-2 uppercase tracking-tight">
-              {view === "login" ? t("welcomeBack") : t("createAccount")}
+              {t("welcomeBack")}
             </h1>
             <p className="text-neutral-600 leading-relaxed">
-              {view === "login"
-                ? t("signInAccess")
-                : t("joinOffers")}
+              {t("signInAccess")}
             </p>
           </div>
 
-          {view === "login" ? (
-            <>
-              {error && <p className="text-red-600 text-sm mb-4 text-center">{error}</p>}
-              <LoginForm onLogin={handleLogin} onLoginSuccess={handleLoginSuccess} />
-              <p className="mt-6 text-center text-sm text-neutral-600">
-                {t("noAccount")}{" "}
-                <button
-                  onClick={() => setView("register")}
-                  className="text-primary-600 hover:text-primary-700 font-semibold transition-colors"
-                >
-                  {t("signUp")}
-                </button>
-              </p>
-            </>
-          ) : (
-            <>
-              <RegisterForm onRegister={handleRegister} />
-              <p className="mt-6 text-center text-sm text-neutral-600">
-                {t("alreadyHaveAccount")}{" "}
-                <button
-                  onClick={() => setView("login")}
-                  className="text-primary-600 hover:text-primary-700 font-semibold transition-colors"
-                >
-                  {t("signIn")}
-                </button>
-              </p>
-            </>
-          )}
+          <LoginForm onLoginSuccess={handleLoginSuccess} />
         </div>
       ) : (
         <div>
