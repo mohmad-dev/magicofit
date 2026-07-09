@@ -1,6 +1,7 @@
 "use server";
 
 import { medusaClient } from "@/lib/medusa-client";
+import { cookies } from "next/headers";
 
 interface CartItem {
   productId: string;
@@ -64,47 +65,47 @@ interface CheckoutData {
 
 export async function processDirectOrder(data: CheckoutData) {
   try {
-    // 1. Use existing Medusa cart or create a new one
-    let cartId: string;
-    if (data.medusaCartId) {
+    const cookieStore = await cookies();
+    const sessionCookie = cookieStore.get("_medusa_jwt");
+    const authHeaders: Record<string, string> = {};
+    if (sessionCookie?.value) {
+      authHeaders["Authorization"] = `Bearer ${sessionCookie.value}`;
+    }
+
+    // Fetch logged in customer email if available
+    let customerEmail: string | undefined;
+    if (sessionCookie?.value) {
       try {
-        const existingCart: any = await medusaClient.get(`/store/carts/${data.medusaCartId}`);
-        if (existingCart?.cart?.id || existingCart?.id) {
-          cartId = existingCart.cart?.id || existingCart.id;
-        } else {
-          throw new Error("Cart not found");
+        const customerRes: any = await medusaClient.get("/store/customers/me", { headers: authHeaders });
+        const customer = customerRes.customer || customerRes;
+        if (customer?.email) {
+          customerEmail = customer.email;
         }
-      } catch {
-        // Cart no longer valid, create new one
-        const cartRes: any = await medusaClient.post('/store/carts', {
-          region_id: process.env.NEXT_PUBLIC_MEDUSA_REGION_ID || undefined,
-        });
-        const cart = cartRes.cart || cartRes;
-        cartId = cart.id;
-      }
-    } else {
-      const cartRes: any = await medusaClient.post('/store/carts', {
-        region_id: process.env.NEXT_PUBLIC_MEDUSA_REGION_ID || undefined,
-      });
-      const cart = cartRes.cart || cartRes;
-      if (!cart?.id) return { success: false, error: "Failed to create cart" };
-      cartId = cart.id;
-    }
-
-    // 2. Add Line Items (only for new carts - existing carts already have items from cart-store sync)
-    if (!data.medusaCartId) {
-      for (const item of data.items) {
-        if (item.variantId) {
-          await medusaClient.post(`/store/carts/${cartId}/line-items`, {
-            variant_id: item.variantId,
-            quantity: item.quantity,
-          }).catch(e => console.error("Medusa line item error:", e));
-        }
+      } catch (err) {
+        console.error("Failed to fetch customer email in checkout action:", err);
       }
     }
 
-    // 3. Update Cart with shipping details
-    const finalEmail = data.shippingAddress.email || `whatsapp_${data.shippingAddress.phone}@magicofit.local`;
+    // Always create a new cart to ensure it's clean and has correct items/prices
+    const cartRes: any = await medusaClient.post('/store/carts', {
+      region_id: process.env.NEXT_PUBLIC_MEDUSA_REGION_ID || undefined,
+    }, { headers: authHeaders });
+    const cart = cartRes.cart || cartRes;
+    if (!cart?.id) return { success: false, error: "Failed to create cart" };
+    const cartId = cart.id;
+
+    // Add Line Items to the new cart
+    for (const item of data.items) {
+      if (item.variantId) {
+        await medusaClient.post(`/store/carts/${cartId}/line-items`, {
+          variant_id: item.variantId,
+          quantity: item.quantity,
+        }, { headers: authHeaders }).catch(e => console.error("Medusa line item error:", e));
+      }
+    }
+
+    // Update Cart with shipping details
+    const finalEmail = customerEmail || data.shippingAddress.email || `whatsapp_${data.shippingAddress.phone}@magicofit.local`;
 
     await medusaClient.post(`/store/carts/${cartId}`, {
       email: finalEmail,
@@ -116,12 +117,13 @@ export async function processDirectOrder(data: CheckoutData) {
         city: data.shippingAddress.city,
         country_code: "eg",
       },
-    }).catch(e => console.error("Update cart error:", e));
+    }, { headers: authHeaders }).catch(e => console.error("Update cart error:", e));
 
-    // 4. Add shipping method - match governorate to shipping option
+    // Add shipping method - match governorate to shipping option
     try {
       const shippingOptions: any = await medusaClient.get(
-        `/store/shipping-options?cart_id=${cartId}`
+        `/store/shipping-options?cart_id=${cartId}`,
+        { headers: authHeaders }
       );
       const options = shippingOptions.shipping_options || shippingOptions;
       if (options && options.length > 0) {
@@ -136,34 +138,34 @@ export async function processDirectOrder(data: CheckoutData) {
         }
         await medusaClient.post(`/store/carts/${cartId}/shipping-methods`, {
           option_id: selectedOption.id,
-        });
+        }, { headers: authHeaders });
       }
     } catch (e) {
       console.error("Shipping method error:", e);
     }
 
-    // 5. Create payment collection and initialize payment session (Medusa v2 flow)
+    // Create payment collection and initialize payment session (Medusa v2 flow)
     try {
       const pcRes: any = await medusaClient.post(`/store/payment-collections`, {
         cart_id: cartId,
-      });
+      }, { headers: authHeaders });
       const pcId = pcRes.payment_collection?.id;
       if (pcId) {
         await medusaClient.post(`/store/payment-collections/${pcId}/payment-sessions`, {
           provider_id: "pp_system_default",
-        });
+        }, { headers: authHeaders });
       }
     } catch (e) {
       console.error("Payment collection/session error:", e);
     }
 
-    // 6. Complete the cart to create a real order in Medusa
+    // Complete the cart to create a real order in Medusa
     let orderId: string | number = Math.floor(100000 + Math.random() * 900000);
     let cartSummary: { subtotal: number; tax: number; shipping: number; total: number; currency_code: string } | null = null;
     try {
       // Fetch final cart state for tax/total info
       try {
-        const finalCart: any = await medusaClient.get(`/store/carts/${cartId}`);
+        const finalCart: any = await medusaClient.get(`/store/carts/${cartId}`, { headers: authHeaders });
         const fc = finalCart.cart || finalCart;
         if (fc) {
           cartSummary = {
@@ -181,7 +183,7 @@ export async function processDirectOrder(data: CheckoutData) {
       console.log("=== COMPLETING CART ===");
       console.log("Cart ID:", cartId);
 
-      const completeRes: any = await medusaClient.post(`/store/carts/${cartId}/complete`);
+      const completeRes: any = await medusaClient.post(`/store/carts/${cartId}/complete`, {}, { headers: authHeaders });
       console.log("=== COMPLETE RESPONSE ===");
       console.log(JSON.stringify(completeRes, null, 2));
 

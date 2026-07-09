@@ -40,3 +40,18 @@ export function getVariantOptionValue(
   // Legacy Record format
   return variantOptions[optionTitle];
 }
+
+/**
+ * Resolves a product image URL.
+ * If the URL is relative, it prepends the Medusa backend URL.
+ */
+export function getProductImageUrl(url: string | null | undefined): string {
+  if (!url) return "https://placehold.co/600x600/png?text=No+Image";
+  if (url.startsWith("http://") || url.startsWith("https://") || url.startsWith("data:")) {
+    return url;
+  }
+  const backendUrl = process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL || "http://localhost:9000";
+  // Strip double slashes if any
+  const sanitizedUrl = url.startsWith("/") ? url : `/${url}`;
+  return `${backendUrl}${sanitizedUrl}`;
+}

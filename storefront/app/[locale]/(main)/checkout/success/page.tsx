@@ -5,7 +5,7 @@ import { CheckCircle2, Package, Truck, CreditCard, MapPin, Mail, Phone } from "l
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { Suspense, useState, useEffect } from "react";
-import { formatPrice } from "@/lib/utils";
+import { formatPrice, getProductImageUrl } from "@/lib/utils";
 import { useTranslations } from "next-intl";
 
 interface OrderItem {
@@ -61,10 +61,10 @@ function SuccessContent() {
   // item.price is already in pounds (divided by 100 when added to cart)
   const subtotal = items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
   // cartSummary values come from Medusa in cents, need /100
-  const shipping = orderData?.cartSummary ? orderData.cartSummary.shipping : 50;
-  const tax = orderData?.cartSummary ? orderData.cartSummary.tax : 0;
-  const discount = orderData?.cartSummary && (orderData.cartSummary as any).discount ? (orderData.cartSummary as any).discount : 0;
-  const totalFromMedusa = orderData?.cartSummary ? orderData.cartSummary.total : subtotal + shipping;
+  const shipping = orderData?.cartSummary ? orderData.cartSummary.shipping / 100 : 50;
+  const tax = orderData?.cartSummary ? orderData.cartSummary.tax / 100 : 0;
+  const discount = orderData?.cartSummary && (orderData.cartSummary as any).discount ? (orderData.cartSummary as any).discount / 100 : 0;
+  const totalFromMedusa = orderData?.cartSummary ? orderData.cartSummary.total / 100 : subtotal + shipping;
   // Use Medusa total if available (includes tax, shipping, discounts), otherwise calculate
   const total = orderData?.cartSummary ? totalFromMedusa : subtotal + shipping + tax - discount;
   const addr = orderData?.shippingAddress;
@@ -95,7 +95,7 @@ function SuccessContent() {
                 <div key={item.id} className="flex items-center gap-4 p-4">
                   <div className="relative h-16 w-16 flex-shrink-0 bg-neutral-100 rounded-lg overflow-hidden">
                     <img
-                      src={imageErrors[item.id] ? '/placeholder-product.png' : item.image}
+                      src={imageErrors[item.id] ? '/placeholder-product.png' : getProductImageUrl(item.image)}
                       alt={item.name}
                       className="object-cover w-full h-full"
                       onError={() => handleImageError(item.id)}

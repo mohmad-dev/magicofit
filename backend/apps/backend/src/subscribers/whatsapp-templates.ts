@@ -23,8 +23,8 @@ export const whatsappTemplates: Record<string, WhatsAppTemplate> = {
             .join("\n")
         : "";
 
-      // Use subtotal for product price only (excluding shipping)
-      const subtotal = order?.subtotal ? parseFloat(order.subtotal).toFixed(2) : "0";
+      // Use total for grand total (including shipping)
+      const total = order?.total ? parseFloat(order.total).toFixed(2) : "0";
       const currency = order?.currency_code || "EGP";
 
       return `*تم تأكيد طلبك* ✅
@@ -38,7 +38,7 @@ export const whatsappTemplates: Record<string, WhatsAppTemplate> = {
 📦 المنتجات:
 ${itemsText || "- تفاصيل الطلب غير متاحة"}
 
-💰 الإجمالي: ${subtotal} ${currency}
+💰 الإجمالي: ${total} ${currency}
 
 🚚 التوصيل من يوم ل 4 أيام
 

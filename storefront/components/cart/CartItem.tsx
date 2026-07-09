@@ -2,7 +2,7 @@ import { Trash2, Plus, Minus } from "lucide-react";
 import { Button } from "../ui/Button";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { formatPrice } from "@/lib/utils";
+import { formatPrice, getProductImageUrl } from "@/lib/utils";
 
 interface CartItemProps {
   productId: string;
@@ -34,7 +34,7 @@ export default function CartItem({
       {/* Image */}
       <div className="relative h-20 w-20 flex-shrink-0 overflow-hidden rounded-md bg-neutral-100">
         <Image
-          src={image}
+          src={getProductImageUrl(image)}
           alt={name}
           fill
           className="object-cover"

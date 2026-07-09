@@ -5,6 +5,7 @@ import { X, Search, Heart, User, ShoppingBag, ChevronDown, ChevronUp, Globe } fr
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import { usePathname, useRouter } from "next/navigation";
+import { checkAuthStatus } from "@/actions/auth";
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -20,6 +21,20 @@ export default function MobileMenu({ isOpen, onClose, cartCount = 0 }: MobileMen
   const router = useRouter();
   const pathname = usePathname();
   const locale = pathname.startsWith("/ar") ? "ar" : "en";
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const checkAuth = async () => {
+      try {
+        const { authenticated } = await checkAuthStatus();
+        setIsLoggedIn(authenticated);
+      } catch (err) {
+        console.error("Mobile menu auth check failed:", err);
+      }
+    };
+    checkAuth();
+  }, [isOpen]);
 
   const switchLocale = () => {
     const newLocale = locale === "en" ? "ar" : "en";
@@ -307,14 +322,16 @@ export default function MobileMenu({ isOpen, onClose, cartCount = 0 }: MobileMen
             <Globe className="h-5 w-5" />
             {locale === "en" ? tc('arabic') : tc('english')}
           </button>
-          <Link
-            href="/account"
-            className="flex items-center justify-center gap-2 rounded-lg bg-neutral-900 px-4 py-3 text-white font-semibold hover:bg-neutral-800 transition-colors"
-            onClick={onClose}
-          >
-            <User className="h-5 w-5" />
-            {t('signInRegister')}
-          </Link>
+          {!isLoggedIn && (
+            <Link
+              href="/account"
+              className="flex items-center justify-center gap-2 rounded-lg bg-neutral-900 px-4 py-3 text-white font-semibold hover:bg-neutral-800 transition-colors"
+              onClick={onClose}
+            >
+              <User className="h-5 w-5" />
+              {t('signInRegister')}
+            </Link>
+          )}
         </div>
       </div>
     </div>

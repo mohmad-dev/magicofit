@@ -76,8 +76,8 @@ class MedusaClient {
     }
   }
 
-  async get<T>(endpoint: string): Promise<T> {
-    const data = await this.request<T>(endpoint, { method: 'GET' })
+  async get<T>(endpoint: string, options?: RequestInit): Promise<T> {
+    const data = await this.request<T>(endpoint, { method: 'GET', ...options })
     return rewriteLocalhostUrls(data, this.baseUrl)
   }
 

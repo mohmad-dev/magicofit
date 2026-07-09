@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "../ui/Button";
 import { User, Mail, Phone, MapPin } from "lucide-react";
 import { useTranslations } from "next-intl";
@@ -30,6 +30,22 @@ export default function ProfileForm({ initialData, onSave, onCancel, loading = f
   const [isEditing, setIsEditing] = useState(true); // Default to true when rendered as a toggle
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
+  const [locale, setLocale] = useState("ar");
+
+  useEffect(() => {
+    const isAr = document.documentElement.lang === "ar" || window.location.pathname.startsWith("/ar");
+    setLocale(isAr ? "ar" : "en");
+  }, []);
+
+  const countries = [
+    { value: "EG", label: locale === "ar" ? "مصر" : "Egypt" },
+    { value: "SA", label: locale === "ar" ? "المملكة العربية السعودية" : "Saudi Arabia" },
+    { value: "AE", label: locale === "ar" ? "الإمارات العربية المتحدة" : "United Arab Emirates" },
+    { value: "QA", label: locale === "ar" ? "قطر" : "Qatar" },
+    { value: "KW", label: locale === "ar" ? "الكويت" : "Kuwait" },
+    { value: "BH", label: locale === "ar" ? "البحرين" : "Bahrain" },
+    { value: "OM", label: locale === "ar" ? "عمان" : "Oman" },
+  ];
 
   const handleChange = (field: keyof ProfileData, value: string) => {
     setFormData({ ...formData, [field]: value });
@@ -246,12 +262,9 @@ export default function ProfileForm({ initialData, onSave, onCancel, loading = f
                   disabled={!isEditing}
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent disabled:bg-gray-50 disabled:text-gray-500"
                 >
-                  <option value="SA">Saudi Arabia</option>
-                  <option value="AE">United Arab Emirates</option>
-                  <option value="QA">Qatar</option>
-                  <option value="KW">Kuwait</option>
-                  <option value="BH">Bahrain</option>
-                  <option value="OM">Oman</option>
+                  {countries.map((c) => (
+                    <option key={c.value} value={c.value}>{c.label}</option>
+                  ))}
                 </select>
               </div>
             </div>

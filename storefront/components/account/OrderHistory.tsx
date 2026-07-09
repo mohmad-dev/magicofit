@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Button } from "../ui/Button";
 import { Package, Clock, CheckCircle, XCircle, Truck } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { formatPrice } from "@/lib/utils";
+import { formatPrice, getProductImageUrl } from "@/lib/utils";
 
 interface OrderItem {
   id: string;
@@ -94,7 +94,7 @@ export default function OrderHistory({ orders }: OrderHistoryProps) {
               {order.items.slice(0, 3).map((item) => (
                 <div key={item.id} className="flex items-center gap-4">
                   <img
-                    src={item.image}
+                    src={getProductImageUrl(item.image)}
                     alt={item.name}
                     className="w-16 h-16 object-cover rounded-lg"
                   />
