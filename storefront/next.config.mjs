@@ -40,16 +40,9 @@ const nextConfig = {
   turbopack: {
     root: '..',
   },
-  swcMinify: true,
   experimental: {
     optimizeCss: true,
     optimizePackageImports: ['lucide-react', '@tanstack/react-query'],
-    modularizeImports: {
-      'lucide-react': {
-        transform: 'lucide-react/dist/esm/icons/{{kebabCase member}}',
-      },
-    },
-    ppr: true,
   },
   compress: true,
   generateEtags: true,
@@ -57,35 +50,6 @@ const nextConfig = {
   reactStrictMode: true,
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
-    emotion: true,
-  },
-  swcMinify: true,
-  swc: {
-    jsc: {
-      parser: {
-        syntax: 'ecmascript',
-        jsx: true,
-        dynamicImport: true,
-      },
-      transform: {
-        react: {
-          runtime: 'automatic',
-        },
-        optimizer: {
-          globals: {
-            vars: {
-              'process.env.NODE_ENV': 'production',
-            },
-          },
-        },
-      },
-      target: 'es2023',
-      minify: {
-        compress: {
-          drop_console: true,
-        },
-      },
-    },
   },
   images: {
     formats: ['image/avif', 'image/webp'],
