@@ -8,7 +8,7 @@ import { useState } from "react";
 import ProductCard from "@/components/product/ProductCard";
 
 // Lazy load non-critical components
-const WhatsAppSubscribe = dynamic(() => import("@/components/homepage/WhatsAppSubscribe"), {
+const SocialMapBanner = dynamic(() => import("@/components/homepage/SocialMapBanner"), {
   loading: () => <div className="h-96 bg-neutral-800 animate-pulse" />,
 });
 
@@ -204,7 +204,7 @@ export default function HomeClient({
         <BrandLogos />
       </div>
 
-      <WhatsAppSubscribe />
+      <SocialMapBanner />
     </div>
   );
 }

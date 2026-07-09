@@ -5,12 +5,15 @@ import { useTranslations } from "next-intl";
 const brands = [
   { name: "Nike" },
   { name: "Adidas" },
-  { name: "Under Armour" },
   { name: "Puma" },
-  { name: "Reebok" },
+  { name: "Tempo Sport" },
+  { name: "Umbro" },
+  { name: "Uhlsport" },
+  { name: "Kelme" },
+  { name: "Joma" },
+  { name: "Kappa" },
   { name: "New Balance" },
-  { name: "Asics" },
-  { name: "Jordan" },
+  { name: "Under Armour" },
 ];
 
 export default function BrandLogos() {

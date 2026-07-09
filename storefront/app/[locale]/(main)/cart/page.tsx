@@ -29,7 +29,7 @@ export default function CartPage() {
     (sum, item) => sum + item.price * item.quantity,
     0
   );
-  const shipping = subtotal > 200 ? 0 : 15;
+  const shipping = subtotal >= 2000 ? 0 : 50;
   const tax = subtotal * 0.14;
 
   const breadcrumbItems = [
@@ -87,7 +87,7 @@ export default function CartPage() {
             <div className="lg:col-span-1 space-y-4">
               <FreeShippingProgress 
                 currentAmount={subtotal}
-                freeShippingThreshold={200}
+                freeShippingThreshold={2000}
               />
               <CartSummary
                 items={items.map((item) => ({

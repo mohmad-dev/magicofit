@@ -4,6 +4,7 @@ import { useState } from "react";
 import { ChevronLeft, ChevronRight, ZoomIn } from "lucide-react";
 import { Button } from "../ui/Button";
 import Image from "next/image";
+import { getProductImageUrl } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface ProductImage {
@@ -46,7 +47,7 @@ export default function ProductGallery({ images, alt, discount }: ProductGallery
             className="relative h-full w-full"
           >
             <Image
-              src={currentImage.url}
+              src={getProductImageUrl(currentImage.url)}
               alt={currentImage.alt_text || `${alt} - Image ${currentIndex + 1}`}
               fill
               className={`object-cover transition-transform duration-300 ${
@@ -121,7 +122,7 @@ export default function ProductGallery({ images, alt, discount }: ProductGallery
               aria-label={`View image ${index + 1}`}
             >
               <Image
-                src={image.url}
+                src={getProductImageUrl(image.url)}
                 alt={image.alt_text || `${alt} - Thumbnail ${index + 1}`}
                 fill
                 className="object-cover"

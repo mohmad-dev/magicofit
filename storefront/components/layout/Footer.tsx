@@ -4,6 +4,9 @@ import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { getCategories } from "@/lib/store-api";
+import type { MedusaCategory } from "@/lib/types/medusa";
+import { useState, useEffect } from "react";
 
 // Custom icons since lucide-react doesn't have social media icons
 const FacebookIcon = () => (
@@ -23,6 +26,42 @@ export default function Footer() {
   const locale = pathname.startsWith("/ar") ? "ar" : "en";
   const t = useTranslations("footer");
   const tc = useTranslations("common");
+
+  const [categories, setCategories] = useState<MedusaCategory[]>([]);
+
+  useEffect(() => {
+    let active = true;
+    getCategories()
+      .then((data) => {
+        if (active && data) {
+          setCategories(data.slice(0, 4));
+        }
+      })
+      .catch((err) => console.error("Failed to load categories in footer:", err));
+    return () => { active = false; };
+  }, []);
+
+  const getCategoryName = (category: MedusaCategory) => {
+    const key = category.handle.toLowerCase();
+    const commonMapping: Record<string, string> = locale === "ar" ? {
+      "running": "الجري",
+      "football": "كرة القدم",
+      "soccer": "كرة القدم",
+      "basketball": "كرة السلة",
+      "gym": "الجيم واللياقة",
+      "training": "التدريب",
+      "tennis": "التنس",
+    } : {
+      "running": "Running",
+      "football": "Football",
+      "soccer": "Football",
+      "basketball": "Basketball",
+      "gym": "Gym & Fitness",
+      "training": "Training",
+      "tennis": "Tennis",
+    };
+    return commonMapping[key] || category.name;
+  };
 
   return (
     <footer className="border-t border-neutral-200 bg-neutral-50">
@@ -78,38 +117,16 @@ export default function Footer() {
                   {t('allProducts')}
                 </Link>
               </li>
-              <li>
-                <Link
-                  href="/shop/running"
-                  className="text-neutral-700 transition-colors hover:text-primary-700 font-medium"
-                >
-                  {t('running')}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/shop/football"
-                  className="text-neutral-700 transition-colors hover:text-primary-700 font-medium"
-                >
-                  {t('football')}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/shop/basketball"
-                  className="text-neutral-700 transition-colors hover:text-primary-700 font-medium"
-                >
-                  {t('basketball')}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/shop/gym"
-                  className="text-neutral-700 transition-colors hover:text-primary-700 font-medium"
-                >
-                  {t('gymFitness')}
-                </Link>
-              </li>
+              {categories.map((category) => (
+                <li key={category.id}>
+                  <Link
+                    href={`/shop/${category.handle}`}
+                    className="text-neutral-700 transition-colors hover:text-primary-700 font-medium"
+                  >
+                    {getCategoryName(category)}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -162,34 +179,44 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Facebook Group CTA */}
-          <div className="flex flex-col space-y-4">
+          {/* Contact Details */}
+          <div className="flex flex-col space-y-4" dir={locale === "ar" ? "rtl" : "ltr"}>
             <h3 className="font-outfit font-bold text-neutral-900 uppercase tracking-wide">
-              {locale === "ar" ? "عروض عصرية وحصرية" : "Modern & Exclusive Offers"}
+              {locale === "ar" ? "اتصل بنا" : "Contact Us"}
             </h3>
-            <p className="text-sm text-neutral-700 leading-relaxed">
-              {locale === "ar" 
-                ? "انضم لمجموعتنا على فيسبوك لمشاهدة عروض عصرية وحصرية ومتابعة كل جديد أولاً بأول!" 
-                : "Join our Facebook group to see modern & exclusive offers and track all new arrivals first!"}
-            </p>
-            <a
-              href="https://www.facebook.com/share/18hLJiTUda/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#1877F2] hover:bg-[#166FE5] px-5 py-3 text-sm font-bold text-white transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5 active:translate-y-0"
-            >
-              <svg className="h-5 w-5 fill-current" viewBox="0 0 24 24">
-                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-              </svg>
-              {locale === "ar" ? "انضم للجروب الخاص بنا" : "Join Our Group Now"}
-            </a>
+            <ul className="space-y-3 text-sm text-neutral-700">
+              <li className="flex items-center gap-2">
+                <span className="font-bold">{locale === "ar" ? "العنوان:" : "Address:"}</span>
+                <span>{locale === "ar" ? "بني سويف، بجوار قاعة القصر" : "Beni Suef, Next to Palace Hall"}</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="font-bold">{locale === "ar" ? "واتساب:" : "WhatsApp:"}</span>
+                <a href="https://wa.me/201009784410" className="text-primary-700 hover:text-primary-800 font-bold">
+                  +20 100 978 4410
+                </a>
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="font-bold">{locale === "ar" ? "تيك توك:" : "TikTok:"}</span>
+                <a href="https://www.tiktok.com/@almageko58?_r=1&_t=ZS-97tHN5U77An" target="_blank" rel="noopener noreferrer" className="text-primary-700 hover:text-primary-800 font-semibold">
+                  @almageko58
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
 
         <div className="mt-12 border-t border-neutral-200 pt-8 text-center text-sm text-neutral-700">
           <p>{t('copyright')}</p>
           <p className="mt-2">
-            التطوير بواسطة: <span className="font-bold text-neutral-900">محمد أحمد مرعي</span>
+            التطوير بواسطة: <span className="font-bold text-neutral-900">محمد أحمد مرعي</span> |{" "}
+            <a
+              href="https://wa.me/201091998631"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary-600 hover:text-primary-700 font-semibold transition-colors"
+            >
+              {locale === "ar" ? "واتساب: 01091998631" : "WhatsApp: 01091998631"}
+            </a>
           </p>
         </div>
       </div>

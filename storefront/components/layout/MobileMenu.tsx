@@ -6,6 +6,8 @@ import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import { usePathname, useRouter } from "next/navigation";
 import { checkAuthStatus } from "@/actions/auth";
+import { getCategories } from "@/lib/store-api";
+import type { MedusaCategory } from "@/lib/types/medusa";
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -22,6 +24,7 @@ export default function MobileMenu({ isOpen, onClose, cartCount = 0 }: MobileMen
   const pathname = usePathname();
   const locale = pathname.startsWith("/ar") ? "ar" : "en";
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [categories, setCategories] = useState<MedusaCategory[]>([]);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -34,7 +37,38 @@ export default function MobileMenu({ isOpen, onClose, cartCount = 0 }: MobileMen
       }
     };
     checkAuth();
+
+    // Fetch categories dynamically
+    getCategories()
+      .then((data) => {
+        if (data) {
+          setCategories(data.slice(0, 5));
+        }
+      })
+      .catch((err) => console.error("Failed to load categories in mobile menu:", err));
   }, [isOpen]);
+
+  const getCategoryName = (category: MedusaCategory) => {
+    const key = category.handle.toLowerCase();
+    const commonMapping: Record<string, string> = locale === "ar" ? {
+      "running": "الجري",
+      "football": "كرة القدم",
+      "soccer": "كرة القدم",
+      "basketball": "كرة السلة",
+      "gym": "الجيم واللياقة",
+      "training": "التدريب",
+      "tennis": "التنس",
+    } : {
+      "running": "Running",
+      "football": "Football",
+      "soccer": "Football",
+      "basketball": "Basketball",
+      "gym": "Gym & Fitness",
+      "training": "Training",
+      "tennis": "Tennis",
+    };
+    return commonMapping[key] || category.name;
+  };
 
   const switchLocale = () => {
     const newLocale = locale === "en" ? "ar" : "en";
@@ -196,34 +230,16 @@ export default function MobileMenu({ isOpen, onClose, cartCount = 0 }: MobileMen
                 >
                   {t('allProducts')}
                 </Link>
-                <Link
-                  href="/shop/running"
-                  className="block py-2 text-sm text-neutral-600 hover:text-primary-600 font-medium"
-                  onClick={onClose}
-                >
-                  {t('running')}
-                </Link>
-                <Link
-                  href="/shop/training"
-                  className="block py-2 text-sm text-neutral-600 hover:text-primary-600 font-medium"
-                  onClick={onClose}
-                >
-                  {t('training')}
-                </Link>
-                <Link
-                  href="/shop/football"
-                  className="block py-2 text-sm text-neutral-600 hover:text-primary-600 font-medium"
-                  onClick={onClose}
-                >
-                  {t('football')}
-                </Link>
-                <Link
-                  href="/shop/basketball"
-                  className="block py-2 text-sm text-neutral-600 hover:text-primary-600 font-medium"
-                  onClick={onClose}
-                >
-                  {t('basketball')}
-                </Link>
+                {categories.map((category) => (
+                  <Link
+                    key={category.id}
+                    href={`/shop/${category.handle}`}
+                    className="block py-2 text-sm text-neutral-600 hover:text-primary-600 font-medium"
+                    onClick={onClose}
+                  >
+                    {getCategoryName(category)}
+                  </Link>
+                ))}
               </div>
             )}
           </div>
@@ -243,6 +259,20 @@ export default function MobileMenu({ isOpen, onClose, cartCount = 0 }: MobileMen
                 <ChevronDown className="h-4 w-4" />
               )}
             </button>
+            {expandedSection === "categories" && (
+              <div id="categories-menu" className="bg-neutral-50 px-4 py-2 space-y-2">
+                {categories.map((category) => (
+                  <Link
+                    key={category.id}
+                    href={`/shop/${category.handle}`}
+                    className="block py-2 text-sm text-neutral-600 hover:text-primary-600 font-medium"
+                    onClick={onClose}
+                  >
+                    {getCategoryName(category)}
+                  </Link>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Support Section */}

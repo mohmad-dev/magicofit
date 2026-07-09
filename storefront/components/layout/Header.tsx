@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
+import { getCategories } from "@/lib/store-api";
+import type { MedusaCategory } from "@/lib/types/medusa";
 import { Menu, Search, ShoppingBag, Heart, User, Globe } from "lucide-react";
 import Image from "next/image";
 import { Button } from "../ui/Button";
@@ -33,9 +35,43 @@ export default function Header() {
     router.push(`/${newLocale}${currentPath === "/" ? "" : currentPath}`);
   };
 
+  const [categories, setCategories] = useState<MedusaCategory[]>([]);
+
   useEffect(() => {
     setIsMounted(true);
+    let active = true;
+    getCategories()
+      .then((data) => {
+        if (active && data) {
+          // Get top 3 categories
+          setCategories(data.slice(0, 3));
+        }
+      })
+      .catch((err) => console.error("Failed to load categories in header:", err));
+    return () => { active = false; };
   }, []);
+
+  const getCategoryName = (category: MedusaCategory) => {
+    const key = category.handle.toLowerCase();
+    const commonMapping: Record<string, string> = locale === "ar" ? {
+      "running": "الجري",
+      "football": "كرة القدم",
+      "soccer": "كرة القدم",
+      "basketball": "كرة السلة",
+      "gym": "الجيم واللياقة",
+      "training": "التدريب",
+      "tennis": "التنس",
+    } : {
+      "running": "Running",
+      "football": "Football",
+      "soccer": "Football",
+      "basketball": "Basketball",
+      "gym": "Gym & Fitness",
+      "training": "Training",
+      "tennis": "Tennis",
+    };
+    return commonMapping[key] || category.name;
+  };
 
   // Keyboard shortcut for search (Cmd/Ctrl + K)
   useEffect(() => {
@@ -132,12 +168,15 @@ export default function Header() {
               >
                 {t('shop')}
               </Link>
-              <Link
-                href="/categories"
-                className="text-sm font-semibold text-neutral-700 transition-colors hover:text-primary-600 uppercase tracking-wide"
-              >
-                {t('categories')}
-              </Link>
+              {categories.map((category) => (
+                <Link
+                  key={category.id}
+                  href={`/shop/${category.handle}`}
+                  className="text-sm font-semibold text-neutral-700 transition-colors hover:text-primary-600 uppercase tracking-wide"
+                >
+                  {getCategoryName(category)}
+                </Link>
+              ))}
               <Link
                 href="/brands"
                 className="text-sm font-semibold text-neutral-700 transition-colors hover:text-primary-600 uppercase tracking-wide"

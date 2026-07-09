@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { Heart, ShoppingCart, Trash2 } from "lucide-react";
 import { Button } from "../ui/Button";
 import { useTranslations } from "next-intl";
-import { formatPrice } from "@/lib/utils";
+import { formatPrice, getProductImageUrl } from "@/lib/utils";
 
 interface WishlistItem {
   id: string;
@@ -124,7 +124,7 @@ export default function WishlistPage({
             {/* Image */}
             <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md bg-gray-100">
               <img
-                src={item.image}
+                src={getProductImageUrl(item.image)}
                 alt={item.name}
                 className="h-full w-full object-cover"
               />

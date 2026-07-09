@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import CartDrawer from "@/components/cart/CartDrawer";
+import WhatsAppFloating from "@/components/layout/WhatsAppFloating";
 import { useUIStore } from "@/stores/ui-store";
 import { useCartStore } from "@/stores/cart-store";
 
@@ -28,6 +29,7 @@ export default function MainLayout({
           router.push("/checkout");
         }}
       />
+      <WhatsAppFloating />
     </>
   );
 }

@@ -2,7 +2,7 @@
 
 import { Clock, Package, Truck, CheckCircle, XCircle } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { formatPrice } from "@/lib/utils";
+import { formatPrice, getProductImageUrl } from "@/lib/utils";
 
 interface OrderItem {
   id: string;
@@ -77,7 +77,7 @@ export default function OrderDetail({
           <div key={item.id} className="flex gap-4 border-b border-gray-200 pb-4">
             <div className="h-20 w-20 flex-shrink-0 overflow-hidden rounded-md bg-gray-100">
               <img
-                src={item.image}
+                src={getProductImageUrl(item.image)}
                 alt={item.name}
                 className="h-full w-full object-cover"
               />

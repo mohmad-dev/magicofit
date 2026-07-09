@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { X, Plus, Minus, Heart } from "lucide-react";
 import { Button } from "../ui/Button";
-import { formatPrice } from "@/lib/utils";
+import { formatPrice, getProductImageUrl } from "@/lib/utils";
 
 interface QuickViewModalProps {
   isOpen: boolean;
@@ -73,7 +73,7 @@ export default function QuickViewModal({
           {/* Image */}
           <div className="relative aspect-[3/4] bg-neutral-100 rounded-xl overflow-hidden">
             <Image
-              src={product.image}
+              src={getProductImageUrl(product.image)}
               alt={product.name}
               fill
               className="object-cover"

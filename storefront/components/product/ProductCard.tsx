@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "../ui/Button";
 import UrgencyBadge from "./UrgencyBadge";
-import { formatPrice } from "@/lib/utils";
+import { formatPrice, getProductImageUrl } from "@/lib/utils";
 import { useCartStore } from "@/stores/cart-store";
 import { useWishlistStore } from "@/stores/wishlist-store";
 import { useUIStore } from "@/stores/ui-store";
@@ -86,7 +86,7 @@ export default function ProductCard({
       {/* Image */}
       <Link href={productLink} className="relative aspect-square bg-gradient-to-br from-neutral-50 to-neutral-100 overflow-hidden block">
         <Image
-          src={image}
+          src={getProductImageUrl(image)}
           alt={name}
           fill
           className="object-cover transition-transform duration-700 group-hover:scale-110"

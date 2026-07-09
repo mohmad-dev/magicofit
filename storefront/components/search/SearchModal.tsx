@@ -5,7 +5,7 @@ import { Search, X, Loader2 } from "lucide-react";
 import { getRegions, searchProducts } from "@/lib/store-api";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { formatPrice } from "@/lib/utils";
+import { formatPrice, getProductImageUrl } from "@/lib/utils";
 
 interface SearchModalProps {
   isOpen: boolean;
@@ -152,7 +152,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                 >
                   <div className="relative h-20 w-20 flex-shrink-0 bg-neutral-100 rounded-lg overflow-hidden">
                     <Image
-                      src={product.image}
+                      src={getProductImageUrl(product.image)}
                       alt={product.name}
                       fill
                       className="object-cover"
