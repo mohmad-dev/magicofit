@@ -48,7 +48,7 @@ export default function SocialMapBanner() {
                   <h3 className="font-bold text-white text-sm">
                     {isAr ? "واتساب المبيعات" : "Sales WhatsApp"}
                   </h3>
-                  <p className="text-xs text-[#25D366] font-semibold tracking-wider">
+                  <p className="text-xs text-[#25D366] font-semibold tracking-wider" dir="ltr">
                     +20 100 978 4410
                   </p>
                 </div>
@@ -81,7 +81,7 @@ export default function SocialMapBanner() {
           {/* Map Column */}
           <div className="relative w-full aspect-video md:h-[280px] bg-neutral-800 rounded-xl overflow-hidden shadow-lg border border-white/10">
             <iframe
-              src="https://maps.google.com/maps?q=محل%20الماجيكو%20للرياضه،%20بجوار%20قاعة%20القصر،%20بني%20سويف&t=&z=15&ie=UTF8&iwloc=&output=embed"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5191.63793802055!2d31.09199851054208!3d29.06332707416061!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x145a256b7ba7aec9%3A0xdd9aca452656a176!2z2YXYrdmEINin2YTZhdin2KzZitmD2Ygg2YTZhNix2YrYp9i22Yc!5e0!3m2!1sar!2seg!4v1783606844512!5m2!1sar!2seg"
               width="100%"
               height="100%"
               style={{ border: 0 }}

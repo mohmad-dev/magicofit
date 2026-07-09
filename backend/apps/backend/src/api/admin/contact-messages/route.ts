@@ -6,6 +6,19 @@ export async function GET(
 ) {
   try {
     const pgConnection = req.scope.resolve("pgConnection") as any;
+    
+    // Ensure table exists
+    await pgConnection.raw(`
+      CREATE TABLE IF NOT EXISTS contact_messages (
+        id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+        name TEXT NOT NULL,
+        email TEXT NOT NULL,
+        subject TEXT NOT NULL,
+        message TEXT NOT NULL,
+        created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
+      );
+    `);
+
     const result = await pgConnection.raw(`
       SELECT * FROM contact_messages ORDER BY created_at DESC
     `);

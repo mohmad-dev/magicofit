@@ -185,7 +185,7 @@ export default function ContactPage() {
                 <div>
                   <h3 className="font-semibold text-neutral-900 mb-1">{t('phone')}</h3>
                   <p className="text-neutral-600">
-                    <a href="tel:+201009784410" className="hover:text-primary-600 transition-colors font-semibold">
+                    <a href="tel:+201009784410" className="hover:text-primary-600 transition-colors font-semibold" dir="ltr">
                       +20 100 978 4410
                     </a>
                   </p>
@@ -194,7 +194,7 @@ export default function ContactPage() {
                 <div>
                   <h3 className="font-semibold text-neutral-900 mb-1">{t('whatsapp')}</h3>
                   <p className="text-neutral-600">
-                    <a href="https://wa.me/201009784410" target="_blank" rel="noopener noreferrer" className="hover:text-primary-600 transition-colors font-semibold">
+                    <a href="https://wa.me/201009784410" target="_blank" rel="noopener noreferrer" className="hover:text-primary-600 transition-colors font-semibold" dir="ltr">
                       +20 100 978 4410
                     </a>
                   </p>

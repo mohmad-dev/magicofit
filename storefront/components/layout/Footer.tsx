@@ -191,7 +191,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-2">
                 <span className="font-bold">{locale === "ar" ? "واتساب:" : "WhatsApp:"}</span>
-                <a href="https://wa.me/201009784410" className="text-primary-700 hover:text-primary-800 font-bold">
+                <a href="https://wa.me/201009784410" className="text-primary-700 hover:text-primary-800 font-bold" dir="ltr">
                   +20 100 978 4410
                 </a>
               </li>
@@ -215,7 +215,13 @@ export default function Footer() {
               rel="noopener noreferrer"
               className="text-primary-600 hover:text-primary-700 font-semibold transition-colors"
             >
-              {locale === "ar" ? "واتساب: 01091998631" : "WhatsApp: 01091998631"}
+              {locale === "ar" ? (
+                <>
+                  واتساب: <span dir="ltr">01091998631</span>
+                </>
+              ) : (
+                "WhatsApp: 01091998631"
+              )}
             </a>
           </p>
         </div>

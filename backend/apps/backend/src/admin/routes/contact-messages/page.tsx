@@ -21,9 +21,7 @@ const ContactMessagesPage = () => {
     setIsLoading(true);
     setError(null);
     try {
-      // Use window.location.origin to support any local or deployed port
-      const backendUrl = window.location.origin;
-      const res = await fetch(`${backendUrl}/admin/contact-messages`, {
+      const res = await fetch("/admin/contact-messages", {
         headers: {
           "Content-Type": "application/json",
         },
@@ -45,8 +43,7 @@ const ContactMessagesPage = () => {
       return;
     }
     try {
-      const backendUrl = window.location.origin;
-      const res = await fetch(`${backendUrl}/admin/contact-messages?id=${id}`, {
+      const res = await fetch(`/admin/contact-messages?id=${id}`, {
         method: "DELETE",
       });
       if (!res.ok) {

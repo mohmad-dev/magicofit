@@ -21,11 +21,15 @@ async function getCategoryData(categorySlug: string) {
     console.log('Decoded slug:', decodedSlug);
     console.log('All categories:', categories.map(c => ({ id: c.id, handle: c.handle, name: c.name })));
 
-    // Try to find category by handle (both encoded and decoded)
-    let category = categories.find(cat => cat.handle === decodedSlug);
-    if (!category) {
-      category = categories.find(cat => cat.handle === categorySlug);
-    }
+    const cleanSlug = decodedSlug.trim().toLowerCase();
+    const cleanRawSlug = categorySlug.trim().toLowerCase();
+
+    // Try to find category by handle or name (both encoded and decoded) with trimming
+    let category = categories.find(cat => {
+      const handle = (cat.handle || "").trim().toLowerCase();
+      const name = (cat.name || "").trim().toLowerCase();
+      return handle === cleanSlug || name === cleanSlug || handle === cleanRawSlug || name === cleanRawSlug;
+    });
 
     console.log('Found category:', category?.id, category?.name);
 

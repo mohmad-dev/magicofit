@@ -20,6 +20,18 @@ export async function POST(
   try {
     const pgConnection = req.scope.resolve("pgConnection") as any;
     
+    // Ensure table exists
+    await pgConnection.raw(`
+      CREATE TABLE IF NOT EXISTS contact_messages (
+        id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+        name TEXT NOT NULL,
+        email TEXT NOT NULL,
+        subject TEXT NOT NULL,
+        message TEXT NOT NULL,
+        created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
+      );
+    `);
+    
     // Knex raw query
     await pgConnection.raw(`
       INSERT INTO contact_messages (name, email, subject, message)
