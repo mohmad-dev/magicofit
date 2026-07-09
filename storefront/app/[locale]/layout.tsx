@@ -137,6 +137,7 @@ export default async function LocaleLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <script src="https://accounts.google.com/gsi/client" async defer></script>
       </head>
       <body className={`min-h-full flex flex-col font-sans`}>
         <NextIntlClientProvider messages={messages}>

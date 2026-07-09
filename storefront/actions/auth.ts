@@ -81,6 +81,37 @@ export async function verifyWhatsAppOTP(phoneNumber: string, code: string) {
   }
 }
 
+export async function loginWithGoogle(idToken: string) {
+  try {
+    const response = await fetch(`${MEDUSA_BACKEND_URL}/store/auth/google`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-publishable-api-key": PUBLISHABLE_API_KEY,
+      },
+      body: JSON.stringify({ id_token: idToken }),
+    });
+
+    const data = await response.json();
+
+    if (data.token) {
+      const cookieStore = await cookies();
+      cookieStore.set(SESSION_COOKIE, data.token, {
+        maxAge: 60 * 60 * 24 * 7, // 7 days
+        httpOnly: true,
+        sameSite: "strict",
+        secure: process.env.NODE_ENV === "production",
+      });
+      return { success: true, customer: data.customer };
+    }
+
+    return { success: false, message: data.message || "Google authentication failed" };
+  } catch (error) {
+    console.error("Failed to authenticate with Google", error);
+    return { success: false, message: "Google authentication failed" };
+  }
+}
+
 export async function logout() {
   const cookieStore = await cookies();
   cookieStore.delete(SESSION_COOKIE);

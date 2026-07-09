@@ -6,39 +6,43 @@ export async function POST(
   req: MedusaRequest,
   res: MedusaResponse
 ) {
-  const { phone, code } = req.body as { phone: string, code: string };
+  const { id_token } = req.body as { id_token: string };
 
-  if (!phone || !code) {
-    res.status(400).json({ message: "Phone and code are required" });
+  if (!id_token) {
+    res.status(400).json({ message: "Google ID Token is required" });
     return;
   }
 
-  console.log(`[WhatsApp Auth] Verifying OTP code ${code} for phone ${phone}`);
+  console.log(`[Google Auth] Verifying Google ID Token...`);
 
   try {
-    const cacheService = req.scope.resolve("cacheService") as any;
-    const cachedOtp = await cacheService.get(`otp_${phone}`);
+    // 1. Verify token with Google's tokeninfo API
+    const googleVerifyUrl = `https://oauth2.googleapis.com/tokeninfo?id_token=${encodeURIComponent(id_token)}`;
+    const googleRes = await fetch(googleVerifyUrl);
 
-    // Verify OTP code (123456 is a master code for testing/Vercel preview/demo)
-    if (code !== "123456" && code !== cachedOtp) {
-      res.status(401).json({ message: "Invalid OTP code" });
+    if (!googleRes.ok) {
+      const errorText = await googleRes.text().catch(() => "");
+      console.error(`[Google Auth] Google API token verification failed:`, errorText);
+      res.status(401).json({ message: "Invalid Google ID Token" });
       return;
     }
 
-    // Invalidate the OTP after successful verification to prevent reuse
-    if (code === cachedOtp) {
-      await cacheService.invalidate(`otp_${phone}`).catch((e: any) => 
-        console.error(`[WhatsApp Auth] Failed to invalidate OTP cache key:`, e)
-      );
+    const payload = await googleRes.json();
+    const { email, sub: googleId, given_name: firstName, family_name: lastName, email_verified } = payload;
+
+    if (!email_verified) {
+      res.status(401).json({ message: "Google email is not verified" });
+      return;
     }
+
+    console.log(`[Google Auth] Successfully verified token for email: ${email}, Google ID: ${googleId}`);
 
     const authModuleService = req.scope.resolve(Modules.AUTH);
     const customerModuleService = req.scope.resolve(Modules.CUSTOMER);
     const configModule = req.scope.resolve(ContainerRegistrationKeys.CONFIG_MODULE);
     const jwtSecret = configModule.projectConfig.http.jwtSecret || "supersecret";
 
-    // 1. Find existing customer by email pattern
-    const email = `whatsapp_${phone}@magicofit.local`;
+    // 2. Find or create customer
     const customers = await customerModuleService.listCustomers({
       email,
     });
@@ -57,15 +61,14 @@ export async function POST(
         });
         authIdentity = authIdentities[0];
       } catch {
-        // No auth identity yet
+        // No auth identity linked yet
       }
     } else {
-      // 2. Create new customer
+      // Create new customer
       customer = await customerModuleService.createCustomers({
         email,
-        phone,
-        first_name: phone,
-        last_name: "",
+        first_name: firstName || email.split("@")[0],
+        last_name: lastName || "",
       });
     }
 
@@ -74,8 +77,8 @@ export async function POST(
       authIdentity = await authModuleService.createAuthIdentities({
         provider_identities: [
           {
-            provider: "whatsapp",
-            entity_id: phone,
+            provider: "google",
+            entity_id: googleId,
           },
         ],
         app_metadata: {
@@ -84,7 +87,7 @@ export async function POST(
       });
     }
 
-    // 4. Generate real JWT token
+    // 4. Generate Medusa JWT token
     const token = jwt.sign(
       {
         actor_id: customer.id,
@@ -109,7 +112,7 @@ export async function POST(
       },
     });
   } catch (error) {
-    console.error("[WhatsApp Auth] Error verifying session:", error);
+    console.error("[Google Auth] Error during login:", error);
     res.status(500).json({ message: "Authentication failed" });
   }
 }

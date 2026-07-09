@@ -144,6 +144,13 @@ export default function AccountPage() {
     }
   };
 
+  const handleLoginSuccess = () => {
+    setIsLoggedIn(true);
+    setView("dashboard");
+    fetchCustomerData();
+    fetchOrders();
+  };
+
   const handleRegister = async (data: { firstName: string; lastName: string; email: string; password: string }) => {
     try {
       setError("");
@@ -192,15 +199,10 @@ export default function AccountPage() {
             </p>
           </div>
 
-          <div className="mb-6 rounded-xl border-2 border-amber-300 bg-amber-50 p-4 text-center">
-            <p className="font-bold text-amber-800">{t("loginTemporarilyUnavailable")}</p>
-            <p className="text-sm text-amber-700 mt-1">{t("loginTemporarilyUnavailableDesc")}</p>
-          </div>
-
           {view === "login" ? (
             <>
               {error && <p className="text-red-600 text-sm mb-4 text-center">{error}</p>}
-              <LoginForm onLogin={handleLogin} disabled />
+              <LoginForm onLogin={handleLogin} onLoginSuccess={handleLoginSuccess} />
               <p className="mt-6 text-center text-sm text-neutral-600">
                 {t("noAccount")}{" "}
                 <button
@@ -213,7 +215,7 @@ export default function AccountPage() {
             </>
           ) : (
             <>
-              <RegisterForm onRegister={handleRegister} disabled />
+              <RegisterForm onRegister={handleRegister} />
               <p className="mt-6 text-center text-sm text-neutral-600">
                 {t("alreadyHaveAccount")}{" "}
                 <button
