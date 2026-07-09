@@ -35,9 +35,13 @@ export default function ContactPage() {
     setError("");
 
     try {
-      await submitContactMessage(formData);
-      setIsSuccess(true);
-      setFormData({ name: "", email: "", subject: "", message: "" });
+      const res = await submitContactMessage(formData);
+      if (res.success) {
+        setIsSuccess(true);
+        setFormData({ name: "", email: "", subject: "", message: "" });
+      } else {
+        setError(res.error || "Failed to send message. Please try again later.");
+      }
     } catch (err: any) {
       console.error("Failed to submit contact message:", err);
       setError(

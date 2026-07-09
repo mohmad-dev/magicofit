@@ -13,6 +13,6 @@ export async function submitContactMessage(formData: {
     return { success: true, data: res };
   } catch (error: any) {
     console.error("Failed to submit contact message in server action:", error);
-    throw new Error(error.message || "Failed to submit message");
+    return { success: false, error: error.message || "Failed to submit message" };
   }
 }
