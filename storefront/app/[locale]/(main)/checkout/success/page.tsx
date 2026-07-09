@@ -7,6 +7,7 @@ import { useSearchParams } from "next/navigation";
 import { Suspense, useState, useEffect } from "react";
 import { formatPrice, getProductImageUrl } from "@/lib/utils";
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 
 interface OrderItem {
   id: string;
@@ -41,11 +42,6 @@ function SuccessContent() {
   const orderId = searchParams.get('order_id') || Math.floor(100000 + Math.random() * 900000);
 
   const [orderData, setOrderData] = useState<OrderData | null>(null);
-  const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
-
-  const handleImageError = (itemId: string) => {
-    setImageErrors(prev => ({ ...prev, [itemId]: true }));
-  };
 
   useEffect(() => {
     try {
@@ -64,9 +60,9 @@ function SuccessContent() {
   const shipping = orderData?.cartSummary ? orderData.cartSummary.shipping / 100 : 50;
   const tax = orderData?.cartSummary ? orderData.cartSummary.tax / 100 : 0;
   const discount = orderData?.cartSummary && (orderData.cartSummary as any).discount ? (orderData.cartSummary as any).discount / 100 : 0;
-  const totalFromMedusa = orderData?.cartSummary ? orderData.cartSummary.total / 100 : subtotal + shipping;
-  // Use Medusa total if available (includes tax, shipping, discounts), otherwise calculate
-  const total = orderData?.cartSummary ? totalFromMedusa : subtotal + shipping + tax - discount;
+  const totalFromMedusa = (orderData?.cartSummary && orderData.cartSummary.total) ? orderData.cartSummary.total / 100 : 0;
+  // Use Medusa total if available and greater than 0, otherwise calculate
+  const total = totalFromMedusa > 0 ? totalFromMedusa : subtotal + shipping + tax - discount;
   const addr = orderData?.shippingAddress;
 
   return (
@@ -94,11 +90,12 @@ function SuccessContent() {
               {items.map((item) => (
                 <div key={item.id} className="flex items-center gap-4 p-4">
                   <div className="relative h-16 w-16 flex-shrink-0 bg-neutral-100 rounded-lg overflow-hidden">
-                    <img
-                      src={imageErrors[item.id] ? '/placeholder-product.png' : getProductImageUrl(item.image)}
+                    <Image
+                      src={getProductImageUrl(item.image)}
                       alt={item.name}
-                      className="object-cover w-full h-full"
-                      onError={() => handleImageError(item.id)}
+                      fill
+                      className="object-cover"
+                      sizes="64px"
                     />
                   </div>
                   <div className="flex-1 min-w-0">

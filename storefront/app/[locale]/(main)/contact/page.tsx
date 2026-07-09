@@ -5,8 +5,8 @@ import Breadcrumb from "@/components/layout/Breadcrumb";
 import { Input } from "@/components/ui/Input";
 import { Button } from "@/components/ui/Button";
 import { useTranslations } from "next-intl";
-import { medusaClient } from "@/lib/medusa-client";
 import { usePathname } from "next/navigation";
+import { submitContactMessage } from "@/actions/contact";
 
 export default function ContactPage() {
   const t = useTranslations("contact");
@@ -35,7 +35,7 @@ export default function ContactPage() {
     setError("");
 
     try {
-      await medusaClient.post("/store/contact-messages", formData);
+      await submitContactMessage(formData);
       setIsSuccess(true);
       setFormData({ name: "", email: "", subject: "", message: "" });
     } catch (err: any) {

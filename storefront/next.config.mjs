@@ -171,7 +171,7 @@ const nextConfig = {
             value: [
               "default-src 'self'",
               "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://accounts.google.com",
-              "frame-src 'self' https://accounts.google.com",
+              "frame-src 'self' https://accounts.google.com https://www.google.com https://maps.google.com",
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://accounts.google.com",
               "font-src 'self' https://fonts.gstatic.com",
               `img-src 'self' data: blob: https://*.r2.cloudflarestorage.com https://*.s3.amazonaws.com https://medusa-public-images.s3.eu-west-1.amazonaws.com https://images.unsplash.com https://*.unsplash.com https://placehold.co${medusaBackendUrl ? ` ${medusaBackendUrl}` : ""}${storageUrl ? ` ${storageUrl}` : ""}`,
