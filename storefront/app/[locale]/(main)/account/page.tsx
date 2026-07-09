@@ -158,16 +158,7 @@ export default function AccountPage() {
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600"></div>
         </div>
       ) : !isLoggedIn ? (
-        <div className="max-w-md mx-auto">
-          <div className="mb-6 text-center">
-            <h1 className="font-outfit text-3xl font-extrabold text-neutral-900 mb-2 uppercase tracking-tight">
-              {t("welcomeBack")}
-            </h1>
-            <p className="text-neutral-600 leading-relaxed">
-              {t("signInAccess")}
-            </p>
-          </div>
-
+        <div className="max-w-md mx-auto py-12">
           <LoginForm onLoginSuccess={handleLoginSuccess} />
         </div>
       ) : (
