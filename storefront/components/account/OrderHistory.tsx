@@ -58,7 +58,7 @@ export default function OrderHistory({ orders }: OrderHistoryProps) {
   return (
     <div className="space-y-4">
       {orders.map((order) => {
-        const status = statusConfig[order.status];
+        const status = statusConfig[order.status] || statusConfig.pending;
         const StatusIcon = status.icon;
 
         return (

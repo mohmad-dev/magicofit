@@ -20,13 +20,14 @@ interface ProfileData {
 interface ProfileFormProps {
   initialData: ProfileData;
   onSave: (data: ProfileData) => Promise<void>;
+  onCancel?: () => void;
   loading?: boolean;
 }
 
-export default function ProfileForm({ initialData, onSave, loading = false }: ProfileFormProps) {
+export default function ProfileForm({ initialData, onSave, onCancel, loading = false }: ProfileFormProps) {
   const t = useTranslations("account.profile");
   const [formData, setFormData] = useState<ProfileData>(initialData);
-  const [isEditing, setIsEditing] = useState(false);
+  const [isEditing, setIsEditing] = useState(true); // Default to true when rendered as a toggle
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
 
@@ -56,8 +57,7 @@ export default function ProfileForm({ initialData, onSave, loading = false }: Pr
     try {
       await onSave(formData);
       setSuccess(true);
-      setIsEditing(false);
-      setTimeout(() => setSuccess(false), 3000);
+      if (onCancel) onCancel();
     } catch (err) {
       setError(t("saveFailed"));
     }
@@ -65,29 +65,27 @@ export default function ProfileForm({ initialData, onSave, loading = false }: Pr
 
   const handleCancel = () => {
     setFormData(initialData);
-    setIsEditing(false);
     setError("");
+    if (onCancel) {
+      onCancel();
+    } else {
+      setIsEditing(false);
+    }
   };
 
   return (
-    <div className="bg-white rounded-lg shadow p-6">
+    <div className="bg-white rounded-lg shadow-none p-0">
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-xl font-semibold text-gray-900">{t("profileInfo")}</h2>
-        {!isEditing ? (
-          <Button variant="outline" size="sm" onClick={() => setIsEditing(true)}>
-            {t("editProfile")}
+        <h2 className="text-lg font-bold text-gray-900">{t("profileInfo")}</h2>
+        <div className="flex gap-2">
+          <Button variant="outline" size="sm" type="button" onClick={handleCancel}>
+            {t("cancel")}
           </Button>
-        ) : (
-          <div className="flex gap-2">
-            <Button variant="outline" size="sm" onClick={handleCancel}>
-              {t("cancel")}
-            </Button>
-            <Button variant="primary" size="sm" onClick={handleSave} loading={loading}>
-              {t("save")}
-            </Button>
-          </div>
-        )}
+          <Button variant="primary" size="sm" type="submit" onClick={handleSave} loading={loading}>
+            {t("save")}
+          </Button>
+        </div>
       </div>
 
       {/* Success/Error Messages */}

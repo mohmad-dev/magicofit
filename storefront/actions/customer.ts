@@ -68,7 +68,7 @@ export async function getOrders(limit = 50, offset = 0) {
       limit: limit.toString(),
       offset: offset.toString(),
     });
-    const data: any = await authenticatedRequest(`/store/customers/orders?${queryParams}`);
+    const data: any = await authenticatedRequest(`/store/orders?${queryParams}`);
     return { orders: data.orders || [], count: data.count || 0, error: null };
   } catch (error) {
     console.error("Failed to fetch orders:", error);

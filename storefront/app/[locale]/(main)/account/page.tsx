@@ -41,6 +41,13 @@ export default function AccountPage() {
   const tCommon = useTranslations("common");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [isEditingProfile, setIsEditingProfile] = useState(false);
+  const [locale, setLocale] = useState("ar");
+
+  useEffect(() => {
+    const isAr = document.documentElement.lang === "ar" || window.location.pathname.startsWith("/ar");
+    setLocale(isAr ? "ar" : "en");
+  }, []);
   const [customerData, setCustomerData] = useState<CustomerData>({
     firstName: "",
     lastName: "",
@@ -92,7 +99,7 @@ export default function AccountPage() {
         return {
           id: order.id,
           orderNumber: order.display_id || order.id,
-          date: new Date(order.created_at).toLocaleDateString(),
+          date: order.created_at ? new Date(order.created_at).toLocaleDateString() : "",
           status: statusMap[order.status] || "pending",
           total: (order.total || 0),
           items: (order.items || []).map((item: any) => ({
@@ -179,38 +186,96 @@ export default function AccountPage() {
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
             {/* Profile Section */}
             <div className="lg:col-span-1">
-              <div className="rounded-xl border border-neutral-200 shadow-lg p-6 bg-white">
-                <h2 className="font-outfit text-lg font-extrabold text-neutral-900 mb-4 uppercase tracking-wide">{t("profile")}</h2>
-                <ProfileForm
-                  initialData={customerData}
-                  onSave={async (data) => {
-                    try {
-                      const result = await updateCustomer({
-                        first_name: data.firstName,
-                        last_name: data.lastName,
-                        email: data.email,
-                      });
-                      if (result.error) {
-                        throw new Error(result.error);
+              <div className="rounded-2xl border border-neutral-200 shadow-md p-6 bg-white transition-all duration-300">
+                <div className="flex items-center justify-between mb-6 pb-3 border-b border-neutral-100">
+                  <h2 className="font-outfit text-lg font-extrabold text-neutral-900 uppercase tracking-wide">{t("profile")}</h2>
+                  {!isEditingProfile && (
+                    <button
+                      onClick={() => setIsEditingProfile(true)}
+                      className="text-xs text-primary-600 hover:text-primary-700 font-bold transition-colors font-cairo"
+                    >
+                      {locale === "ar" ? "تعديل البيانات" : "Edit Profile"}
+                    </button>
+                  )}
+                </div>
+
+                {!isEditingProfile ? (
+                  <div className="space-y-4 font-cairo">
+                    <div className="flex flex-col gap-1.5 p-3.5 rounded-2xl bg-neutral-50/60 border border-neutral-100/50">
+                      <span className="text-xs text-neutral-400 font-extrabold tracking-wider">
+                        {locale === "ar" ? "الاسم الكامل" : "FULL NAME"}
+                      </span>
+                      <span className="text-sm text-neutral-800 font-black">
+                        {customerData.firstName || customerData.lastName 
+                          ? `${customerData.firstName} ${customerData.lastName}` 
+                          : (locale === "ar" ? "غير مسجل" : "Not set")}
+                      </span>
+                    </div>
+
+                    <div className="flex flex-col gap-1.5 p-3.5 rounded-2xl bg-neutral-50/60 border border-neutral-100/50">
+                      <span className="text-xs text-neutral-400 font-extrabold tracking-wider">
+                        {locale === "ar" ? "البريد الإلكتروني" : "EMAIL ADDRESS"}
+                      </span>
+                      <span className="text-sm text-neutral-800 font-black break-all">
+                        {customerData.email}
+                      </span>
+                    </div>
+
+                    <div className="flex flex-col gap-1.5 p-3.5 rounded-2xl bg-neutral-50/60 border border-neutral-100/50">
+                      <span className="text-xs text-neutral-400 font-extrabold tracking-wider">
+                        {locale === "ar" ? "رقم الهاتف" : "PHONE NUMBER"}
+                      </span>
+                      <span className="text-sm text-neutral-800 font-black">
+                        {customerData.phone || (locale === "ar" ? "غير مسجل" : "Not set")}
+                      </span>
+                    </div>
+
+                    <div className="flex flex-col gap-1.5 p-3.5 rounded-2xl bg-neutral-50/60 border border-neutral-100/50">
+                      <span className="text-xs text-neutral-400 font-extrabold tracking-wider">
+                        {locale === "ar" ? "عنوان الشحن" : "SHIPPING ADDRESS"}
+                      </span>
+                      <span className="text-sm text-neutral-800 font-black">
+                        {customerData.address 
+                          ? `${customerData.address}, ${customerData.city}` 
+                          : (locale === "ar" ? "لا يوجد عنوان مسجل" : "No address registered")}
+                      </span>
+                    </div>
+                  </div>
+                ) : (
+                  <ProfileForm
+                    initialData={customerData}
+                    onCancel={() => setIsEditingProfile(false)}
+                    onSave={async (data) => {
+                      try {
+                        const result = await updateCustomer({
+                          first_name: data.firstName,
+                          last_name: data.lastName,
+                          email: data.email,
+                          phone: data.phone,
+                        });
+                        if (result.error) {
+                          throw new Error(result.error);
+                        }
+                        setCustomerData(data);
+                        setIsEditingProfile(false);
+                      } catch (err) {
+                        console.error("Failed to save profile:", err);
+                        throw err;
                       }
-                      setCustomerData(data);
-                    } catch (err) {
-                      console.error("Failed to save profile:", err);
-                      throw err;
-                    }
-                  }}
-                />
+                    }}
+                  />
+                )}
               </div>
             </div>
 
             {/* Orders Section */}
             <div className="lg:col-span-2">
-              <div className="rounded-xl border border-neutral-200 shadow-lg p-6 bg-white">
-                <div className="flex items-center justify-between mb-4">
+              <div className="rounded-2xl border border-neutral-200 shadow-md p-6 bg-white">
+                <div className="flex items-center justify-between mb-6 pb-3 border-b border-neutral-100">
                   <h2 className="font-outfit text-lg font-extrabold text-neutral-900 uppercase tracking-wide">{t("orderHistory")}</h2>
                   <a
                     href="/account/wishlist"
-                    className="text-sm text-primary-600 hover:text-primary-700 font-semibold transition-colors"
+                    className="text-xs text-primary-600 hover:text-primary-700 font-bold transition-colors font-cairo"
                   >
                     {t("viewWishlist")}
                   </a>
