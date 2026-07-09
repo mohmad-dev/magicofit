@@ -26,7 +26,7 @@ export default function LoginForm({ onLoginSuccess }: LoginFormProps) {
     setLocale(isAr ? "ar" : "en");
     
     // Check if client ID is configured
-    const clientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID;
+    const clientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID || "356814453396-i2ubjdsh6qimhd50lr8dni6ejatl8bdf.apps.googleusercontent.com";
     if (!clientId || clientId.includes("dummy")) {
       setIsClientConfigured(false);
     }
@@ -61,7 +61,7 @@ export default function LoginForm({ onLoginSuccess }: LoginFormProps) {
     const initializeGoogleSignIn = () => {
       if (window.google?.accounts?.id) {
         try {
-          const clientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID || "1030972978-dummy.apps.googleusercontent.com";
+          const clientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID || "356814453396-i2ubjdsh6qimhd50lr8dni6ejatl8bdf.apps.googleusercontent.com";
           
           window.google.accounts.id.initialize({
             client_id: clientId,
