@@ -57,7 +57,7 @@ function SuccessContent() {
   // item.price is already in pounds (divided by 100 when added to cart)
   const subtotal = items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
   // Keep all values in cents, formatPrice will handle dividing by 100
-  const shipping = orderData?.cartSummary ? orderData.cartSummary.shipping : (subtotal >= 200000 ? 0 : 5000);
+  const shipping = orderData?.cartSummary ? orderData.cartSummary.shipping : (subtotal >= 2000 ? 0 : 50);
   const tax = orderData?.cartSummary ? orderData.cartSummary.tax : 0;
   const discount = orderData?.cartSummary && (orderData.cartSummary as any).discount ? (orderData.cartSummary as any).discount : 0;
   const totalFromMedusa = (orderData?.cartSummary && orderData.cartSummary.total) ? orderData.cartSummary.total : 0;

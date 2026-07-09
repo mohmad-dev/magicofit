@@ -19,7 +19,7 @@ export function formatPrice(price: number): string {
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
     useGrouping: true,
-  }).format(price / 100);
+  }).format(price);
   return `${formatted} ج.م.`;
 }
 

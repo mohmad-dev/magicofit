@@ -7,17 +7,33 @@ export async function GET(
   try {
     const pgConnection = req.scope.resolve("pgConnection") as any;
     
+    const clientType = pgConnection.client.config.client || "";
+    const isSqlite = clientType.includes("sqlite") || (pgConnection.client.driverName && pgConnection.client.driverName.includes("sqlite"));
+    
     // Ensure table exists
-    await pgConnection.raw(`
-      CREATE TABLE IF NOT EXISTS contact_messages (
-        id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-        name TEXT NOT NULL,
-        email TEXT NOT NULL,
-        subject TEXT NOT NULL,
-        message TEXT NOT NULL,
-        created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
-      );
-    `);
+    if (isSqlite) {
+      await pgConnection.raw(`
+        CREATE TABLE IF NOT EXISTS contact_messages (
+          id TEXT PRIMARY KEY,
+          name TEXT NOT NULL,
+          email TEXT NOT NULL,
+          subject TEXT NOT NULL,
+          message TEXT NOT NULL,
+          created_at TEXT NOT NULL
+        );
+      `);
+    } else {
+      await pgConnection.raw(`
+        CREATE TABLE IF NOT EXISTS contact_messages (
+          id UUID PRIMARY KEY,
+          name TEXT NOT NULL,
+          email TEXT NOT NULL,
+          subject TEXT NOT NULL,
+          message TEXT NOT NULL,
+          created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
+        );
+      `);
+    }
 
     const result = await pgConnection.raw(`
       SELECT * FROM contact_messages ORDER BY created_at DESC

@@ -102,7 +102,7 @@ export default function CartDrawer({
           <div className="border-t border-neutral-200 p-6 bg-neutral-50 space-y-4">
             <FreeShippingProgress 
               currentAmount={items.reduce((sum, item) => sum + (item.price * item.quantity), 0)}
-              freeShippingThreshold={200000}
+              freeShippingThreshold={2000}
             />
             <CartSummary items={items} />
             <Button
