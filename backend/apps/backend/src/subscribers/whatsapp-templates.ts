@@ -27,7 +27,7 @@ export const whatsappTemplates: Record<string, WhatsAppTemplate> = {
       const total = order?.total ? parseFloat(order.total).toFixed(2) : "0";
       const currency = order?.currency_code || "EGP";
 
-      return `*تم تأكيد طلبك* ✅
+      return `*تأكيد الطلب* ⏳
 
 أهلاً يا ${name}،
 
@@ -38,7 +38,10 @@ export const whatsappTemplates: Record<string, WhatsAppTemplate> = {
 📦 المنتجات:
 ${itemsText || "- تفاصيل الطلب غير متاحة"}
 
-💰 الإجمالي: ${total} ${currency}
+💰 سعر الطلب: ${total} ${currency} (يتم دفعها عند الاستلام)
+
+*لتأكيد طلبك وبدء تجهيزه، برجاء تحويل مصاريف الشحن (70 جنيه) مسبقاً.*
+يرجى الرد على هذه الرسالة لمعرفة تفاصيل التحويل (فودافون كاش أو إنستاباي) وإرسال إيصال التحويل.
 
 🚚 التوصيل من يوم ل 4 أيام
 
