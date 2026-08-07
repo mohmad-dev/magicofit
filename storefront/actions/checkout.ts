@@ -96,11 +96,27 @@ export async function processDirectOrder(data: CheckoutData) {
 
     // Add Line Items to the new cart
     for (const item of data.items) {
-      if (item.variantId) {
+      let vId = item.variantId;
+      if (!vId) {
+        // Fallback: fetch product to get its first variant ID
+        try {
+          const prodRes: any = await medusaClient.get(`/store/products/${item.productId}`, { headers: authHeaders });
+          const product = prodRes.product || prodRes;
+          if (product?.variants?.length > 0) {
+            vId = product.variants[0].id;
+          }
+        } catch (e) {
+          console.error(`Failed to fetch product ${item.productId} variants:`, e);
+        }
+      }
+
+      if (vId) {
         await medusaClient.post(`/store/carts/${cartId}/line-items`, {
-          variant_id: item.variantId,
+          variant_id: vId,
           quantity: item.quantity,
         }, { headers: authHeaders }).catch(e => console.error("Medusa line item error:", e));
+      } else {
+        console.error(`Skipping item ${item.name} because variantId could not be resolved.`);
       }
     }
 
