@@ -10,7 +10,7 @@ import { Link } from "@/i18n/navigation";
 import { useLocale } from "next-intl";
 
 const SocialMapBanner = dynamic(() => import("@/components/homepage/SocialMapBanner"), {
-  loading: () => <div className="h-96 bg-[#0F1115] animate-pulse" />,
+  loading: () => <div className="h-72 bg-white border-t border-[#EAEAEA] animate-pulse" />,
 });
 
 const BrandLogos = dynamic(() => import("@/components/homepage/BrandLogos"), {
@@ -73,7 +73,7 @@ export default function HomeClient({
   const activeCollectionData = collectionSections[activeCollection] || collectionSections[0];
 
   return (
-    <div className="flex flex-col bg-white">
+    <div className="flex flex-col bg-white overflow-x-clip">
       {/* 1. Full-Width Clean Hero Banner */}
       <HeroBanner banners={banners} sideBanners={sideBanners} />
 

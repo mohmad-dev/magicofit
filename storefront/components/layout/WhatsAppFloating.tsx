@@ -16,7 +16,7 @@ export default function WhatsAppFloating() {
       id="whatsapp-floating-btn"
     >
       {/* Tooltip */}
-      <span className={`absolute top-1/2 -translate-y-1/2 ${isAr ? "left-16" : "right-16"} whitespace-nowrap rounded-lg bg-neutral-900 px-3 py-1.5 text-xs font-semibold text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-md pointer-events-none`}>
+      <span className={`hidden md:block absolute top-1/2 -translate-y-1/2 ${isAr ? "left-16" : "right-16"} whitespace-nowrap rounded-lg bg-neutral-900 px-3 py-1.5 text-xs font-semibold text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-md pointer-events-none`}>
         {isAr ? "تواصل معنا عبر واتساب" : "Chat with us"}
       </span>
       {/* SVG Icon */}

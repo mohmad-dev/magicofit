@@ -58,7 +58,7 @@ export default function AnnouncementBar({
   if (!isVisible) return null;
 
   return (
-    <div className="bg-[#181B20] text-neutral-200 border-b border-white/10 relative">
+    <div className="bg-[#181B20] text-neutral-200 border-b border-white/10 relative overflow-x-clip">
       <div className="max-w-screen-2xl mx-auto px-4 lg:px-8 py-2">
         {messages.length === 1 ? (
           <div className="flex items-center justify-center gap-2.5 text-xs sm:text-[13px] pe-8">

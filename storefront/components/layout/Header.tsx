@@ -112,9 +112,9 @@ export default function Header({ initialCategories }: HeaderProps) {
 
   return (
     <>
-      <header className="sticky top-0 z-50 w-full bg-[#0F1115]/95 backdrop-blur-md border-b border-white/10 text-white">
-        <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex h-16 md:h-[72px] items-center justify-between gap-4">
+      <header className="sticky top-0 z-50 w-full overflow-x-clip bg-[#0F1115]/95 backdrop-blur-md border-b border-white/10 text-white">
+        <div className="max-w-screen-2xl mx-auto px-3 sm:px-6 lg:px-8">
+          <div className="flex h-16 md:h-[72px] items-center justify-between gap-2 sm:gap-4">
             {/* Logo */}
             <Link
               href="/"
@@ -126,7 +126,7 @@ export default function Header({ initialCategories }: HeaderProps) {
                 width={148}
                 height={42}
                 priority
-                className="h-9 md:h-10 w-auto object-contain transition-transform duration-200 group-hover:scale-[1.03]"
+                className="h-7 sm:h-8 md:h-10 max-w-[125px] sm:max-w-[160px] md:max-w-none w-auto object-contain transition-transform duration-200 group-hover:scale-[1.03]"
               />
             </Link>
 
@@ -180,7 +180,7 @@ export default function Header({ initialCategories }: HeaderProps) {
             </nav>
 
             {/* Actions */}
-            <div className="flex items-center gap-1.5 sm:gap-2">
+            <div className="flex items-center gap-0.5 sm:gap-1.5 flex-shrink-0">
               {/* Desktop Compact Search Pill */}
               <button
                 type="button"
@@ -201,7 +201,7 @@ export default function Header({ initialCategories }: HeaderProps) {
               <button
                 type="button"
                 onClick={() => setIsSearchOpen(true)}
-                className="md:hidden inline-flex h-11 w-11 items-center justify-center rounded-full text-neutral-200 hover:bg-white/10 hover:text-white transition-colors cursor-pointer"
+                className="md:hidden inline-flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-full text-neutral-200 hover:bg-white/10 hover:text-white transition-colors cursor-pointer"
                 aria-label={isAr ? "بحث" : "Search products"}
               >
                 <Search className="h-5 w-5" />
@@ -210,7 +210,7 @@ export default function Header({ initialCategories }: HeaderProps) {
               {/* Wishlist */}
               <Link
                 href="/account/wishlist"
-                className="relative inline-flex h-11 w-11 items-center justify-center rounded-full text-neutral-200 hover:bg-white/10 hover:text-white transition-colors"
+                className="relative inline-flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-full text-neutral-200 hover:bg-white/10 hover:text-white transition-colors"
                 aria-label={isAr ? "المفضلة" : "View wishlist"}
               >
                 <Heart className="h-5 w-5" />
@@ -225,7 +225,7 @@ export default function Header({ initialCategories }: HeaderProps) {
               <button
                 type="button"
                 onClick={openCart}
-                className="relative inline-flex h-11 w-11 items-center justify-center rounded-full text-neutral-200 hover:bg-white/10 hover:text-white transition-colors cursor-pointer"
+                className="relative inline-flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-full text-neutral-200 hover:bg-white/10 hover:text-white transition-colors cursor-pointer"
                 aria-label={`${isAr ? "سلة التسوق" : "Shopping cart"} (${safeCartCount})`}
               >
                 <ShoppingBag className="h-5 w-5" />
@@ -262,7 +262,7 @@ export default function Header({ initialCategories }: HeaderProps) {
               <button
                 type="button"
                 onClick={() => setIsMobileMenuOpen(true)}
-                className="lg:hidden inline-flex h-11 w-11 items-center justify-center rounded-full text-neutral-200 hover:bg-white/10 hover:text-white transition-colors cursor-pointer"
+                className="lg:hidden inline-flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-full text-neutral-200 hover:bg-white/10 hover:text-white transition-colors cursor-pointer"
                 aria-label={isAr ? "فتح القائمة" : "Open menu"}
               >
                 <Menu className="h-6 w-6" />
