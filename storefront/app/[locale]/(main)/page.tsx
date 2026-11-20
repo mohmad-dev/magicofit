@@ -91,14 +91,14 @@ async function getHomeData() {
     const transformProduct = (product: any) => {
       const firstVariant = product.variants?.[0];
 
-      const image =
-        product.thumbnail ||
-        (product.images && product.images.length > 0
-          ? typeof product.images[0] === "string"
-            ? product.images[0]
-            : product.images[0].url
-          : null) ||
-        "/placeholder-product.png";
+      const imageUrls: string[] = Array.isArray(product.images)
+        ? product.images
+            .map((img: any) => (typeof img === "string" ? img : img?.url))
+            .filter(Boolean)
+        : [];
+
+      const image = product.thumbnail || imageUrls[0] || "/placeholder-product.png";
+      const hoverImage = imageUrls.find((url) => url !== image);
 
       const getPrice = (variant: any) => {
         if (variant?.calculated_price) {
@@ -131,6 +131,7 @@ async function getHomeData() {
         price: price,
         originalPrice: originalPrice,
         image: image,
+        hoverImage: hoverImage,
         inStock: true,
         stock: firstVariant?.inventory_quantity ?? 0,
         handle: product.handle || "",

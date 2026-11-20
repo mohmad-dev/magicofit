@@ -1,16 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
-import { Button } from "../ui/Button";
+import { Link } from "@/i18n/navigation";
 import UrgencyBadge from "./UrgencyBadge";
 import { formatPrice, getProductImageUrl } from "@/lib/utils";
 import { useCartStore } from "@/stores/cart-store";
 import { useWishlistStore } from "@/stores/wishlist-store";
 import { useUIStore } from "@/stores/ui-store";
 import { useState, useEffect } from "react";
-import { useTranslations } from "next-intl";
-import { Heart } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
+import { Heart, Plus, Check } from "lucide-react";
 
 interface ProductCardProps {
   id: string;
@@ -19,6 +18,7 @@ interface ProductCardProps {
   price: number;
   originalPrice?: number;
   image: string;
+  hoverImage?: string;
   inStock?: boolean;
   stock?: number;
   hideAddToCart?: boolean;
@@ -32,12 +32,15 @@ export default function ProductCard({
   price,
   originalPrice,
   image,
+  hoverImage,
   inStock = true,
   stock,
   hideAddToCart = false,
   priority = false,
 }: ProductCardProps) {
   const t = useTranslations("product");
+  const locale = useLocale();
+  const isAr = locale === "ar";
   const productLink = handle ? `/products/${handle}` : `/products/${id}`;
   const addItem = useCartStore((state) => state.addItem);
   const openCart = useUIStore((state) => state.openCart);
@@ -45,6 +48,7 @@ export default function ProductCard({
   const removeFromWishlist = useWishlistStore((state) => state.removeItem);
   const wishlistItems = useWishlistStore((state) => state.items);
   const [mounted, setMounted] = useState(false);
+  const [justAdded, setJustAdded] = useState(false);
   const wishlisted = mounted && wishlistItems.some((item) => item.productId === id);
 
   useEffect(() => {
@@ -59,6 +63,8 @@ export default function ProductCard({
       price,
       quantity: 1,
     });
+    setJustAdded(true);
+    setTimeout(() => setJustAdded(false), 1200);
     openCart();
   };
 
@@ -79,93 +85,123 @@ export default function ProductCard({
     }
   };
 
-  const discount = originalPrice && originalPrice > price ? Math.round(((originalPrice - price) / originalPrice) * 100) : 0;
+  const discount =
+    originalPrice && originalPrice > price
+      ? Math.round(((originalPrice - price) / originalPrice) * 100)
+      : 0;
+
+  const hasAlternateImage = Boolean(hoverImage && hoverImage !== image);
 
   return (
-    <div className="group relative flex flex-col bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 w-full border border-neutral-100/50">
-      {/* Image */}
-      <Link href={productLink} className="relative aspect-square bg-gradient-to-br from-neutral-50 to-neutral-100 overflow-hidden block">
-        <Image
-          src={getProductImageUrl(image)}
-          alt={name}
-          fill
-          className="object-cover transition-transform duration-700 group-hover:scale-110"
-          sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 20vw"
-          priority={priority}
-          loading={priority ? "eager" : "lazy"}
-        />
+    <article className="group flex flex-col w-full bg-white">
+      {/* Studio Image Stage */}
+      <div className="relative aspect-[4/5] bg-[#F5F5F5] rounded-xl overflow-hidden">
+        <Link href={productLink} className="block w-full h-full">
+          <Image
+            src={getProductImageUrl(image)}
+            alt={name}
+            fill
+            className={`object-cover transition-all duration-500 ${
+              hasAlternateImage
+                ? "group-hover:opacity-0 group-hover:scale-[1.03]"
+                : "group-hover:scale-[1.03]"
+            }`}
+            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 20vw"
+            priority={priority}
+            loading={priority ? "eager" : "lazy"}
+          />
+          {hasAlternateImage && hoverImage && (
+            <Image
+              src={getProductImageUrl(hoverImage)}
+              alt={`${name} — 2`}
+              fill
+              className="object-cover opacity-0 scale-[1.03] transition-all duration-500 group-hover:opacity-100 group-hover:scale-100"
+              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 20vw"
+              loading="lazy"
+            />
+          )}
+        </Link>
+
+        {/* Out of Stock Overlay */}
         {!inStock && (
-          <div className="absolute inset-0 flex items-center justify-center bg-black/60 backdrop-blur-sm">
-            <span className="rounded-full bg-white px-4 py-1.5 text-sm font-bold text-neutral-900 shadow-lg">
+          <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-[#0F1115]/55 backdrop-blur-xs">
+            <span className="rounded-md bg-white px-3 py-1 text-xs font-bold text-[#111318]">
               {t("unavailable")}
             </span>
           </div>
         )}
-        {inStock && (
-          <div className="absolute left-3 top-3 z-10">
-            <span className="rounded-full bg-white/90 backdrop-blur-md px-2.5 py-1 text-[10px] font-bold text-green-600 uppercase tracking-wider shadow-sm border border-green-100">
-              {t("available")}
-            </span>
-          </div>
-        )}
+
+        {/* Discount Badge Only */}
         {discount > 0 && (
-          <div className="absolute right-3 top-3 z-10 rounded-full bg-primary-600 px-2.5 py-1 text-xs font-bold text-white uppercase tracking-wide shadow-lg">
+          <span className="font-latin pointer-events-none absolute top-2.5 start-2.5 z-10 rounded-md bg-[#D9480F] px-2 py-0.5 text-[11px] font-bold text-white tabular-nums">
             -{discount}%
-          </div>
+          </span>
         )}
-        {/* Wishlist Heart Button */}
-        <button
-          onClick={handleToggleWishlist}
-          className="absolute right-3 bottom-3 w-9 h-9 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-md hover:bg-white hover:scale-110 transition-all z-10 opacity-0 group-hover:opacity-100"
-          aria-label={wishlisted ? "Remove from wishlist" : "Add to wishlist"}
-        >
-          <Heart
-            className={`h-4.5 w-4.5 transition-colors ${
-              wishlisted ? "fill-red-500 text-red-500" : "text-neutral-600 hover:text-red-500"
-            }`}
-          />
-        </button>
-        {inStock && stock && stock > 0 && stock <= 5 && (
-          <div className="absolute left-3 bottom-3 z-10">
+
+        {/* Low Stock Indicator */}
+        {inStock && stock !== undefined && stock > 0 && stock <= 5 && (
+          <div className="pointer-events-none absolute bottom-2.5 start-2.5 z-10">
             <UrgencyBadge stock={stock} />
           </div>
         )}
-      </Link>
 
-      {/* Content */}
-      <div className="px-4 py-3 flex flex-col gap-2">
+        {/* Always-Visible Touch-Friendly Wishlist Heart */}
+        <button
+          type="button"
+          onClick={handleToggleWishlist}
+          className="absolute top-2.5 end-2.5 z-10 h-10 w-10 sm:h-11 sm:w-11 rounded-full bg-white/95 hover:bg-white border border-neutral-200/80 shadow-xs flex items-center justify-center transition-transform active:scale-95 cursor-pointer"
+          aria-label={wishlisted ? (isAr ? "إزالة من المفضلة" : "Remove from wishlist") : (isAr ? "أضف للمفضلة" : "Add to wishlist")}
+        >
+          <Heart
+            className={`h-4 w-4 transition-colors ${
+              wishlisted ? "fill-red-600 text-red-600" : "text-[#111318] hover:text-red-600"
+            }`}
+          />
+        </button>
+      </div>
+
+      {/* Product Info + Add Button */}
+      <div className="pt-3 flex flex-col gap-1.5 flex-1 justify-between">
         <Link href={productLink}>
-          <h3 className="font-outfit font-bold text-sm md:text-base leading-snug text-neutral-900 line-clamp-2 group-hover:text-primary-600 transition-colors uppercase tracking-wide">
+          <h3 className="font-display font-bold text-sm md:text-[15px] leading-snug text-[#111318] line-clamp-2 group-hover:text-[#D9480F] transition-colors rtl:tracking-normal">
             {name}
           </h3>
         </Link>
 
-        {/* Action Row */}
-        <div className="flex items-center justify-between gap-2 mt-0.5">
-          <div className="flex flex-col gap-0.5">
-            <span className="text-lg font-extrabold text-neutral-900 tracking-tight">
+        <div className="flex items-center justify-between gap-2 pt-1">
+          <div className="flex flex-col">
+            <span className="font-latin text-sm sm:text-base font-extrabold text-[#111318] tabular-nums">
               {formatPrice(price)}
             </span>
             {discount > 0 && originalPrice && (
-              <span className="text-xs text-neutral-400 line-through font-medium">
+              <span className="font-latin text-xs text-[#525252] line-through tabular-nums">
                 {formatPrice(originalPrice)}
               </span>
             )}
           </div>
+
           {!hideAddToCart && (
-            <Button
-              variant="outline"
-              size="sm"
-              className="h-10 px-4 text-xs font-bold rounded-full border-neutral-200 text-neutral-700 hover:border-primary-600 hover:text-primary-600 hover:bg-primary-50 transition-all shadow-sm hover:shadow"
+            <button
+              type="button"
               disabled={!inStock}
-              onClick={(e) => { e.preventDefault(); handleAddToCart(); }}
-              aria-label={`Add ${name} to cart`}
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                handleAddToCart();
+              }}
+              className="min-h-[40px] sm:min-h-[44px] px-3.5 rounded-full bg-[#0F1115] hover:bg-[#D9480F] text-white text-xs font-bold inline-flex items-center justify-center gap-1 transition-colors active:scale-95 disabled:opacity-40 cursor-pointer flex-shrink-0"
+              aria-label={`${t("addToCart")}: ${name}`}
             >
-              {t("add")}
-            </Button>
+              {justAdded ? (
+                <Check className="h-3.5 w-3.5" />
+              ) : (
+                <Plus className="h-3.5 w-3.5" />
+              )}
+              <span>{t("add")}</span>
+            </button>
           )}
         </div>
       </div>
-    </div>
+    </article>
   );
 }

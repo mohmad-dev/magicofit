@@ -22,19 +22,19 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     ref
   ) => {
     const baseStyles =
-      "inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50";
+      "inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 cursor-pointer";
 
     const variants = {
       primary:
-        "bg-primary-600 text-white hover:bg-primary-700 focus-visible:ring-primary-500 shadow-lg shadow-primary-500/30 hover:-translate-y-0.5 hover:shadow-xl active:scale-95",
+        "bg-primary-600 text-white hover:bg-primary-700 focus-visible:ring-primary-500 shadow-xs hover:shadow-sm active:scale-95",
       secondary:
-        "bg-neutral-200 text-neutral-900 hover:bg-neutral-300 focus-visible:ring-neutral-400 hover:-translate-y-0.5 active:scale-95",
+        "bg-neutral-200 text-neutral-900 hover:bg-neutral-300 focus-visible:ring-neutral-400 active:scale-95",
       outline:
         "border-2 border-neutral-300 bg-transparent text-neutral-900 hover:bg-neutral-100 focus-visible:ring-neutral-400 active:scale-95",
       ghost:
         "bg-transparent text-neutral-700 hover:bg-neutral-100 focus-visible:ring-neutral-400 active:scale-95",
       destructive:
-        "bg-red-500 text-white hover:bg-red-600 focus-visible:ring-red-500 shadow-lg shadow-red-500/30 hover:-translate-y-0.5 hover:shadow-xl active:scale-95",
+        "bg-red-500 text-white hover:bg-red-600 focus-visible:ring-red-500 shadow-xs hover:shadow-sm active:scale-95",
 
       icon:
         "bg-transparent text-neutral-700 hover:bg-neutral-100 focus-visible:ring-neutral-500 p-2",

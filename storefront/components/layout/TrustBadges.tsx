@@ -1,6 +1,6 @@
 "use client";
 
-import { Shield, Zap, RotateCcw, HeadphonesIcon } from "lucide-react";
+import { ShieldCheck, Truck, RotateCcw, Headphones } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 export default function TrustBadges() {
@@ -8,43 +8,49 @@ export default function TrustBadges() {
 
   const trustBadges = [
     {
-      icon: <Shield className="h-6 w-6" />,
-      title: t('securePayment'),
-      description: t('securePaymentDesc'),
+      icon: <ShieldCheck className="h-5 w-5 text-[#111318] flex-shrink-0" />,
+      title: t("securePayment"),
+      description: t("securePaymentDesc"),
     },
     {
-      icon: <Zap className="h-6 w-6" />,
-      title: t('fastDelivery'),
-      description: t('fastDeliveryDesc'),
+      icon: <Truck className="h-5 w-5 text-[#111318] flex-shrink-0" />,
+      title: t("fastDelivery"),
+      description: t("fastDeliveryDesc"),
     },
     {
-      icon: <RotateCcw className="h-6 w-6" />,
-      title: t('easyReturns'),
-      description: t('easyReturnsDesc'),
+      icon: <RotateCcw className="h-5 w-5 text-[#111318] flex-shrink-0" />,
+      title: t("easyReturns"),
+      description: t("easyReturnsDesc"),
     },
     {
-      icon: <HeadphonesIcon className="h-6 w-6" />,
-      title: t('support247'),
-      description: t('support247Desc'),
+      icon: <Headphones className="h-5 w-5 text-[#111318] flex-shrink-0" />,
+      title: t("support247"),
+      description: t("support247Desc"),
     },
   ];
 
   return (
-    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 py-8">
-      {trustBadges.map((badge, index) => (
-        <div
-          key={index}
-          className="flex flex-col items-center text-center p-6 rounded-xl bg-white border border-neutral-200 hover:border-primary-500/50 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group"
-        >
-          <div className="text-primary-600 mb-3 group-hover:scale-110 transition-transform">
-            {badge.icon}
-          </div>
-          <h3 className="font-outfit font-bold text-neutral-900 mb-1 uppercase tracking-wide">
-            {badge.title}
-          </h3>
-          <p className="text-sm text-neutral-600">{badge.description}</p>
+    <section aria-label={t("securePayment")} className="w-full bg-white border-y border-[#EAEAEA]">
+      <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4">
+          {trustBadges.map((badge, index) => (
+            <div
+              key={index}
+              className="flex items-center gap-3 py-4 px-3 sm:px-4 lg:py-5 lg:px-6 border-[#EAEAEA] [&:nth-child(n+3)]:border-t lg:[&:nth-child(n+3)]:border-t-0 [&:nth-child(even)]:border-s lg:[&:nth-child(even)]:border-s-0 lg:[&:not(:first-child)]:border-s lg:first:ps-0 lg:last:pe-0"
+            >
+              {badge.icon}
+              <div className="min-w-0">
+                <h3 className="font-display text-xs sm:text-sm font-bold text-[#111318] uppercase rtl:tracking-normal tracking-wide leading-tight mb-0.5">
+                  {badge.title}
+                </h3>
+                <p className="text-[11px] sm:text-xs text-[#525252] leading-snug line-clamp-2">
+                  {badge.description}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
-      ))}
-    </div>
+      </div>
+    </section>
   );
 }

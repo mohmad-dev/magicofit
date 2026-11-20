@@ -1,9 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import ProductGrid from "@/components/product/ProductGrid";
 import Breadcrumb from "@/components/layout/Breadcrumb";
-import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
+import { useLocale, useTranslations } from "next-intl";
 
 interface CategoryClientProps {
   initialProducts: any[];
@@ -17,20 +18,13 @@ interface CategoryClientProps {
   };
 }
 
-export default function CategoryClient({ initialProducts, categoryName, categorySlug, debugInfo }: CategoryClientProps) {
+export default function CategoryClient({ initialProducts, categoryName, categorySlug }: CategoryClientProps) {
   const [sortBy, setSortBy] = useState("featured");
   const [filteredProducts, setFilteredProducts] = useState(initialProducts);
   const t = useTranslations("categoryPage");
   const tCommon = useTranslations("common");
-
-  useEffect(() => {
-    console.log('=== CATEGORY CLIENT DEBUG ===');
-    console.log('Category Slug:', categorySlug);
-    console.log('Category Name:', categoryName);
-    console.log('Products Count:', filteredProducts.length);
-    console.log('Products:', filteredProducts);
-    console.log('Debug Info:', debugInfo);
-  }, [categorySlug, categoryName, filteredProducts, debugInfo]);
+  const locale = useLocale();
+  const isAr = locale === "ar";
 
   const sortOptions = [
     { value: "featured", label: t("sortFeatured") },
@@ -69,31 +63,30 @@ export default function CategoryClient({ initialProducts, categoryName, category
 
   return (
     <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8">
-      {/* Breadcrumb */}
       <Breadcrumb items={breadcrumbItems} />
 
-      {/* Header */}
       <div className="mb-6 md:mb-8">
-        <h1 className="font-outfit text-2xl md:text-3xl font-extrabold text-neutral-900 mb-2 uppercase tracking-tight">{categoryName}</h1>
-        <p className="text-neutral-600 text-sm md:text-base">
+        <h1 className="font-display text-2xl md:text-3xl font-extrabold text-[#111318] mb-2 uppercase rtl:tracking-normal tracking-tight">
+          {categoryName}
+        </h1>
+        <p className="text-[#525252] text-sm md:text-base">
           {t("productCount", { count: filteredProducts.length })}
         </p>
       </div>
 
-      {/* Sort Bar */}
       <div className="flex items-center justify-between mb-6">
-        <p className="text-xs md:text-sm text-neutral-600">
+        <p className="text-xs md:text-sm text-[#525252]">
           {t("showingProducts", { count: filteredProducts.length })}
         </p>
         <div className="flex items-center gap-2">
-          <label htmlFor="sort" className="text-xs md:text-sm text-neutral-600 hidden sm:inline">
+          <label htmlFor="sort" className="text-xs md:text-sm text-[#525252] hidden sm:inline">
             {t("sortBy")}:
           </label>
           <select
             id="sort"
             value={sortBy}
             onChange={(e) => handleSortChange(e.target.value)}
-            className="rounded-lg border border-neutral-300 px-3 py-2 text-xs md:text-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 bg-white"
+            className="min-h-[44px] rounded-lg border border-neutral-300 px-3 py-2 text-xs md:text-sm text-[#111318] focus:border-[#0F1115] focus:outline-none focus:ring-1 focus:ring-[#0F1115] bg-white cursor-pointer"
           >
             {sortOptions.map((option) => (
               <option key={option.value} value={option.value}>
@@ -104,27 +97,17 @@ export default function CategoryClient({ initialProducts, categoryName, category
         </div>
       </div>
 
-      {/* Product Grid */}
       {filteredProducts.length > 0 ? (
         <ProductGrid products={filteredProducts} />
       ) : (
-        <div className="text-center py-16">
-          <p className="text-neutral-500 text-lg">{t("noProducts")}</p>
-          {debugInfo && (
-            <div className="mt-4 p-4 bg-neutral-100 rounded-lg text-left text-sm max-w-md mx-auto">
-              <p className="font-bold">Debug Info:</p>
-              <p>Searched Slug: {debugInfo.searchedSlug}</p>
-              {debugInfo.availableCategories && (
-                <p>Available Categories: {debugInfo.availableCategories.join(', ')}</p>
-              )}
-              {debugInfo.foundCategory && (
-                <p>Found Category: {debugInfo.foundCategory}</p>
-              )}
-              {debugInfo.error && (
-                <p className="text-red-500">Error: {debugInfo.error}</p>
-              )}
-            </div>
-          )}
+        <div className="text-center py-16 bg-[#F5F5F5] rounded-2xl px-4">
+          <p className="text-[#525252] text-lg mb-5">{t("noProducts")}</p>
+          <Link
+            href="/shop"
+            className="inline-flex min-h-[44px] items-center justify-center rounded-full bg-[#0F1115] hover:bg-[#D9480F] px-7 py-2.5 text-sm font-bold text-white transition-colors"
+          >
+            {isAr ? "تصفح جميع المنتجات" : "Browse All Products"}
+          </Link>
         </div>
       )}
     </div>
