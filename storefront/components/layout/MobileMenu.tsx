@@ -2,9 +2,9 @@
 
 import { useState, useEffect, useRef } from "react";
 import { X, Search, Heart, User, ShoppingBag, ChevronDown, ChevronUp, Globe } from "lucide-react";
-import { Link, usePathname, useRouter } from "@/i18n/navigation";
-import { useLocale, useTranslations } from "next-intl";
-import Image from "next/image";
+import { Link } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
+import { usePathname, useRouter } from "next/navigation";
 import { checkAuthStatus } from "@/actions/auth";
 import { getCategories } from "@/lib/store-api";
 import type { MedusaCategory } from "@/lib/types/medusa";
@@ -13,52 +13,40 @@ interface MobileMenuProps {
   isOpen: boolean;
   onClose: () => void;
   cartCount?: number;
-  initialCategories?: MedusaCategory[];
 }
 
-export default function MobileMenu({
-  isOpen,
-  onClose,
-  cartCount = 0,
-  initialCategories,
-}: MobileMenuProps) {
-  const [expandedSection, setExpandedSection] = useState<string | null>("shop");
+export default function MobileMenu({ isOpen, onClose, cartCount = 0 }: MobileMenuProps) {
+  const [expandedSection, setExpandedSection] = useState<string | null>(null);
   const menuRef = useRef<HTMLDivElement>(null);
   const t = useTranslations("mobileMenu");
   const tc = useTranslations("common");
   const router = useRouter();
   const pathname = usePathname();
-  const locale = useLocale();
-  const isAr = locale === "ar";
+  const locale = pathname.startsWith("/ar") ? "ar" : "en";
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [categories, setCategories] = useState<MedusaCategory[]>(
-    initialCategories ? initialCategories.slice(0, 6) : []
-  );
+  const [categories, setCategories] = useState<MedusaCategory[]>([]);
 
   useEffect(() => {
     if (!isOpen) return;
-    let active = true;
-
-    checkAuthStatus()
-      .then(({ authenticated }) => {
-        if (active) setIsLoggedIn(authenticated);
-      })
-      .catch((err) => console.error("Mobile menu auth check failed:", err));
-
-    if (!initialCategories || initialCategories.length === 0) {
-      getCategories()
-        .then((data) => {
-          if (active && data) {
-            setCategories(data.slice(0, 6));
-          }
-        })
-        .catch((err) => console.error("Failed to load categories in mobile menu:", err));
-    }
-
-    return () => {
-      active = false;
+    const checkAuth = async () => {
+      try {
+        const { authenticated } = await checkAuthStatus();
+        setIsLoggedIn(authenticated);
+      } catch (err) {
+        console.error("Mobile menu auth check failed:", err);
+      }
     };
-  }, [isOpen, initialCategories]);
+    checkAuth();
+
+    // Fetch categories dynamically
+    getCategories()
+      .then((data) => {
+        if (data) {
+          setCategories(data.slice(0, 5));
+        }
+      })
+      .catch((err) => console.error("Failed to load categories in mobile menu:", err));
+  }, [isOpen]);
 
   const getCategoryName = (category: MedusaCategory) => {
     const key = category.handle.toLowerCase();
@@ -84,10 +72,12 @@ export default function MobileMenu({
 
   const switchLocale = () => {
     const newLocale = locale === "en" ? "ar" : "en";
+    const currentPath = pathname.replace(/^\/(en|ar)/, "") || "/";
     onClose();
-    router.push(pathname || "/", { locale: newLocale });
+    router.push(`/${newLocale}${currentPath === "/" ? "" : currentPath}`);
   };
 
+  // Focus trap implementation
   useEffect(() => {
     if (!isOpen) return;
 
@@ -143,116 +133,108 @@ export default function MobileMenu({
     <div className="fixed inset-0 z-50 lg:hidden">
       {/* Backdrop */}
       <div
-        className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+        className="absolute inset-0 bg-black/50 backdrop-blur-sm"
         onClick={onClose}
       />
 
-      {/* Drawer */}
-      <div
+      {/* Menu */}
+      <div 
         ref={menuRef}
-        className="fixed inset-y-0 end-0 flex flex-col w-full max-w-sm bg-[#F7F7F5] shadow-2xl border-s border-white/10"
+        className="absolute right-0 top-0 h-full w-full max-w-sm bg-white shadow-2xl animate-in slide-in-from-right"
         role="dialog"
         aria-modal="true"
-        aria-label={t("menu")}
+        aria-label="Navigation menu"
       >
-        {/* Obsidian Top Bar */}
-        <div className="flex items-center justify-between bg-[#0E1014] text-white border-b border-white/10 px-4 h-16 flex-shrink-0">
-          <Link href="/" onClick={onClose} className="flex items-center">
-            <Image
-              src="/images/logo.png"
-              alt={isAr ? "الماجيكو للرياضة" : "MagicOFit"}
-              width={120}
-              height={34}
-              className="h-8 w-auto object-contain"
-            />
-          </Link>
+        {/* Header */}
+        <div className="flex items-center justify-between border-b border-neutral-200 p-4">
+          <h2 className="font-outfit text-lg font-extrabold text-neutral-900 uppercase tracking-tight">
+            {t('menu')}
+          </h2>
           <button
-            type="button"
             onClick={onClose}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-md text-neutral-300 hover:bg-white/10 hover:text-white transition-colors cursor-pointer"
-            aria-label={isAr ? "إغلاق القائمة" : "Close menu"}
+            className="rounded-lg p-2 hover:bg-neutral-100 transition-colors"
+            aria-label="Close menu"
           >
-            <X className="h-5 w-5" />
+            <X className="h-5 w-5 text-neutral-700" />
           </button>
         </div>
 
-        {/* Quick Actions Grid */}
-        <div className="grid grid-cols-4 border-b border-border-subtle bg-white p-2 flex-shrink-0">
+        {/* Quick Actions */}
+        <div className="flex items-center justify-around border-b border-neutral-200 p-4">
           <Link
             href="/search"
-            className="flex flex-col items-center justify-center gap-1 min-h-[56px] rounded-md text-ink-secondary hover:text-primary-600 hover:bg-surface-subtle transition-colors"
+            className="flex flex-col items-center gap-1 text-neutral-600 hover:text-primary-600 transition-colors min-w-[64px] min-h-[64px] flex items-center justify-center"
             onClick={onClose}
-            aria-label={tc("search")}
+            aria-label="Search products"
           >
-            <Search className="h-5 w-5" />
-            <span className="text-[11px] font-semibold">{tc("search")}</span>
+            <Search className="h-6 w-6" />
+            <span className="text-xs font-medium">{tc('search')}</span>
           </Link>
           <Link
             href="/account/wishlist"
-            className="flex flex-col items-center justify-center gap-1 min-h-[56px] rounded-md text-ink-secondary hover:text-primary-600 hover:bg-surface-subtle transition-colors"
+            className="flex flex-col items-center gap-1 text-neutral-600 hover:text-primary-600 transition-colors min-w-[64px] min-h-[64px] flex items-center justify-center"
             onClick={onClose}
-            aria-label={tc("wishlist")}
+            aria-label="View wishlist"
           >
-            <Heart className="h-5 w-5" />
-            <span className="text-[11px] font-semibold">{tc("wishlist")}</span>
+            <Heart className="h-6 w-6" />
+            <span className="text-xs font-medium">{tc('wishlist')}</span>
           </Link>
           <Link
             href="/account"
-            className="flex flex-col items-center justify-center gap-1 min-h-[56px] rounded-md text-ink-secondary hover:text-primary-600 hover:bg-surface-subtle transition-colors"
+            className="flex flex-col items-center gap-1 text-neutral-600 hover:text-primary-600 transition-colors min-w-[64px] min-h-[64px] flex items-center justify-center"
             onClick={onClose}
-            aria-label={tc("account")}
+            aria-label="View account"
           >
-            <User className="h-5 w-5" />
-            <span className="text-[11px] font-semibold">{tc("account")}</span>
+            <User className="h-6 w-6" />
+            <span className="text-xs font-medium">{tc('account')}</span>
           </Link>
           <Link
             href="/cart"
-            className="relative flex flex-col items-center justify-center gap-1 min-h-[56px] rounded-md text-ink-secondary hover:text-primary-600 hover:bg-surface-subtle transition-colors"
+            className="flex flex-col items-center gap-1 text-neutral-600 hover:text-primary-600 transition-colors relative min-w-[64px] min-h-[64px] flex items-center justify-center"
             onClick={onClose}
-            aria-label={`${tc("cart")} (${cartCount})`}
+            aria-label={`View cart with ${cartCount} items`}
           >
-            <ShoppingBag className="h-5 w-5" />
-            <span className="text-[11px] font-semibold">{tc("cart")}</span>
+            <ShoppingBag className="h-6 w-6" />
+            <span className="text-xs font-medium">{tc('cart')}</span>
             {cartCount > 0 && (
-              <span className="font-latin absolute top-1.5 end-4 flex h-4 min-w-[16px] px-1 items-center justify-center rounded-full bg-primary-600 text-[10px] font-bold text-white leading-none" aria-hidden="true">
+              <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-primary-600 text-[10px] font-bold text-white" aria-hidden="true">
                 {cartCount}
               </span>
             )}
           </Link>
         </div>
 
-        {/* Scrollable Navigation */}
-        <div className="flex-1 overflow-y-auto py-2">
+        {/* Navigation */}
+        <div className="overflow-y-auto py-4">
           {/* Shop Section */}
-          <div className="border-b border-border-subtle">
+          <div className="border-b border-neutral-100">
             <button
-              type="button"
               onClick={() => toggleSection("shop")}
-              className="flex w-full min-h-[48px] items-center justify-between px-4 py-3 font-bold text-sm text-ink-primary cursor-pointer"
+              className="flex w-full items-center justify-between px-4 py-3 font-semibold text-neutral-900"
               aria-expanded={expandedSection === "shop"}
               aria-controls="shop-menu"
             >
-              <span>{t("shop")}</span>
+              {t('shop')}
               {expandedSection === "shop" ? (
-                <ChevronUp className="h-4 w-4 text-ink-secondary" />
+                <ChevronUp className="h-4 w-4" />
               ) : (
-                <ChevronDown className="h-4 w-4 text-ink-secondary" />
+                <ChevronDown className="h-4 w-4" />
               )}
             </button>
             {expandedSection === "shop" && (
-              <div id="shop-menu" className="bg-surface-subtle/70 px-4 py-2 space-y-1">
+              <div id="shop-menu" className="bg-neutral-50 px-4 py-2 space-y-2">
                 <Link
                   href="/shop"
-                  className="flex items-center min-h-[44px] py-2 text-sm text-ink-primary hover:text-primary-600 font-semibold"
+                  className="block py-2 text-sm text-neutral-600 hover:text-primary-600 font-medium"
                   onClick={onClose}
                 >
-                  {t("allProducts")}
+                  {t('allProducts')}
                 </Link>
                 {categories.map((category) => (
                   <Link
                     key={category.id}
                     href={`/shop/${category.handle}`}
-                    className="flex items-center min-h-[44px] py-2 text-sm text-ink-secondary hover:text-primary-600 font-medium"
+                    className="block py-2 text-sm text-neutral-600 hover:text-primary-600 font-medium"
                     onClick={onClose}
                   >
                     {getCategoryName(category)}
@@ -262,104 +244,122 @@ export default function MobileMenu({
             )}
           </div>
 
-          {/* Categories Direct Link */}
-          <div className="border-b border-border-subtle">
-            <Link
-              href="/categories"
-              className="flex min-h-[48px] items-center px-4 py-3 font-bold text-sm text-ink-primary hover:text-primary-600 transition-colors"
-              onClick={onClose}
+          {/* Categories Section */}
+          <div className="border-b border-neutral-100">
+            <button
+              onClick={() => toggleSection("categories")}
+              className="flex w-full items-center justify-between px-4 py-3 font-semibold text-neutral-900"
+              aria-expanded={expandedSection === "categories"}
+              aria-controls="categories-menu"
             >
-              {t("categories")}
-            </Link>
-          </div>
-
-          {/* Brands Direct Link */}
-          <div className="border-b border-border-subtle">
-            <Link
-              href="/brands"
-              className="flex min-h-[48px] items-center px-4 py-3 font-bold text-sm text-ink-primary hover:text-primary-600 transition-colors"
-              onClick={onClose}
-            >
-              {t("brands")}
-            </Link>
+              {t('categories')}
+              {expandedSection === "categories" ? (
+                <ChevronUp className="h-4 w-4" />
+              ) : (
+                <ChevronDown className="h-4 w-4" />
+              )}
+            </button>
+            {expandedSection === "categories" && (
+              <div id="categories-menu" className="bg-neutral-50 px-4 py-2 space-y-2">
+                {categories.map((category) => (
+                  <Link
+                    key={category.id}
+                    href={`/shop/${category.handle}`}
+                    className="block py-2 text-sm text-neutral-600 hover:text-primary-600 font-medium"
+                    onClick={onClose}
+                  >
+                    {getCategoryName(category)}
+                  </Link>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Support Section */}
-          <div className="border-b border-border-subtle">
+          <div className="border-b border-neutral-100">
             <button
-              type="button"
               onClick={() => toggleSection("support")}
-              className="flex w-full min-h-[48px] items-center justify-between px-4 py-3 font-bold text-sm text-ink-primary cursor-pointer"
+              className="flex w-full items-center justify-between px-4 py-3 font-semibold text-neutral-900"
               aria-expanded={expandedSection === "support"}
               aria-controls="support-menu"
             >
-              <span>{t("support")}</span>
+              {t('support')}
               {expandedSection === "support" ? (
-                <ChevronUp className="h-4 w-4 text-ink-secondary" />
+                <ChevronUp className="h-4 w-4" />
               ) : (
-                <ChevronDown className="h-4 w-4 text-ink-secondary" />
+                <ChevronDown className="h-4 w-4" />
               )}
             </button>
             {expandedSection === "support" && (
-              <div id="support-menu" className="bg-surface-subtle/70 px-4 py-2 space-y-1">
+              <div id="support-menu" className="bg-neutral-50 px-4 py-2 space-y-2">
                 <Link
                   href="/about"
-                  className="flex items-center min-h-[44px] py-2 text-sm text-ink-secondary hover:text-primary-600 font-medium"
+                  className="block py-2 text-sm text-neutral-600 hover:text-primary-600 font-medium"
                   onClick={onClose}
                 >
-                  {t("aboutUs")}
+                  {t('aboutUs')}
                 </Link>
                 <Link
                   href="/contact"
-                  className="flex items-center min-h-[44px] py-2 text-sm text-ink-secondary hover:text-primary-600 font-medium"
+                  className="block py-2 text-sm text-neutral-600 hover:text-primary-600 font-medium"
                   onClick={onClose}
                 >
-                  {t("contactUs")}
+                  {t('contactUs')}
                 </Link>
                 <Link
                   href="/faq"
-                  className="flex items-center min-h-[44px] py-2 text-sm text-ink-secondary hover:text-primary-600 font-medium"
+                  className="block py-2 text-sm text-neutral-600 hover:text-primary-600 font-medium"
                   onClick={onClose}
                 >
-                  {tc("faq")}
+                  {tc('faq')}
                 </Link>
                 <Link
                   href="/shipping"
-                  className="flex items-center min-h-[44px] py-2 text-sm text-ink-secondary hover:text-primary-600 font-medium"
+                  className="block py-2 text-sm text-neutral-600 hover:text-primary-600 font-medium"
                   onClick={onClose}
                 >
-                  {t("shippingInfo")}
+                  {t('shippingInfo')}
                 </Link>
                 <Link
                   href="/returns"
-                  className="flex items-center min-h-[44px] py-2 text-sm text-ink-secondary hover:text-primary-600 font-medium"
+                  className="block py-2 text-sm text-neutral-600 hover:text-primary-600 font-medium"
                   onClick={onClose}
                 >
-                  {tc("returns")}
+                  {tc('returns')}
                 </Link>
               </div>
             )}
           </div>
+
+          {/* Simple Links */}
+          <div className="border-b border-neutral-100">
+            <Link
+              href="/brands"
+              className="flex items-center px-4 py-3 font-semibold text-neutral-900 hover:text-primary-600 transition-colors"
+              onClick={onClose}
+            >
+              {t('brands')}
+            </Link>
+          </div>
         </div>
 
         {/* Footer Actions */}
-        <div className="border-t border-border-subtle bg-white p-4 space-y-2.5 flex-shrink-0">
+        <div className="absolute bottom-0 left-0 right-0 border-t border-neutral-200 bg-neutral-50 p-4 space-y-3">
           <button
-            type="button"
             onClick={switchLocale}
-            className="flex items-center justify-center gap-2 w-full min-h-[44px] rounded-md border border-border-subtle px-4 py-2.5 text-sm text-ink-primary font-semibold hover:bg-surface-subtle transition-colors cursor-pointer"
+            className="flex items-center justify-center gap-2 w-full rounded-lg border border-neutral-300 px-4 py-3 text-neutral-700 font-semibold hover:bg-neutral-100 transition-colors"
           >
-            <Globe className="h-4 w-4 text-[#A68132]" />
-            <span>{locale === "en" ? tc("arabic") : tc("english")}</span>
+            <Globe className="h-5 w-5" />
+            {locale === "en" ? tc('arabic') : tc('english')}
           </button>
           {!isLoggedIn && (
             <Link
               href="/account"
-              className="flex items-center justify-center gap-2 w-full min-h-[44px] rounded-md bg-[#0E1014] px-4 py-2.5 text-sm text-white font-semibold hover:bg-[#171A21] transition-colors"
+              className="flex items-center justify-center gap-2 rounded-lg bg-neutral-900 px-4 py-3 text-white font-semibold hover:bg-neutral-800 transition-colors"
               onClick={onClose}
             >
-              <User className="h-4 w-4 text-[#E5C573]" />
-              <span>{t("signInRegister")}</span>
+              <User className="h-5 w-5" />
+              {t('signInRegister')}
             </Link>
           )}
         </div>

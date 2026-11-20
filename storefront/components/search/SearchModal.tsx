@@ -3,8 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Search, X, Loader2 } from "lucide-react";
 import { getRegions, searchProducts } from "@/lib/store-api";
-import { useRouter } from "@/i18n/navigation";
-import { useLocale, useTranslations } from "next-intl";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { formatPrice, getProductImageUrl } from "@/lib/utils";
 
@@ -19,9 +18,6 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [regionId, setRegionId] = useState<string | undefined>(undefined);
   const router = useRouter();
-  const locale = useLocale();
-  const isAr = locale === "ar";
-  const t = useTranslations("search");
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -108,95 +104,87 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
   if (!isOpen) return null;
 
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-start justify-center pt-16 sm:pt-24 bg-black/60 backdrop-blur-sm"
-      onClick={onClose}
-    >
-      {/* Modal */}
+    <div className="fixed inset-0 z-50 flex items-start justify-center pt-20">
+      {/* Backdrop */}
       <div
-        className="relative w-full max-w-2xl mx-4 bg-white rounded-xl border border-border-subtle shadow-2xl overflow-hidden"
-        role="dialog"
-        aria-modal="true"
-        aria-label={t("searchPlaceholder")}
-        onClick={(e) => e.stopPropagation()}
-      >
+        className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+        onClick={onClose}
+      />
+
+      {/* Modal */}
+      <div className="relative w-full max-w-3xl mx-4 bg-white rounded-2xl shadow-2xl overflow-hidden">
         {/* Search Input */}
-        <div className="flex items-center gap-3 border-b border-border-subtle px-5 py-3.5 bg-white">
-          <Search className="h-5 w-5 text-ink-secondary flex-shrink-0" />
+        <div className="flex items-center border-b border-neutral-200 px-6 py-4">
+          <Search className="h-5 w-5 text-neutral-400 mr-3" />
           <form onSubmit={handleSubmit} className="flex-1">
             <input
               ref={inputRef}
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder={t("searchPlaceholder")}
-              className="w-full text-base text-ink-primary placeholder:text-ink-secondary/70 focus:outline-none bg-transparent"
+              placeholder="Search for products..."
+              className="w-full text-lg text-neutral-900 placeholder:text-neutral-400 focus:outline-none"
               autoFocus
             />
           </form>
           <button
-            type="button"
             onClick={onClose}
-            className="inline-flex h-10 w-10 items-center justify-center hover:bg-surface-subtle rounded-md transition-colors cursor-pointer"
-            aria-label={isAr ? "إغلاق البحث" : "Close search"}
+            className="ml-3 p-2 hover:bg-neutral-100 rounded-lg transition-colors"
+            aria-label="Close search"
           >
-            <X className="h-5 w-5 text-ink-secondary" />
+            <X className="h-5 w-5 text-neutral-500" />
           </button>
         </div>
 
         {/* Results */}
-        <div className="max-h-[60vh] overflow-y-auto bg-white">
+        <div className="max-h-[60vh] overflow-y-auto">
           {isLoading ? (
             <div className="flex items-center justify-center py-12">
-              <Loader2 className="h-7 w-7 text-primary-600 animate-spin" />
+              <Loader2 className="h-8 w-8 text-primary-600 animate-spin" />
             </div>
           ) : results.length > 0 ? (
-            <div className="divide-y divide-border-subtle">
+            <div className="divide-y divide-neutral-100">
               {results.map((product) => (
                 <button
                   key={product.id}
-                  type="button"
                   onClick={() => handleProductClick(product.handle)}
-                  className="w-full flex items-center gap-4 px-5 py-3.5 hover:bg-surface-subtle transition-colors text-start cursor-pointer"
+                  className="w-full flex items-center gap-4 px-6 py-4 hover:bg-neutral-50 transition-colors text-left"
                 >
-                  <div className="relative h-16 w-16 flex-shrink-0 bg-[#F0EFEA] rounded-md overflow-hidden">
+                  <div className="relative h-20 w-20 flex-shrink-0 bg-neutral-100 rounded-lg overflow-hidden">
                     <Image
                       src={getProductImageUrl(product.image)}
                       alt={product.name}
                       fill
                       className="object-cover"
-                      sizes="64px"
+                      sizes="80px"
                     />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h3 className="font-bold text-sm text-ink-primary truncate">{product.name}</h3>
-                    <p className="font-latin text-primary-600 font-extrabold text-sm mt-1 tabular-nums">
-                      {formatPrice(product.price)}
-                    </p>
+                    <h3 className="font-semibold text-neutral-900 truncate">{product.name}</h3>
+                    <p className="text-primary-600 font-bold mt-1">{formatPrice(product.price)}</p>
                   </div>
                 </button>
               ))}
             </div>
           ) : query ? (
-            <div className="text-center py-12 px-4">
-              <p className="text-ink-secondary font-medium">{t("noResultsFor", { query })}</p>
+            <div className="text-center py-12">
+              <p className="text-neutral-600">No products found for "{query}"</p>
             </div>
           ) : (
-            <div className="text-center py-12 px-4">
-              <p className="text-ink-secondary text-sm">{t("enterSearch")}</p>
+            <div className="text-center py-12">
+              <p className="text-neutral-500">Start typing to search...</p>
             </div>
           )}
         </div>
 
         {/* Footer */}
-        <div className="border-t border-border-subtle px-5 py-3 bg-surface-subtle flex items-center justify-between text-xs text-ink-secondary">
-          <span>{isAr ? "اضغط Enter لعرض جميع النتائج" : "Press Enter to view all results"}</span>
-          <span className="inline-flex items-center gap-1.5">
-            <kbd className="font-latin px-2 py-0.5 bg-white border border-border-subtle rounded text-ink-primary font-semibold">
-              Esc
-            </kbd>
-            <span>{isAr ? "للإغلاق" : "to close"}</span>
-          </span>
+        <div className="border-t border-neutral-200 px-6 py-3 bg-neutral-50">
+          <p className="text-xs text-neutral-500">
+            Use <kbd className="px-2 py-1 bg-white border border-neutral-300 rounded text-neutral-700">↑</kbd>
+            <kbd className="px-2 py-1 bg-white border border-neutral-300 rounded text-neutral-700">↓</kbd> to navigate,
+            <kbd className="px-2 py-1 bg-white border border-neutral-300 rounded text-neutral-700">Enter</kbd> to select,
+            <kbd className="px-2 py-1 bg-white border border-neutral-300 rounded text-neutral-700">Esc</kbd> to close
+          </p>
         </div>
       </div>
     </div>

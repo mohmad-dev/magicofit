@@ -1,6 +1,6 @@
 "use client";
 
-import { Truck, CheckCircle2 } from "lucide-react";
+import { ShoppingCart, Check } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { formatPrice } from "@/lib/utils";
 
@@ -19,38 +19,43 @@ export default function FreeShippingProgress({
   const isFree = currentAmount >= freeShippingThreshold;
 
   return (
-    <div className="bg-surface-subtle border border-border-subtle rounded-lg p-3.5">
-      <div className="flex items-center justify-between gap-2 mb-2.5">
+    <div className="bg-gradient-to-r from-primary-50 to-primary-100 border border-primary-200 rounded-xl p-4">
+      <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2">
           {isFree ? (
-            <CheckCircle2 className="h-4 w-4 text-[#15803D] flex-shrink-0" />
+            <Check className="h-5 w-5 text-primary-600" />
           ) : (
-            <Truck className="h-4 w-4 text-[#A68132] flex-shrink-0" />
+            <ShoppingCart className="h-5 w-5 text-primary-600" />
           )}
-          <span className={`text-xs sm:text-sm font-bold ${isFree ? "text-[#15803D]" : "text-ink-primary"}`}>
-            {isFree ? t("unlocked") : t("title")}
+          <span className="font-semibold text-primary-900">
+            {isFree ? `🎉 ${t('unlocked')}` : t('title')}
           </span>
         </div>
         {!isFree && (
-          <span className="text-xs font-semibold text-primary-600 tabular-nums">
-            {t("addMore", { amount: formatPrice(remaining) })}
+          <span className="text-sm font-medium text-primary-700">
+            {t('addMore', { amount: formatPrice(remaining) })}
           </span>
         )}
       </div>
-
-      {/* Logical Start-Aligned Progress Track */}
-      <div className="relative h-2 bg-border-subtle rounded-full overflow-hidden">
+      
+      {/* Progress Bar */}
+      <div className="relative h-2 bg-primary-200 rounded-full overflow-hidden">
         <div
-          className={`absolute top-0 start-0 h-full rounded-full transition-all duration-500 ease-out ${
-            isFree ? "bg-[#15803D]" : "bg-[#C8A04A]"
+          className={`absolute top-0 left-0 h-full bg-gradient-to-r from-primary-500 to-primary-600 rounded-full transition-all duration-500 ease-out ${
+            isFree ? "from-green-500 to-green-600" : ""
           }`}
           style={{ width: `${progress}%` }}
         />
+        {/* Animated shine effect */}
+        <div
+          className="absolute top-0 left-0 h-full w-1/2 bg-gradient-to-r from-transparent via-white/30 to-transparent rounded-full animate-pulse"
+          style={{ width: `${progress}%` }}
+        />
       </div>
-
-      <div className="font-latin flex justify-between mt-1.5 text-[11px] text-ink-secondary tabular-nums">
+      
+      <div className="flex justify-between mt-2 text-xs text-primary-700">
         <span>{formatPrice(0)}</span>
-        <span className="font-bold text-ink-primary">{formatPrice(freeShippingThreshold)}</span>
+        <span className="font-semibold">{formatPrice(freeShippingThreshold)}</span>
       </div>
     </div>
   );

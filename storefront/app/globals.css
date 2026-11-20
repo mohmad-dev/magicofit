@@ -6,37 +6,20 @@
   --color-primary-200: #fed7aa;
   --color-primary-300: #fdba74;
   --color-primary-400: #fb923c;
-  --color-primary-500: #D9480F;
-  --color-primary-600: #C84300;
-  --color-primary-700: #A63600;
-  --color-primary-800: #862B00;
-  --color-primary-900: #6B2300;
+  --color-primary-500: #FF4F01;
+  --color-primary-600: #ea580c;
+  --color-primary-700: #c2410c;
+  --color-primary-800: #9a3412;
+  --color-primary-900: #7c2d12;
   --color-primary-950: #431407;
 
-  --color-accent-400: #E5C573;
-  --color-accent-500: #C8A04A;
-  --color-accent-600: #A68132;
-  --color-accent-700: #856625;
-  --color-accent-800: #664D1A;
-  --color-accent-900: #473510;
-  --color-accent-950: #291E08;
-
-  --color-canvas: #F7F7F5;
-  --color-surface: #FFFFFF;
-  --color-surface-subtle: #F0EFEA;
-
-  --color-obsidian-950: #0B0D10;
-  --color-obsidian-900: #0E1014;
-  --color-obsidian-800: #171A21;
-  --color-obsidian-700: #262A34;
-
-  --color-gold-400: #E5C573;
-  --color-gold-500: #C8A04A;
-  --color-gold-600: #A68132;
-
-  --color-border-subtle: #E6E4DE;
-  --color-ink-primary: #141619;
-  --color-ink-secondary: #57534E;
+  --color-accent-400: #fb923c;
+  --color-accent-500: #f97316;
+  --color-accent-600: #ea580c;
+  --color-accent-700: #c2410c;
+  --color-accent-800: #9a3412;
+  --color-accent-900: #7c2d12;
+  --color-accent-950: #431407;
 
   --color-neutral-50: #fafafa;
   --color-neutral-100: #f5f5f5;
@@ -50,18 +33,13 @@
   --color-neutral-900: #171717;
   --color-neutral-950: #0a0a0a;
 
-  --color-success: #15803D;
+  --color-success: #22c55e;
   --color-warning: #eab308;
-  --color-error: #DC2626;
-  --color-info: #2563eb;
+  --color-error: #ef4444;
+  --color-info: #3b82f6;
 
   --font-sans: var(--font-inter);
   --font-display: var(--font-outfit);
-}
-
-html[lang="ar"] {
-  --font-sans: var(--font-cairo);
-  --font-display: var(--font-cairo);
 }
 
 .font-outfit {
@@ -72,16 +50,6 @@ html[lang="ar"] {
   font-family: var(--font-display), system-ui, sans-serif;
 }
 
-.font-latin {
-  font-family: var(--font-outfit), system-ui, sans-serif;
-}
-
-html[dir="rtl"] .font-outfit,
-html[dir="rtl"] .font-display {
-  font-family: var(--font-cairo), system-ui, sans-serif;
-  letter-spacing: 0;
-}
-
 html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
@@ -89,15 +57,14 @@ html {
 }
 
 body {
-  background: var(--color-canvas);
-  color: var(--color-ink-primary);
+  background: #ffffff;
+  color: var(--color-neutral-900);
   font-family: var(--font-sans), system-ui, sans-serif;
-  line-height: 1.6;
   min-height: 100vh;
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-primary-600);
+  outline: 2px solid var(--color-primary-500);
   outline-offset: 2px;
 }
 
@@ -125,46 +92,4 @@ body {
 
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
-}
-
-@keyframes brand-marquee {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-@keyframes hero-bar-fill {
-  0% {
-    transform: scaleX(0);
-  }
-  100% {
-    transform: scaleX(1);
-  }
-}
-
-.animate-brand-marquee {
-  animation: brand-marquee 32s linear infinite;
-}
-
-.animate-brand-marquee:hover {
-  animation-play-state: paused;
-}
-
-.animate-hero-bar {
-  animation: hero-bar-fill 5s linear forwards;
-  transform-origin: left center;
-}
-
-html[dir="rtl"] .animate-hero-bar {
-  transform-origin: right center;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .animate-brand-marquee,
-  .animate-hero-bar {
-    animation: none !important;
-  }
 }

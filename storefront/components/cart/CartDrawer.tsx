@@ -5,7 +5,7 @@ import { Button } from "../ui/Button";
 import CartItem from "./CartItem";
 import CartSummary from "./CartSummary";
 import FreeShippingProgress from "./FreeShippingProgress";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 
 interface CartItem {
   id: string;
@@ -38,8 +38,6 @@ export default function CartDrawer({
   onCheckout,
 }: CartDrawerProps) {
   const t = useTranslations("cart");
-  const locale = useLocale();
-  const isAr = locale === "ar";
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
 
   if (!isOpen) return null;
@@ -53,37 +51,32 @@ export default function CartDrawer({
       />
 
       {/* Drawer */}
-      <div className="fixed inset-y-0 end-0 flex w-full max-w-md flex-col bg-canvas shadow-2xl border-s border-border-subtle">
+      <div className="fixed inset-y-0 right-0 flex w-full max-w-md flex-col bg-white shadow-2xl animate-in slide-in-from-right duration-300">
         {/* Header */}
-        <div className="flex items-center justify-between bg-[#0E1014] text-white border-b border-white/10 px-6 py-4">
+        <div className="flex items-center justify-between border-b border-neutral-200 px-6 py-4">
           <div className="flex items-center gap-3">
-            <ShoppingBag className="h-5 w-5 text-[#E5C573]" />
-            <h2 className="font-display text-lg font-extrabold text-white uppercase rtl:tracking-normal tracking-tight">
+            <ShoppingBag className="h-6 w-6 text-primary-600" />
+            <h2 className="font-outfit text-xl font-extrabold text-neutral-900 uppercase tracking-tight">
               {t("title")}
             </h2>
-            <span className="font-latin rounded-full bg-[#C84300] px-2 py-0.5 text-xs font-bold text-white tabular-nums">
+            <span className="rounded-full bg-primary-100 px-2 py-0.5 text-xs font-bold text-primary-600">
               {totalItems}
             </span>
           </div>
-          <Button
-            variant="icon"
-            className="text-neutral-300 hover:bg-white/10 hover:text-white"
-            onClick={onClose}
-            aria-label={isAr ? "إغلاق السلة" : "Close cart"}
-          >
+          <Button variant="icon" onClick={onClose}>
             <X className="h-5 w-5" />
           </Button>
         </div>
 
         {/* Items */}
-        <div className="flex-1 overflow-y-auto p-6 bg-white">
+        <div className="flex-1 overflow-y-auto p-6">
           {items.length === 0 ? (
             <div className="flex h-full flex-col items-center justify-center text-center">
               <ShoppingBag className="h-16 w-16 text-neutral-300 mb-4" />
-              <h3 className="font-display text-lg font-semibold text-ink-primary mb-2 rtl:tracking-normal">
+              <h3 className="font-outfit text-lg font-semibold text-neutral-900 mb-2">
                 {t("empty")}
               </h3>
-              <p className="text-sm text-ink-secondary mb-4">
+              <p className="text-sm text-neutral-500 mb-4">
                 {t("emptyDesc")}
               </p>
               <Button variant="primary" onClick={onClose}>
@@ -106,7 +99,7 @@ export default function CartDrawer({
 
         {/* Footer */}
         {items.length > 0 && (
-          <div className="border-t border-border-subtle p-6 bg-canvas space-y-4">
+          <div className="border-t border-neutral-200 p-6 bg-neutral-50 space-y-4">
             <FreeShippingProgress 
               currentAmount={items.reduce((sum, item) => sum + (item.price * item.quantity), 0)}
               freeShippingThreshold={2000}
@@ -115,7 +108,7 @@ export default function CartDrawer({
             <Button
               variant="primary"
               size="lg"
-              className="w-full"
+              className="w-full shadow-lg shadow-primary-500/30"
               onClick={onCheckout}
             >
               {t("proceedToCheckout")}

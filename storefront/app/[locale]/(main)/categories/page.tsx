@@ -15,6 +15,10 @@ async function getCategoryData() {
       getProducts({ limit: 100 }),
     ]);
 
+    console.log('=== CATEGORIES DEBUG ===');
+    console.log('Categories found:', categories.length);
+    console.log('Products found:', productsData.products.length);
+
     if (categories.length === 0) return [];
 
     const allProducts = productsData.products;
@@ -23,10 +27,11 @@ async function getCategoryData() {
       const catProducts = allProducts.filter((p: any) =>
         p.categories?.some((c: any) => (c.id || c.category_id) === cat.id)
       );
+      console.log(`Category: ${cat.name} (${cat.handle}) - Products: ${catProducts.length}`);
       return {
         id: cat.id,
         name: cat.name,
-        image: (cat.metadata?.image as string) || "",
+        image: cat.metadata?.image as string || `https://ui-avatars.com/api/?name=${encodeURIComponent(cat.name)}&background=F97316&color=fff&size=400&bold=true`,
         productCount: catProducts.length,
         slug: cat.handle,
       };
@@ -46,11 +51,11 @@ export default async function CategoriesPage() {
 
   return (
     <Container className="py-6 md:py-8 min-h-screen">
-      <div className="mb-6 md:mb-8 border-b border-border-subtle pb-4 md:pb-6">
-        <h1 className="font-display text-2xl md:text-4xl lg:text-5xl font-extrabold uppercase rtl:tracking-normal tracking-tight text-ink-primary mb-3 md:mb-4">
+      <div className="mb-6 md:mb-8 border-b border-neutral-100 pb-4 md:pb-6">
+        <h1 className="font-outfit text-2xl md:text-4xl lg:text-5xl font-extrabold uppercase tracking-tighter text-neutral-900 mb-3 md:mb-4">
           {t('title')}
         </h1>
-        <p className="text-sm md:text-lg text-ink-secondary">
+        <p className="text-sm md:text-lg text-neutral-500">
           {t('subtitle')}
         </p>
       </div>
@@ -59,7 +64,7 @@ export default async function CategoriesPage() {
         <CategoryShowcase categories={categories} />
       ) : (
         <div className="text-center py-16">
-          <p className="text-ink-secondary text-lg">{t('noCategories')}</p>
+          <p className="text-neutral-400 text-lg">{t('noCategories')}</p>
         </div>
       )}
     </Container>

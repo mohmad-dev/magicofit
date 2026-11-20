@@ -2,21 +2,19 @@
 
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
-import { useLocale } from "next-intl";
 
 export type SortOption = "best-selling" | "price-low" | "price-high" | "newest";
 
 interface SortOptionConfig {
   value: SortOption;
-  labelAr: string;
-  labelEn: string;
+  label: string;
 }
 
 const SORT_OPTIONS: SortOptionConfig[] = [
-  { value: "best-selling", labelAr: "الأكثر مبيعاً", labelEn: "Best Selling" },
-  { value: "price-low", labelAr: "السعر: من الأقل للأعلى", labelEn: "Price: Low to High" },
-  { value: "price-high", labelAr: "السعر: من الأعلى للأقل", labelEn: "Price: High to Low" },
-  { value: "newest", labelAr: "الأحدث", labelEn: "Newest" },
+  { value: "best-selling", label: "Best Selling" },
+  { value: "price-low", label: "Price: Low to High" },
+  { value: "price-high", label: "Price: High to Low" },
+  { value: "newest", label: "Newest" },
 ];
 
 interface SortDropdownProps {
@@ -26,26 +24,22 @@ interface SortDropdownProps {
 
 export default function SortDropdown({ value, onChange }: SortDropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const locale = useLocale();
-  const isAr = locale === "ar";
 
   const selectedOption = SORT_OPTIONS.find((opt) => opt.value === value);
 
   return (
     <div className="relative">
       <button
-        type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="flex min-h-[44px] items-center gap-2 px-4 py-2 bg-white border border-border-subtle rounded-lg hover:border-[#0E1014] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 cursor-pointer"
-        aria-label={isAr ? "ترتيب المنتجات" : "Sort products"}
+        className="flex items-center gap-2 px-4 py-2 bg-white border border-neutral-300 rounded-lg hover:border-primary-500 transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500"
+        aria-label="Sort products"
         aria-expanded={isOpen}
       >
-        <span className="text-sm font-medium text-ink-primary">
-          {isAr ? "ترتيب: " : "Sort: "}
-          {selectedOption ? (isAr ? selectedOption.labelAr : selectedOption.labelEn) : ""}
+        <span className="text-sm font-medium text-neutral-900">
+          Sort: {selectedOption?.label}
         </span>
         <ChevronDown
-          className={`h-4 w-4 text-ink-secondary transition-transform ${
+          className={`h-4 w-4 text-neutral-600 transition-transform ${
             isOpen ? "rotate-180" : ""
           }`}
         />
@@ -60,22 +54,21 @@ export default function SortDropdown({ value, onChange }: SortDropdownProps) {
           />
           
           {/* Dropdown */}
-          <div className="absolute end-0 top-full mt-2 z-20 w-56 bg-white border border-border-subtle rounded-xl shadow-lg py-2">
+          <div className="absolute right-0 top-full mt-2 z-20 w-56 bg-white border border-neutral-200 rounded-xl shadow-lg py-2">
             {SORT_OPTIONS.map((option) => (
               <button
                 key={option.value}
-                type="button"
                 onClick={() => {
                   onChange(option.value);
                   setIsOpen(false);
                 }}
-                className={`w-full min-h-[44px] px-4 py-2 text-start text-sm transition-colors cursor-pointer ${
+                className={`w-full px-4 py-2 text-left text-sm transition-colors ${
                   value === option.value
-                    ? "bg-[#0E1014] text-[#E5C573] font-semibold"
-                    : "text-ink-primary hover:bg-[#F0EFEA]"
+                    ? "bg-primary-50 text-primary-700 font-semibold"
+                    : "text-neutral-900 hover:bg-neutral-50"
                 }`}
               >
-                {isAr ? option.labelAr : option.labelEn}
+                {option.label}
               </button>
             ))}
           </div>

@@ -8,8 +8,6 @@ import Footer from "@/components/layout/Footer";
 import AnnouncementBar, { CampaignAnnouncement } from "@/components/layout/AnnouncementBar";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
-import { getCategories } from "@/lib/store-api";
-import type { MedusaCategory } from "@/lib/types/medusa";
 
 export const metadata: Metadata = {
   title: "الماجيكو للرياضة - MagicOFit | متجر رياضي متكامل",
@@ -97,18 +95,6 @@ async function getActiveCampaigns(): Promise<CampaignAnnouncement[]> {
   }
 }
 
-async function getInitialCategories(): Promise<MedusaCategory[]> {
-  if (process.env.NEXT_PHASE === "phase-production-build") {
-    return [];
-  }
-  try {
-    const categories = await getCategories();
-    return categories || [];
-  } catch {
-    return [];
-  }
-}
-
 export default async function LocaleLayout({
   children,
   params
@@ -122,12 +108,9 @@ export default async function LocaleLayout({
     notFound();
   }
 
-  const [messages, campaigns, initialCategories] = await Promise.all([
-    getMessages(),
-    getActiveCampaigns(),
-    getInitialCategories(),
-  ]);
+  const messages = await getMessages();
   const dir = locale === "ar" ? "rtl" : "ltr";
+  const campaigns = await getActiveCampaigns();
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -158,17 +141,13 @@ export default async function LocaleLayout({
       </head>
       <body className={`min-h-full flex flex-col font-sans`}>
         <NextIntlClientProvider messages={messages}>
-          <div className="flex min-h-screen flex-col bg-canvas text-ink-primary">
-            <a href="#main-content" className="skip-to-content">
-              {locale === "ar" ? "انتقل إلى المحتوى" : "Skip to content"}
-            </a>
+          <div className="flex min-h-screen flex-col">
             <AnnouncementBar
               campaigns={campaigns}
-              locale={locale}
             />
-            <Header initialCategories={initialCategories} />
-            <main id="main-content" className="flex-1">{children}</main>
-            <Footer initialCategories={initialCategories} />
+            <Header />
+            <main className="flex-1">{children}</main>
+            <Footer />
           </div>
         </NextIntlClientProvider>
       </body>
