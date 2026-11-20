@@ -9,6 +9,8 @@ interface Product {
   price: number;
   originalPrice?: number;
   image: string;
+  hoverImage?: string;
+  categoryName?: string;
   inStock?: boolean;
   stock?: number;
 }

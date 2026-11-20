@@ -1,9 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import ProductGrid from "@/components/product/ProductGrid";
 import Breadcrumb from "@/components/layout/Breadcrumb";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
+import { Link } from "@/i18n/navigation";
 
 interface CategoryClientProps {
   initialProducts: any[];
@@ -17,20 +18,13 @@ interface CategoryClientProps {
   };
 }
 
-export default function CategoryClient({ initialProducts, categoryName, categorySlug, debugInfo }: CategoryClientProps) {
+export default function CategoryClient({ initialProducts, categoryName, categorySlug }: CategoryClientProps) {
   const [sortBy, setSortBy] = useState("featured");
   const [filteredProducts, setFilteredProducts] = useState(initialProducts);
   const t = useTranslations("categoryPage");
   const tCommon = useTranslations("common");
-
-  useEffect(() => {
-    console.log('=== CATEGORY CLIENT DEBUG ===');
-    console.log('Category Slug:', categorySlug);
-    console.log('Category Name:', categoryName);
-    console.log('Products Count:', filteredProducts.length);
-    console.log('Products:', filteredProducts);
-    console.log('Debug Info:', debugInfo);
-  }, [categorySlug, categoryName, filteredProducts, debugInfo]);
+  const locale = useLocale();
+  const isAr = locale === "ar";
 
   const sortOptions = [
     { value: "featured", label: t("sortFeatured") },
@@ -74,26 +68,34 @@ export default function CategoryClient({ initialProducts, categoryName, category
 
       {/* Header */}
       <div className="mb-6 md:mb-8">
-        <h1 className="font-outfit text-2xl md:text-3xl font-extrabold text-neutral-900 mb-2 uppercase tracking-tight">{categoryName}</h1>
-        <p className="text-neutral-600 text-sm md:text-base">
+        <div className="flex items-center gap-2.5 mb-2">
+          <span className="h-[2px] w-5 bg-[#C8A04A]" aria-hidden="true" />
+          <span className="text-xs font-bold text-[#A68132] uppercase rtl:tracking-normal tracking-wider">
+            {tCommon("categories")}
+          </span>
+        </div>
+        <h1 className="font-display text-2xl md:text-3xl font-extrabold text-ink-primary mb-1.5 uppercase rtl:tracking-normal tracking-tight">
+          {categoryName}
+        </h1>
+        <p className="text-ink-secondary text-sm md:text-base">
           {t("productCount", { count: filteredProducts.length })}
         </p>
       </div>
 
       {/* Sort Bar */}
-      <div className="flex items-center justify-between mb-6">
-        <p className="text-xs md:text-sm text-neutral-600">
+      <div className="flex items-center justify-between mb-6 pb-4 border-b border-border-subtle">
+        <p className="text-xs md:text-sm text-ink-secondary font-medium">
           {t("showingProducts", { count: filteredProducts.length })}
         </p>
         <div className="flex items-center gap-2">
-          <label htmlFor="sort" className="text-xs md:text-sm text-neutral-600 hidden sm:inline">
+          <label htmlFor="sort" className="text-xs md:text-sm text-ink-secondary hidden sm:inline">
             {t("sortBy")}:
           </label>
           <select
             id="sort"
             value={sortBy}
             onChange={(e) => handleSortChange(e.target.value)}
-            className="rounded-lg border border-neutral-300 px-3 py-2 text-xs md:text-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 bg-white"
+            className="min-h-[40px] rounded-md border border-border-subtle px-3 py-2 text-xs md:text-sm focus:border-ink-primary focus:outline-none bg-white cursor-pointer"
           >
             {sortOptions.map((option) => (
               <option key={option.value} value={option.value}>
@@ -108,23 +110,19 @@ export default function CategoryClient({ initialProducts, categoryName, category
       {filteredProducts.length > 0 ? (
         <ProductGrid products={filteredProducts} />
       ) : (
-        <div className="text-center py-16">
-          <p className="text-neutral-500 text-lg">{t("noProducts")}</p>
-          {debugInfo && (
-            <div className="mt-4 p-4 bg-neutral-100 rounded-lg text-left text-sm max-w-md mx-auto">
-              <p className="font-bold">Debug Info:</p>
-              <p>Searched Slug: {debugInfo.searchedSlug}</p>
-              {debugInfo.availableCategories && (
-                <p>Available Categories: {debugInfo.availableCategories.join(', ')}</p>
-              )}
-              {debugInfo.foundCategory && (
-                <p>Found Category: {debugInfo.foundCategory}</p>
-              )}
-              {debugInfo.error && (
-                <p className="text-red-500">Error: {debugInfo.error}</p>
-              )}
-            </div>
-          )}
+        <div className="text-center py-16 bg-white rounded-lg border border-border-subtle px-4">
+          <p className="text-ink-primary font-bold text-lg mb-2">{t("noProducts")}</p>
+          <p className="text-ink-secondary text-sm mb-6">
+            {isAr
+              ? "جرب استكشاف بقية الأقسام الرياضية أو تصفح المتجر بالكامل."
+              : "Explore our other sports categories or browse the full store."}
+          </p>
+          <Link
+            href="/shop"
+            className="inline-flex items-center justify-center min-h-[44px] px-6 rounded-md bg-[#0E1014] text-white text-sm font-bold hover:bg-[#171A21] transition-colors"
+          >
+            {isAr ? "تصفح جميع المنتجات" : "Browse All Products"}
+          </Link>
         </div>
       )}
     </div>

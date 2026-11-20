@@ -100,6 +100,14 @@ async function getHomeData() {
           : null) ||
         "/placeholder-product.png";
 
+      const secondRaw =
+        product.images && product.images.length > 1
+          ? typeof product.images[1] === "string"
+            ? product.images[1]
+            : product.images[1].url
+          : undefined;
+      const hoverImage = secondRaw && secondRaw !== image ? secondRaw : undefined;
+
       const getPrice = (variant: any) => {
         if (variant?.calculated_price) {
           return variant.calculated_price.calculated_amount;
@@ -124,6 +132,7 @@ async function getHomeData() {
       const originalPrice = getOriginalPrice(firstVariant);
 
       const categoryIds = product.categories?.map((c: any) => c.id || c.category_id) || [];
+      const categoryName = product.categories?.[0]?.name || undefined;
 
       return {
         id: product.id,
@@ -131,6 +140,8 @@ async function getHomeData() {
         price: price,
         originalPrice: originalPrice,
         image: image,
+        hoverImage,
+        categoryName,
         inStock: true,
         stock: firstVariant?.inventory_quantity ?? 0,
         handle: product.handle || "",

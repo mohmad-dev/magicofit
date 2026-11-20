@@ -7,6 +7,7 @@ import FreeShippingProgress from "@/components/cart/FreeShippingProgress";
 import { useCartStore } from "@/stores/cart-store";
 import { useTranslations } from "next-intl";
 import { ShoppingBag } from "lucide-react";
+import { Link } from "@/i18n/navigation";
 
 export default function CartPage() {
   const { items, updateQuantity, removeItem } = useCartStore();
@@ -44,21 +45,21 @@ export default function CartPage() {
         <Breadcrumb items={breadcrumbItems} />
       </div>
 
-      <h1 className="font-outfit text-2xl md:text-4xl font-extrabold text-neutral-900 mb-6 md:mb-8 uppercase tracking-tight">{t("title")}</h1>
+      <h1 className="font-display text-2xl md:text-4xl font-extrabold text-ink-primary mb-6 md:mb-8 uppercase rtl:tracking-normal tracking-tight">{t("title")}</h1>
 
       {items.length === 0 ? (
         <div className="text-center py-16 md:py-24">
-          <div className="mx-auto w-20 h-20 rounded-full bg-neutral-100 flex items-center justify-center mb-6">
-            <ShoppingBag className="h-10 w-10 text-neutral-400" />
+          <div className="mx-auto w-20 h-20 rounded-full bg-[#F0EFEA] flex items-center justify-center mb-6">
+            <ShoppingBag className="h-10 w-10 text-ink-secondary" />
           </div>
-          <p className="text-neutral-600 mb-2 text-lg font-semibold">{t("empty")}</p>
-          <p className="text-neutral-400 mb-6 text-sm">{t("emptyDesc")}</p>
-          <a
+          <p className="text-ink-primary mb-2 text-lg font-semibold">{t("empty")}</p>
+          <p className="text-ink-secondary mb-6 text-sm">{t("emptyDesc")}</p>
+          <Link
             href="/shop"
-            className="inline-flex items-center justify-center rounded-lg bg-primary-600 px-8 py-3 text-white font-bold transition-colors hover:bg-primary-700 shadow-lg shadow-primary-500/30 uppercase tracking-wide text-sm"
+            className="inline-flex min-h-[44px] items-center justify-center rounded-lg bg-primary-600 px-8 py-3 text-white font-bold transition-colors hover:bg-primary-700 uppercase rtl:tracking-normal tracking-wide text-sm"
           >
             {t("continueShopping")}
-          </a>
+          </Link>
         </div>
       ) : (
         <div className="space-y-8 md:space-y-12">

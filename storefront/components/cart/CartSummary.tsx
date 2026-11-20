@@ -28,16 +28,16 @@ export default function CartSummary({
   return (
     <div className="space-y-3">
       <div className="flex justify-between text-sm">
-        <span className="text-gray-600">{t("subtotal")}</span>
-        <span className="font-medium text-gray-900">
+        <span className="text-ink-secondary">{t("subtotal")}</span>
+        <span className="font-latin font-medium text-ink-primary tabular-nums">
           {formatPrice(calculatedSubtotal)}
         </span>
       </div>
 
       {shipping > 0 && (
         <div className="flex justify-between text-sm">
-          <span className="text-gray-600">{t("shipping")}</span>
-          <span className="font-medium text-gray-900">
+          <span className="text-ink-secondary">{t("shipping")}</span>
+          <span className="font-latin font-medium text-ink-primary tabular-nums">
             {formatPrice(shipping)}
           </span>
         </div>
@@ -45,8 +45,8 @@ export default function CartSummary({
 
       {tax > 0 && (
         <div className="flex justify-between text-sm">
-          <span className="text-gray-600">{t("tax")}</span>
-          <span className="font-medium text-gray-900">
+          <span className="text-ink-secondary">{t("tax")}</span>
+          <span className="font-latin font-medium text-ink-primary tabular-nums">
             {formatPrice(tax)}
           </span>
         </div>
@@ -54,17 +54,17 @@ export default function CartSummary({
 
       {discount > 0 && (
         <div className="flex justify-between text-sm">
-          <span className="text-gray-600">{t("discount")}</span>
-          <span className="text-green-600 font-medium">
+          <span className="text-ink-secondary">{t("discount")}</span>
+          <span className="font-latin text-green-700 font-medium tabular-nums">
             -{formatPrice(discount)}
           </span>
         </div>
       )}
 
-      <div className="border-t pt-3">
+      <div className="border-t border-border-subtle pt-3">
         <div className="flex justify-between">
-          <span className="text-base font-semibold text-gray-900">{t("total")}</span>
-          <span className="text-base font-bold text-gray-900">
+          <span className="text-base font-semibold text-ink-primary">{t("total")}</span>
+          <span className="font-latin text-base font-bold text-ink-primary tabular-nums">
             {formatPrice(total)}
           </span>
         </div>

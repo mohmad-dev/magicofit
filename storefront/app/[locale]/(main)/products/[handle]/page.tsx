@@ -18,7 +18,7 @@ import ProductTabs from "@/components/product/ProductTabs";
 import SizeGuideModal from "@/components/product/SizeGuideModal";
 import { formatPrice, getVariantOptionValue, cn } from "@/lib/utils";
 import { useState, useEffect } from "react";
-import { Truck, RotateCcw, Package, Check, Minus, Plus, Ruler } from "lucide-react";
+import { Truck, RotateCcw, Package, Check, Minus, Plus, Ruler, Waves, Sun, Ban, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import { getProductByHandle, getProducts, getRegions } from "@/lib/store-api";
 import type { MedusaProduct } from "@/lib/types/medusa";
@@ -299,23 +299,23 @@ export default function ProductPage() {
             {product.metadata?.brand && (
               <p className="text-xs text-primary-600 font-bold uppercase tracking-widest">{product.metadata?.brand}</p>
             )}
-            <h1 className="font-outfit text-2xl md:text-3xl lg:text-4xl font-extrabold text-neutral-900 uppercase tracking-tight leading-tight">{product.title}</h1>
+            <h1 className="font-display text-2xl md:text-3xl lg:text-4xl font-extrabold text-ink-primary uppercase rtl:tracking-normal tracking-tight leading-tight">{product.title}</h1>
             {product.subtitle && (
-              <p className="text-base md:text-lg text-neutral-500 leading-relaxed">{product.subtitle}</p>
+              <p className="text-base md:text-lg text-ink-secondary leading-relaxed">{product.subtitle}</p>
             )}
           </div>
 
           {/* Price */}
           <div className="flex items-baseline flex-wrap gap-3">
-            <span className="text-3xl md:text-4xl font-extrabold text-neutral-900 tracking-tight">
+            <span className="font-latin text-3xl md:text-4xl font-extrabold text-ink-primary tabular-nums tracking-tight">
               {formatPrice(price)}
             </span>
             {originalPrice && originalPrice > price && (
               <>
-                <span className="text-lg md:text-xl text-neutral-400 line-through">
+                <span className="font-latin text-lg md:text-xl text-ink-secondary line-through tabular-nums">
                   {formatPrice(originalPrice)}
                 </span>
-                <span className="px-3 py-1.5 bg-red-50 text-red-600 text-xs font-bold rounded-full border border-red-100">
+                <span className="px-3 py-1 bg-primary-600/10 text-primary-700 text-xs font-bold rounded-sm border border-primary-600/20">
                   خصم {Math.round(((originalPrice - price) / originalPrice) * 100)}%
                 </span>
               </>
@@ -323,7 +323,7 @@ export default function ProductPage() {
           </div>
 
           {/* Stock Status & Urgency */}
-          <div className="flex items-center gap-3 py-3 px-4 bg-neutral-50 rounded-xl">
+          <div className="flex items-center gap-3 py-3 px-4 bg-surface-subtle border border-border-subtle rounded-lg">
             <StockIndicator quantity={inventoryQuantity} manageInventory={selectedVariant?.manage_inventory} />
             {inventoryQuantity > 0 && inventoryQuantity <= 5 && (
               <UrgencyBadge stock={inventoryQuantity} />
@@ -484,7 +484,8 @@ export default function ProductPage() {
                   handle: product.handle || '',
                   name: product.title || '',
                   image: product.thumbnail || product.images?.[0]?.url || '/placeholder-product.png',
-                  price: selectedSize && selectedColor ? 0 : (product.variants?.[0]?.calculated_price?.calculated_amount || 0),
+                  price: price,
+                  originalPrice: originalPrice || undefined,
                   variant: {
                     size: selectedSize,
                     color: selectedColor,
@@ -620,34 +621,34 @@ export default function ProductPage() {
                           ))}
                         </div>
                       ) : (
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                          <div className="flex flex-col items-center p-4 bg-neutral-50 rounded-xl text-center">
-                            <div className="w-12 h-12 rounded-full bg-primary-100 flex items-center justify-center mb-3">
-                              <span className="text-2xl">🧺</span>
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-3.5">
+                          <div className="flex flex-col items-center p-4 bg-surface-subtle border border-border-subtle rounded-lg text-center">
+                            <div className="w-11 h-11 rounded-md bg-white border border-border-subtle flex items-center justify-center mb-3 text-[#A68132]">
+                              <Waves className="h-5 w-5" aria-hidden="true" />
                             </div>
-                            <span className="text-sm font-medium text-neutral-900">غسيل آلي</span>
-                            <span className="text-xs text-neutral-500 mt-1">درجة حرارة 30°</span>
+                            <span className="text-sm font-bold text-ink-primary">غسيل آلي</span>
+                            <span className="text-xs text-ink-secondary mt-1">درجة حرارة 30°</span>
                           </div>
-                          <div className="flex flex-col items-center p-4 bg-neutral-50 rounded-xl text-center">
-                            <div className="w-12 h-12 rounded-full bg-primary-100 flex items-center justify-center mb-3">
-                              <span className="text-2xl">☀️</span>
+                          <div className="flex flex-col items-center p-4 bg-surface-subtle border border-border-subtle rounded-lg text-center">
+                            <div className="w-11 h-11 rounded-md bg-white border border-border-subtle flex items-center justify-center mb-3 text-[#A68132]">
+                              <Sun className="h-5 w-5" aria-hidden="true" />
                             </div>
-                            <span className="text-sm font-medium text-neutral-900">تجفيف بالهواء</span>
-                            <span className="text-xs text-neutral-500 mt-1">في الظل</span>
+                            <span className="text-sm font-bold text-ink-primary">تجفيف بالهواء</span>
+                            <span className="text-xs text-ink-secondary mt-1">في الظل</span>
                           </div>
-                          <div className="flex flex-col items-center p-4 bg-neutral-50 rounded-xl text-center">
-                            <div className="w-12 h-12 rounded-full bg-primary-100 flex items-center justify-center mb-3">
-                              <span className="text-2xl">🚫</span>
+                          <div className="flex flex-col items-center p-4 bg-surface-subtle border border-border-subtle rounded-lg text-center">
+                            <div className="w-11 h-11 rounded-md bg-white border border-border-subtle flex items-center justify-center mb-3 text-red-600">
+                              <Ban className="h-5 w-5" aria-hidden="true" />
                             </div>
-                            <span className="text-sm font-medium text-neutral-900">لا تبيض</span>
-                            <span className="text-xs text-neutral-500 mt-1">تجنب الكلور</span>
+                            <span className="text-sm font-bold text-ink-primary">لا تبيض</span>
+                            <span className="text-xs text-ink-secondary mt-1">تجنب الكلور</span>
                           </div>
-                          <div className="flex flex-col items-center p-4 bg-neutral-50 rounded-xl text-center">
-                            <div className="w-12 h-12 rounded-full bg-primary-100 flex items-center justify-center mb-3">
-                              <span className="text-2xl">⚡</span>
+                          <div className="flex flex-col items-center p-4 bg-surface-subtle border border-border-subtle rounded-lg text-center">
+                            <div className="w-11 h-11 rounded-md bg-white border border-border-subtle flex items-center justify-center mb-3 text-[#A68132]">
+                              <Sparkles className="h-5 w-5" aria-hidden="true" />
                             </div>
-                            <span className="text-sm font-medium text-neutral-900">كوي خفيف</span>
-                            <span className="text-xs text-neutral-500 mt-1">درجة حرارة منخفضة</span>
+                            <span className="text-sm font-bold text-ink-primary">كوي خفيف</span>
+                            <span className="text-xs text-ink-secondary mt-1">درجة حرارة منخفضة</span>
                           </div>
                         </div>
                       )}
@@ -714,20 +715,20 @@ export default function ProductPage() {
 
       {/* Sticky Add-to-Cart Bar - Mobile only */}
       {isScrolled && selectedVariant && (
-        <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-neutral-200 shadow-2xl z-50 py-3 px-4 lg:hidden safe-bottom">
+        <div className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-border-subtle shadow-2xl z-50 py-3 px-4 lg:hidden safe-bottom">
           <div className="flex items-center gap-3">
             <div className="flex-1 min-w-0">
-              <h3 className="font-outfit font-bold text-sm text-neutral-900 truncate">{product.title}</h3>
-              <p className="text-xs text-neutral-500">
+              <h3 className="font-display font-bold text-sm text-ink-primary truncate rtl:tracking-normal">{product.title}</h3>
+              <p className="text-xs text-ink-secondary">
                 {selectedSize && `${t("size")}: ${selectedSize}`}
                 {selectedColor && `${selectedSize ? " | " : ""}${selectedColor}`}
                 {" | "}
-                <span className="font-bold text-neutral-900">{formatPrice(price)}</span>
+                <span className="font-latin font-bold text-ink-primary tabular-nums">{formatPrice(price)}</span>
               </p>
             </div>
             <button
               onClick={() => handleAddToCart(product.id)}
-              className="flex-none px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-bold text-sm rounded-lg transition-colors uppercase tracking-wide"
+              className="flex-none min-h-[44px] px-6 py-2.5 bg-primary-600 hover:bg-primary-700 text-white font-bold text-sm rounded-md transition-colors uppercase rtl:tracking-normal tracking-wide cursor-pointer"
             >
               {t("addToCart")}
             </button>
